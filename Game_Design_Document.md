@@ -11,7 +11,45 @@
 
 ## Content
 
-- []()
+- [Game Design Document of Untitled](#game-design-document-of-untitled)
+  - [Cover](#cover)
+  - [Content](#content)
+  - [Overview](#overview)
+    - [Game Summary](#game-summary)
+    - [Genre](#genre)
+    - [Target Platform](#target-platform)
+    - [Target Audience](#target-audience)
+    - [Design Goals](#design-goals)
+  - [Story and Setting](#story-and-setting)
+    - [Back Story](#back-story)
+    - [Main Characters](#main-characters)
+    - [Game World](#game-world)
+  - [Gameplay and Mechanics](#gameplay-and-mechanics)
+    - [Brainstorming](#brainstorming)
+    - [Core gameplay](#core-gameplay)
+    - [Controls and Input](#controls-and-input)
+    - [Game Rules](#game-rules)
+    - [Level Design](#level-design)
+    - [Enemies and Obstacles](#enemies-and-obstacles)
+    - [Items and Abilities](#items-and-abilities)
+  - [User Interface](#user-interface)
+    - [Main Interface](#main-interface)
+    - [In-Game Interface](#in-game-interface)
+    - [Example Images](#example-images)
+  - [Sound and Music](#sound-and-music)
+    - [Background Music](#background-music)
+    - [Sound Effects](#sound-effects)
+    - [Audio Resources](#audio-resources)
+  - [Technical Specifications](#technical-specifications)
+    - [Development Tools](#development-tools)
+    - [Performance Goals](#performance-goals)
+    - [Compatibility](#compatibility)
+  - [Project Schedule](#project-schedule)
+    - [Development Milestones](#development-milestones)
+    - [Task Allocation](#task-allocation)
+  - [Appendix](#appendix)
+    - [References](#references)
+    - [Glossary](#glossary)
 
 ## Overview
 
@@ -116,7 +154,7 @@ Audio libraries and resources used.
 
 ## Technical Specifications
 
-### Deve;opment Tools
+### Development Tools
 Unity version, programming languages, plugins, etc.
 
 ### Performance Goals
