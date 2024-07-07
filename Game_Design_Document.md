@@ -97,13 +97,25 @@ Our game takes place in an ancient magic world, a fantastical dungeon under a ma
   Cupid can rotate the world, thus make use of some magical mechanisms in the dungeon, find a way to further explore, fight against monsters in proper position, or solve some puzzles.
 
 ### Controls and Input
-Detailed explanation of how players control characters and interact with the game
+- W: Jump, cannot jump in the air
+- A/D: Move left/right
+- Q/E: Rotate counterclockwise or clockwise
+- U: Interact with items or NPCs
 
 ### Game Rules
-Including win conditions, fail conditions, scoring system, etc.
+- Win condition:  
+  Get to the exit or defeat the boss.
+
+- Fail condition:  
+  Hitpoints Decrease to 0.
+
+- Scoring System:  
+  If not get to the end, calculated by passed levels number; If same, less time used scores higher.
+  If get to the end, calculate by Bad End/ Normal End/ Happy End; If same, less time used scores higher.
 
 ### Level Design
-Goals, difficulty, and design approach for each level
+- Level 1:  
+  Guide the player to utilize the rotational ability to navigate challenging terrain and reach the exit.
 
 ### Enemies and Obstacles
 Design and behavior of various enemies and obstacles
@@ -159,7 +171,7 @@ Responsibilities and tasks assigned to each team member
 ## Appendix
 
 ### References 
-Including sources of inspiration, design references, literature, etc.
+- ChatGPT: https://chat.openai.com
 
 ### Glossary
 Definitions of terms and abbreviations used in the document
