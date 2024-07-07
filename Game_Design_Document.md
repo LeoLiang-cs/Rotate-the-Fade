@@ -1,17 +1,17 @@
-# Game Design Document of Untitled
+# Game Design Document of Rotate the Fate
 
 ## Cover
 
-- **Name**: 
-- **Genre**:
-- **Author**: Chenhao Liang, Guangyu Hou, ...
+- **Name**: Rotate the Fate
+- **Genre**: 2D Platformer
+- **Author**: Liang Chenhao 梁辰浩, Hou Guangyu 侯光宇, He Hui 何晖, Zhang Hongjian 张宏建
 - **Creation Date**: 01/07/2024
-- **Last Modified**: 01/07/2024
-- **Version**: 0.0
+- **Last Modified**: 07/07/2024
+- **Version**: 0.1
 
 ## Content
 
-- [Game Design Document of Untitled](#game-design-document-of-untitled)
+- [Game Design Document of Rotate the Fate](#game-design-document-of-rotate-the-fate)
   - [Cover](#cover)
   - [Content](#content)
   - [Overview](#overview)
@@ -25,7 +25,6 @@
     - [Main Characters](#main-characters)
     - [Game World](#game-world)
   - [Gameplay and Mechanics](#gameplay-and-mechanics)
-    - [Brainstorming](#brainstorming)
     - [Core gameplay](#core-gameplay)
     - [Controls and Input](#controls-and-input)
     - [Game Rules](#game-rules)
@@ -54,16 +53,16 @@
 ## Overview
 
 ### Game Summary
-A brief description of the core concept and objectives of the game.
+A slime called Cupid gain the magic to rotate the world, he jump into the dungeon and try to be the new Demon King. To fulfill his dream, he rotate world with trick, take down enemies for new abilities, interact with different NPCs, and finally fight against the boss.
 
 ### Genre
-This is a (     ) game.
+This is a 2D platformer game.
 
 ### Target Platform
-PC(?)
+Our game runs on PC.
 
 ### Target Audience
-The main player demographic for the game
+Our game targets players almost all ages, all gendets, primarily located in North America, Europe, and Asia. These players are fans of adventure and exploration games, with some puzzles. They are core gamers who play daily, seeking interesting gameplay, and they enjoy character development. Our audience primarily uses PCs, and they favor operating systems like Windows. 
 
 ### Design Goals
 The core goals and design philosophy of the game
@@ -71,49 +70,31 @@ The core goals and design philosophy of the game
 ## Story and Setting
 
 ### Back Story
-The storyline, world-building, and setting of the game
+Cupid, once an ordinary slime, has been bullied by other beast or heroes. He died and reborned again and agian. 
+
+However, Cupid once awoke to find itself in an ancient, mysterious magical castle. The air was thick with an aura of power, hinting at the presence of a formidable master within its walls. As Cupid slithered cautiously around a corner, it saw the Grand Master, an imposing figure of authority, passing by. In a moment of distraction, the Grand Master dropped a shimmering object that radiated with magical energy.
+
+Cupid's instincts flared up, recognizing the object as a powerful magical artifact. Driven by an inexplicable urge, Cupid quickly engulfed the item, feeling an immediate surge of strength and energy. However, this triumph was short-lived. The sound of approaching footsteps echoed through the corridors.
+
+Panicked, Cupid knew it had to hide. It hurriedly stumbled into a nearby room, its gelatinous body barely managing to stay softy. The room turned out to be an entrance to the castle's underground dungeon. Without a moment's hesitation, Cupid slipped down the staircase, hoping to evade detection and perhaps discover more secrets hidden within the depths of the castle.
+
+Thus began Cupid's quest for revenge and its journey to claim the title of Demon King.
 
 ### Main Characters
-Detailed descriptions of the protagonist and key NPCs, including their background, personality, and motivation
+- Cupid:  
+  Appears outwardly adorable, with its gelatinous form and playful demeanor. However, beneath its cute exterior lies an ambitious spirit burning with determination.
+
+- the Grand Master:  
+  The Grand Master embodies power and self-assuredness. Standing tall and imposing, the Grand Master exudes an air of malevolence and cunning. Behind his charismatic facade lies a dark intelligence, always calculating and ready to exploit any advantage.
 
 ### Game World
-Description of major locations, maps, and environments in the game
+Our game takes place in an ancient magic world, a fantastical dungeon under a magic castle in a forbidding dark forest.
 
 ## Gameplay and Mechanics
 
-### Brainstorming
-- 扮演狗狗，帮人潜入/救人...
-  - 主要为space 叫，吸引敌人，帮助受伤士兵穿过危险地带
-  - 可以躲狗洞，从狭小的地方穿过，破坏物品，卖萌...
-  - 以战争为背景，反战
-  - 一开始为红方军犬，帮忙运送弹药，后面偶然发现蓝方受伤士兵，帮忙送药物
-- 看望病床的奶奶，睡一觉到冥界，和奶奶一起冒险，回忆过去
-  - 来点经典梦核
-  - 最后危急时刻奶奶将主人公推回人间，欢笑离去
-  - 主人公也可以是小狗
-  - 以亲情为主题，生与死
-- 猫有九条命，靠死亡通关
-- 扮演勇者斗恶龙中的恶龙，不能伤害到勇者，主动碰子弹
-- 相机截屏，获得移动的砖块
-- 时间
-  - 不移动就静止
-  - 左走时间正向流动，游走时间逆向流动
-- 2维-3维的转换()
-  - 旋转平面让洞口折叠，降维打击
-- what is the golf
-  - 把一切东西扔出，不同物品手感不同
-- windows kill
-  - 屏幕会不断缩小，需要靠子弹设计撑开游戏画面
-- 传送门
-  - 随机传送：随机传送至另一个属性也是“随机”的传送门
-  - 单向传送：只能传送至另一个绑定的传送门，但是另一个无法传送至任何传送门
-  - 双向传送：可以传送至另一个绑定的传送门，并且可以从另一个传送门返回
-- 骇客技能，类似于看门狗2, gunpoint
-  - 开关灯，解锁门...
-- 不同时空的切换，类似于泰坦2，耻辱2
-
 ### Core gameplay
-Description of the main gameplay mechanics and core loop
+- **Rotation**:  
+  Cupid can rotate the world, thus make use of some magical mechanisms in the dungeon, find a way to further explore, fight against monsters in proper position, or solve some puzzles.
 
 ### Controls and Input
 Detailed explanation of how players control characters and interact with the game
@@ -155,10 +136,14 @@ Audio libraries and resources used.
 ## Technical Specifications
 
 ### Development Tools
-Unity version, programming languages, plugins, etc.
+- Unity version: 2022.3.34f1
+- Programming language: C#
+- Plugins: 
 
 ### Performance Goals
-Frame rate, resolution, loading times, etc
+- Frame rate: 60/sec
+- Resolution: 1920 * 1080
+- loading times: 
 
 ### Compatibility
 Minimum and recommended hardware and operating system requirements
