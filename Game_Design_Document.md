@@ -4,7 +4,7 @@
 
 - **Name**: 
 - **Genre**:
-- **Author**: Chenhao Liang, Guangyu Hou, ...
+- **Author**: Chenhao Liang, Guangyu Hou, He Hei, Zhang Hongjian
 - **Creation Date**: 01/07/2024
 - **Last Modified**: 01/07/2024
 - **Version**: 0.0
