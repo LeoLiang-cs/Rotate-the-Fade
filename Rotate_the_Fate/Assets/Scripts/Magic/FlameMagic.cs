@@ -28,6 +28,7 @@ public class FlameMagic : MonoBehaviour
         if(mLifeCount <= 0) 
         {
             Destroy(transform.gameObject);  // kills self
+            Attack.isAttacking = false;
         }
         
     }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MagicSystem : MonoBehaviour
+public class MagicSystem
 {
     public static float kYDistance = 1.5f;
     public static float kXDistance = 0.5f;
@@ -57,16 +57,5 @@ public class MagicSystem : MonoBehaviour
             flame.transform.localRotation = Quaternion.Euler(0, 180, 0);
         }
             
-    }
-
-    void DrawLightning(Vector2 start, Vector2 end)
-    {
-        GameObject lightning = Instantiate(mLightningChainSample) as GameObject;
-        LineRenderer lr = lightning.GetComponent<LineRenderer>();
-        lr.SetPosition(0, start);
-        lr.SetPosition(1, end);
-
-        // 销毁闪电对象在0.5秒后
-        Destroy(lightning, 0.5f);
     }
 }
