@@ -25,6 +25,7 @@ public class LightningChainMagic : MonoBehaviour
         foreach (Collider2D enemy in hitEnemies)
         {
             DrawLightning(p, enemy.transform.position);
+            
             enemy.GetComponent<Hit>().TakeLighteningChainDamage(damage);
         }
     }
@@ -38,5 +39,6 @@ public class LightningChainMagic : MonoBehaviour
 
         // 销毁闪电对象在0.5秒后
         Destroy(transform.gameObject, 0.5f);
+        Attack.isAttacking = false;
     }
 }

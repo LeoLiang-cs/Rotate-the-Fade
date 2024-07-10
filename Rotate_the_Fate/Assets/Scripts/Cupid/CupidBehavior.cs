@@ -21,7 +21,7 @@ public class CupidBehavior : MonoBehaviour
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<CupidCollision>();
-        rb.constraints = RigidbodyConstraints2D.FreezeRotation;//所有活物都要锁定！
+        //rb.constraints = RigidbodyConstraints2D.FreezeRotation;//所有活物都要锁定！
     }
 
     // Update is called once per frame
@@ -40,7 +40,7 @@ public class CupidBehavior : MonoBehaviour
 
     private void Walk(Vector2 dir)
     {
-       if(!WorldRotation.isRotating) {
+       if(!WorldRotation.isRotating && !Attack.isAttacking) {
             rb.velocity = new Vector2(dir.x * speed, rb.velocity.y);
             bool slimeHasXAxisSpeed = Mathf.Abs(rb.velocity.x) > Mathf.Epsilon;
             anim.SetBool("Walk", slimeHasXAxisSpeed);

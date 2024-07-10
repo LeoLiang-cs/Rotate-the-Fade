@@ -28,6 +28,7 @@ public class FrozenMagic : MonoBehaviour
         if(mLifeCount <= 0) 
         {
             Destroy(transform.gameObject);  // kills self
+            Attack.isAttacking = false;
         }
         
     }
