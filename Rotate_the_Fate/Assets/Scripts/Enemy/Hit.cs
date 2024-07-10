@@ -22,9 +22,8 @@ public class Hit : MonoBehaviour
         
     }
 
-     public void TakeFrozenDamage(int damage, Vector2 attP) {
+    public void TakeFrozenDamage(int damage, Vector2 attP) {
         if(mFrozenCount == 0) {
-
             if(attP.x < transform.position.x) {
                 GetComponent<Rigidbody2D>().AddForce(new Vector2(1, 1) * 5, ForceMode2D.Impulse);
             } else {
@@ -41,4 +40,20 @@ public class Hit : MonoBehaviour
             mFrozenCount++;
         }
     }
+
+    public void TakeFlameDamage(int damage, Vector2 attP) {
+        if(attP.x < transform.position.x) {
+            GetComponent<Rigidbody2D>().AddForce(new Vector2(1, 0) * 10, ForceMode2D.Impulse);
+        } else {
+            GetComponent<Rigidbody2D>().AddForce(new Vector2(-1, 0) * 10, ForceMode2D.Impulse);
+        }
+        spriteRenderer.color = Color.red; 
+    }    
+
+      public void TakeLighteningChainDamage(int damage) {
+        
+        spriteRenderer.color = Color.yellow; 
+    }    
+
+    
 }
