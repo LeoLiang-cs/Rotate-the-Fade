@@ -15,7 +15,7 @@ public class Attack : MonoBehaviour
     void Start()
     {
         currentMagic.Add(MagicType.Frozen);
-        currentMagic.Add(MagicType.FlashX);
+        currentMagic.Add(MagicType.LightingChain);
         currentMagic.Add(MagicType.Flame);
     }
 
@@ -34,8 +34,8 @@ public class Attack : MonoBehaviour
                 case MagicType.Frozen:
                     mMagicSystem.FrozenSpawner(transform.position, GetComponent<CupidBehavior>().mTowardRight);
                     break;
-                case MagicType.FlashX:
-                    mMagicSystem.FlashXSpawner(transform.position, GetComponent<CupidBehavior>().mTowardRight);
+                case MagicType.LightingChain:
+                    mMagicSystem.LightningChainSpawner(transform.position);
                     break;
                 case MagicType.Flame:
                     mMagicSystem.FlameSpawner(transform.position, GetComponent<CupidBehavior>().mTowardRight);
