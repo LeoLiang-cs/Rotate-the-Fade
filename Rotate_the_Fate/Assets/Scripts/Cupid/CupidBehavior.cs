@@ -39,7 +39,7 @@ public class CupidBehavior : MonoBehaviour
 
     private void Walk(Vector2 dir)
     {
-       if(!WorldRotation.isRotating && !Attack.isAttacking) {
+       if(!CupidHit.isHitting && !WorldRotation.isRotating && !Attack.isAttacking) {
             rb.velocity = new Vector2(dir.x * speed, rb.velocity.y);
             bool slimeHasXAxisSpeed = Mathf.Abs(rb.velocity.x) > Mathf.Epsilon;
             anim.SetBool("Walk", slimeHasXAxisSpeed);
