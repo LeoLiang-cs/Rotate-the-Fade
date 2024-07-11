@@ -327,7 +327,6 @@ GameObject:
   - component: {fileID: 481976599}
   - component: {fileID: 481976600}
   - component: {fileID: 481976601}
-  - component: {fileID: 481976602}
   - component: {fileID: 481976603}
   m_Layer: 7
   m_Name: Mushroom
@@ -521,18 +520,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mFrozenCount: 0
---- !u!114 &481976602
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 481976592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 284509ffd68a3d5459b4f50bbbb61ca1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   health: 10
   flameDamage: 5
   frozenDamage: 2
@@ -608,7 +595,7 @@ Transform:
   m_GameObject: {fileID: 736405249}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.22, y: -2.5, z: 0}
+  m_LocalPosition: {x: -2.16, y: -2.51, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -846,7 +833,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaf9838e84a096349bf8d2aed6a156a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockbackForce: 10
+  isHitting: 0
+  OntakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  maxHealth: 10
+  currentHealth: 0
+  MushroomDamage: 3
+  knockbackForce: 15
   invulnerableTime: 0.5
 --- !u!70 &736405265
 CapsuleCollider2D:

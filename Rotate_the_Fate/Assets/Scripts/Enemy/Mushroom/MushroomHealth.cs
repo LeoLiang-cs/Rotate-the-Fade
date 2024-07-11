@@ -10,26 +10,33 @@ public class Hit : MonoBehaviour
     private float mFrozenTime = 2.0f;
     private float mFrozenTimeCount = 0.0f;
     private Animator anim;
-    private Health health;
     private Timer slow_down_timer;
     private Timer frozen_timer;
+
+    [Space]
+    [Header("Status")]
+    private bool isDead = false;
+    public int health = 10;
+    public int flameDamage = 5;
+    public int frozenDamage = 2;
+    public int lightningDamage = 3;
     // Start is called before the first frame update
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         mIceBlockSample = Resources.Load<GameObject>("Prefabs/FrozenEffect") as GameObject;
         anim = GetComponent<Animator>();
-        health = GetComponent<Health>();
     }
 
     // Update is called once per frame
     void Update()
     {
         // MeltFrozen();
+        Die();
     }
 
     public void TakeFrozenDamage(Vector2 attP) {
-        health.FrozenDamage();
+        health -= frozenDamage;
         if (mFrozenCount == 0) {
             if(attP.x < transform.position.x) {
                 GetComponent<Rigidbody2D>().AddForce(new Vector2(1, 1) * 5, ForceMode2D.Impulse);
@@ -39,7 +46,6 @@ public class Hit : MonoBehaviour
             spriteRenderer.color = new Color(0.078f, 0.761f, 1.0f); // RGB values for #14C2FF
 
             mFrozenCount++;
-
             Start_Slow_Down();
             // mFrozenTimeCount = mFrozenTime;
         }else if(mFrozenCount == 1) {
@@ -62,7 +68,7 @@ public class Hit : MonoBehaviour
     }    
 
     public void TakeLighteningChainDamage() {
-        
+        health -= lightningDamage;
         spriteRenderer.color = Color.yellow; 
     }    
 
@@ -78,16 +84,15 @@ public class Hit : MonoBehaviour
                 }
             }
             mFrozenTimeCount -= Time.deltaTime;
-        } 
-        // else if(mFrozenCount == 1) {
-        //     if(mFrozenTimeCount <= 0) {
-        //         spriteRenderer.color = Color.white;
-        //         mFrozenCount = 0;
-        //     }
-        //     mFrozenTimeCount -= Time.deltaTime;
-        // }
+        } else
+        if(mFrozenCount == 1) {
+            if(mFrozenTimeCount <= 0) {
+                spriteRenderer.color = Color.white;
+                mFrozenCount = 0;
+            }
+            mFrozenTimeCount -= Time.deltaTime;
+        }
     }
-
     private void Start_Slow_Down(){
         if(slow_down_timer == null){
             // Debug.Log("slow down");

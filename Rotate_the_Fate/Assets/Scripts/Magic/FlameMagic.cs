@@ -37,7 +37,7 @@ public class FlameMagic : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            other.GetComponent<Hit>().TakeFlameDamage(transform.position);
+            other.GetComponent<MushroomHealth>().TakeFlameDamage(transform.position);
         }
     }
 }
