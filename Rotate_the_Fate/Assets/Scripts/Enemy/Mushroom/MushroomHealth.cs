@@ -36,15 +36,20 @@ public class MushroomHealth : MonoBehaviour
         Die();
     }
 
-    public void TakeFrozenDamage(Vector2 attP) {
+    public void TakeFrozenDamage(Vector2 attP)
+    {
         if (isHitting)
             return;
         health -= frozenDamage;
         isHitting = true;
-        if (mFrozenCount == 0) {
-            if(attP.x < transform.position.x) {
+        if (mFrozenCount == 0)
+        {
+            if (attP.x < transform.position.x)
+            {
                 GetComponent<Rigidbody2D>().AddForce(new Vector2(1, 1) * 5, ForceMode2D.Impulse);
-            } else {
+            }
+            else
+            {
                 GetComponent<Rigidbody2D>().AddForce(new Vector2(-1, 1) * 5, ForceMode2D.Impulse);
             }
             spriteRenderer.color = new Color(0.078f, 0.761f, 1.0f); // RGB values for #14C2FF
@@ -52,97 +57,124 @@ public class MushroomHealth : MonoBehaviour
             mFrozenCount++;
             Start_Slow_Down();
             // mFrozenTimeCount = mFrozenTime;
-        }else if(mFrozenCount == 1) {
+        }
+        else if (mFrozenCount == 1)
+        {
             Start_Frozen();
-        }else{
+        }
+        else
+        {
             frozen_timer.Reset();
             slow_down_timer.Reset();
         }
     }
 
-    public void TakeFlameDamage(Vector2 attP) {
+    public void TakeFlameDamage(Vector2 attP)
+    {
         if (isHitting)
             return;
         health -= flameDamage;
-        if (attP.x < transform.position.x) {
+        if (attP.x < transform.position.x)
+        {
             GetComponent<Rigidbody2D>().AddForce(new Vector2(1, 0) * 10, ForceMode2D.Impulse);
-        } else {
+        }
+        else
+        {
             GetComponent<Rigidbody2D>().AddForce(new Vector2(-1, 0) * 10, ForceMode2D.Impulse);
         }
-        spriteRenderer.color = Color.red; 
+        spriteRenderer.color = Color.red;
         anim.SetTrigger("Hit");
         isHitting = true;
-    }    
+    }
 
-    public void TakeLighteningChainDamage() {
+    public void TakeLighteningChainDamage()
+    {
         health -= lightningDamage;
-        spriteRenderer.color = Color.yellow; 
-    }    
+        spriteRenderer.color = Color.yellow;
+    }
 
-    private void MeltFrozen() {
-        if(mFrozenCount == 2) {
-            if(mFrozenTimeCount <= 0) {
-                isHitting = false;  
+    private void MeltFrozen()
+    {
+        if (mFrozenCount == 2)
+        {
+            if (mFrozenTimeCount <= 0)
+            {
+                isHitting = false;
                 anim.speed = 1;
                 spriteRenderer.color = Color.white;
                 mFrozenCount = 0;
-                //把iceBlock给销毁
-                foreach(Transform child in transform) {
+                //��iceBlock������
+                foreach (Transform child in transform)
+                {
                     GameObject.Destroy(child.gameObject);
                 }
             }
             mFrozenTimeCount -= Time.deltaTime;
-        } else
-        if(mFrozenCount == 1) {
-            if(mFrozenTimeCount <= 0) {
+        }
+        else
+        if (mFrozenCount == 1)
+        {
+            if (mFrozenTimeCount <= 0)
+            {
                 spriteRenderer.color = Color.white;
                 mFrozenCount = 0;
             }
             mFrozenTimeCount -= Time.deltaTime;
         }
     }
-    private void Start_Slow_Down(){
-        if(slow_down_timer == null){
+    private void Start_Slow_Down()
+    {
+        if (slow_down_timer == null)
+        {
             // Debug.Log("slow down");
             slow_down_timer = gameObject.AddComponent<Timer>();
             slow_down_timer.Set_Timer(mFrozenTime, 0f);
             slow_down_timer.onComplete += Cold_recovery;
             TimeManager.Instance.AddTimer(slow_down_timer);
-        }else{
+        }
+        else
+        {
             // Debug.Log(slow_down_timer);
             slow_down_timer.Reset();
         }
     }
 
-    private void Start_Frozen(){
+    private void Start_Frozen()
+    {
         GameObject iceBlock = GameObject.Instantiate(mIceBlockSample) as GameObject;
         iceBlock.transform.localPosition = transform.position;
         iceBlock.transform.parent = transform;
         anim.speed = 0;
         mFrozenCount++;
         // mFrozenTimeCount = mFrozenTime;
-        if(frozen_timer == null){
+        if (frozen_timer == null)
+        {
             frozen_timer = gameObject.AddComponent<Timer>();
             frozen_timer.Set_Timer(mFrozenTime, 0f);
             frozen_timer.onComplete += () => UnFreeze();
             TimeManager.Instance.AddTimer(frozen_timer);
-        }else{
+        }
+        else
+        {
             frozen_timer.Reset();
         }
         slow_down_timer.Reset();
-        
+
     }
 
-    public void Cold_recovery(){
+    public void Cold_recovery()
+    {
         spriteRenderer.color = Color.white;
         mFrozenCount = 0;
     }
-    
-    public void UnFreeze(){
+
+    public void UnFreeze()
+    {
         anim.speed = 1;
         Cold_recovery();
-        //把iceBlock给销毁
-        foreach(Transform child in transform) {
+        //��iceBlock������
+        foreach (Transform child in transform)
+        {
             GameObject.Destroy(child.gameObject);
         }
         Debug.Log("unfreeze");
@@ -153,9 +185,9 @@ public class MushroomHealth : MonoBehaviour
     {
         if (health <= 0 && !isDead)
         {
-           gameObject.layer = 2;
-           isDead = true;
-           anim.SetTrigger("Die");
+            gameObject.layer = 2;
+            isDead = true;
+            anim.SetTrigger("Die");
         }
     }
 
