@@ -37,7 +37,7 @@ public class FlameMagic : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            other.GetComponent<Hit>().TakeFlameDamage(damage, transform.position);
+            other.GetComponent<Hit>().TakeFlameDamage(transform.position);
         }
     }
 }

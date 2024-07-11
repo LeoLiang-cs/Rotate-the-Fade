@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class FrozenMagic : MonoBehaviour
 {
-    public int damage = 1; 
     private static MagicSystem sMagicSystem = null;
     public static void InitializedMagicSystem(MagicSystem m) { sMagicSystem = m; }
 
@@ -37,7 +36,7 @@ public class FrozenMagic : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            other.GetComponent<Hit>().TakeFrozenDamage(damage, transform.position);
+            other.GetComponent<Hit>().TakeFrozenDamage(transform.position);
         }
     }
 }
