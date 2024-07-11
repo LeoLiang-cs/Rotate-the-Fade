@@ -5,7 +5,7 @@ using UnityEngine;
 public class WorldRotation : MonoBehaviour
 {
     public static bool isRotating = false;    
-    public float rotationSpeed = 20f; 
+    public float rotationSpeed = 40f; 
     private Quaternion targetRotation; // 目标旋转角度
 
     // Start is called before the first frame update
