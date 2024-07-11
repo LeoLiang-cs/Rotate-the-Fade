@@ -48,6 +48,14 @@ public class MushroomChaseState : Basestate
         currenemy.currspeed = currenemy.chasespeed;
         currenemy.currwaittime = currenemy.chasewaitime;
         currenemy.waitcontor = currenemy.currwaittime;
+        if (currenemy.iswait)
+        {
+            currenemy.waitTimer.Set_CoolDown(currenemy.currwaittime);
+        }
+        else
+        {
+            currenemy.waitTimer.Set_Timer(currenemy.currwaittime, currenemy.currwaittime + 1f);
+        }
     }
 
     public override void OnExit()

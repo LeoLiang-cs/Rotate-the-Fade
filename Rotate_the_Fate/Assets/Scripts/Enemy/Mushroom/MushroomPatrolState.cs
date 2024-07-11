@@ -14,6 +14,14 @@ public class MushroomPatrolState : Basestate
         currenemy.currspeed = currenemy.normalspeed;
         currenemy.currwaittime = currenemy.potalwaittime;
         currenemy.waitcontor = currenemy.currwaittime;
+        if (currenemy.iswait)
+        {
+            currenemy.waitTimer.Set_CoolDown(currenemy.currwaittime);
+        }
+        else
+        {
+            currenemy.waitTimer.Set_Timer(currenemy.currwaittime,currenemy.currwaittime+1f);
+        }
     }
     public override void Logicupdate()
     {
@@ -25,11 +33,16 @@ public class MushroomPatrolState : Basestate
         if ((currenemy.checktouch.isrighthall&&currenemy.faceDire.x>0) || (currenemy.checktouch.islefthall&&currenemy.faceDire.x<0)||(!currenemy.pytcheck.isOngroud&&currenemy.faceDire.x<0))
         {
             Debug.Log("findthedoll"+currenemy.pytcheck.isOngroud);
-            currenemy.iswait = true;
+            if (!currenemy.iswait)
+            {
+                currenemy.waitTimer.Reset();
+                currenemy.iswait = true;
+            }
+            
         }
 
         //nogroud();
-        currenemy.Timecontor();
+        //currenemy.Timecontor();
     }
 
     //public void nogroud()

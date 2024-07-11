@@ -52,6 +52,7 @@ public class Timer : MonoBehaviour
     }
 
     public void Reset(){
+        Debug.Log(onComplete);
         elapse = 0f;
     }
 

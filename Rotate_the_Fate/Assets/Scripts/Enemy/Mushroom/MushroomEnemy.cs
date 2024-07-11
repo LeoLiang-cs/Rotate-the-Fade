@@ -70,6 +70,7 @@ public class Enemy : MonoBehaviour
         Cupid = GameObject.Find("Cupid");
         waitTimer = gameObject.AddComponent<Timer>();
 
+
        
         
         MushroomJumpFllow = new Inputall();
@@ -83,6 +84,9 @@ public class Enemy : MonoBehaviour
     {
         currstate = potalstate;
         currstate.OnEnter(this);
+        waitTimer.Set_Timer(currwaittime, currwaittime + 1f);
+        waitTimer.onComplete += Turnfacedir;
+
     }
 
     private void Update()
@@ -126,8 +130,8 @@ public class Enemy : MonoBehaviour
                 waitcontor = currwaittime;
                 
                 transform.localScale = new Vector3(faceDire.x, 1, 1);
-                float timef = 1f;
-                timef-= Time.deltaTime; 
+                //float timef = 1f;
+                //timef-= Time.deltaTime; 
                 iswait = false;
 
             }
@@ -140,6 +144,14 @@ public class Enemy : MonoBehaviour
         {
             chatimecontor = chatime;
         }
+    }
+
+    public void Turnfacedir()
+    {
+        transform.localScale = new Vector3(faceDire.x, 1, 1);
+        //float timef = 1f;
+        //timef-= Time.deltaTime; 
+        iswait = false;
     }
 
     private void ISMushroomJump(CallbackContext context)
