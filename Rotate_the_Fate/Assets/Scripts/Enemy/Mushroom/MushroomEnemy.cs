@@ -25,6 +25,7 @@ public class Enemy : MonoBehaviour
     public float normalspeed;
     public float chasespeed;
     public Vector3 faceDire;
+    public float slowcl;//减慢因子
 
 
     [Header("计时器")]
@@ -84,7 +85,7 @@ public class Enemy : MonoBehaviour
         MushroomJumpFllow.Game.CupidJump.started += ISMushroomJump;
         MushchaseCupid = GameObject.Find("Cupid");
         LastisJump = false;
-
+        slowcl = 1f;
     }
 
     private void OnEnable()         
@@ -116,7 +117,7 @@ public class Enemy : MonoBehaviour
 
     public void move()
     {
-        rb.velocity = new Vector2(faceDire.x * currspeed * Time.deltaTime, rb.velocity.y);
+        rb.velocity = new Vector2(faceDire.x * currspeed * Time.deltaTime*slowcl, rb.velocity.y);
     }
 
     public void TimeCon()
