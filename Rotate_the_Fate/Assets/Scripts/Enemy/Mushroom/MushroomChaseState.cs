@@ -15,7 +15,11 @@ public class MushroomChaseState : Basestate
         currenemy.PostioninMushJump();
         if ((currenemy.checktouch.isrighthall && currenemy.faceDire.x > 0) || (currenemy.checktouch.islefthall && currenemy.faceDire.x < 0) || (!currenemy.pytcheck.isOngroud && currenemy.faceDire.x < 0))
         {
-            currenemy.iswait = true;
+            if (!currenemy.iswait)
+            {
+                currenemy.waitTimer.Reset();
+                currenemy.iswait = true;
+            }
 
         }
         currenemy.Timecontor();

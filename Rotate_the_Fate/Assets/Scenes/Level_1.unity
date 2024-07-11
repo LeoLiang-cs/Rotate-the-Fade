@@ -576,7 +576,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftoffis: {x: -0.57, y: 0.79}
   rightoffis: {x: 0.56, y: 0.76}
-  groudoffis: {x: 0, y: 0.06}
+  groudoffis: {x: -0.6, y: 0.06}
   groudlayer:
     serializedVersion: 2
     m_Bits: 64
@@ -584,6 +584,7 @@ MonoBehaviour:
   islefthall: 0
   isrighthall: 0
   isOngroud: 0
+  Mushroom: {fileID: 481976605}
 --- !u!114 &481976605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -597,6 +598,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MushchaseCupid: {fileID: 0}
+  pytcheck: {fileID: 0}
   Cupidpostion: {x: 0, y: 0}
   LastisJump: 0
   rb: {fileID: 0}
@@ -608,9 +610,10 @@ MonoBehaviour:
   faceDire: {x: 0, y: 0, z: 0}
   currwaittime: 0
   waitcontor: 0
-  chasewaitime: 0.1
-  potalwaittime: 1
+  chasewaitime: 1.5
+  potalwaittime: 3.2
   iswait: 0
+  waitTimer: {fileID: 0}
   centeroffist: {x: 0, y: 0.64}
   checksize: {x: 1.5, y: 1}
   discent: 2.23
@@ -656,7 +659,7 @@ Transform:
   m_GameObject: {fileID: 736405249}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.16, y: -2.51, z: 0}
+  m_LocalPosition: {x: 5.49, y: -6.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1724,6 +1727,7 @@ Transform:
   - {fileID: 1236249057}
   - {fileID: 308580474}
   - {fileID: 1337719254}
+  - {fileID: 1277441634}
   m_Father: {fileID: 786712355}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1277441633
