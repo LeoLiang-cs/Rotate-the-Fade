@@ -120,7 +120,7 @@ public class Enemy : MonoBehaviour
                 
                 transform.localScale = new Vector3(faceDire.x, 1, 1);
                 float timef = 1f;
-                timef-= Time.deltaTime; ;
+                timef-= Time.deltaTime; 
                 iswait = false;
 
             }
