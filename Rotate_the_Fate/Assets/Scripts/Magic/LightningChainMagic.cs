@@ -26,7 +26,7 @@ public class LightningChainMagic : MonoBehaviour
         {
             DrawLightning(p, enemy.transform.position);
             
-            enemy.GetComponent<Hit>().TakeLighteningChainDamage(damage);
+            enemy.GetComponent<Hit>().TakeLighteningChainDamage();
         }
     }
 

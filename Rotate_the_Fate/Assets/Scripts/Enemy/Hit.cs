@@ -10,12 +10,14 @@ public class Hit : MonoBehaviour
     private float mFrozenTime = 2.0f;
     private float mFrozenTimeCount = 0.0f;
     private Animator anim;
+    private Health health;
     // Start is called before the first frame update
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         mIceBlockSample = Resources.Load<GameObject>("Prefabs/FrozenEffect") as GameObject;
         anim = GetComponent<Animator>();
+        health = GetComponent<Health>();
     }
 
     // Update is called once per frame
@@ -24,8 +26,9 @@ public class Hit : MonoBehaviour
         MeltFrozen();
     }
 
-    public void TakeFrozenDamage(int damage, Vector2 attP) {
-        if(mFrozenCount == 0) {
+    public void TakeFrozenDamage(Vector2 attP) {
+        health.FrozenDamage();
+        if (mFrozenCount == 0) {
             if(attP.x < transform.position.x) {
                 GetComponent<Rigidbody2D>().AddForce(new Vector2(1, 1) * 5, ForceMode2D.Impulse);
             } else {
@@ -45,8 +48,9 @@ public class Hit : MonoBehaviour
         }
     }
 
-    public void TakeFlameDamage(int damage, Vector2 attP) {
-        if(attP.x < transform.position.x) {
+    public void TakeFlameDamage(Vector2 attP) {
+        health.FlameDamage();
+        if (attP.x < transform.position.x) {
             GetComponent<Rigidbody2D>().AddForce(new Vector2(1, 0) * 10, ForceMode2D.Impulse);
         } else {
             GetComponent<Rigidbody2D>().AddForce(new Vector2(-1, 0) * 10, ForceMode2D.Impulse);
@@ -55,7 +59,7 @@ public class Hit : MonoBehaviour
         anim.SetTrigger("Hit");
     }    
 
-    public void TakeLighteningChainDamage(int damage) {
+    public void TakeLighteningChainDamage() {
         
         spriteRenderer.color = Color.yellow; 
     }    
