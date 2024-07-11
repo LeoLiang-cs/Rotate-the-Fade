@@ -54,6 +54,7 @@ public class Attack : MonoBehaviour
         currentMagic.Add(MagicType.Time);
         Timer script = gameObject.AddComponent<Timer>();
         timers = script;
+        script.Set_Timer(CoolDownTime.TimeMagic);
         script.action += () => mMagicSystem.TimeFreezeSpawner(script, gameObject);
     }
     public void SwitchMagic() {

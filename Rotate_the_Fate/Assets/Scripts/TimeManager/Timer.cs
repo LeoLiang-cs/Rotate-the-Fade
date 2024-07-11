@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
-    private float elapse = 0f; // after last invoked
+    private float elapse; // after last invoked
     private float cool_down; // cool down time
     private Action onComplete; // do something when cool down end
     private bool frozen = false; // time frozen
@@ -26,6 +26,7 @@ public class Timer : MonoBehaviour
 
     public void Set_Timer(float duration){
         cool_down = duration;
+        elapse = duration + 1f;
     }
 
     public void Trigger(){
