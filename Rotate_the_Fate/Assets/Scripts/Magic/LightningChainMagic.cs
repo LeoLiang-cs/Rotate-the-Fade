@@ -30,8 +30,14 @@ public class LightningChainMagic : MonoBehaviour
             }else if(enemy.gameObject.CompareTag("Bush")) {
                 enemy.GetComponent<BushHealth>().TakeLighteningChainDamage();
             }
-            
         }
+        Attack.isAttacking = false;
+
+        
+            Destroy(transform.gameObject, 0.5f);
+        
+        
+        
     }
 
     void DrawLightning(Vector2 start, Vector2 end)
@@ -42,7 +48,7 @@ public class LightningChainMagic : MonoBehaviour
         lr.SetPosition(1, end);
 
         // 销毁闪电对象在0.5秒后
-        Destroy(transform.gameObject, 0.5f);
-        Attack.isAttacking = false;
+        //Destroy(transform.gameObject, 0.5f);
+        //Attack.isAttacking = false;
     }
 }

@@ -6,7 +6,6 @@ public class CupidHealth : MonoBehaviour
 {
     private Rigidbody2D rb;
     public bool isHitting = false;
-    public UnityEvent<Transform> OntakeDamage;
     private Animator anim;
     
     [Space]

@@ -48,6 +48,7 @@ public class BushAttack : MonoBehaviour
     private void attack2idle()
     {
         gameObject.layer = LayerMask.NameToLayer("Default");
+        isAttacking = false ;
     }
 
 

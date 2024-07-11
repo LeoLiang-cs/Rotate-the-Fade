@@ -33,6 +33,7 @@ public class CupidBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(Attack.isAttacking);
         if (health.isHitting || health.isDead)
         {
             return;
