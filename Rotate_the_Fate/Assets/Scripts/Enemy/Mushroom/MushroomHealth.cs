@@ -137,7 +137,7 @@ public class MushroomHealth : MonoBehaviour
     public void UnFreeze(){
         anim.speed = 1;
         Cold_recovery();
-        //把iceBlock给销毁
+        //把iceBlock给销�?
         foreach(Transform child in transform) {
             GameObject.Destroy(child.gameObject);
         }

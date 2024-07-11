@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.InputSystem.InputAction;
 
@@ -32,6 +33,7 @@ public class Enemy : MonoBehaviour
     public float chasewaitime;  //×·»÷ÅöÇ½µÈ´ýÊ±¼ä
     public float potalwaittime;  //ÑµÁ·Åö×²µÈ´ýÊ±¼ä
     public bool iswait = false;
+    public Timer waitTimer;
 
 
     [Header("×´Ì¬")]
@@ -66,6 +68,8 @@ public class Enemy : MonoBehaviour
         checktouch = GetComponent<pythicscheck>();
         pytcheck=GetComponent<pythicscheck>();
         Cupid = GameObject.Find("Cupid");
+        waitTimer = gameObject.AddComponent<Timer>();
+
        
         
         MushroomJumpFllow = new Inputall();
@@ -103,7 +107,10 @@ public class Enemy : MonoBehaviour
         rb.velocity = new Vector2(faceDire.x * currspeed * Time.deltaTime, rb.velocity.y);
     }
 
+    public void TimeCon()
+    {
 
+    }
 
     public void Timecontor()
     {
