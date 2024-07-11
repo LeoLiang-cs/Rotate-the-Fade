@@ -6,7 +6,7 @@ public class Timer : MonoBehaviour
 {
     private float elapse; // after last invoked
     private float cool_down; // cool down time
-    private Action onComplete; // do something when cool down end
+    public Action onComplete; // do something when cool down end
     private bool frozen = false; // time frozen
     public Action action;
 
@@ -22,6 +22,8 @@ public class Timer : MonoBehaviour
             }else{
                 elapse += Time.deltaTime;
             }
+        }else{
+            Debug.Log("Frozen Timer");
         }
     }
     private void OnDestroy() {

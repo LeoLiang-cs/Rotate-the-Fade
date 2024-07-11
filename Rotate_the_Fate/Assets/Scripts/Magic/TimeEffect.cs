@@ -69,6 +69,7 @@ public class TimeEffect : MonoBehaviour
         // }
     }
     public void Set_up(Timer freeze_timer, GameObject gameObject){
+        TimeManager.Instance.PauseTime(freeze_timer);
         timer = freeze_timer;
         parent = gameObject;
     }

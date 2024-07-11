@@ -11,6 +11,8 @@ public class Hit : MonoBehaviour
     private float mFrozenTimeCount = 0.0f;
     private Animator anim;
     private Health health;
+    private Timer slow_down_timer;
+    private Timer frozen_timer;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +25,7 @@ public class Hit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MeltFrozen();
+        // MeltFrozen();
     }
 
     public void TakeFrozenDamage(Vector2 attP) {
@@ -37,14 +39,14 @@ public class Hit : MonoBehaviour
             spriteRenderer.color = new Color(0.078f, 0.761f, 1.0f); // RGB values for #14C2FF
 
             mFrozenCount++;
-            mFrozenTimeCount = mFrozenTime;
+
+            Start_Slow_Down();
+            // mFrozenTimeCount = mFrozenTime;
         }else if(mFrozenCount == 1) {
-            GameObject iceBlock = GameObject.Instantiate(mIceBlockSample) as GameObject;
-            iceBlock.transform.localPosition = transform.position;
-            iceBlock.transform.parent = transform;
-            anim.speed = 0;
-            mFrozenCount++;
-            mFrozenTimeCount = mFrozenTime;
+            Start_Frozen();
+        }else{
+            frozen_timer.Reset();
+            slow_down_timer.Reset();
         }
     }
 
@@ -76,14 +78,59 @@ public class Hit : MonoBehaviour
                 }
             }
             mFrozenTimeCount -= Time.deltaTime;
-        } else
-        if(mFrozenCount == 1) {
-            if(mFrozenTimeCount <= 0) {
-                spriteRenderer.color = Color.white;
-                mFrozenCount = 0;
-            }
-            mFrozenTimeCount -= Time.deltaTime;
+        } 
+        // else if(mFrozenCount == 1) {
+        //     if(mFrozenTimeCount <= 0) {
+        //         spriteRenderer.color = Color.white;
+        //         mFrozenCount = 0;
+        //     }
+        //     mFrozenTimeCount -= Time.deltaTime;
+        // }
+    }
+
+    private void Start_Slow_Down(){
+        if(slow_down_timer == null){
+            // Debug.Log("slow down");
+            slow_down_timer = gameObject.AddComponent<Timer>();
+            slow_down_timer.Set_Timer(mFrozenTime, 0f);
+            slow_down_timer.onComplete += Cold_recovery;
+            TimeManager.Instance.AddTimer(slow_down_timer);
+        }else{
+            // Debug.Log(slow_down_timer);
+            slow_down_timer.Reset();
         }
     }
+
+    private void Start_Frozen(){
+        GameObject iceBlock = GameObject.Instantiate(mIceBlockSample) as GameObject;
+        iceBlock.transform.localPosition = transform.position;
+        iceBlock.transform.parent = transform;
+        anim.speed = 0;
+        mFrozenCount++;
+        // mFrozenTimeCount = mFrozenTime;
+        if(frozen_timer == null){
+            Debug.Log("new frozem timer");
+            frozen_timer = gameObject.AddComponent<Timer>();
+            frozen_timer.Set_Timer(mFrozenTime, 0f);
+            frozen_timer.onComplete += () => UnFreeze();
+            TimeManager.Instance.AddTimer(frozen_timer);
+        }else{
+            frozen_timer.Reset();
+        }
+        
+    }
+
+    public void Cold_recovery(){
+        spriteRenderer.color = Color.white;
+        mFrozenCount = 0;
+    }
     
+    public void UnFreeze(){
+        anim.speed = 1;
+        Cold_recovery();
+        //把iceBlock给销毁
+        foreach(Transform child in transform) {
+            GameObject.Destroy(child.gameObject);
+        }
+    }
 }

@@ -64,6 +64,7 @@ public class Attack : MonoBehaviour
         timers = script;
         script.Set_Timer(CoolDownTime.TimeMagic, CoolDownTime.TimeMagic + 1f);
         script.action += () => mMagicSystem.TimeFreezeSpawner(script, gameObject);
+        TimeManager.Instance.AddTimer(timers);
     }
     public void SwitchMagic() {
         if(Input.GetKeyDown(KeyCode.H))
