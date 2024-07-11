@@ -76,9 +76,11 @@ public class TimeEffect : MonoBehaviour
 
     IEnumerator Resume()
     {
-        yield return new WaitForSeconds(freeze_period);
+        const float shrink_time = 0.5f;
+        yield return new WaitForSeconds(freeze_period - shrink_time);
 
         shrink = true;
+        yield return new WaitForSeconds(shrink_time);
         TimeManager.Instance.ResumeTime();
     }
 }

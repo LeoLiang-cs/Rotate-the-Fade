@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Hit : MonoBehaviour
+public class MushroomHealth : MonoBehaviour
 {
     public int mFrozenCount = 0;
     private SpriteRenderer spriteRenderer;
     private GameObject mIceBlockSample = null;
-    private float mFrozenTime = 2.0f;
+    private float mFrozenTime = 5.0f;
     private float mFrozenTimeCount = 0.0f;
     private Animator anim;
     private Timer slow_down_timer;
@@ -57,7 +57,7 @@ public class Hit : MonoBehaviour
     }
 
     public void TakeFlameDamage(Vector2 attP) {
-        health.FlameDamage();
+        health -= flameDamage;
         if (attP.x < transform.position.x) {
             GetComponent<Rigidbody2D>().AddForce(new Vector2(1, 0) * 10, ForceMode2D.Impulse);
         } else {
@@ -114,7 +114,6 @@ public class Hit : MonoBehaviour
         mFrozenCount++;
         // mFrozenTimeCount = mFrozenTime;
         if(frozen_timer == null){
-            Debug.Log("new frozem timer");
             frozen_timer = gameObject.AddComponent<Timer>();
             frozen_timer.Set_Timer(mFrozenTime, 0f);
             frozen_timer.onComplete += () => UnFreeze();
@@ -137,5 +136,21 @@ public class Hit : MonoBehaviour
         foreach(Transform child in transform) {
             GameObject.Destroy(child.gameObject);
         }
+        Debug.Log("unfreeze");
+    }
+
+    private void Die()
+    {
+        if (health <= 0 && !isDead)
+        {
+            gameObject.layer = 2;
+            isDead = true;
+            anim.SetTrigger("Die");
+        }
+    }
+
+    public void DestroyAfterAnimation()
+    {
+        Destroy(this.gameObject);
     }
 }
