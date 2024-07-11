@@ -7,37 +7,33 @@ public class FlameMagic : MonoBehaviour
     public int damage = 1; 
     private static MagicSystem sMagicSystem = null;
     public static void InitializedMagicSystem(MagicSystem m) { sMagicSystem = m; }
-
-    private const float kLifeTime = 1.06f; // Alife for this number of cycles
-    private float mLifeCount = 0f; 
     // Start is called before the first frame update
     void Start()
     {
-        mLifeCount = kLifeTime; 
+      
     }
 
     // Update is called once per frame
     void Update()
     {
-       DestroyThisMagic();
+  
     }
 
     private void DestroyThisMagic()
     {
-        mLifeCount -= Time.deltaTime;
-        if(mLifeCount <= 0) 
-        {
-            Destroy(transform.gameObject);  // kills self
-            Attack.isAttacking = false;
-        }
-        
+        Attack.isAttacking = false;
+        Destroy(transform.gameObject);
     }
 
     void OnTriggerEnter2D (Collider2D other)
     {
-        if (other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Mushroom"))
         {
             other.GetComponent<MushroomHealth>().TakeFlameDamage(transform.position);
+        }
+        else if (other.gameObject.CompareTag("Bush"))
+        {
+            other.GetComponent<BushHealth>().TakeFlameDamage(transform.position);
         }
     }
 }
