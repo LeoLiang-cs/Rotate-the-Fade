@@ -34,7 +34,6 @@ public class CupidBehavior : MonoBehaviour
 
         Walk(dir);
         Jump(Vector2.up);
-        //Flip();
         Fall();
     }
 
@@ -63,20 +62,6 @@ public class CupidBehavior : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.velocity += dir * jumpForce;
             bool slimeHasYAxisSpeed = Mathf.Abs(rb.velocity.y) > Mathf.Epsilon;
-        }
-    }
-
-    private void Flip() {
-        bool slimeHasXAxisSpeed = Mathf.Abs(rb.velocity.x) > Mathf.Epsilon;
-        if(slimeHasXAxisSpeed) {
-            if (rb.velocity.x > 0f) {
-                //mTorwardRight = true;
-                transform.localRotation = Quaternion.Euler(0, 0, 0);
-            } 
-            if (rb.velocity.x < 0f) {
-                //mTorwardRight = false;
-                transform.localRotation  = Quaternion.Euler(0, 180, 0);
-            }
         }
     }
 
