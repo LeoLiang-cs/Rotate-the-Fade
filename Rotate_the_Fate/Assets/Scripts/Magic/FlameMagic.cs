@@ -35,9 +35,13 @@ public class FlameMagic : MonoBehaviour
 
     void OnTriggerEnter2D (Collider2D other)
     {
-        if (other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Mushroom"))
         {
             other.GetComponent<MushroomHealth>().TakeFlameDamage(transform.position);
+        }
+        else if (other.gameObject.CompareTag("Bush"))
+        {
+            other.GetComponent<BushHealth>().TakeFlameDamage(transform.position);
         }
     }
 }

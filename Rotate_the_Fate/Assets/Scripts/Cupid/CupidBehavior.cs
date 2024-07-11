@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -8,6 +9,7 @@ public class CupidBehavior : MonoBehaviour
     private CupidCollision coll;
     private Rigidbody2D rb;
     private Animator anim;
+    private CupidHealth health;
     [Space]
     [Header("Stats")]
     public float speed = 10.0f;
@@ -24,13 +26,14 @@ public class CupidBehavior : MonoBehaviour
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<CupidCollision>();
+        health = GetComponent<CupidHealth>();
         //rb.constraints = RigidbodyConstraints2D.FreezeRotation;//所有活物都要锁定！
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (GetComponent<CupidHealth>().isHitting)
+        if (health.isHitting || health.isDead)
         {
             return;
         }

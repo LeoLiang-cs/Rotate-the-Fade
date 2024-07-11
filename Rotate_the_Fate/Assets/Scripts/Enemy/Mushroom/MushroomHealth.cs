@@ -13,7 +13,8 @@ public class MushroomHealth : MonoBehaviour
 
     [Space]
     [Header("Status")]
-    private bool isDead = false;
+    public bool isDead = false;
+    public bool isHitting = false;
     public int health = 10;
     public int flameDamage = 5;
     public int frozenDamage = 2;
@@ -22,7 +23,7 @@ public class MushroomHealth : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        mIceBlockSample = Resources.Load<GameObject>("Prefabs/FrozenEffect") as GameObject;
+        mIceBlockSample = Resources.Load<GameObject>("Prefabs/MushFrozen") as GameObject;
         anim = GetComponent<Animator>();
     }
 
@@ -34,7 +35,10 @@ public class MushroomHealth : MonoBehaviour
     }
 
     public void TakeFrozenDamage(Vector2 attP) {
+        if (isHitting)
+            return;
         health -= frozenDamage;
+        isHitting = true;
         if (mFrozenCount == 0) {
             if(attP.x < transform.position.x) {
                 GetComponent<Rigidbody2D>().AddForce(new Vector2(1, 1) * 5, ForceMode2D.Impulse);
@@ -42,13 +46,14 @@ public class MushroomHealth : MonoBehaviour
                 GetComponent<Rigidbody2D>().AddForce(new Vector2(-1, 1) * 5, ForceMode2D.Impulse);
             }
             spriteRenderer.color = new Color(0.078f, 0.761f, 1.0f); // RGB values for #14C2FF
-
+            anim.SetTrigger("Hit");
             mFrozenCount++;
             mFrozenTimeCount = mFrozenTime;
         }else if(mFrozenCount == 1) {
             GameObject iceBlock = GameObject.Instantiate(mIceBlockSample) as GameObject;
             iceBlock.transform.localPosition = transform.position;
             iceBlock.transform.parent = transform;
+            
             anim.speed = 0;
             mFrozenCount++;
             mFrozenTimeCount = mFrozenTime;
@@ -56,6 +61,8 @@ public class MushroomHealth : MonoBehaviour
     }
 
     public void TakeFlameDamage(Vector2 attP) {
+        if (isHitting)
+            return;
         health -= flameDamage;
         if (attP.x < transform.position.x) {
             GetComponent<Rigidbody2D>().AddForce(new Vector2(1, 0) * 10, ForceMode2D.Impulse);
@@ -64,6 +71,7 @@ public class MushroomHealth : MonoBehaviour
         }
         spriteRenderer.color = Color.red; 
         anim.SetTrigger("Hit");
+        isHitting = true;
     }    
 
     public void TakeLighteningChainDamage() {
@@ -74,6 +82,7 @@ public class MushroomHealth : MonoBehaviour
     private void MeltFrozen() {
         if(mFrozenCount == 2) {
             if(mFrozenTimeCount <= 0) {
+                isHitting = false;  
                 anim.speed = 1;
                 spriteRenderer.color = Color.white;
                 mFrozenCount = 0;
@@ -97,15 +106,16 @@ public class MushroomHealth : MonoBehaviour
     {
         if (health <= 0 && !isDead)
         {
-            gameObject.layer = 2;
-            isDead = true;
-            anim.SetTrigger("Die");
+           gameObject.layer = 2;
+           isDead = true;
+           anim.SetTrigger("Die");
+            //Destroy(this.gameObject);
         }
     }
 
     public void DestroyAfterAnimation()
     {
-        Destroy(this.gameObject);
+        //Destroy(gameObject);
     }
     
 }

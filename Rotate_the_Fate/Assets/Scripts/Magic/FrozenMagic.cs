@@ -34,9 +34,12 @@ public class FrozenMagic : MonoBehaviour
 
     void OnTriggerEnter2D (Collider2D other)
     {
-        if (other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Mushroom"))
         {
             other.GetComponent<MushroomHealth>().TakeFrozenDamage(transform.position);
+        }else if(other.gameObject.CompareTag("Bush"))
+        {
+            other.GetComponent<BushHealth>().TakeFrozenDamage(transform.position);
         }
     }
 }

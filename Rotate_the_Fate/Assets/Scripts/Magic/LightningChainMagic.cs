@@ -25,8 +25,12 @@ public class LightningChainMagic : MonoBehaviour
         foreach (Collider2D enemy in hitEnemies)
         {
             DrawLightning(p, enemy.transform.position);
+            if (enemy.gameObject.CompareTag("Mushroom")) {
+                enemy.GetComponent<MushroomHealth>().TakeLighteningChainDamage();
+            }else if(enemy.gameObject.CompareTag("Bush")) {
+                enemy.GetComponent<BushHealth>().TakeLighteningChainDamage();
+            }
             
-            enemy.GetComponent<MushroomHealth>().TakeLighteningChainDamage();
         }
     }
 

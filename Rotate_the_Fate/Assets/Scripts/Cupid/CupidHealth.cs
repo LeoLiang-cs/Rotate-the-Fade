@@ -17,7 +17,7 @@ public class CupidHealth : MonoBehaviour
     public int MushroomDamage = 3;
     public float knockbackForce = 10f; // 击退力的大小
     public float invulnerableTime = 0.5f;
-    private bool isDead = false;
+    public bool isDead = false;
 
     private void Start()
     {
@@ -33,8 +33,9 @@ public class CupidHealth : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             currentHealth -= MushroomDamage;
-            if (currentHealth <= 0)
+            if (currentHealth <= 0 && !isDead)
             {
+                isDead = true;
                 Debug.Log("death");
                 anim.SetTrigger("Death");
             }
