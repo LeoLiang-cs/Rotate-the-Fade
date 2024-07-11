@@ -8,17 +8,22 @@ public class Attack : MonoBehaviour
     private Timer timers;
     public int chooseMagic = 0;
     private MagicSystem mMagicSystem = null;
+    public static bool isAttacking = false;
+    private CupidCollision coll;
+
+    private Rigidbody2D rb;
     // Start is called before the first frame update
     void Awake()
     {
         mMagicSystem = new MagicSystem();
+        rb = GetComponent<Rigidbody2D>();
     }
     void Start()
     {
         currentMagic.Add(MagicType.Frozen);
-        
-        currentMagic.Add(MagicType.FlashX);
+        currentMagic.Add(MagicType.LightingChain);
         currentMagic.Add(MagicType.Flame);
+        coll = GetComponent<CupidCollision>();
         Add_Magic(MagicType.Time);
         
     }
@@ -31,15 +36,17 @@ public class Attack : MonoBehaviour
     }
 
     public void MagicAttack() {
-        if(Input.GetKeyDown(KeyCode.J))
+        if(Input.GetKeyDown(KeyCode.J) && !isAttacking && coll.onGround)
         {
+            isAttacking = true;
+            rb.velocity = new Vector2(0, 0);
             switch(currentMagic[chooseMagic])
             {
                 case MagicType.Frozen:
                     mMagicSystem.FrozenSpawner(transform.position, GetComponent<CupidBehavior>().mTowardRight);
                     break;
-                case MagicType.FlashX:
-                    mMagicSystem.FlashXSpawner(transform.position, GetComponent<CupidBehavior>().mTowardRight);
+                case MagicType.LightingChain:
+                    mMagicSystem.LightningChainSpawner(transform.position);
                     break;
                 case MagicType.Flame:
                     mMagicSystem.FlameSpawner(transform.position, GetComponent<CupidBehavior>().mTowardRight);

@@ -21,7 +21,7 @@ public class CupidBehavior : MonoBehaviour
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<CupidCollision>();
-        rb.constraints = RigidbodyConstraints2D.FreezeRotation;//所有活物都要锁定！
+        //rb.constraints = RigidbodyConstraints2D.FreezeRotation;//所有活物都要锁定！
     }
 
     // Update is called once per frame
@@ -34,13 +34,12 @@ public class CupidBehavior : MonoBehaviour
 
         Walk(dir);
         Jump(Vector2.up);
-        //Flip();
         Fall();
     }
 
     private void Walk(Vector2 dir)
     {
-       if(!WorldRotation.isRotating) {
+       if(!WorldRotation.isRotating && !Attack.isAttacking) {
             rb.velocity = new Vector2(dir.x * speed, rb.velocity.y);
             bool slimeHasXAxisSpeed = Mathf.Abs(rb.velocity.x) > Mathf.Epsilon;
             anim.SetBool("Walk", slimeHasXAxisSpeed);
@@ -63,20 +62,6 @@ public class CupidBehavior : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.velocity += dir * jumpForce;
             bool slimeHasYAxisSpeed = Mathf.Abs(rb.velocity.y) > Mathf.Epsilon;
-        }
-    }
-
-    private void Flip() {
-        bool slimeHasXAxisSpeed = Mathf.Abs(rb.velocity.x) > Mathf.Epsilon;
-        if(slimeHasXAxisSpeed) {
-            if (rb.velocity.x > 0f) {
-                //mTorwardRight = true;
-                transform.localRotation = Quaternion.Euler(0, 0, 0);
-            } 
-            if (rb.velocity.x < 0f) {
-                //mTorwardRight = false;
-                transform.localRotation  = Quaternion.Euler(0, 180, 0);
-            }
         }
     }
 
