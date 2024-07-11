@@ -16,7 +16,12 @@ public class Timer : MonoBehaviour
     // }
     private void Update() {
         if(!frozen){
-            elapse += Time.deltaTime;
+            if(elapse < cool_down){
+                elapse += Time.deltaTime;
+                if(elapse >= cool_down) onComplete?.Invoke();
+            }else{
+                elapse += Time.deltaTime;
+            }
         }
     }
     private void OnDestroy() {
@@ -24,9 +29,9 @@ public class Timer : MonoBehaviour
         action = null;
     }
 
-    public void Set_Timer(float duration){
+    public void Set_Timer(float duration, float init_elps){
         cool_down = duration;
-        elapse = duration + 1f;
+        elapse = init_elps;
     }
 
     public void Trigger(){
@@ -42,6 +47,10 @@ public class Timer : MonoBehaviour
 
     public void Resume(){
         frozen = false;
+    }
+
+    public void Reset(){
+        elapse = 0f;
     }
 }
 

@@ -53,6 +53,7 @@ public class Attack : MonoBehaviour
                     break;
                 case MagicType.Time:
                     timers.Trigger();
+                    isAttacking = false;
                     break;
             }
         }
@@ -61,7 +62,7 @@ public class Attack : MonoBehaviour
         currentMagic.Add(MagicType.Time);
         Timer script = gameObject.AddComponent<Timer>();
         timers = script;
-        script.Set_Timer(CoolDownTime.TimeMagic);
+        script.Set_Timer(CoolDownTime.TimeMagic, CoolDownTime.TimeMagic + 1f);
         script.action += () => mMagicSystem.TimeFreezeSpawner(script, gameObject);
     }
     public void SwitchMagic() {
