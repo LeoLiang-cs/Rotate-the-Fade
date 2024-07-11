@@ -60,7 +60,7 @@ public class CupidBehavior : MonoBehaviour
                  mTowardRight = true;
             }
             if(dir.x < 0f) {
-                transform.localRotation = Quaternion.Euler(0, 180, 0);
+                transform.localRotation = Quaternion.Euler(0, 180, 0);  
                 mTowardRight = false;
             }
         }

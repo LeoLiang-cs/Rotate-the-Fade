@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
-using System.Collections;
 
 public class ButtonStateSwitcher : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -19,7 +18,6 @@ public class ButtonStateSwitcher : MonoBehaviour, IPointerEnterHandler, IPointer
     // 引用Button的文本组件
     private Text buttonText;
 
-
     void Start()
     {
         // 获取按钮的Image组件
@@ -32,20 +30,18 @@ public class ButtonStateSwitcher : MonoBehaviour, IPointerEnterHandler, IPointer
         button = GetComponent<Button>();
 
         // 获取Button对象中的Text组件
-        buttonText = button.GetComponent<Text>();
+        buttonText = button.GetComponentInChildren<Text>();
 
         // 修改Button的显示文本
         SetButtonText(" ");
 
+        // 添加按钮点击事件监听器
+        button.onClick.AddListener(OnButtonClick);
     }
+
     void Update()
     {
-        if (isHovering && Input.GetMouseButton(0))
-        {
-            trans = 1;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-
-        }
+        // 取消Update中的场景切换逻辑
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -62,7 +58,6 @@ public class ButtonStateSwitcher : MonoBehaviour, IPointerEnterHandler, IPointer
         isHovering = false;
     }
 
-
     public void SetButtonText(string newText)
     {
         if (buttonText != null)
@@ -71,4 +66,10 @@ public class ButtonStateSwitcher : MonoBehaviour, IPointerEnterHandler, IPointer
         }
     }
 
+    private void OnButtonClick()
+    {
+        // 按钮点击时切换场景
+        trans = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
 }

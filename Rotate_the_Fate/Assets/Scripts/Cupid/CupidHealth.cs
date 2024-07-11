@@ -7,7 +7,9 @@ public class CupidHealth : MonoBehaviour
     private Rigidbody2D rb;
     public bool isHitting = false;
     private Animator anim;
+    public GameObject deathUIPanel;
     
+
     [Space]
     [Header("Status")]
     public int maxHealth = 10;
@@ -37,6 +39,7 @@ public class CupidHealth : MonoBehaviour
                 isDead = true;
                 Debug.Log("death");
                 anim.SetTrigger("Death");
+                deathUIPanel.SetActive(true);
             }
             isHitting = true;
             

@@ -60,8 +60,6 @@ public class BushHealth : MonoBehaviour
         health -= flameDamage;
         
         spriteRenderer.color = Color.red;
-        Debug.Log(spriteRenderer.color);
-        Debug.Log(Color.red);
         anim.SetTrigger("Hit");
         isHitting = true;
     }

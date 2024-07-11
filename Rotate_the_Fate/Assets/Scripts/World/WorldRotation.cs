@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WorldRotation : MonoBehaviour
 {
     public static bool isRotating = false;    
     public float rotationSpeed = 40f; 
     private Quaternion targetRotation; // 目标旋转角度
-
+    public GameObject deathUIPanel;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +18,8 @@ public class WorldRotation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      Rotation();
+        Rotation();
+        SceneReset();
     }
 
     void Rotation() 
@@ -44,6 +46,17 @@ public class WorldRotation : MonoBehaviour
                 isRotating = false;
             }
             
+        }
+    }
+
+    void SceneReset()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            deathUIPanel.SetActive(false);
+            string sceneName = SceneManager.GetActiveScene().name;
+            // 重新加载当前场景
+            SceneManager.LoadScene(sceneName);
         }
     }
 }

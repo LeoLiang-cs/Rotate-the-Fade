@@ -20,7 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/RoughGame.unity
     guid: 3507949feaafd3e4abe1d909ceaee361
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ttttext-fin.unity
     guid: cc4808e98bb6edf4dae5b5573ced6129
   m_configObjects: {}
