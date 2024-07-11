@@ -14,7 +14,7 @@ public class MagicSystem
     public MagicSystem()
     {
         FrozenMagic.InitializedMagicSystem(this);
-        mFrozenSample = Resources.Load<GameObject>("Prefabs/Frozen") as GameObject;
+        mFrozenSample = Resources.Load<GameObject>("Prefabs/Frozen 1") as GameObject;
         mFlameSample = Resources.Load<GameObject>("Prefabs/Flame") as GameObject;
         mLightningChainSample = Resources.Load<GameObject>("Prefabs/LightningChain") as GameObject;
         mTimeFreezeEffect = Resources.Load<GameObject>("Prefabs/TimeFreezeEffect") as GameObject;
@@ -26,12 +26,12 @@ public class MagicSystem
 
         if(torwardRight)
         {
-            frozen.transform.position = p + Vector3.right*kYDistance + Vector3.up*kXDistance;
+            frozen.transform.position = p ;
             frozen.transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
         else
         {
-            frozen.transform.position = p + Vector3.left*kYDistance + Vector3.up*kXDistance;
+            frozen.transform.position = p ;
             frozen.transform.localRotation = Quaternion.Euler(0, 180, 0);
         }
             

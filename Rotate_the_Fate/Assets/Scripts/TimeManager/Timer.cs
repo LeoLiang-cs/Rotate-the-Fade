@@ -23,7 +23,7 @@ public class Timer : MonoBehaviour
                 elapse += Time.deltaTime;
             }
         }else{
-            Debug.Log("Frozen Timer");
+            // Debug.Log("Frozen Timer");
         }
     }
     private void OnDestroy() {
