@@ -5,6 +5,7 @@ using UnityEngine;
 public class Attack : MonoBehaviour
 {
     public List<MagicType> currentMagic;
+    private Timer timers;
     public int chooseMagic = 0;
     private MagicSystem mMagicSystem = null;
     public static bool isAttacking = false;
@@ -23,6 +24,8 @@ public class Attack : MonoBehaviour
         currentMagic.Add(MagicType.LightingChain);
         currentMagic.Add(MagicType.Flame);
         coll = GetComponent<CupidCollision>();
+        Add_Magic(MagicType.Time);
+        
     }
 
     // Update is called once per frame
@@ -48,10 +51,21 @@ public class Attack : MonoBehaviour
                 case MagicType.Flame:
                     mMagicSystem.FlameSpawner(transform.position, GetComponent<CupidBehavior>().mTowardRight);
                     break;
+                case MagicType.Time:
+                    timers.Trigger();
+                    isAttacking = false;
+                    break;
             }
         }
     }
-
+    public void Add_Magic(MagicType type){
+        currentMagic.Add(MagicType.Time);
+        Timer script = gameObject.AddComponent<Timer>();
+        timers = script;
+        script.Set_Timer(CoolDownTime.TimeMagic, CoolDownTime.TimeMagic + 1f);
+        script.action += () => mMagicSystem.TimeFreezeSpawner(script, gameObject);
+        TimeManager.Instance.AddTimer(timers);
+    }
     public void SwitchMagic() {
         if(Input.GetKeyDown(KeyCode.H))
         {
