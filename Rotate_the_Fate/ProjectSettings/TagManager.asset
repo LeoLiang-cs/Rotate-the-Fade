@@ -6,6 +6,7 @@ TagManager:
   tags:
   - FrozenMagic
   - Enemy
+  - Hero
   layers:
   - Default
   - TransparentFX
