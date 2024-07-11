@@ -130,6 +130,7 @@ public class MushroomHealth : MonoBehaviour
             frozen_timer.Reset();
         }
         slow_down_timer.Reset();
+        
     }
 
     public void Cold_recovery(){
@@ -145,6 +146,7 @@ public class MushroomHealth : MonoBehaviour
             GameObject.Destroy(child.gameObject);
         }
         Debug.Log("unfreeze");
+        isHitting = false;
     }
 
     private void Die()
