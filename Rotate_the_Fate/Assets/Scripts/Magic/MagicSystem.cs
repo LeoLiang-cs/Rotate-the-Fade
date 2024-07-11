@@ -9,12 +9,14 @@ public class MagicSystem
     private GameObject mFrozenSample = null;
     private GameObject mLightningXSample = null;
     private GameObject mFlameSample = null;
+    private GameObject mTimeFreezeEffect = null;
     public MagicSystem()
     {
         FrozenMagic.InitializedMagicSystem(this);
         mFrozenSample = Resources.Load<GameObject>("Prefabs/Frozen") as GameObject;
         // mLightningXSample = Resources.Load<GameObject>("Prefabs/LightningX") as GameObject;
         // mFlameSample = Resources.Load<GameObject>("Prefabs/FlameThrow") as GameObject;
+        mTimeFreezeEffect = Resources.Load<GameObject>("Prefabs/TimeFreezeEffect") as GameObject;
     }
 
     public void FrozenSpawner(Vector3 p, bool torwardRight)
@@ -66,5 +68,10 @@ public class MagicSystem
         //     flame.transform.localRotation = Quaternion.Euler(0, 180, 0);
         // }
             
+    }
+    public void TimeFreezeSpawner(Timer timer, GameObject parent){
+        GameObject time_freeze = GameObject.Instantiate(mTimeFreezeEffect) as GameObject;
+        TimeEffect script = time_freeze.GetComponent<TimeEffect>();
+        script.Set_up(timer, parent);
     }
 }

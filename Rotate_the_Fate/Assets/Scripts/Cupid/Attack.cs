@@ -5,6 +5,7 @@ using UnityEngine;
 public class Attack : MonoBehaviour
 {
     public List<MagicType> currentMagic;
+    private Timer timers;
     public int chooseMagic = 0;
     private MagicSystem mMagicSystem = null;
     // Start is called before the first frame update
@@ -15,8 +16,11 @@ public class Attack : MonoBehaviour
     void Start()
     {
         currentMagic.Add(MagicType.Frozen);
+        
         currentMagic.Add(MagicType.FlashX);
         currentMagic.Add(MagicType.Flame);
+        Add_Magic(MagicType.Time);
+        
     }
 
     // Update is called once per frame
@@ -40,10 +44,18 @@ public class Attack : MonoBehaviour
                 case MagicType.Flame:
                     mMagicSystem.FlameSpawner(transform.position, GetComponent<CupidBehavior>().mTowardRight);
                     break;
+                case MagicType.Time:
+                    timers.Trigger();
+                    break;
             }
         }
     }
-
+    public void Add_Magic(MagicType type){
+        currentMagic.Add(MagicType.Time);
+        Timer script = gameObject.AddComponent<Timer>();
+        timers = script;
+        script.action += () => mMagicSystem.TimeFreezeSpawner(script, gameObject);
+    }
     public void SwitchMagic() {
         if(Input.GetKeyDown(KeyCode.H))
         {
