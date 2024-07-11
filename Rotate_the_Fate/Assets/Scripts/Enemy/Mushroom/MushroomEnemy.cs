@@ -57,6 +57,9 @@ public class Enemy : MonoBehaviour
     [Header("跳跃")]
     public float jumpFouse;
 
+    [Header("碰撞检测")]
+    public bool iscoll=false;
+
 
 
     private void Awake()
@@ -192,11 +195,31 @@ public class Enemy : MonoBehaviour
     {
         rb.AddForce(transform.up * jumpFouse, ForceMode2D.Impulse);
     }
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            iscoll=true;
+        }
+    }
 
-    public bool findplayer()  //检测是否看到player
+    public bool Lfindplayer()  //检测是否看到player
     {
         Debug.Log("findplayer333");
+
         return Physics2D.BoxCast(transform.position + (Vector3)centeroffist, checksize, 0, faceDire, discent, player);
+    }
+    public bool findplayer()
+    {
+        if(Lfindplayer()||iscoll)
+        {
+            iscoll = false;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
     private void OnDrawGizmosSelected()  //画一个检查点
     {
