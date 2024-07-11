@@ -25,15 +25,15 @@ public class CupidHealth : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
     }
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
         if (isHitting)
             return;
 
-        if (other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             currentHealth -= MushroomDamage;
-            if (currentHealth <= 0 && !isDead)
+            if (currentHealth <= 0 )
             {
                 isDead = true;
                 Debug.Log("death");
