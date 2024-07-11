@@ -329,13 +329,15 @@ GameObject:
   - component: {fileID: 481976600}
   - component: {fileID: 481976601}
   - component: {fileID: 481976603}
+  - component: {fileID: 481976605}
+  - component: {fileID: 481976604}
   m_Layer: 7
   m_Name: Mushroom
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &481976593
 Transform:
   m_ObjectHideFlags: 0
@@ -345,7 +347,7 @@ Transform:
   m_GameObject: {fileID: 481976592}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.19, y: -3.4, z: 0}
+  m_LocalPosition: {x: 3.19, y: -3.43, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -560,6 +562,64 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.6666667}
   m_Size: {x: 1.25, y: 1.3333334}
   m_Direction: 0
+--- !u!114 &481976604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 481976592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 401b7ae383d247444bd15c9ec0348018, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftoffis: {x: -0.57, y: 0.79}
+  rightoffis: {x: 0.56, y: 0.76}
+  groudoffis: {x: 0, y: 0.06}
+  groudlayer:
+    serializedVersion: 2
+    m_Bits: 64
+  checkragis: 0.1
+  islefthall: 0
+  isrighthall: 0
+  isOngroud: 0
+--- !u!114 &481976605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 481976592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df67e0e1a0fe52d46aece3d27b835f81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MushchaseCupid: {fileID: 0}
+  Cupidpostion: {x: 0, y: 0}
+  LastisJump: 0
+  rb: {fileID: 0}
+  checktouch: {fileID: 0}
+  Cupid: {fileID: 0}
+  currspeed: 0
+  normalspeed: 100
+  chasespeed: 200
+  faceDire: {x: 0, y: 0, z: 0}
+  currwaittime: 0
+  waitcontor: 0
+  chasewaitime: 0.1
+  potalwaittime: 1
+  iswait: 0
+  centeroffist: {x: 0, y: 0.64}
+  checksize: {x: 1.5, y: 1}
+  discent: 2.23
+  player:
+    serializedVersion: 2
+    m_Bits: 256
+  chatime: 7.05
+  chatimecontor: 0
+  jumpFouse: 0
 --- !u!1 &736405249
 GameObject:
   m_ObjectHideFlags: 0
@@ -586,7 +646,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &736405250
 Transform:
   m_ObjectHideFlags: 0

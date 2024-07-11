@@ -14,23 +14,26 @@ public class pythicscheck : MonoBehaviour
     public bool islefthall; 
     public bool isrighthall;
     public bool isOngroud;
+    public Enemy Mushroom;
 
 
     private void Update()
     {
         Debug.Log("checkthegroud");
         checke();
+        Mushroom = GetComponent<Enemy>();
     }
 
     private void checke()
     {
         islefthall = Physics2D.OverlapCircle((Vector2)transform.position + leftoffis, checkragis, groudlayer);
         isrighthall = Physics2D.OverlapCircle((Vector2)transform.position + rightoffis, checkragis, groudlayer);
-        isOngroud = Physics2D.OverlapCircle((Vector2)transform.position + groudoffis, checkragis, groudlayer);
+        isOngroud = Physics2D.OverlapCircle((Vector2)transform.position + groudoffis*-Mushroom.faceDire, checkragis, groudlayer);
     }
 
     private void OnDrawGizmosSelected()
     {
+        
         Gizmos.DrawWireSphere((Vector2)transform.position + leftoffis, checkragis);
         Gizmos.DrawWireSphere((Vector2)transform.position + rightoffis, checkragis);
         Gizmos.DrawWireSphere((Vector2)transform.position + groudoffis, checkragis);

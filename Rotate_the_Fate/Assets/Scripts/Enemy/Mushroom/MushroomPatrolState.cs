@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class MushroomPatrolState : Basestate
 {
@@ -20,17 +22,67 @@ public class MushroomPatrolState : Basestate
             Debug.Log("findplayer");
             currenemy.Swithstate(Mushroom_stateEnum.chase);
         }
-        if ((currenemy.checktouch.isrighthall&&currenemy.faceDire.x<0) || (currenemy.checktouch.islefthall&&currenemy.faceDire.x>0))
+        if ((currenemy.checktouch.isrighthall&&currenemy.faceDire.x>0) || (currenemy.checktouch.islefthall&&currenemy.faceDire.x<0)||(!currenemy.pytcheck.isOngroud&&currenemy.faceDire.x<0))
         {
-            Debug.Log("findthedoll");
+            Debug.Log("findthedoll"+currenemy.pytcheck.isOngroud);
             currenemy.iswait = true;
         }
+
+        //nogroud();
         currenemy.Timecontor();
     }
 
+    //public void nogroud()
+    //{
+    //    if (currenemy.faceDire.x < 0)
+    //    {
+    //        if (!currenemy.pytcheck.isOngroud && currenemy.faceDire.x < 0)
+    //        {
+                
+    //            currenemy.waitcontor -= Time.deltaTime;
+    //            if (currenemy.waitcontor <= 0)
+    //            {
+
+    //                currenemy.waitcontor = 100f;
+
+    //                currenemy.transform.localScale = new Vector3(currenemy.faceDire.x, 1, 1);
+    //                float timef = 1f;
+    //                timef -= Time.deltaTime; 
+                    
+
+    //            }
+    //        }
+    //    }
+    //    else
+    //    {
+    //        if (!currenemy.pytcheck.isOngroud && currenemy.faceDire.x > 0)
+    //        {
+                
+    //            currenemy.waitcontor -= Time.deltaTime;
+    //            if (currenemy.waitcontor <= 0)
+    //            {
+
+    //                currenemy.waitcontor = 100f;
+
+    //                currenemy.transform.localScale = new Vector3(currenemy.faceDire.x, 1, 1);
+    //                float timef = 1f;
+    //                timef -= Time.deltaTime;
+
+
+    //            }
+    //        }
+    //    }
+    //}
+
+    
+
     public override void pythicupdate()
     {
-        currenemy.move();
+        if (currenemy.pytcheck.isOngroud||!currenemy.iswait)
+        {
+            Debug.Log("walk");
+            currenemy.move();
+        }
     }
 
     public override void OnExit()

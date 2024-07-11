@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MushroomChaseState : Basestate
 {
+    public float chasefair;
     // Start is called before the first frame update
     public override void Logicupdate()
     {
@@ -12,12 +13,27 @@ public class MushroomChaseState : Basestate
             currenemy.Swithstate(Mushroom_stateEnum.potal);
         }
         currenemy.PostioninMushJump();
-        if ((currenemy.checktouch.isrighthall && currenemy.faceDire.x < 0) || (currenemy.checktouch.islefthall && currenemy.faceDire.x > 0))
+        if ((currenemy.checktouch.isrighthall && currenemy.faceDire.x > 0) || (currenemy.checktouch.islefthall && currenemy.faceDire.x < 0) || (!currenemy.pytcheck.isOngroud && currenemy.faceDire.x < 0))
         {
             currenemy.iswait = true;
 
         }
         currenemy.Timecontor();
+        if (currenemy.transform.position.y - currenemy.MushchaseCupid.transform.position.y < 1f && currenemy.transform.position.y - currenemy.MushchaseCupid.transform.position.y > -1f)
+        {
+
+
+            if (currenemy.MushchaseCupid.transform.position.x - currenemy.transform.position.x < 0)
+            {
+                chasefair = 1;
+            }
+            else if (currenemy.MushchaseCupid.transform.position.x - currenemy.transform.position.x > 0)
+            {
+                chasefair = -1;
+            }
+            currenemy.transform.localScale = new Vector3(chasefair, 1, 1);
+            currenemy.faceDire.x = -chasefair;
+        }
         //chaseFarid();
     }
     private void chaseFarid()
@@ -41,7 +57,11 @@ public class MushroomChaseState : Basestate
 
     public override void pythicupdate()
     {
-        currenemy.move();
-        
+        if (currenemy.pytcheck.isOngroud || !currenemy.iswait)
+        {
+            Debug.Log("walk");
+            currenemy.move();
+        }
+
     }
 }

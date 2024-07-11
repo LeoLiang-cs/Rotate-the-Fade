@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
 {
     public GameObject MushchaseCupid;
     public Inputall MushroomJumpFllow;
+    public pythicscheck pytcheck;
 
     [Header("当前Cupid位置")]
     public Vector2 Cupidpostion;
@@ -49,6 +50,7 @@ public class Enemy : MonoBehaviour
     public LayerMask player;    //检测图层
     public float chatime;   //追击时间
     public float chatimecontor; //追击时间控制器
+    
 
     [Header("跳跃")]
     public float jumpFouse;
@@ -62,6 +64,7 @@ public class Enemy : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         currspeed = normalspeed;
         checktouch = GetComponent<pythicscheck>();
+        pytcheck=GetComponent<pythicscheck>();
         Cupid = GameObject.Find("Cupid");
        
         
@@ -106,13 +109,19 @@ public class Enemy : MonoBehaviour
     {
         if (iswait)
         {
+           
+
             Debug.Log("indollwait");
             waitcontor -= Time.deltaTime;
             if (waitcontor <= 0)
             {
-                iswait = false;
+                
                 waitcontor = currwaittime;
+                
                 transform.localScale = new Vector3(faceDire.x, 1, 1);
+                float timef = 1f;
+                timef-= Time.deltaTime; ;
+                iswait = false;
 
             }
         }
