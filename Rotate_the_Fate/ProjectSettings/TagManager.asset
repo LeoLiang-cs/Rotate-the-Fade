@@ -6,6 +6,7 @@ TagManager:
   tags:
   - FrozenMagic
   - Enemy
+  - Hero
   - Bush
   - Mushroom
   layers:
@@ -42,6 +43,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 2697148099
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
