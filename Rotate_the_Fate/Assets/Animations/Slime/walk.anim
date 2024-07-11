@@ -21,15 +21,15 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: -1223739241, guid: 54f2c463d4b08c5479061c6305630f2d, type: 3}
+      value: {fileID: 196732359, guid: 54f2c463d4b08c5479061c6305630f2d, type: 3}
     - time: 0.083333336
-      value: {fileID: -1963796715, guid: 54f2c463d4b08c5479061c6305630f2d, type: 3}
+      value: {fileID: -1725066579, guid: 54f2c463d4b08c5479061c6305630f2d, type: 3}
     - time: 0.16666667
-      value: {fileID: 1488185390, guid: 54f2c463d4b08c5479061c6305630f2d, type: 3}
+      value: {fileID: -551130927, guid: 54f2c463d4b08c5479061c6305630f2d, type: 3}
     - time: 0.25
-      value: {fileID: 260804835, guid: 54f2c463d4b08c5479061c6305630f2d, type: 3}
+      value: {fileID: 1273789466, guid: 54f2c463d4b08c5479061c6305630f2d, type: 3}
     - time: 0.33333334
-      value: {fileID: 38049385, guid: 54f2c463d4b08c5479061c6305630f2d, type: 3}
+      value: {fileID: 1607120394, guid: 54f2c463d4b08c5479061c6305630f2d, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -52,11 +52,11 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: -1223739241, guid: 54f2c463d4b08c5479061c6305630f2d, type: 3}
-    - {fileID: -1963796715, guid: 54f2c463d4b08c5479061c6305630f2d, type: 3}
-    - {fileID: 1488185390, guid: 54f2c463d4b08c5479061c6305630f2d, type: 3}
-    - {fileID: 260804835, guid: 54f2c463d4b08c5479061c6305630f2d, type: 3}
-    - {fileID: 38049385, guid: 54f2c463d4b08c5479061c6305630f2d, type: 3}
+    - {fileID: 196732359, guid: 54f2c463d4b08c5479061c6305630f2d, type: 3}
+    - {fileID: -1725066579, guid: 54f2c463d4b08c5479061c6305630f2d, type: 3}
+    - {fileID: -551130927, guid: 54f2c463d4b08c5479061c6305630f2d, type: 3}
+    - {fileID: 1273789466, guid: 54f2c463d4b08c5479061c6305630f2d, type: 3}
+    - {fileID: 1607120394, guid: 54f2c463d4b08c5479061c6305630f2d, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
