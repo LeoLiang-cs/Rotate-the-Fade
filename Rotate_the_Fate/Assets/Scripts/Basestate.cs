@@ -1,6 +1,6 @@
 public abstract class Basestate
 {
-    protected Mushroom currenemy;
+    protected Enemy currenemy;
     public abstract void OnEnter(Enemy enmy);
 
     public abstract void Logicupdate();

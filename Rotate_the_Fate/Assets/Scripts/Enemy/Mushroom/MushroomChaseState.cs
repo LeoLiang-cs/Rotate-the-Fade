@@ -11,17 +11,24 @@ public class MushroomChaseState : Basestate
         {
             currenemy.Swithstate(Mushroom_stateEnum.potal);
         }
-        if (currenemy.checktouch.isrighthall || currenemy.checktouch.islefthall)
+        currenemy.PostioninMushJump();
+        if ((currenemy.checktouch.isrighthall && currenemy.faceDire.x < 0) || (currenemy.checktouch.islefthall && currenemy.faceDire.x > 0))
         {
             currenemy.iswait = true;
 
         }
         currenemy.Timecontor();
+        //chaseFarid();
+    }
+    private void chaseFarid()
+    {
+        currenemy.faceDire=currenemy.MushchaseCupid.transform.position;
     }
 
     public override void OnEnter(Enemy enmy)
     {
-        currenemy = (Mushroom)enmy;
+        Debug.Log("enterchase");
+        currenemy = enmy;
         currenemy.currspeed = currenemy.chasespeed;
         currenemy.currwaittime = currenemy.chasewaitime;
         currenemy.waitcontor = currenemy.currwaittime;
@@ -29,11 +36,12 @@ public class MushroomChaseState : Basestate
 
     public override void OnExit()
     {
-        currenemy.move();
+        currenemy.chatimecontor = currenemy.chatime;
     }
 
     public override void pythicupdate()
     {
-        currenemy.chatimecontor = currenemy.chatime;
+        currenemy.move();
+        
     }
 }

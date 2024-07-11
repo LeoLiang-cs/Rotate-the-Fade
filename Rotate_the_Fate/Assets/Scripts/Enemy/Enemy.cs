@@ -1,9 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.InputSystem.InputAction;
 
 public class Enemy : MonoBehaviour
 {
+    public GameObject MushchaseCupid;
+    public Inputall MushroomJumpFllow;
+
+    [Header("当前Cupid位置")]
+    public Vector2 Cupidpostion;
+    public bool LastisJump;
 
     public Rigidbody2D rb;
     public pythicscheck checktouch;
@@ -43,14 +50,25 @@ public class Enemy : MonoBehaviour
     public float chatime;   //追击时间
     public float chatimecontor; //追击时间控制器
 
+    [Header("跳跃")]
+    public float jumpFouse;
+
 
 
     private void Awake()
     {
+        potalstate = new MushroomPatrolState();
+        chasestate = new MushroomChaseState();
         rb = GetComponent<Rigidbody2D>();
         currspeed = normalspeed;
         checktouch = GetComponent<pythicscheck>();
         Cupid = GameObject.Find("Cupid");
+       
+        
+        MushroomJumpFllow = new Inputall();
+        MushroomJumpFllow.Game.CupidJump.started += ISMushroomJump;
+        MushchaseCupid = GameObject.Find("Cupid");
+        LastisJump = false;
 
     }
 
@@ -88,6 +106,7 @@ public class Enemy : MonoBehaviour
     {
         if (iswait)
         {
+            Debug.Log("indollwait");
             waitcontor -= Time.deltaTime;
             if (waitcontor <= 0)
             {
@@ -107,8 +126,47 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    private void ISMushroomJump(CallbackContext context)
+    {
+        Cupidpostion = new Vector2(MushchaseCupid.transform.position.x, MushchaseCupid.transform.position.y);
+        LastisJump = true;
+
+    }
+
+    public void PostioninMushJump()
+    {
+        Vector2 MushPostion = new Vector2(transform.position.x, transform.position.y);
+        if (LastisJump && MushPostion == Cupidpostion)
+        {
+            Jump();
+            LastisJump = false;
+        }
+    }
+
+    public void Swithstate(Mushroom_stateEnum state)
+    {
+        var newstate = state switch
+        {
+            Mushroom_stateEnum.potal => potalstate,
+            Mushroom_stateEnum.chase => chasestate,
+            Mushroom_stateEnum.attack => attckstate,
+            Mushroom_stateEnum.death => deathstate,
+            Mushroom_stateEnum.force => Forcestate,
+            _ => null
+        };
+        currstate.OnExit();
+        currstate = newstate;
+        currstate.OnEnter(this);
+    }
+
+    public void Jump()
+    {
+        rb.AddForce(transform.up * jumpFouse, ForceMode2D.Impulse);
+    }
+
     public bool findplayer()  //检测是否看到player
     {
+        Debug.Log("findplayer333");
         return Physics2D.BoxCast(transform.position + (Vector3)centeroffist, checksize, 0, faceDire, discent, player);
     }
     private void OnDrawGizmosSelected()  //画一个检查点

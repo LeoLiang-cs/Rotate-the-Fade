@@ -8,7 +8,7 @@ public class MushroomPatrolState : Basestate
     public override void OnEnter(Enemy enmy)
     {
         Debug.Log("inpotalstate");
-        currenemy = (Mushroom)enmy;
+        currenemy = enmy;
         currenemy.currspeed = currenemy.normalspeed;
         currenemy.currwaittime = currenemy.potalwaittime;
         currenemy.waitcontor = currenemy.currwaittime;
@@ -17,11 +17,12 @@ public class MushroomPatrolState : Basestate
     {
         if (currenemy.findplayer())
         {
+            Debug.Log("findplayer");
             currenemy.Swithstate(Mushroom_stateEnum.chase);
         }
-        if (currenemy.checktouch.isrighthall || currenemy.checktouch.islefthall)
+        if ((currenemy.checktouch.isrighthall&&currenemy.faceDire.x<0) || (currenemy.checktouch.islefthall&&currenemy.faceDire.x>0))
         {
-
+            Debug.Log("findthedoll");
             currenemy.iswait = true;
         }
         currenemy.Timecontor();

@@ -18,6 +18,7 @@ public class pythicscheck : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log("checkthegroud");
         checke();
     }
 
