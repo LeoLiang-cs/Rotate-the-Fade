@@ -1,4 +1,6 @@
-public abstract class Basestate
+using UnityEngine;
+
+public abstract class Basestate : MonoBehaviour
 {
     protected Enemy currenemy;
     public abstract void OnEnter(Enemy enmy);

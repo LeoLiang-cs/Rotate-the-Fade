@@ -41,7 +41,7 @@ public class Enemy : MonoBehaviour
     public Basestate chasestate;  //×·»÷×´Ì¬
     public Basestate potalstate;  //Ñ²Âß×´Ì¬
     public Basestate attckstate;  //¹¥»÷×´Ì¬
-    public Basestate deathstate;  //¹¥»÷×´Ì¬
+    public Basestate deathstate;  //ËÀÍö×´Ì¬
     public Basestate Forcestate;  //µ¯¿ª×´Ì¬
 
 
@@ -59,6 +59,8 @@ public class Enemy : MonoBehaviour
 
     [Header("Åö×²¼ì²â")]
     public bool iscoll=false;
+    [Header("½¡¿µÏµÍ³")]
+    public MushroomHealth health;
 
 
 
@@ -66,12 +68,14 @@ public class Enemy : MonoBehaviour
     {
         potalstate = new MushroomPatrolState();
         chasestate = new MushroomChaseState();
+        deathstate= new MushroomdeathState();
         rb = GetComponent<Rigidbody2D>();
         currspeed = normalspeed;
         checktouch = GetComponent<pythicscheck>();
         pytcheck=GetComponent<pythicscheck>();
         Cupid = GameObject.Find("Cupid");
         waitTimer = gameObject.AddComponent<Timer>();
+        health=GetComponent<MushroomHealth>();
 
 
        

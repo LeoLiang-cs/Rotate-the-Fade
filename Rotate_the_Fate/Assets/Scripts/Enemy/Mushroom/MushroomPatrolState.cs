@@ -25,6 +25,10 @@ public class MushroomPatrolState : Basestate
     }
     public override void Logicupdate()
     {
+        if (currenemy.health.isDead)
+        {
+            currenemy.Swithstate(Mushroom_stateEnum.death);
+        }
         if (currenemy.findplayer())
         {
             Debug.Log("findplayer");

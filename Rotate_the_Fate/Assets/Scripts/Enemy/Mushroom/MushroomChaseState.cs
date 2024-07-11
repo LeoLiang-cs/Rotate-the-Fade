@@ -8,6 +8,10 @@ public class MushroomChaseState : Basestate
     // Start is called before the first frame update
     public override void Logicupdate()
     {
+        if (currenemy.health.isDead)
+        {
+            currenemy.Swithstate(Mushroom_stateEnum.death);
+        }
         if (currenemy.chatimecontor <= 0)
         {
             currenemy.Swithstate(Mushroom_stateEnum.potal);
