@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class CupidBehavior : MonoBehaviour
 {
     private CupidCollision coll;
@@ -14,6 +15,8 @@ public class CupidBehavior : MonoBehaviour
     public float deceleration = 1000f;//intertance stop
     public float jumpForce = 10f;
     public bool mTowardRight = true;
+
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +30,10 @@ public class CupidBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GetComponent<CupidHealth>().isHitting)
+        {
+            return;
+        }
         
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
@@ -39,7 +46,7 @@ public class CupidBehavior : MonoBehaviour
 
     private void Walk(Vector2 dir)
     {
-       if(!CupidHit.isHitting && !WorldRotation.isRotating && !Attack.isAttacking) {
+       if(!GetComponent<CupidHealth>().isHitting && !WorldRotation.isRotating && !Attack.isAttacking) {
             rb.velocity = new Vector2(dir.x * speed, rb.velocity.y);
             bool slimeHasXAxisSpeed = Mathf.Abs(rb.velocity.x) > Mathf.Epsilon;
             anim.SetBool("Walk", slimeHasXAxisSpeed);
@@ -70,5 +77,6 @@ public class CupidBehavior : MonoBehaviour
             anim.SetBool("Jump", false);
         }
     }
+
 }
 
