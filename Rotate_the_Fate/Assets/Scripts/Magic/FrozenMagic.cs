@@ -36,7 +36,7 @@ public class FrozenMagic : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            other.GetComponent<Health>().TakeFrozenDamage(transform.position);
+            other.GetComponent<MushroomHealth>().TakeFrozenDamage(transform.position);
         }
     }
 }
