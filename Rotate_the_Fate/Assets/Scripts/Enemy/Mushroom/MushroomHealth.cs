@@ -121,7 +121,7 @@ public class MushroomHealth : MonoBehaviour
         }else{
             frozen_timer.Reset();
         }
-        
+        slow_down_timer.Reset();
     }
 
     public void Cold_recovery(){
