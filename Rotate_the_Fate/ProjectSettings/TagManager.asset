@@ -6,6 +6,8 @@ TagManager:
   tags:
   - FrozenMagic
   - Enemy
+  - Bush
+  - Mushroom
   layers:
   - Default
   - TransparentFX

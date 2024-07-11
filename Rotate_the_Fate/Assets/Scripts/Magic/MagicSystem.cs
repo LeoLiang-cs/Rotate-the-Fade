@@ -5,7 +5,7 @@ using UnityEngine;
 public class MagicSystem
 {
     public static float kYDistance = 1.5f;
-    public static float kXDistance = 0.5f;
+    public static float kXDistance = 1f;
     public LayerMask enemyLayer;  // 敌人的图层
     private GameObject mFrozenSample = null;
     private GameObject mFlameSample = null;
@@ -50,12 +50,12 @@ public class MagicSystem
 
         if(torwardRight)
         {
-            flame.transform.position = p + Vector3.right;
+            flame.transform.position = p + Vector3.right * 0.5f + Vector3.up * 0.4f;
             flame.transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
         else
         {
-            flame.transform.position = p + Vector3.left;
+            flame.transform.position = p + Vector3.left * 0.5f+ Vector3.up * 0.4f;
             flame.transform.localRotation = Quaternion.Euler(0, 180, 0);
         }
             

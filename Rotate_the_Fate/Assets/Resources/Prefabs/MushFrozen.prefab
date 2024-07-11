@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 1111918882085801295}
   - component: {fileID: 2164139065882844476}
   m_Layer: 0
-  m_Name: FrozenEffect
+  m_Name: MushFrozen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
