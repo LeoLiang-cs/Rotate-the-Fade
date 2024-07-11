@@ -109,13 +109,12 @@ public class MushroomHealth : MonoBehaviour
            gameObject.layer = 2;
            isDead = true;
            anim.SetTrigger("Die");
-            //Destroy(this.gameObject);
         }
     }
 
     public void DestroyAfterAnimation()
     {
-        //Destroy(gameObject);
+        Destroy(gameObject);
     }
     
 }
