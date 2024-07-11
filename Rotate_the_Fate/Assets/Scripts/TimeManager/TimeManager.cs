@@ -46,12 +46,18 @@ public class TimeManager
     public void PauseTime(Timer timer)
     {
         FreezeTimers(timer);
+        GameObject enemy = GameObject.Find("Mushroom");
+        EnemyManger script = enemy.GetComponent<EnemyManger>();
+        script.Stop();
         isTimePaused = true;
     }
 
     public void ResumeTime()
     {
         isTimePaused = false;
+        GameObject enemy = GameObject.Find("Mushroom");
+        EnemyManger script = enemy.GetComponent<EnemyManger>();
+        script.Backto();
         foreach (var timerObj in timers)
         {
             timerObj.Resume();
