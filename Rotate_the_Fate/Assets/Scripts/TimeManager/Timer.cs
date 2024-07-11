@@ -54,5 +54,10 @@ public class Timer : MonoBehaviour
     public void Reset(){
         elapse = 0f;
     }
+
+    public void Set_CoolDown(float new_cd){
+        elapse = 0f;
+        cool_down = new_cd;
+    }
 }
 
