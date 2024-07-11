@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Health : MonoBehaviour
+public class MushroomHealth : MonoBehaviour
 {
     public int mFrozenCount = 0;
     private SpriteRenderer spriteRenderer;
@@ -39,7 +39,7 @@ public class Health : MonoBehaviour
     }
 
     public void TakeFrozenDamage(Vector2 attP) {
-        FrozenDamage();
+        health -= frozenDamage;
         if (mFrozenCount == 0) {
             if(attP.x < transform.position.x) {
                 GetComponent<Rigidbody2D>().AddForce(new Vector2(1, 1) * 5, ForceMode2D.Impulse);
@@ -61,7 +61,7 @@ public class Health : MonoBehaviour
     }
 
     public void TakeFlameDamage(Vector2 attP) {
-        FlameDamage();
+        health -= flameDamage;
         if (attP.x < transform.position.x) {
             GetComponent<Rigidbody2D>().AddForce(new Vector2(1, 0) * 10, ForceMode2D.Impulse);
         } else {
@@ -72,7 +72,7 @@ public class Health : MonoBehaviour
     }    
 
     public void TakeLighteningChainDamage() {
-        
+        health -= lightningDamage;
         spriteRenderer.color = Color.yellow; 
     }    
 
@@ -106,21 +106,6 @@ public class Health : MonoBehaviour
             isDead = true;
             anim.SetTrigger("Die");
         }
-    }
-
-    public void FrozenDamage()
-    {
-        health -= frozenDamage;
-    }
-
-    public void LightningDamage()
-    {
-        health -= lightningDamage;
-    }
-
-    public void FlameDamage()
-    {
-        health -= flameDamage;
     }
 
     public void DestroyAfterAnimation()
