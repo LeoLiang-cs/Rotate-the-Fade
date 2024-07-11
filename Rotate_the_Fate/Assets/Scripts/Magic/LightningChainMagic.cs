@@ -33,11 +33,7 @@ public class LightningChainMagic : MonoBehaviour
         }
         Attack.isAttacking = false;
 
-        
-            Destroy(transform.gameObject, 0.5f);
-        
-        
-        
+        Destroy(transform.gameObject, 0.5f);
     }
 
     void DrawLightning(Vector2 start, Vector2 end)
