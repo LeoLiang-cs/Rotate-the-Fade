@@ -86,6 +86,7 @@ public class Enemy : MonoBehaviour
         currstate.OnEnter(this);
         waitTimer.Set_Timer(currwaittime, currwaittime + 1f);
         waitTimer.onComplete += Turnfacedir;
+        TimeManager.Instance.AddTimer(waitTimer);
 
     }
 
