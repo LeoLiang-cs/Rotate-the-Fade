@@ -11,6 +11,8 @@ public class StateSwitcher : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private bool isStateOne = true; // 初始状态
 
+    public string nextSceneName; // 下一个场景的名称
+
     public float kVeryClose = 10f;
     private float GetDistanceToBlackHoleCenter(Collider2D collider)
     {
@@ -31,7 +33,7 @@ public class StateSwitcher : MonoBehaviour
         // 检测输入（例如按下空格键）来切换状态
         if (Input.GetKeyDown(KeyCode.S) && !isStateOne)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            SceneManager.LoadScene(nextSceneName);  // 加载下一个场景
         }
     }
 

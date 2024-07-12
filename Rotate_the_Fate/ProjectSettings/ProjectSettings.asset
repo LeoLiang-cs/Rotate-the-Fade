@@ -630,8 +630,8 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: Rotate_the_Fate
-  metroPackageVersion: 
+  metroPackageName: RotatetheFate
+  metroPackageVersion: 1.0.0.0
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
@@ -639,7 +639,7 @@ PlayerSettings:
   metroCertificateNotAfter: 0000000000000000
   metroApplicationDescription: Rotate_the_Fate
   wsaImages: {}
-  metroTileShortName: 
+  metroTileShortName: Rotate_the_Fate
   metroTileShowName: 0
   metroMediumTileShowName: 0
   metroLargeTileShowName: 0

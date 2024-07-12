@@ -7,16 +7,18 @@ TagManager:
   - FrozenMagic
   - Enemy
   - Hero
+  - Bush
+  - Mushroom
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - player
   - Water
   - UI
   - Ground
   - Enemy
-  - 
+  - Player
   - 
   - 
   - 
@@ -52,4 +54,7 @@ TagManager:
     locked: 0
   - name: EnvTop
     uniqueID: 1262902059
+    locked: 0
+  - name: Character
+    uniqueID: 3027181429
     locked: 0
