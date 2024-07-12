@@ -19,7 +19,7 @@ public class pythicscheck : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("checkthegroud");
+        //Debug.Log("checkthegroud");
         checke();
         Mushroom = GetComponent<Enemy>();
     }

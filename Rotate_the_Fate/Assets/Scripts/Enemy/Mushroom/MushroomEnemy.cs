@@ -131,7 +131,7 @@ public class Enemy : MonoBehaviour
         {
            
 
-            Debug.Log("indollwait");
+            //Debug.Log("indollwait");
             waitcontor -= Time.deltaTime;
             if (waitcontor <= 0)
             {
@@ -210,7 +210,7 @@ public class Enemy : MonoBehaviour
 
     public bool Lfindplayer()  //¼ì²âÊÇ·ñ¿´µ½player
     {
-        Debug.Log("findplayer333");
+        //Debug.Log("findplayer333");
 
         return Physics2D.BoxCast(transform.position + (Vector3)centeroffist, checksize, 0, faceDire, discent, player);
     }

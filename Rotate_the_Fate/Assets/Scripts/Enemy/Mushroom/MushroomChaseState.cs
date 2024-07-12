@@ -51,7 +51,7 @@ public class MushroomChaseState : Basestate
 
     public override void OnEnter(Enemy enmy)
     {
-        Debug.Log("enterchase");
+        //Debug.Log("enterchase");
         currenemy = enmy;
         currenemy.currspeed = currenemy.chasespeed;
         currenemy.currwaittime = currenemy.chasewaitime;
@@ -75,7 +75,7 @@ public class MushroomChaseState : Basestate
     {
         if (currenemy.pytcheck.isOngroud || !currenemy.iswait)
         {
-            Debug.Log("walk");
+            //Debug.Log("walk");
             currenemy.move();
         }
 

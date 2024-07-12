@@ -27,6 +27,7 @@ public class FrozenMagic : MonoBehaviour
 
     void OnTriggerEnter2D (Collider2D other)
     {
+        Debug.Log("FrozenSpawner trigger");
         if (other.gameObject.CompareTag("Mushroom"))
         {
             other.GetComponent<MushroomHealth>().TakeFrozenDamage(transform.position);

@@ -9,7 +9,7 @@ public class MushroomPatrolState : Basestate
  
     public override void OnEnter(Enemy enmy)
     {
-        Debug.Log("inpotalstate");
+        //Debug.Log("inpotalstate");
         currenemy = enmy;
         currenemy.currspeed = currenemy.normalspeed;
         currenemy.currwaittime = currenemy.potalwaittime;
@@ -31,12 +31,12 @@ public class MushroomPatrolState : Basestate
         }
         if (currenemy.findplayer())
         {
-            Debug.Log("findplayer");
+            //Debug.Log("findplayer");
             currenemy.Swithstate(Mushroom_stateEnum.chase);
         }
         if ((currenemy.checktouch.isrighthall&&currenemy.faceDire.x>0) || (currenemy.checktouch.islefthall&&currenemy.faceDire.x<0)||(!currenemy.pytcheck.isOngroud&&currenemy.faceDire.x<0))
         {
-            Debug.Log("findthedoll"+currenemy.pytcheck.isOngroud);
+            //Debug.Log("findthedoll"+currenemy.pytcheck.isOngroud);
             if (!currenemy.iswait)
             {
                 currenemy.waitTimer.Reset();
@@ -97,7 +97,7 @@ public class MushroomPatrolState : Basestate
     {
         if (currenemy.pytcheck.isOngroud||!currenemy.iswait)
         {
-            Debug.Log("walk");
+            //Debug.Log("walk");
             currenemy.move();
         }
     }

@@ -50,7 +50,7 @@ public class CupidBehavior : MonoBehaviour
 
     private void Walk(Vector2 dir)
     {
-       if(!GetComponent<CupidHealth>().isHitting && !WorldRotation.isRotating && !Attack.isAttacking) {
+       if(!WorldRotation.isRotating && !Attack.isAttacking) {
             rb.velocity = new Vector2(dir.x * speed, rb.velocity.y);
             bool slimeHasXAxisSpeed = Mathf.Abs(rb.velocity.x) > Mathf.Epsilon;
             anim.SetBool("Walk", slimeHasXAxisSpeed);
@@ -60,7 +60,7 @@ public class CupidBehavior : MonoBehaviour
                  mTowardRight = true;
             }
             if(dir.x < 0f) {
-                transform.localRotation = Quaternion.Euler(0, 180, 0);
+                transform.localRotation = Quaternion.Euler(0, 180, 0);  
                 mTowardRight = false;
             }
         }

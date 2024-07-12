@@ -21,12 +21,17 @@ public class MushroomHealth : MonoBehaviour
     public int flameDamage = 5;
     public int frozenDamage = 2;
     public int lightningDamage = 3;
+
+    // quick fix of time magic on movement
+    EnemyManger enemyManger;
     // Start is called before the first frame update
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         mIceBlockSample = Resources.Load<GameObject>("Prefabs/MushFrozen") as GameObject;
         anim = GetComponent<Animator>();
+        // need to fix later
+        enemyManger = GetComponent<EnemyManger>();
     }
 
     // Update is called once per frame
@@ -103,7 +108,7 @@ public class MushroomHealth : MonoBehaviour
                 anim.speed = 1;
                 spriteRenderer.color = Color.white;
                 mFrozenCount = 0;
-                //°ÑiceBlock¸øÏú»Ù
+                //ï¿½ï¿½iceBlockï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 foreach (Transform child in transform)
                 {
                     GameObject.Destroy(child.gameObject);
@@ -124,6 +129,7 @@ public class MushroomHealth : MonoBehaviour
     }
     private void Start_Slow_Down()
     {
+        enemyManger.Slow();
         if (slow_down_timer == null)
         {
             // Debug.Log("slow down");
@@ -147,6 +153,7 @@ public class MushroomHealth : MonoBehaviour
         anim.speed = 0;
         mFrozenCount++;
         // mFrozenTimeCount = mFrozenTime;
+        enemyManger.Stop();
         if (frozen_timer == null)
         {
             frozen_timer = gameObject.AddComponent<Timer>();
@@ -166,13 +173,14 @@ public class MushroomHealth : MonoBehaviour
     {
         spriteRenderer.color = Color.white;
         mFrozenCount = 0;
+        enemyManger.Backto();
     }
 
     public void UnFreeze()
     {
         anim.speed = 1;
         Cold_recovery();
-        //°ÑiceBlock¸øÏú»Ù
+        //ï¿½ï¿½iceBlockï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         foreach (Transform child in transform)
         {
             GameObject.Destroy(child.gameObject);
