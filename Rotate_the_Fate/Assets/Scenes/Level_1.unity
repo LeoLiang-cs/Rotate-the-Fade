@@ -495,6 +495,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image1: {fileID: -516937482, guid: ec6dc1f6355733d4d94cb8ccf000c3b0, type: 3}
   image2: {fileID: -1017581832, guid: ec6dc1f6355733d4d94cb8ccf000c3b0, type: 3}
+  nextSceneName: RoughGame
   kVeryClose: 10
 --- !u!212 &226487546
 SpriteRenderer:
@@ -1278,6 +1279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isHitting: 0
+  deathUIPanel: {fileID: 0}
   maxHealth: 10
   currentHealth: 0
   MushroomDamage: 3
