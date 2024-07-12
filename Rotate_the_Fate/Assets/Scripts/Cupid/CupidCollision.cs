@@ -13,6 +13,14 @@ public class CupidCollision : MonoBehaviour
     [Header("Collision")]
     public float collisionRadius = 1f;
     public Vector2 bottomOffset;
+    public GameObject winUI;
+    private void Awake() {
+      winUI = GameObject.Find("Win");
+      if(winUI != null){
+        winUI.SetActive(false);
+      }
+      
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -34,5 +42,11 @@ public class CupidCollision : MonoBehaviour
 
         Gizmos.DrawWireSphere((Vector2)transform.position  + bottomOffset, collisionRadius);
        
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+      if(other.gameObject.name == "door1"){
+        winUI.SetActive(true);
+      }
     }
 }

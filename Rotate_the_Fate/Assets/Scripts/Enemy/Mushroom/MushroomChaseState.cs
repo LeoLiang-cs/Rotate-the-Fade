@@ -27,7 +27,7 @@ public class MushroomChaseState : Basestate
 
         }
         currenemy.Timecontor();
-        if (currenemy.transform.position.y - currenemy.MushchaseCupid.transform.position.y < 1f && currenemy.transform.position.y - currenemy.MushchaseCupid.transform.position.y > -1f)
+        if (currenemy != null && currenemy.transform.position.y - currenemy.MushchaseCupid.transform.position.y < 1f && currenemy.transform.position.y - currenemy.MushchaseCupid.transform.position.y > -1f)
         {
 
 
