@@ -17,6 +17,7 @@ public class ButtonStateSwitcher : MonoBehaviour, IPointerEnterHandler, IPointer
 
     // 引用Button的文本组件
     private Text buttonText;
+    public string nextSceneName; // 下一个场景的名称
 
     void Start()
     {
@@ -70,6 +71,6 @@ public class ButtonStateSwitcher : MonoBehaviour, IPointerEnterHandler, IPointer
     {
         // 按钮点击时切换场景
         trans = 1;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(nextSceneName);  // 加载下一个场景
     }
 }
