@@ -17665,6 +17665,10 @@ PrefabInstance:
       propertyPath: rightOffset.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 7286328463822886386, guid: 92ac54e7930731e4eb234426d2d91525, type: 3}
+      propertyPath: flameEffect
+      value: 
+      objectReference: {fileID: 332332288821241340, guid: e9ea45a3110b60d43b9cedb113fad15f, type: 3}
     - target: {fileID: 7928294229524471880, guid: 92ac54e7930731e4eb234426d2d91525, type: 3}
       propertyPath: m_Name
       value: Cupid

@@ -16,9 +16,6 @@ GameObject:
   - component: {fileID: 3447283840344410818}
   - component: {fileID: 2457754608328876105}
   - component: {fileID: 8140228651666393170}
-  - component: {fileID: 754953076614782780}
-  - component: {fileID: 1060809472282547141}
-  - component: {fileID: 7127669468357356864}
   - component: {fileID: 6458957786623174760}
   - component: {fileID: 8987767355402893424}
   m_Layer: 7
@@ -36,7 +33,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3578716068596200134}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.43, y: -4.64, z: 0.0077579506}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -213,13 +210,59 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mFrozenCount: 0
+  OnTakeFlameDamage:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6458957786623174760}
+        m_TargetAssemblyTypeName: MushBehavior, Assembly-CSharp
+        m_MethodName: Flip
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnTakeFrozenDamage:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6458957786623174760}
+        m_TargetAssemblyTypeName: MushBehavior, Assembly-CSharp
+        m_MethodName: Flip
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnTakeLighteningChainDamage:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6458957786623174760}
+        m_TargetAssemblyTypeName: MushBehavior, Assembly-CSharp
+        m_MethodName: Flip
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   isDead: 0
   isHitting: 0
   health: 10
   flameDamage: 5
   frozenDamage: 2
   lightningDamage: 3
-  FlameForce: 10
+  FlameForce: 20
+  frozenForce: 5
 --- !u!70 &8140228651666393170
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -255,94 +298,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.6666667}
   m_Size: {x: 1.25, y: 1.3333334}
   m_Direction: 0
---- !u!114 &754953076614782780
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3578716068596200134}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 401b7ae383d247444bd15c9ec0348018, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leftoffis: {x: -0.62, y: 0.83}
-  rightoffis: {x: 0.69, y: 0.79}
-  groudoffis: {x: -0.72, y: -0.04}
-  groudlayer:
-    serializedVersion: 2
-    m_Bits: 64
-  checkragis: 0.14
-  islefthall: 0
-  isrighthall: 0
-  isOngroud: 0
-  Mushroom: {fileID: 0}
---- !u!114 &1060809472282547141
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3578716068596200134}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df67e0e1a0fe52d46aece3d27b835f81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MushchaseCupid: {fileID: 0}
-  pytcheck: {fileID: 0}
-  Cupidpostion: {x: 0, y: 0}
-  LastisJump: 0
-  rb: {fileID: 0}
-  checktouch: {fileID: 0}
-  Cupid: {fileID: 0}
-  currspeed: 0
-  normalspeed: 100
-  chasespeed: 200
-  faceDire: {x: 0, y: 0, z: 0}
-  slowcl: 0
-  currwaittime: 0
-  waitcontor: 0
-  chasewaitime: 0.1
-  potalwaittime: 2
-  iswait: 0
-  waitTimer: {fileID: 0}
-  currstate: {fileID: 0}
-  chasestate: {fileID: 0}
-  potalstate: {fileID: 0}
-  attckstate: {fileID: 0}
-  deathstate: {fileID: 0}
-  Forcestate: {fileID: 0}
-  centeroffist: {x: 0, y: 0.61}
-  checksize: {x: 1.5, y: 1.5}
-  discent: 2.31
-  player:
-    serializedVersion: 2
-    m_Bits: 256
-  chatime: 5
-  chatimecontor: 0
-  jumpFouse: 0
-  iscoll: 0
-  health: {fileID: 0}
---- !u!114 &7127669468357356864
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3578716068596200134}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4747690fac4f79b47967a3b5dc03fce0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currState: {fileID: 0}
-  MushrommState: {fileID: 0}
-  slowdown: {fileID: 0}
-  stopin: {fileID: 0}
-  Back: {fileID: 0}
-  enmystype: {fileID: 0}
 --- !u!114 &6458957786623174760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -359,6 +314,9 @@ MonoBehaviour:
   chaseSpeed: 200
   currentSpeed: 0
   faceDir: {x: 0, y: 0, z: 0}
+  waitTime: 2
+  waitTimeCounter: 0
+  isWaiting: 0
 --- !u!114 &8987767355402893424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -373,7 +331,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   onGround: 0
-  collisionRadius: 0.25
+  onWall: 0
+  onRightWall: 0
+  onLeftWall: 0
+  wallSide: 0
+  collisionRadius: 0.1
   bottomOffset: {x: 0, y: 0}
+  rightOffset: {x: 0.7, y: 0.5}
+  leftOffset: {x: -0.7, y: 0.5}

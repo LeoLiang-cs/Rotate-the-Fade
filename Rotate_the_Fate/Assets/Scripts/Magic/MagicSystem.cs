@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class MagicSystem
 {
@@ -11,6 +12,8 @@ public class MagicSystem
     private GameObject mFlameSample = null;
     private GameObject mLightningChainSample = null;
     private GameObject mTimeFreezeEffect = null;
+    private GameObject flameEffect = null;
+    private GameObject frozenEffect = null;
     public MagicSystem()
     {
         FrozenMagic.InitializedMagicSystem(this);
@@ -18,13 +21,15 @@ public class MagicSystem
         mFlameSample = Resources.Load<GameObject>("Prefabs/Flame") as GameObject;
         mLightningChainSample = Resources.Load<GameObject>("Prefabs/LightningChain") as GameObject;
         mTimeFreezeEffect = Resources.Load<GameObject>("Prefabs/TimeFreezeEffect") as GameObject;
+        flameEffect = Resources.Load<GameObject>("Prefabs/CupidFlameEffect") as GameObject;
+        frozenEffect = Resources.Load<GameObject>("Prefabs/CupidFrozenEffect") as GameObject;
     }
 
     public void FrozenSpawner(Vector3 p, bool torwardRight)
     {
         GameObject frozen = GameObject.Instantiate(mFrozenSample) as GameObject;
-        Debug.Log("FrozenSpawner");
-        if(torwardRight)
+        GameObject effect = GameObject.Instantiate(frozenEffect) as GameObject;
+        if (torwardRight)
         {
             frozen.transform.position = p ;
             frozen.transform.localRotation = Quaternion.Euler(0, 0, 0);
@@ -34,7 +39,7 @@ public class MagicSystem
             frozen.transform.position = p ;
             frozen.transform.localRotation = Quaternion.Euler(0, 180, 0);
         }
-        
+        effect.transform.position = p + Vector3.up * 0.1f;
     }
 
     public void LightningChainSpawner(Vector3 p)
@@ -47,8 +52,8 @@ public class MagicSystem
     public void FlameSpawner(Vector3 p, bool torwardRight)
     {
         GameObject flame = GameObject.Instantiate(mFlameSample) as GameObject;
-
-        if(torwardRight)
+        GameObject effect = GameObject.Instantiate(flameEffect) as GameObject;
+        if (torwardRight)
         {
             flame.transform.position = p + Vector3.right * 0.5f + Vector3.up * 0.4f;
             flame.transform.localRotation = Quaternion.Euler(0, 0, 0);
@@ -58,7 +63,7 @@ public class MagicSystem
             flame.transform.position = p + Vector3.left * 0.5f+ Vector3.up * 0.4f;
             flame.transform.localRotation = Quaternion.Euler(0, 180, 0);
         }
-            
+        effect.transform.position = p + Vector3.up * 0.1f;
     }
 
     public void TimeFreezeSpawner(Timer timer, GameObject parent){
