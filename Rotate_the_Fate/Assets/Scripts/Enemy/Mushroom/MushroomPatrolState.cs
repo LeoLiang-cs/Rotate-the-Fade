@@ -4,43 +4,43 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 
-public class MushroomPatrolState : Basestate
+public class MushroomPatrolState : BaseState
 {
  
     public override void OnEnter(Enemy enmy)
     {
         //Debug.Log("inpotalstate");
-        currenemy = enmy;
-        currenemy.currspeed = currenemy.normalspeed;
-        currenemy.currwaittime = currenemy.potalwaittime;
-        currenemy.waitcontor = currenemy.currwaittime;
-        if (currenemy.iswait)
+        currentEnemy = enmy;
+        currentEnemy.currspeed = currentEnemy.normalspeed;
+        currentEnemy.currwaittime = currentEnemy.potalwaittime;
+        currentEnemy.waitcontor = currentEnemy.currwaittime;
+        if (currentEnemy.iswait)
         {
-            currenemy.waitTimer.Set_CoolDown(currenemy.currwaittime);
+            currentEnemy.waitTimer.Set_CoolDown(currentEnemy.currwaittime);
         }
         else
         {
-            currenemy.waitTimer.Set_Timer(currenemy.currwaittime,currenemy.currwaittime+1f);
+            currentEnemy.waitTimer.Set_Timer(currentEnemy.currwaittime,currentEnemy.currwaittime+1f);
         }
     }
-    public override void Logicupdate()
+    public override void LogicUpdate()
     {
-        if (currenemy.health.isDead)
+        if (currentEnemy.health.isDead)
         {
-            currenemy.Swithstate(Mushroom_stateEnum.death);
+            currentEnemy.Swithstate(Mushroom_stateEnum.death);
         }
-        if (currenemy.findplayer())
+        if (currentEnemy.findplayer())
         {
             //Debug.Log("findplayer");
-            currenemy.Swithstate(Mushroom_stateEnum.chase);
+            currentEnemy.Swithstate(Mushroom_stateEnum.chase);
         }
-        if ((currenemy.checktouch.isrighthall&&currenemy.faceDire.x>0) || (currenemy.checktouch.islefthall&&currenemy.faceDire.x<0)||(!currenemy.pytcheck.isOngroud&&currenemy.faceDire.x<0))
+        if ((currentEnemy.checktouch.onRightWall&&currentEnemy.faceDire.x>0) || (currentEnemy.checktouch.onLeftWall&&currentEnemy.faceDire.x<0)||(!currentEnemy.pytcheck.onGround&&currentEnemy.faceDire.x<0))
         {
             //Debug.Log("findthedoll"+currenemy.pytcheck.isOngroud);
-            if (!currenemy.iswait)
+            if (!currentEnemy.iswait)
             {
-                currenemy.waitTimer.Reset();
-                currenemy.iswait = true;
+                currentEnemy.waitTimer.Reset();
+                currentEnemy.iswait = true;
             }
             
         }
@@ -93,12 +93,12 @@ public class MushroomPatrolState : Basestate
 
     
 
-    public override void pythicupdate()
+    public override void PhysicsUpdate()
     {
-        if (currenemy.pytcheck.isOngroud||!currenemy.iswait)
+        if (currentEnemy.pytcheck.onGround||!currentEnemy.iswait)
         {
             //Debug.Log("walk");
-            currenemy.move();
+            currentEnemy.move();
         }
     }
 

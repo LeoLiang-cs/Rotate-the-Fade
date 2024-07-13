@@ -8,14 +8,14 @@ public class Enemy : MonoBehaviour
 {
     public GameObject MushchaseCupid;
     public Inputall MushroomJumpFllow;
-    public pythicscheck pytcheck;
+    public PhysicsCheck pytcheck;
 
     [Header("µ±Ç°CupidÎ»ÖÃ")]
     public Vector2 Cupidpostion;
     public bool LastisJump;
 
     public Rigidbody2D rb;
-    public pythicscheck checktouch;
+    public PhysicsCheck checktouch;
     public GameObject Cupid;
 
 
@@ -38,12 +38,12 @@ public class Enemy : MonoBehaviour
 
 
     [Header("×´Ì¬")]
-    public Basestate currstate;  //µ±Ç°×´Ì¬
-    public Basestate chasestate;  //×·»÷×´Ì¬
-    public Basestate potalstate;  //Ñ²Âß×´Ì¬
-    public Basestate attckstate;  //¹¥»÷×´Ì¬
-    public Basestate deathstate;  //ËÀÍö×´Ì¬
-    public Basestate Forcestate;  //µ¯¿ª×´Ì¬
+    public BaseState currstate;  //µ±Ç°×´Ì¬
+    public BaseState chasestate;  //×·»÷×´Ì¬
+    public BaseState potalstate;  //Ñ²Âß×´Ì¬
+    public BaseState attckstate;  //¹¥»÷×´Ì¬
+    public BaseState deathstate;  //ËÀÍö×´Ì¬
+    public BaseState Forcestate;  //µ¯¿ª×´Ì¬
 
 
     [Header("¼ì²â")]
@@ -72,8 +72,8 @@ public class Enemy : MonoBehaviour
         deathstate= new MushroomdeathState();
         rb = GetComponent<Rigidbody2D>();
         currspeed = normalspeed;
-        checktouch = GetComponent<pythicscheck>();
-        pytcheck=GetComponent<pythicscheck>();
+        checktouch = GetComponent<PhysicsCheck>();
+        pytcheck=GetComponent<PhysicsCheck>();
         Cupid = GameObject.Find("Cupid");
         waitTimer = gameObject.AddComponent<Timer>();
         health=GetComponent<MushroomHealth>();
@@ -101,13 +101,13 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         faceDire = new Vector3(-transform.localScale.x, 0, 0);  //³¯Ïò
-        currstate.Logicupdate();
+        currstate.LogicUpdate();
     }
 
     private void FixedUpdate()
     {
 
-        currstate.pythicupdate();
+        currstate.PhysicsUpdate();
     }
 
     private void OnDisable()
