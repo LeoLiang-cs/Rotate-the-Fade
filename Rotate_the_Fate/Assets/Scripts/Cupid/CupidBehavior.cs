@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class CupidBehavior : MonoBehaviour
 {
-    private CupidCollision coll;
+    private Collision coll;
     private Rigidbody2D rb;
     private Animator anim;
     private CupidHealth health;
@@ -25,7 +25,7 @@ public class CupidBehavior : MonoBehaviour
         mTowardRight = true;
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        coll = GetComponent<CupidCollision>();
+        coll = GetComponent<Collision>();
         health = GetComponent<CupidHealth>();
         //rb.constraints = RigidbodyConstraints2D.FreezeRotation;//所有活物都要锁定！
     }

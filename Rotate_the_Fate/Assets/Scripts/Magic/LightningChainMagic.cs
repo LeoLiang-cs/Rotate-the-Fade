@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class LightningChainMagic : MonoBehaviour
 {
-    public float radius = 5.0f;  // 检测半径
-    public LayerMask enemyLayer;  // 敌人的图层
-    public int damage = 10;  // 造成的伤害
+    public float radius = 5.0f;  // 检测半�?
+    public LayerMask enemyLayer;  // 敌人的图�?
+    public int damage = 10;  // 造成的伤�?
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +26,7 @@ public class LightningChainMagic : MonoBehaviour
         {
             DrawLightning(p, enemy.transform.position);
             if (enemy.gameObject.CompareTag("Mushroom")) {
-                enemy.GetComponent<MushroomHealth>().TakeLighteningChainDamage();
+                enemy.GetComponent<MushroomHealth>().TakeLighteningChainDamage(p);
             }else if(enemy.gameObject.CompareTag("Bush")) {
                 enemy.GetComponent<BushHealth>().TakeLighteningChainDamage();
             }

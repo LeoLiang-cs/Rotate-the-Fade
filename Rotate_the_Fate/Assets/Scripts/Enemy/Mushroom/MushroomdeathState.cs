@@ -18,7 +18,7 @@ public class MushroomdeathState : Basestate
         if (currenemy.health.isDead == true)
         {
             //GetComponent<Animator>().SetTrigger("Death");
-            Destroy(currenemy.gameObject);
+            //Destroy(currenemy.gameObject);
             
         }
     }

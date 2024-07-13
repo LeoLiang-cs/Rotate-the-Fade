@@ -32,7 +32,7 @@ public class Enemy : MonoBehaviour
     public float currwaittime;  //当前碰墙等待时间
     public float waitcontor;  //碰墙时间控制器
     public float chasewaitime;  //追击碰墙等待时间
-    public float potalwaittime;  //训练碰撞等待时间
+    public float potalwaittime;  //巡逻碰撞等待时间
     public bool iswait = false;
     public Timer waitTimer;
 
@@ -120,17 +120,10 @@ public class Enemy : MonoBehaviour
         rb.velocity = new Vector2(faceDire.x * currspeed * Time.deltaTime*slowcl, rb.velocity.y);
     }
 
-    public void TimeCon()
-    {
-
-    }
-
     public void Timecontor()
     {
         if (iswait)
         {
-           
-
             //Debug.Log("indollwait");
             waitcontor -= Time.deltaTime;
             if (waitcontor <= 0)

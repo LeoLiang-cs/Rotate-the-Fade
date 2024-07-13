@@ -8,6 +8,7 @@ public class CupidHealth : MonoBehaviour
     public bool isHitting = false;
     private Animator anim;
     public GameObject deathUIPanel;
+    public UnityEvent OnTakeDame;
     
 
     [Space]
@@ -16,19 +17,21 @@ public class CupidHealth : MonoBehaviour
     public int currentHealth;   
     
     public int MushroomDamage = 3;
-    public float knockbackForce = 10f; // 击退力的大小
-    public float invulnerableTime = 0.5f;
+    public float knockbackForce = 10f; 
+    public bool invulnerable = false;
     public bool isDead = false;
+    public GameObject handStoneSample;
 
     private void Start()
     {
         currentHealth = maxHealth;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        handStoneSample = Resources.Load<GameObject>("Prefabs/HandStone") as GameObject;
     }
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (isHitting)
+        if (invulnerable)
             return;
 
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
@@ -42,7 +45,7 @@ public class CupidHealth : MonoBehaviour
                 deathUIPanel.SetActive(true);
             }
             isHitting = true;
-            
+            invulnerable = true;
             Vector3 knockbackDirection = transform.position - other.transform.position;
             knockbackDirection.Normalize();
             
@@ -54,6 +57,8 @@ public class CupidHealth : MonoBehaviour
 
     public void DestroyAfterAnimation()
     {
+        GameObject handStone = GameObject.Instantiate(handStoneSample) as GameObject;
+        handStone.transform.position = transform.position+Vector3.up*0.5f;
         Destroy(this.gameObject);
     }
 }

@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class pythicscheck : MonoBehaviour
 {
-    public Vector2 leftoffis;   //×óÆ«ÒÆ
-    public Vector2 rightoffis;  //ÓÒÆ«ÒÆ
-    public Vector2 groudoffis;  //µØÃæÆ«ÒÆ
+    public Vector2 leftoffis;   //ï¿½ï¿½Æ«ï¿½ï¿½
+    public Vector2 rightoffis;  //ï¿½ï¿½Æ«ï¿½ï¿½
+    public Vector2 groudoffis;  //ï¿½ï¿½ï¿½ï¿½Æ«ï¿½ï¿½
 
-    public LayerMask groudlayer;    //»·¾³Í¼²ã
+    public LayerMask groudlayer;    //ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½
     public float checkragis;
 
     public bool islefthall; 
@@ -20,11 +20,11 @@ public class pythicscheck : MonoBehaviour
     private void Update()
     {
         //Debug.Log("checkthegroud");
-        checke();
+        check();
         Mushroom = GetComponent<Enemy>();
     }
 
-    private void checke()
+    private void check()
     {
         islefthall = Physics2D.OverlapCircle((Vector2)transform.position + leftoffis, checkragis, groudlayer);
         isrighthall = Physics2D.OverlapCircle((Vector2)transform.position + rightoffis, checkragis, groudlayer);

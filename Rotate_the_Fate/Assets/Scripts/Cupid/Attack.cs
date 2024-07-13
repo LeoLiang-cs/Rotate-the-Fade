@@ -9,7 +9,7 @@ public class Attack : MonoBehaviour
     public int chooseMagic = 0;
     private MagicSystem mMagicSystem = null;
     public static bool isAttacking = false;
-    private CupidCollision coll;
+    private Collision coll;
 
     private Rigidbody2D rb;
     // Start is called before the first frame update
@@ -23,7 +23,7 @@ public class Attack : MonoBehaviour
         currentMagic.Add(MagicType.Frozen);
         currentMagic.Add(MagicType.LightingChain);
         currentMagic.Add(MagicType.Flame);
-        coll = GetComponent<CupidCollision>();
+        coll = GetComponent<Collision>();
         Add_Magic(MagicType.Time);
         
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FlameMagic : MonoBehaviour
 {
-    public int damage = 1; 
+    public int damage = 5; 
     private static MagicSystem sMagicSystem = null;
     public static void InitializedMagicSystem(MagicSystem m) { sMagicSystem = m; }
     // Start is called before the first frame update
