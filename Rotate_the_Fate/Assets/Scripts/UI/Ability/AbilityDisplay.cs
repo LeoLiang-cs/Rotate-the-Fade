@@ -31,10 +31,10 @@ public class AbilityDisplay : MonoBehaviour
             Switch_Ability();
             ability_icon.color = Color.white;
         }else if(Input.GetKeyDown(KeyCode.I)){
-            Add_Ability("flame");
+            Add_Ability("lightening");
             // Debug.Log("flame");
         }else if(Input.GetKeyDown(KeyCode.O)){
-            Add_Ability("lightening");
+            Add_Ability("flame");
         }
         else if(Input.GetKeyDown(KeyCode.P)){
             Add_Ability("time");
