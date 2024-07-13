@@ -6,13 +6,16 @@ public class TwinBehavior : MonoBehaviour
 {
     public Rigidbody2D rb;
     public Collision coll;
+    public TwinAttack twinAttack;
     public Animator anim;
-     private GameObject Cupid;
+    private GameObject Cupid;
+    private TwinAttackDetect attackDetect;
+    private TwinHealth twinHealth;
 
 
     [Header("基本参数")]
     public float currentSpeed;
-    public float normalSpeed = 50f;
+    public float normalSpeed = 200f;
     public float chaseSpeed;
     public Vector3 faceDire;
     public float slowFactor;//减慢因子
@@ -22,7 +25,10 @@ public class TwinBehavior : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         Cupid = GameObject.Find("Cupid");
-        coll = GetComponent<Collision>();   
+        coll = GetComponent<Collision>();
+        attackDetect = GetComponent<TwinAttackDetect>();
+        twinAttack = GetComponent<TwinAttack>();
+        twinHealth = GetComponent<TwinHealth>();
         currentSpeed = normalSpeed;
         slowFactor = 1f;
     }
@@ -35,24 +41,25 @@ public class TwinBehavior : MonoBehaviour
 
     void Update()
     {
+     if(twinHealth.isHitting || twinHealth.isDead)
+        {
+            return;
+        }
         faceDire = new Vector3(-transform.localScale.x, 0, 0).normalized;
         Flip();
         Move();
     }
 
     void Move()
-    {   
-        if (coll.onGround)
+    {
+        if (coll.onGround && !twinAttack.isAttacking && !twinAttack.isShotting)
         {
             anim.SetBool("Walk", true);
+            rb.velocity = new Vector2(faceDire.x * currentSpeed * Time.deltaTime * slowFactor, rb.velocity.y);
         }
-        else
-        {
-            anim.SetBool("Walk", false);
-        }
-        rb.velocity = new Vector2(faceDire.x * currentSpeed * Time.deltaTime * slowFactor, rb.velocity.y);
         
-   }
+
+    }
 
     void Flip()
     {

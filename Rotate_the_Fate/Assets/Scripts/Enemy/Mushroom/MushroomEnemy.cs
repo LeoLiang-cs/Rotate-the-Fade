@@ -77,10 +77,7 @@ public class Enemy : MonoBehaviour
         Cupid = GameObject.Find("Cupid");
         waitTimer = gameObject.AddComponent<Timer>();
         health=GetComponent<MushroomHealth>();
-
-
-       
-        
+     
         MushroomJumpFllow = new Inputall();
         MushroomJumpFllow.Game.CupidJump.started += ISMushroomJump;
         MushchaseCupid = GameObject.Find("Cupid");

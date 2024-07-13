@@ -35,5 +35,9 @@ public class FlameMagic : MonoBehaviour
         {
             other.GetComponent<BushHealth>().TakeFlameDamage(transform.position);
         }
+        else if (other.gameObject.CompareTag("Twinsnap"))
+        {
+            other.GetComponent<TwinHealth>().TakeFlameDamage(transform.position);
+        }
     }
 }
