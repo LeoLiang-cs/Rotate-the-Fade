@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 public class BackgroundFollow : MonoBehaviour
 {
     public Transform target;
-    public Transform farBackground, midBackground;
+    public Transform Background0,Background1, Background2, Background3, Background4, Background5;
     private Vector2 lastPos;
 
     // Start is called before the first frame update
@@ -28,8 +28,12 @@ public class BackgroundFollow : MonoBehaviour
 
             Vector2 amountToMove = new Vector2(transform.position.x - lastPos.x, transform.position.y - lastPos.y);
 
-            farBackground.position += new Vector3(amountToMove.x, amountToMove.y, 0f);
-            midBackground.position = new Vector3(amountToMove.x * 0.5f, amountToMove.y * 0.5f, 0f);
+            Background0.position += new Vector3(amountToMove.x, amountToMove.y, 0f);
+            Background1.position += new Vector3(amountToMove.x * 0.8f, amountToMove.y * 0.8f, 0f);
+            Background2.position += new Vector3(amountToMove.x * 0.6f, amountToMove.y * 0.6f, 0f);
+            Background3.position += new Vector3(amountToMove.x * 0.5f, amountToMove.y * 0.5f, 0f);
+            Background4.position += new Vector3(amountToMove.x * 0.4f, amountToMove.y * 0.4f, 0f);
+            Background5.position += new Vector3(amountToMove.x * 0.2f, amountToMove.y * 0.2f, 0f);
 
             lastPos = transform.position;
         }
