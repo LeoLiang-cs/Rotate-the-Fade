@@ -13,6 +13,8 @@ public class AbilityStats{
     public int max_abilities = 0;
     public int chooseMagic = 0;
 
+    public int chooseMagic = 0;
+
     // public static void Store_Abilities(List<Sprite> sprites, List<MagicType> magics){
     //     instance.ability_sprites = sprites;
     //     instance.gianed_magics = magics;

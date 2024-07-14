@@ -46,7 +46,7 @@ public class Attack : MonoBehaviour
     }
 
     public void MagicAttack() {
-        if(Input.GetKeyDown(KeyCode.J) && !isAttacking && coll.onGround && currentMagic.Count > 0)
+        if(Input.GetKeyDown(KeyCode.J) && !isAttacking && coll.onGround && currentMagic.Count > 0 && cupidHealth.currentHealth > magicDamge)
         {
             isAttacking = true;
             rb.velocity = new Vector2(0, 0);
