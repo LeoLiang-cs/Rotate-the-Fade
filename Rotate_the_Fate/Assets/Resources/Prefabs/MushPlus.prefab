@@ -306,14 +306,14 @@ MonoBehaviour:
   checktouch: {fileID: 0}
   Cupid: {fileID: 0}
   currspeed: 0
-  normalspeed: 100
+  normalspeed: 200
   chasespeed: 300
   faceDire: {x: 0, y: 0, z: 0}
   slowcl: 0
   currwaittime: 0
   waitcontor: 0
   chasewaitime: 0.1
-  potalwaittime: 2
+  potalwaittime: 0.5
   iswait: 0
   waitTimer: {fileID: 0}
   currstate: {fileID: 0}

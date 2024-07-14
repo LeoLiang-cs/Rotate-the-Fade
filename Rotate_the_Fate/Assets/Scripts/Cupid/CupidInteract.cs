@@ -6,10 +6,14 @@ public class CupidInteract : MonoBehaviour
 {
     Collider2D thing;
     public bool canGet = false;
+    private GameObject effect;
+
+    private GameObject mushPlusSample;
     // Start is called before the first frame update
     void Start()
     {
-
+        effect = Resources.Load<GameObject>("Prefabs/GetMagicEffect") as GameObject;
+        mushPlusSample = Resources.Load<GameObject>("Prefabs/MushPlus") as GameObject;
     }
 
     // Update is called once per frame
@@ -30,7 +34,7 @@ public class CupidInteract : MonoBehaviour
     }
     void OnTriggerExit2D(Collider2D other)
     {
-        if(other.gameObject.layer == LayerMask.NameToLayer("Interact"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Interact"))
         {
             canGet = false;
             thing = null;
@@ -41,11 +45,15 @@ public class CupidInteract : MonoBehaviour
     void GetFrozen()
     {
 
-        if (canGet && Input.GetKeyDown(KeyCode.U) && thing.gameObject.tag == "Vase")
+        if (canGet && Input.GetKeyDown(KeyCode.U) && thing.gameObject.tag == "FrozenVase")
 
         {
+            GameObject getEffect = GameObject.Instantiate(effect) as GameObject;
+            effect.transform.position = thing.transform.position;
             Destroy(thing.gameObject);
             GetComponent<Attack>().currentMagic.Add(MagicType.Frozen);
+
+            MushSpawner();
         }
     }
 
@@ -53,8 +61,18 @@ public class CupidInteract : MonoBehaviour
     {
         if (canGet && Input.GetKeyDown(KeyCode.U) && thing.gameObject.tag == "Brazier")
         {
+            GameObject getEffect = GameObject.Instantiate(effect) as GameObject;
+            effect.transform.position = thing.transform.position;
             Destroy(thing.gameObject);
             GetComponent<Attack>().currentMagic.Add(MagicType.Flame);
         }
+    }
+
+    void MushSpawner()
+    {
+        GameObject mushPlus1 = GameObject.Instantiate(mushPlusSample) as GameObject;
+        GameObject mushPlus2 = GameObject.Instantiate(mushPlusSample) as GameObject;
+        mushPlus1.transform.position = transform.position + Vector3.right * 20f;
+        mushPlus2.transform.position = transform.position + Vector3.left * 10f;
     }
 }

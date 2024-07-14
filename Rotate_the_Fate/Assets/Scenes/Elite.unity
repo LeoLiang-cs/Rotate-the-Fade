@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 9202920}
   - component: {fileID: 9202922}
   - component: {fileID: 9202921}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Rider2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1617,7 +1617,7 @@ GameObject:
   - component: {fileID: 359954655}
   - component: {fileID: 359954657}
   - component: {fileID: 359954656}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Rider1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2668,7 +2668,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -6.986293, y: -11.827806}
@@ -21298,7 +21298,7 @@ GameObject:
   - component: {fileID: 1245697489}
   - component: {fileID: 1245697487}
   - component: {fileID: 1245697490}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: jar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23115,7 +23115,7 @@ GameObject:
   - component: {fileID: 1773686771}
   - component: {fileID: 1773686774}
   - component: {fileID: 1773686775}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: bucket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29428,6 +29428,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5466942574988853651, guid: 92ac54e7930731e4eb234426d2d91525, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7928294229524471880, guid: 92ac54e7930731e4eb234426d2d91525, type: 3}
       propertyPath: m_Name
       value: Cupid
@@ -29496,13 +29500,17 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3226810444561932208, guid: ca29b26a0f07e854ca843e42250f97ca, type: 3}
+      propertyPath: sprintSpeed
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 4322954718653043467, guid: ca29b26a0f07e854ca843e42250f97ca, type: 3}
       propertyPath: m_Name
       value: Twinsnap
       objectReference: {fileID: 0}
     - target: {fileID: 4322954718653043467, guid: ca29b26a0f07e854ca843e42250f97ca, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
