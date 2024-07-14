@@ -46,6 +46,7 @@ public class BatManger : MonoBehaviour
         staicstate = new BatStaicState();
         CuipdPlay = GameObject.Find("Cupid");
         isattack = false;
+        chasetimeCon = chasewaitTime;
         anim = GetComponent<Animator>();
         chasetimeCon = chasewaitTime;
     }
