@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8180805067221315648}
   - component: {fileID: 6343013044966547108}
   - component: {fileID: 5163755495340348358}
+  - component: {fileID: 5395970064456619041}
   m_Layer: 0
   m_Name: LightningChain
   m_TagString: Untagged
@@ -154,3 +155,26 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   damage: 10
+--- !u!114 &5395970064456619041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 835270521885180822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09aacb9797cee4f49ac73870b75739c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PosSize: 20
+  useArcing: 1
+  useSine: 1
+  useWiggle: 1
+  _ArcingPowParaml: 0
+  _SineScaleX: 0
+  _SineScaleY: 0
+  _CenterOffset: 0
+  _Adjust: 0
+  _RandomSize: 0
+  _Speed: 0
