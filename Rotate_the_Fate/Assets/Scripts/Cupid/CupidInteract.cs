@@ -15,12 +15,13 @@ public class CupidInteract : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GetVase();
+        GetFrozen();
+        GetFlame();
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("FrozenVase"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Interact"))
         {
             canGet = true;
             thing = other;
@@ -29,7 +30,7 @@ public class CupidInteract : MonoBehaviour
     }
     void OnTriggerExit2D(Collider2D other)
     {
-        if(other.CompareTag("FrozenVase"))
+        if(other.gameObject.layer == LayerMask.NameToLayer("Interact"))
         {
             canGet = false;
             thing = null;
@@ -37,13 +38,23 @@ public class CupidInteract : MonoBehaviour
 
     }
 
-    void GetVase()
+    void GetFrozen()
     {
 
-        if (canGet && Input.GetKeyDown(KeyCode.U))
+        if (canGet && Input.GetKeyDown(KeyCode.U) && thing.gameObject.tag == "Vase")
+
         {
             Destroy(thing.gameObject);
             GetComponent<Attack>().currentMagic.Add(MagicType.Frozen);
+        }
+    }
+
+    void GetFlame()
+    {
+        if (canGet && Input.GetKeyDown(KeyCode.U) && thing.gameObject.tag == "Brazier")
+        {
+            Destroy(thing.gameObject);
+            GetComponent<Attack>().currentMagic.Add(MagicType.Flame);
         }
     }
 }

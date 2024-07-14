@@ -12,6 +12,7 @@ TagManager:
   - Twinsnap
   - Bat
   - FrozenVase
+  - Brazier
   layers:
   - Default
   - TransparentFX
