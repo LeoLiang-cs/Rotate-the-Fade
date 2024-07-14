@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MushroomHealth : MonoBehaviour
 {
@@ -11,7 +12,11 @@ public class MushroomHealth : MonoBehaviour
     private float mFrozenTimeCount = 0.0f;
     private Animator anim;
     private Timer slow_down_timer;
+    private Rigidbody2D rb;
     private Timer frozen_timer;
+    public UnityEvent<Vector2> OnTakeFlameDamage;
+    public UnityEvent<Vector2> OnTakeFrozenDamage;
+    public UnityEvent<Vector2> OnTakeLighteningChainDamage;
 
     [Space]
     [Header("Status")]
@@ -21,12 +26,15 @@ public class MushroomHealth : MonoBehaviour
     public int flameDamage = 5;
     public int frozenDamage = 2;
     public int lightningDamage = 3;
+    public int FlameForce = 5;
+    public int frozenForce = 5;
 
     // quick fix of time magic on movement
     EnemyManger enemyManger;
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         mIceBlockSample = Resources.Load<GameObject>("Prefabs/MushFrozen") as GameObject;
         anim = GetComponent<Animator>();
@@ -47,16 +55,19 @@ public class MushroomHealth : MonoBehaviour
             return;
         health -= frozenDamage;
         isHitting = true;
+        OnTakeFrozenDamage?.Invoke(attP);
         if (mFrozenCount == 0)
         {
-            if (attP.x < transform.position.x)
-            {
-                GetComponent<Rigidbody2D>().AddForce(new Vector2(1, 1) * 5, ForceMode2D.Impulse);
-            }
-            else
-            {
-                GetComponent<Rigidbody2D>().AddForce(new Vector2(-1, 1) * 5, ForceMode2D.Impulse);
-            }
+            // if (attP.x < transform.position.x)
+            // {
+            //     GetComponent<Rigidbody2D>().AddForce(new Vector2(1, 1) * 5, ForceMode2D.Impulse);
+            // }
+            // else
+            // {
+            //     GetComponent<Rigidbody2D>().AddForce(new Vector2(-1, 1) * 5, ForceMode2D.Impulse);
+            // }
+            Vector2 dir = new Vector2(transform.position.x - attP.x, transform.position.y - attP.y).normalized;
+            rb.AddForce(dir * frozenForce, ForceMode2D.Impulse);
             spriteRenderer.color = new Color(0.078f, 0.761f, 1.0f); // RGB values for #14C2FF
             anim.SetTrigger("Hit");
             mFrozenCount++;
@@ -79,21 +90,26 @@ public class MushroomHealth : MonoBehaviour
         if (isHitting)
             return;
         health -= flameDamage;
+        OnTakeFlameDamage?.Invoke(attP);
+        
         if (attP.x < transform.position.x)
         {
-            GetComponent<Rigidbody2D>().AddForce(new Vector2(1, 0) * 10, ForceMode2D.Impulse);
+            GetComponent<Rigidbody2D>().AddForce(new Vector2(1, 0.1f) * FlameForce, ForceMode2D.Impulse);
         }
         else
         {
-            GetComponent<Rigidbody2D>().AddForce(new Vector2(-1, 0) * 10, ForceMode2D.Impulse);
+            GetComponent<Rigidbody2D>().AddForce(new Vector2(-1, 0.1f) * FlameForce, ForceMode2D.Impulse);
         }
         spriteRenderer.color = Color.red;
         anim.SetTrigger("Hit");
         isHitting = true;
     }
 
-    public void TakeLighteningChainDamage()
+    public void TakeLighteningChainDamage(Vector2 attP)
     {
+        if (isHitting)
+            return;
+        OnTakeLighteningChainDamage?.Invoke(attP);
         health -= lightningDamage;
         spriteRenderer.color = Color.yellow;
     }
@@ -180,7 +196,6 @@ public class MushroomHealth : MonoBehaviour
     {
         anim.speed = 1;
         Cold_recovery();
-        //��iceBlock������
         foreach (Transform child in transform)
         {
             GameObject.Destroy(child.gameObject);
@@ -196,11 +211,17 @@ public class MushroomHealth : MonoBehaviour
             gameObject.layer = 2;
             isDead = true;
             anim.SetTrigger("Die");
+            GetComponent<RotationBehavior>().enabled = false;
         }
     }
 
     public void DestroyAfterAnimation()
     {
-        Destroy(gameObject);
+        //Destroy(gameObject);
+    }
+
+    public void isHittingFalse()
+    {
+        isHitting = false;
     }
 }

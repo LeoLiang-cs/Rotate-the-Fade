@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class LightningChainMagic : MonoBehaviour
 {
-    public float radius = 5.0f;  // 检测半径
-    public LayerMask enemyLayer;  // 敌人的图层
-    public int damage = 10;  // 造成的伤害
+    public float radius = 5.0f;  // 检测半�?
+    public LayerMask enemyLayer;  // 敌人的图�?
+    public int damage = 10;  // 造成的伤�?
     // Start is called before the first frame update
     void Start()
     {
@@ -26,25 +26,31 @@ public class LightningChainMagic : MonoBehaviour
         {
             DrawLightning(p, enemy.transform.position);
             if (enemy.gameObject.CompareTag("Mushroom")) {
-                enemy.GetComponent<MushroomHealth>().TakeLighteningChainDamage();
+                enemy.GetComponent<MushroomHealth>().TakeLighteningChainDamage(p);
             }else if(enemy.gameObject.CompareTag("Bush")) {
                 enemy.GetComponent<BushHealth>().TakeLighteningChainDamage();
+            }else if (enemy.gameObject.CompareTag("Bat"))
+            {
+                enemy.GetComponent<MushroomHealth>().TakeLighteningChainDamage(p);
+            }else if(enemy.gameObject.CompareTag("Twinsnap")) {
+                enemy.GetComponent<TwinHealth>().TakeLighteningChainDamage(p);
             }
         }
         Attack.isAttacking = false;
 
-        Destroy(transform.gameObject, 0.5f);
+        Destroy(transform.gameObject, 0.2f);
     }
 
-    void DrawLightning(Vector2 start, Vector2 end)
-    {
-        
-        LineRenderer lr = GetComponent<LineRenderer>();
-        lr.SetPosition(0, start);
-        lr.SetPosition(1, end);
+void DrawLightning(Vector2 start, Vector2 end)
+{
+    // ���� y �� 0.5f
+    start.y += 1f;
+    end.y += 1f;
 
-        // 销毁闪电对象在0.5秒后
-        //Destroy(transform.gameObject, 0.5f);
-        //Attack.isAttacking = false;
-    }
+    Debug.Log("DrawLightning: " + start + " " + end);
+    LineRenderer lr = GetComponent<LineRenderer>();
+    lr.SetPosition(0, start);
+    lr.SetPosition(1, end);
+}
+
 }

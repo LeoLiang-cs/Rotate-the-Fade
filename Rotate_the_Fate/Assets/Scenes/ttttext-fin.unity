@@ -283,6 +283,7 @@ SpriteRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -524,12 +525,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mFrozenCount: 0
+  OnTakeFlameDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTakeFrozenDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTakeLighteningChainDamage:
+    m_PersistentCalls:
+      m_Calls: []
   isDead: 0
   isHitting: 0
   health: 10
   flameDamage: 5
   frozenDamage: 2
   lightningDamage: 3
+  FlameForce: 5
+  frozenForce: 5
 --- !u!70 &481976603
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -577,16 +589,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 401b7ae383d247444bd15c9ec0348018, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftoffis: {x: -0.57, y: 0.79}
-  rightoffis: {x: 0.56, y: 0.76}
-  groudoffis: {x: -0.6, y: 0.06}
-  groudlayer:
+  leftOffset: {x: 0, y: 0}
+  rightOffset: {x: 0, y: 0}
+  groundOffset: {x: 0, y: 0}
+  groundLayer:
     serializedVersion: 2
-    m_Bits: 64
-  checkragis: 0.1
-  islefthall: 0
-  isrighthall: 0
-  isOngroud: 0
+    m_Bits: 0
+  checkRadius: 0
+  onLeftWall: 0
+  onRightWall: 0
+  onGround: 0
   Mushroom: {fileID: 481976605}
 --- !u!114 &481976605
 MonoBehaviour:
@@ -817,9 +829,14 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   onGround: 0
+  onWall: 0
+  onRightWall: 0
+  onLeftWall: 0
+  wallSide: 0
   collisionRadius: 0.25
   bottomOffset: {x: 0, y: 0}
-  winUI: {fileID: 0}
+  rightOffset: {x: 0, y: 0}
+  leftOffset: {x: 0, y: 0}
 --- !u!114 &736405258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -912,12 +929,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isHitting: 0
   deathUIPanel: {fileID: 0}
+  OnTakeDame:
+    m_PersistentCalls:
+      m_Calls: []
   maxHealth: 10
   currentHealth: 0
   MushroomDamage: 3
-  knockbackForce: 15
-  invulnerableTime: 0.5
+  SeedDamage: 1
+  knockBackForce: 10
+  invulnerable: 0
   isDead: 0
+  handStoneSample: {fileID: 0}
 --- !u!70 &736405265
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

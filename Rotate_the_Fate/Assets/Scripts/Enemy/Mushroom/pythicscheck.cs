@@ -2,40 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class pythicscheck : MonoBehaviour
+public class PhysicsCheck : MonoBehaviour
 {
-    public Vector2 leftoffis;   //×óÆ«ÒÆ
-    public Vector2 rightoffis;  //ÓÒÆ«ÒÆ
-    public Vector2 groudoffis;  //µØÃæÆ«ÒÆ
+    public Vector2 leftOffset;   //ï¿½ï¿½Æ«ï¿½ï¿½
+    public Vector2 rightOffset;  //ï¿½ï¿½Æ«ï¿½ï¿½
+    public Vector2 groundOffset;  //ï¿½ï¿½ï¿½ï¿½Æ«ï¿½ï¿½
 
-    public LayerMask groudlayer;    //»·¾³Í¼²ã
-    public float checkragis;
+    public LayerMask groundLayer;    //ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½
+    public float checkRadius;
 
-    public bool islefthall; 
-    public bool isrighthall;
-    public bool isOngroud;
+    public bool onLeftWall; 
+    public bool onRightWall;
+    public bool onGround;
     public Enemy Mushroom;
 
 
     private void Update()
     {
-        //Debug.Log("checkthegroud");
-        checke();
+        check();
         Mushroom = GetComponent<Enemy>();
     }
 
-    private void checke()
+    private void check()
     {
-        islefthall = Physics2D.OverlapCircle((Vector2)transform.position + leftoffis, checkragis, groudlayer);
-        isrighthall = Physics2D.OverlapCircle((Vector2)transform.position + rightoffis, checkragis, groudlayer);
-        isOngroud = Physics2D.OverlapCircle((Vector2)transform.position + groudoffis*-Mushroom.faceDire, checkragis, groudlayer);
+        onLeftWall = Physics2D.OverlapCircle((Vector2)transform.position + leftOffset, checkRadius, groundLayer);
+        onRightWall = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, checkRadius, groundLayer);
+        onGround = Physics2D.OverlapCircle((Vector2)transform.position + groundOffset*-Mushroom.faceDire, checkRadius, groundLayer);
     }
 
     private void OnDrawGizmosSelected()
     {
         
-        Gizmos.DrawWireSphere((Vector2)transform.position + leftoffis, checkragis);
-        Gizmos.DrawWireSphere((Vector2)transform.position + rightoffis, checkragis);
-        Gizmos.DrawWireSphere((Vector2)transform.position + groudoffis, checkragis);
+        Gizmos.DrawWireSphere((Vector2)transform.position + leftOffset, checkRadius);
+        Gizmos.DrawWireSphere((Vector2)transform.position + rightOffset, checkRadius);
+        Gizmos.DrawWireSphere((Vector2)transform.position + groundOffset, checkRadius);
     }
 }

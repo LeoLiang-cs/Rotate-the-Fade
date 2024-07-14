@@ -9,7 +9,7 @@ public class Attack : MonoBehaviour
     public int chooseMagic = 0;
     private MagicSystem mMagicSystem = null;
     public static bool isAttacking = false;
-    private CupidCollision coll;
+    private Collision coll;
 
     private Rigidbody2D rb;
     // Start is called before the first frame update
@@ -20,11 +20,11 @@ public class Attack : MonoBehaviour
     }
     void Start()
     {
-        currentMagic.Add(MagicType.Frozen);
-        currentMagic.Add(MagicType.LightingChain);
-        currentMagic.Add(MagicType.Flame);
-        coll = GetComponent<CupidCollision>();
-        Add_Magic(MagicType.Time);
+        // currentMagic.Add(MagicType.Frozen);
+        // currentMagic.Add(MagicType.LightingChain);
+        // currentMagic.Add(MagicType.Flame);
+        coll = GetComponent<Collision>();
+        //Add_Magic(MagicType.Time);
         
     }
 
@@ -36,7 +36,7 @@ public class Attack : MonoBehaviour
     }
 
     public void MagicAttack() {
-        if(Input.GetKeyDown(KeyCode.J) && !isAttacking && coll.onGround)
+        if(Input.GetKeyDown(KeyCode.J) && !isAttacking && coll.onGround && currentMagic.Count > 0)
         {
             isAttacking = true;
             rb.velocity = new Vector2(0, 0);

@@ -8,14 +8,14 @@ public class Enemy : MonoBehaviour
 {
     public GameObject MushchaseCupid;
     public Inputall MushroomJumpFllow;
-    public pythicscheck pytcheck;
+    public PhysicsCheck pytcheck;
 
     [Header("µ±Ç°CupidÎ»ÖÃ")]
     public Vector2 Cupidpostion;
     public bool LastisJump;
 
     public Rigidbody2D rb;
-    public pythicscheck checktouch;
+    public PhysicsCheck checktouch;
     public GameObject Cupid;
 
 
@@ -32,18 +32,18 @@ public class Enemy : MonoBehaviour
     public float currwaittime;  //µ±Ç°ÅöÇ½µÈ´ýÊ±¼ä
     public float waitcontor;  //ÅöÇ½Ê±¼ä¿ØÖÆÆ÷
     public float chasewaitime;  //×·»÷ÅöÇ½µÈ´ýÊ±¼ä
-    public float potalwaittime;  //ÑµÁ·Åö×²µÈ´ýÊ±¼ä
+    public float potalwaittime;  //Ñ²ÂßÅö×²µÈ´ýÊ±¼ä
     public bool iswait = false;
     public Timer waitTimer;
 
 
     [Header("×´Ì¬")]
-    public Basestate currstate;  //µ±Ç°×´Ì¬
-    public Basestate chasestate;  //×·»÷×´Ì¬
-    public Basestate potalstate;  //Ñ²Âß×´Ì¬
-    public Basestate attckstate;  //¹¥»÷×´Ì¬
-    public Basestate deathstate;  //ËÀÍö×´Ì¬
-    public Basestate Forcestate;  //µ¯¿ª×´Ì¬
+    public BaseState currstate;  //µ±Ç°×´Ì¬
+    public BaseState chasestate;  //×·»÷×´Ì¬
+    public BaseState potalstate;  //Ñ²Âß×´Ì¬
+    public BaseState attckstate;  //¹¥»÷×´Ì¬
+    public BaseState deathstate;  //ËÀÍö×´Ì¬
+    public BaseState Forcestate;  //µ¯¿ª×´Ì¬
 
 
     [Header("¼ì²â")]
@@ -72,15 +72,12 @@ public class Enemy : MonoBehaviour
         deathstate= new MushroomdeathState();
         rb = GetComponent<Rigidbody2D>();
         currspeed = normalspeed;
-        checktouch = GetComponent<pythicscheck>();
-        pytcheck=GetComponent<pythicscheck>();
+        checktouch = GetComponent<PhysicsCheck>();
+        pytcheck=GetComponent<PhysicsCheck>();
         Cupid = GameObject.Find("Cupid");
         waitTimer = gameObject.AddComponent<Timer>();
         health=GetComponent<MushroomHealth>();
-
-
-       
-        
+     
         MushroomJumpFllow = new Inputall();
         MushroomJumpFllow.Game.CupidJump.started += ISMushroomJump;
         MushchaseCupid = GameObject.Find("Cupid");
@@ -101,13 +98,13 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         faceDire = new Vector3(-transform.localScale.x, 0, 0);  //³¯Ïò
-        currstate.Logicupdate();
+        currstate.LogicUpdate();
     }
 
     private void FixedUpdate()
     {
 
-        currstate.pythicupdate();
+        currstate.PhysicsUpdate();
     }
 
     private void OnDisable()
@@ -120,17 +117,10 @@ public class Enemy : MonoBehaviour
         rb.velocity = new Vector2(faceDire.x * currspeed * Time.deltaTime*slowcl, rb.velocity.y);
     }
 
-    public void TimeCon()
-    {
-
-    }
-
     public void Timecontor()
     {
         if (iswait)
         {
-           
-
             //Debug.Log("indollwait");
             waitcontor -= Time.deltaTime;
             if (waitcontor <= 0)

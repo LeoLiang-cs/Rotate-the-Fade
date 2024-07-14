@@ -1,18 +1,13 @@
 using UnityEngine;
 
-public abstract class Basestate : MonoBehaviour
+public abstract class BaseState : MonoBehaviour
 {
-    protected Enemy currenemy;
-    public abstract void OnEnter(Enemy enmy);
+    protected Enemy currentEnemy;
+    public abstract void OnEnter(Enemy enemy);
 
-    public abstract void Logicupdate();
+    public abstract void LogicUpdate();
 
-
-    public abstract void pythicupdate();
-
-
-
-
+    public abstract void PhysicsUpdate();
 
     public abstract void OnExit();
 }

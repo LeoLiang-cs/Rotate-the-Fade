@@ -580,16 +580,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 401b7ae383d247444bd15c9ec0348018, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftoffis: {x: 0.85, y: 1.16}
-  rightoffis: {x: -0.84, y: 1.2}
-  groudoffis: {x: 0, y: 0.12}
-  groudlayer:
+  leftOffset: {x: 0, y: 0}
+  rightOffset: {x: 0, y: 0}
+  groundOffset: {x: 0, y: 0}
+  groundLayer:
     serializedVersion: 2
-    m_Bits: 64
-  checkragis: 0.17
-  islefthall: 0
-  isrighthall: 0
-  isOngroud: 0
+    m_Bits: 0
+  checkRadius: 0
+  onLeftWall: 0
+  onRightWall: 0
+  onGround: 0
   Mushroom: {fileID: 0}
 --- !u!114 &1111563625
 MonoBehaviour:

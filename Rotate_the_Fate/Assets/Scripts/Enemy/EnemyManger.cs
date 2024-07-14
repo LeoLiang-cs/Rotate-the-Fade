@@ -15,10 +15,6 @@ public class EnemyManger : MonoBehaviour
     [Header("怪物")]
     public Enemy enmystype;
 
-
-
-
-
     private void Awake()
     {
         MushrommState = GetComponent<EnemyMangerBasestate>();
@@ -36,7 +32,7 @@ public class EnemyManger : MonoBehaviour
 
     private void Update()
     {
-        //currState.Logicupdate();
+        
     }
     private void OnDisable()
     {
