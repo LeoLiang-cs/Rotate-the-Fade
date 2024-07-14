@@ -10,7 +10,7 @@ public class ObstacleBehavior : MonoBehaviour
     void Start()
     {
         // 初始位置设置为地下位置
-        transform.position = undergroundPosition;
+        transform.localPosition = undergroundPosition;
         // 启动协程
         StartCoroutine(MoveStab());
     }
@@ -32,16 +32,16 @@ public class ObstacleBehavior : MonoBehaviour
 
     IEnumerator MoveToPosition(Vector3 targetPosition, float duration)
     {
-        Vector3 startPosition = transform.position;
+        Vector3 startPosition = transform.localPosition;
         float elapsed = 0.0f;
 
         while (elapsed < duration)
         {
-            transform.position = Vector3.Lerp(startPosition, targetPosition, elapsed / duration);
+            transform.localPosition = Vector3.Lerp(startPosition, targetPosition, elapsed / duration);
             elapsed += Time.deltaTime;
             yield return null;
         }
 
-        transform.position = targetPosition;
+        transform.localPosition = targetPosition;
     }
 }
