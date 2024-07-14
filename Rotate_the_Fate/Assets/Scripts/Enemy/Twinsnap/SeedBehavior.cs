@@ -27,6 +27,7 @@ public class SeedBehavior : MonoBehaviour
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
+            Debug.Log("Seed hit ground");
             Destroy(gameObject);
         }
 
