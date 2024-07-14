@@ -64,6 +64,9 @@ public class AbilityDisplay : MonoBehaviour
     }
 
     public void Switch_Ability(){
+        if(index == -1){
+            return;
+        }
         index += 1;
         index %= max_abilities;
         ability_icon.sprite = ability_sprites[index];

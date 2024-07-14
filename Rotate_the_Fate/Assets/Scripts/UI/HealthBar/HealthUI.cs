@@ -9,9 +9,9 @@ public class HealthUI : MonoBehaviour
 {
     private float health;
     private float lerp_timer;
-    private const float MAX_HEALTH = 100f;
+    private const float MAX_HEALTH = 10f;
     private const float CHASE_TIME = 2f;
-    private float magic_cost = 20f;
+    private float magic_cost = 2f;
     public Image front_health_bar;
     public Image middle_health_bar;
     public Image back_health_bar;
