@@ -72,7 +72,9 @@ public class CupidInteract : MonoBehaviour
     {
         GameObject mushPlus1 = GameObject.Instantiate(mushPlusSample) as GameObject;
         GameObject mushPlus2 = GameObject.Instantiate(mushPlusSample) as GameObject;
-        mushPlus1.transform.position = transform.position + Vector3.right * 20f;
+        mushPlus1.transform.position = transform.position + Vector3.right * 15f;
         mushPlus2.transform.position = transform.position + Vector3.left * 10f;
+
+        mushPlus1.transform.Rotate(0f, 180f, 0f);
     }
 }
