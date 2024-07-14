@@ -9,6 +9,7 @@ TagManager:
   - Hero
   - Bush
   - Mushroom
+  - Bat
   layers:
   - Default
   - TransparentFX
