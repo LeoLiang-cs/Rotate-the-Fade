@@ -71,16 +71,19 @@ public class AbilityDisplay : MonoBehaviour
             AbilityStats.Set_Max();
         }else if(ability_name == "flame"){
             ability_sprites.Add(Resources.Load<Sprite>(FLAME_PATH));
+            ability_icon.color = Color.white;
             max_abilities += 1;
             AbilityStats.Set_Max();
         }
         else if(ability_name == "lightening"){
             ability_sprites.Add(Resources.Load<Sprite>(LIGHTENING_PATH));
+            ability_icon.color = Color.white;
             max_abilities += 1;
             AbilityStats.Set_Max();
         }
         else if(ability_name == "time"){
             ability_sprites.Add(Resources.Load<Sprite>(TIME_PATH));
+            ability_icon.color = Color.white;
             max_abilities += 1;
             AbilityStats.Set_Max();
         }
