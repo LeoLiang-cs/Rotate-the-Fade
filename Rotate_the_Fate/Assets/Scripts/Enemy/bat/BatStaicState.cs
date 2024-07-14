@@ -9,6 +9,7 @@ public class BatStaicState : BatBaseState
         currbat = tmpbat;
         currbat.currspeed = currbat.staticspeed;
         currbat.currfaceDir = currbat.priLocation;
+        currbat?.GetComponent<Animator>().SetBool("Fly", false);
     }
     public override void Logicupdate()
     {

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 990568220872967865}
   - component: {fileID: 8601015850769303298}
   - component: {fileID: 7526811617204044208}
-  - component: {fileID: 7955030455215229716}
+  - component: {fileID: 4977792183246259262}
   m_Layer: 7
   m_Name: BatWithoutAnimator
   m_TagString: Untagged
@@ -218,7 +218,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &7955030455215229716
+--- !u!114 &4977792183246259262
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -227,13 +227,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 6962272679406898452}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14a7539aac4e330408d355ae3dc267e2, type: 3}
+  m_Script: {fileID: 11500000, guid: 2360631424ebdbb488ebeeeaa577f099, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mFrozenCount: 0
+  OnTakeFlameDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTakeFrozenDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTakeLighteningChainDamage:
+    m_PersistentCalls:
+      m_Calls: []
   isDead: 0
   isHitting: 0
   health: 10
   flameDamage: 5
   frozenDamage: 2
   lightningDamage: 3
+  FlameForce: 5
+  frozenForce: 5

@@ -5,6 +5,7 @@ using UnityEngine.Rendering;
 
 public class BatManger : MonoBehaviour
 {
+    Animator anim;
     [Header("基本参数")]
     public float currspeed;
     public float chasespeed;
@@ -45,6 +46,7 @@ public class BatManger : MonoBehaviour
         staicstate = new BatStaicState();
         CuipdPlay = GameObject.Find("Cupid");
         isattack = false;
+        anim = GetComponent<Animator>();
     }
     private void OnEnable()
     {
@@ -111,6 +113,7 @@ public class BatManger : MonoBehaviour
                     lastPostaton = transform.position;
                     Debug.Log("找到敌人，开始攻击" + lastPostaton);
                     isattack = true;
+                    anim.SetBool("Fly", true);
                     Debug.Log("攻击状态1" + isattack);
                 }
             }

@@ -10,6 +10,8 @@ public class BatChaseState : BatBaseState
         currbat = tmpbat;
         currbat.currspeed=currbat.chasespeed;
         currbat.currfaceDir=currbat.CuipdPlay.transform.position;
+        //GetComponent<Animator>().SetBool("Fly", true);
+        currbat.GetComponent<Animator>().SetBool("Fly", true);
     }
     public override void Logicupdate()
     {
