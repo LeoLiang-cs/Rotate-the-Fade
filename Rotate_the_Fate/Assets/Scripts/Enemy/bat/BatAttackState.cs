@@ -18,21 +18,21 @@ public class BatAttackState :BatBaseState
             Debug.LogError("currbat is null");
             return;
         }
-        currbat.transform.position = currbat.CuipdPlay.transform.position;
+        currbat.transform.localPosition = currbat.CuipdPlay.transform.localPosition;
         Debug.Log("lastpostion" + currbat.lastPostaton);
         currbat.WaitForTwo();
         //GameObject obj = currbat.gameObject;
         //StartCoroutine(MyCoroutine(obj));
         
-        if (currbat.findplayer())
-        {
+        //if (currbat.findplayer())
+        //{
           
             currbat.Swithstate(BatStateEnum.chase);
-        }
-        if (currbat.chasetimeCon <= 0)
-        {
-            currbat.Swithstate(BatStateEnum.back);
-        }
+        //}
+        //if (currbat.chasetimeCon <= 0)
+        //{
+        //    currbat.Swithstate(BatStateEnum.back);
+        //}
     }
 
 
