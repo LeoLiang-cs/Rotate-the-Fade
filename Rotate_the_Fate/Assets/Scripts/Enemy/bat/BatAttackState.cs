@@ -44,7 +44,7 @@ public class BatAttackState :BatBaseState
 
     public override void OnExit()
     {
-        
+        Debug.Log("Àë¿ª½ø¹¥");
     }
     
     //private IEnumerator MyCoroutine(GameObject BatObj)
