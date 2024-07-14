@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1323989724254983842}
   - component: {fileID: 4198282052496139493}
-  - component: {fileID: 7588775525872254444}
-  - component: {fileID: 2013716886999526977}
   - component: {fileID: 255285938522721525}
+  - component: {fileID: 8155819552983339383}
+  - component: {fileID: 9077156975835179806}
   m_Layer: 7
   m_Name: Seed
   m_TagString: Untagged
@@ -87,7 +87,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &7588775525872254444
+--- !u!114 &255285938522721525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3568933773074924191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6b9613dda30e2440a9ed1203b1226e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seedSpeed: 4
+--- !u!95 &8155819552983339383
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -97,7 +110,7 @@ Animator:
   m_GameObject: {fileID: 3568933773074924191}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e151a6084d453e44b9575f7822b1eebe, type: 2}
+  m_Controller: {fileID: 9100000, guid: 28d6a1cb02dff9042a10e994915f59d3, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -108,7 +121,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!60 &2013716886999526977
+--- !u!60 &9077156975835179806
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -137,7 +150,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -152,27 +165,14 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.5799446, y: -0.05099678}
-      - {x: 0.21745034, y: 0.2836651}
-      - {x: -0.15235004, y: 0.37784863}
-      - {x: -0.4767332, y: 0.45928383}
-      - {x: -0.75928384, y: 0.18836613}
-      - {x: -0.7651003, y: -0.41968215}
-      - {x: -0.5709168, y: -0.60111636}
-      - {x: 0.39418355, y: -0.6185667}
-      - {x: 0.8, y: -0.3}
-      - {x: 0.8, y: -0.2}
+    - - {x: -0.06489849, y: 0.69920254}
+      - {x: -0.3656025, y: 0.7160023}
+      - {x: -0.6412012, y: 0.39000428}
+      - {x: -0.44800586, y: -0.10760185}
+      - {x: -0.42440128, y: -0.5984047}
+      - {x: -0.07559776, y: -0.57320577}
+      - {x: 0.12280598, y: -0.3908019}
+      - {x: 0.30680466, y: 0.1}
+      - {x: 0.3404026, y: 0.36560297}
+      - {x: 0.2, y: 0.8}
   m_UseDelaunayMesh: 0
---- !u!114 &255285938522721525
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3568933773074924191}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6b9613dda30e2440a9ed1203b1226e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  seedSpeed: 4

@@ -10,7 +10,6 @@ public class MushBehavior : MonoBehaviour
     Collision coll;
     [Header("基本参数")]
     public float normalSpeed = 100f;
-    public float chaseSpeed = 200f;
     public float currentSpeed;
     public Vector3 faceDir;
 

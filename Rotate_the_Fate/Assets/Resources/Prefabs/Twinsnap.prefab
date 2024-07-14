@@ -77,17 +77,19 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 1.1140924, y: -0.034251213}
-      - {x: 2.0093517, y: -0.027553558}
-      - {x: 2.1452203, y: 1.0541925}
-      - {x: 2.148851, y: 1.7891493}
+      - {x: 2.1622038, y: -0.045536995}
+      - {x: 2.660499, y: 0.6264353}
+      - {x: 2.720663, y: 0.8653755}
+      - {x: 2.49052, y: 1.6093235}
       - {x: 1.8210907, y: 2.0135565}
       - {x: 0.41825628, y: 2.0191984}
       - {x: -1.7966061, y: 1.9867592}
       - {x: -2.0978866, y: 0.92764854}
       - {x: -1.9990993, y: 0.40516853}
       - {x: -1.6000738, y: 0.08787039}
-      - {x: -0.7656645, y: 0.36882985}
-      - {x: -0.22369611, y: 0.39485192}
+      - {x: -1.0983424, y: -0.03577888}
+      - {x: -0.6655594, y: -0.184721}
+      - {x: -0.22369611, y: 0.14309525}
       - {x: 0.013586521, y: -0.051548064}
   m_UseDelaunayMesh: 0
 --- !u!1 &4322954718653043467
@@ -206,7 +208,7 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -325,7 +327,7 @@ MonoBehaviour:
   twinAttack: {fileID: 0}
   anim: {fileID: 0}
   currentSpeed: 0
-  normalSpeed: 200
+  normalSpeed: 400
   chaseSpeed: 0
   faceDire: {x: 0, y: 0, z: 0}
   slowFactor: 0
@@ -347,7 +349,7 @@ MonoBehaviour:
   lastSkill: 
   isShotting: 0
   isSprinting: 0
-  sprintSpeed: 500
+  sprintSpeed: 2000
 --- !u!114 &7076214651556882689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -393,7 +395,7 @@ MonoBehaviour:
   onStab: 0
   detectCupid: 0
   collisionRadius: 0.6
-  bottomOffset: {x: -0.02, y: -0.01}
+  bottomOffset: {x: -0.02, y: 0.35}
   rightOffset: {x: 2.93, y: 0.29}
   leftOffset: {x: -2.35, y: 0.36}
 --- !u!114 &5225451957136510638
@@ -417,11 +419,12 @@ MonoBehaviour:
   OnTakeLighteningChainDamage:
     m_PersistentCalls:
       m_Calls: []
+  mFrozenTimeCount: 0
+  isSlowDown: 0
   isDead: 0
   isHitting: 0
   health: 10
   flameDamage: 5
   frozenDamage: 2
   lightningDamage: 3
-  FlameForce: 5
-  frozenForce: 5
+  stabDamage: 1

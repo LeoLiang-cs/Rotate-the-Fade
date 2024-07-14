@@ -10,13 +10,14 @@ public class TwinHealth : MonoBehaviour
     private GameObject mIceBlockSample = null;
     private Animator anim;
     private Timer slow_down_timer;
+    private TwinAttackDetect attackDetect;
     private Rigidbody2D rb;
     public UnityEvent<Vector2> OnTakeFlameDamage;
     public UnityEvent<Vector2> OnTakeFrozenDamage;
     public UnityEvent<Vector2> OnTakeLighteningChainDamage;
     private float mFrozenTime = 5.0f;
-    private float mFrozenTimeCount = 0.0f;
-    private bool isSlowDown = false;
+    public float mFrozenTimeCount = 0.0f;
+    public bool isSlowDown = false;
 
     [Space]
     [Header("Status")]
@@ -26,8 +27,8 @@ public class TwinHealth : MonoBehaviour
     public int flameDamage = 5;
     public int frozenDamage = 2;
     public int lightningDamage = 3;
-    public int FlameForce = 5;
-    public int frozenForce = 5;
+    public int stabDamage = 1;
+
 
     // Start is called before the first frame update
     void Start()
@@ -36,14 +37,16 @@ public class TwinHealth : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         mIceBlockSample = Resources.Load<GameObject>("Prefabs/MushFrozen") as GameObject;
         anim = GetComponent<Animator>();
+        attackDetect = GetComponent<TwinAttackDetect>();
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        // MeltFrozen();
+        MeltFrozen();
         Die();
+        StabHit();
     }
 
     public void TakeFrozenDamage(Vector2 attP)
@@ -54,15 +57,17 @@ public class TwinHealth : MonoBehaviour
         isHitting = true;
         OnTakeFrozenDamage?.Invoke(attP);
 
-        Vector2 dir = new Vector2(transform.position.x - attP.x, transform.position.y - attP.y).normalized;
-        rb.AddForce(dir * frozenForce, ForceMode2D.Impulse);
+        // Vector2 dir = new Vector2(transform.position.x - attP.x, transform.position.y - attP.y).normalized;
+        // rb.AddForce(dir * frozenForce, ForceMode2D.Impulse);
         spriteRenderer.color = new Color(0.078f, 0.761f, 1.0f); // RGB values for #14C2FF
         anim.SetTrigger("Hit");
-        GetComponent<TwinBehavior>().slowFactor = 0.5f;
+        if (!isSlowDown)
+        {
+            GetComponent<TwinBehavior>().slowFactor = 0.5f;
+        }
+
         mFrozenTimeCount = mFrozenTime;
         isSlowDown = true;
-
-
     }
 
     public void TakeFlameDamage(Vector2 attP)
@@ -71,15 +76,6 @@ public class TwinHealth : MonoBehaviour
             return;
         health -= flameDamage;
         OnTakeFlameDamage?.Invoke(attP);
-
-        if (attP.x < transform.position.x)
-        {
-            GetComponent<Rigidbody2D>().AddForce(new Vector2(1, 0.1f) * FlameForce, ForceMode2D.Impulse);
-        }
-        else
-        {
-            GetComponent<Rigidbody2D>().AddForce(new Vector2(-1, 0.1f) * FlameForce, ForceMode2D.Impulse);
-        }
         Debug.Log("Flame");
         spriteRenderer.color = Color.red;
         anim.SetTrigger("Hit");
@@ -98,7 +94,7 @@ public class TwinHealth : MonoBehaviour
 
     private void MeltFrozen()
     {
-        
+
         if (isSlowDown)
         {
             if (mFrozenTimeCount <= 0)
@@ -128,5 +124,17 @@ public class TwinHealth : MonoBehaviour
     public void isHittingFalse()
     {
         isHitting = false;
+    }
+
+    
+    void StabHit()
+    {
+        if( attackDetect.onStab && !isHitting)
+        {
+            anim.SetTrigger("Hit");
+            health -= stabDamage;
+            isHitting = true;
+        }
+       
     }
 }

@@ -14,7 +14,7 @@ public class SeedBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += -transform.right * (seedSpeed * Time.smoothDeltaTime);
+        transform.position += transform.up * (seedSpeed * Time.smoothDeltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

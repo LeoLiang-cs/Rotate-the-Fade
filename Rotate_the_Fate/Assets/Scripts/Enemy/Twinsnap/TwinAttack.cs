@@ -71,6 +71,7 @@ public class TwinAttack : MonoBehaviour
 
     }
 
+
     void Sprint()
     {
         skillCounter -= Time.deltaTime;
@@ -88,12 +89,12 @@ public class TwinAttack : MonoBehaviour
     {
         GameObject seed = GameObject.Instantiate(seedSample) as GameObject;
         seed.transform.position = transform.position + GetComponent<TwinBehavior>().faceDire * 2 + Vector3.up;
-        seed.transform.localScale = transform.localScale;
+        seed.transform.up = GetComponent<TwinBehavior>().faceDire;
     }
 
     public void EndSprint()
     {
-        GetComponent<TwinBehavior>().currentSpeed = 200f;
+        GetComponent<TwinBehavior>().currentSpeed = GetComponent<TwinBehavior>().normalSpeed;
         skillCounter = skillCoolDown;
         isSprinting = false;
     }
