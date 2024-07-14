@@ -972,7 +972,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 50
-  deathUIPanel: {fileID: 1756575789}
+  cupidBehavior: {fileID: 0}
 --- !u!1 &430952251
 GameObject:
   m_ObjectHideFlags: 0

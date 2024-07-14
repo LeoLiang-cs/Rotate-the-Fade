@@ -6,21 +6,22 @@ public class BatChaseState : BatBaseState
 {
     public override void OnEnter(BatManger tmpbat)
     {
-        Debug.Log("½øÈë×·");
+        Debug.Log("ï¿½ï¿½ï¿½ï¿½×·");
         currbat = tmpbat;
         currbat.currspeed=currbat.chasespeed;
-        currbat.currfaceDir=currbat.CuipdPlay.transform.position;
+        //currbat.currfaceDir=currbat.CuipdPlay.transform.localPosition;
         currbat.chasetimeCon = currbat.chasewaitTime;
         //GetComponent<Animator>().SetBool("Fly", true);
         currbat.GetComponent<Animator>().SetBool("Fly", true);
     }
     public override void Logicupdate()
     {
-        currbat.TimeConToner();
-        if(currbat.chasetimeCon<=0)
-        {
-            currbat.Swithstate(BatStateEnum.back);
-        }
+        currbat.currfaceDir = currbat.CuipdPlay.transform.position;
+        //currbat.TimeConToner();
+        //if(currbat.chasetimeCon<=0)
+        //{
+        //    currbat.Swithstate(BatStateEnum.back);
+        //}
         if (currbat.findAttack())
         {
             currbat.Swithstate(BatStateEnum.attack);
@@ -36,6 +37,6 @@ public class BatChaseState : BatBaseState
 
     public override void OnExit()
     {
-        Debug.Log("Àë¿ª×·");
+        Debug.Log("ï¿½ë¿ª×·");
     }
 }

@@ -928,6 +928,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isHitting: 0
   deathUIPanel: {fileID: 0}
+  OnTakeDame:
+    m_PersistentCalls:
+      m_Calls: []
   maxHealth: 10
   currentHealth: 0
   MushroomDamage: 3
@@ -1018,7 +1021,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 100
-  deathUIPanel: {fileID: 0}
+  cupidBehavior: {fileID: 0}
 --- !u!1 &877765444
 GameObject:
   m_ObjectHideFlags: 0

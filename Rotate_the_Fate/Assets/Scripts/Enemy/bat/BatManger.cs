@@ -6,7 +6,7 @@ using UnityEngine.Rendering;
 public class BatManger : MonoBehaviour
 {
     Animator anim;
-    [Header("»ù±¾²ÎÊı")]
+    [Header("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
     public float currspeed;
     public float chasespeed;
     public float attackspeed;
@@ -20,21 +20,22 @@ public class BatManger : MonoBehaviour
     public BatBaseState backstate;
     public BatBaseState staicstate;
 
-    [Header("Ç°½ø·½Ïò")]
+    [Header("Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
     public Vector2 currfaceDir;
     public GameObject CuipdPlay;
     public Vector2 priLocation;
 
-    [Header("¼ì²â")]
+    [Header("ï¿½ï¿½ï¿½")]
     public float radis;
     public float chasewaitTime;
     public float chasetimeCon;
     public float attackradis;
 
-    [Header("¹¥»÷")]
+    [Header("ï¿½ï¿½ï¿½ï¿½")]
     public Vector2 lastPostaton;
     public   bool isattack;
     public float AttDistant;
+    //public BatpythCheck pytCheck;
 
 
     private void Awake()
@@ -48,6 +49,8 @@ public class BatManger : MonoBehaviour
         isattack = false;
         chasetimeCon = chasewaitTime;
         anim = GetComponent<Animator>();
+        chasetimeCon = chasewaitTime;
+        //pytCheck=GetComponent<BatpythCheck>();
     }
     private void OnEnable()
     {
@@ -58,6 +61,7 @@ public class BatManger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //pytCheck.check();
         currstate.Logicupdate();
     }
     private void FixedUpdate()
@@ -74,20 +78,30 @@ public class BatManger : MonoBehaviour
 
     public bool BackToPor()
     {
-        return (Vector2)transform.position == priLocation;
+        return (Vector2)transform.localPosition == priLocation;
     }
 
     public void Move()
     {
-        transform.position = Vector2.MoveTowards(transform.position, currfaceDir, currspeed * Time.deltaTime);
+        transform.localPosition = Vector2.MoveTowards(transform.localPosition, currfaceDir, currspeed * Time.deltaTime);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        // æ£€æŸ¥å…¶ä»–ç‰©ä½“æ˜¯å¦åœ¨ 'Player' å›¾å±‚
+        if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            Debug.Log("æ£€æµ‹åˆ°å›¾å±‚");
+            Swithstate(BatStateEnum.back);
+        }
     }
 
     public bool findplayer()
     {
-        Debug.Log("µ÷ÓÃfindplayer");
+        Debug.Log("ï¿½ï¿½ï¿½ï¿½findplayer");
         if(CuipdPlay != null)
         {
-            float distance=(transform.position - CuipdPlay.transform.position).sqrMagnitude;
+            float distance=(transform.localPosition - CuipdPlay.transform.position).sqrMagnitude;
             if(distance < radis)
             {
                 
@@ -107,16 +121,16 @@ public class BatManger : MonoBehaviour
     {
         if(CuipdPlay != null)
         {
-            float distance = (transform.position - CuipdPlay.transform.position).sqrMagnitude;
+            float distance = (transform.localPosition - CuipdPlay.transform.position).sqrMagnitude;
             if(distance<attackradis+AttDistant)
             {
                 if (!isattack)
                 {
-                    lastPostaton = transform.position;
-                    Debug.Log("ÕÒµ½µĞÈË£¬¿ªÊ¼¹¥»÷" + lastPostaton);
+                    lastPostaton = transform.localPosition;
+                    Debug.Log("ï¿½Òµï¿½ï¿½ï¿½ï¿½Ë£ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½" + lastPostaton);
                     isattack = true;
                     anim.SetBool("Fly", true);
-                    Debug.Log("¹¥»÷×´Ì¬1" + isattack);
+                    Debug.Log("ï¿½ï¿½ï¿½ï¿½×´Ì¬1" + isattack);
                 }
             }
             if (distance < attackradis)
@@ -184,8 +198,8 @@ public class BatManger : MonoBehaviour
     
     public void TurnBack()
     {
-        Debug.Log("½øÈë¹¥»÷Î»ÖÃ");
-        transform.position = lastPostaton;
+        Debug.Log("ï¿½ï¿½ï¿½ë¹¥ï¿½ï¿½Î»ï¿½ï¿½");
+        transform.localPosition = lastPostaton;
         Invoke("CoolDown", 1f);
 
     }
