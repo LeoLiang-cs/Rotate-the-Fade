@@ -21,8 +21,7 @@ public class CameraFollow : MonoBehaviour
     {
 
 
-        if (transform.position.x <= 19.8f)
-        {
+        
 
             transform.position = new Vector3(target.position.x, target.position.y + 3, transform.position.z);
 
@@ -36,7 +35,7 @@ public class CameraFollow : MonoBehaviour
             // Background5.position += new Vector3(amountToMove.x * 0.2f, amountToMove.y * 0.2f, 0f);
 
             lastPos = transform.position;
-        }
+        
 
 
 

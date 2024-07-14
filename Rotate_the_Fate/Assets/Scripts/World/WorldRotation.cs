@@ -10,8 +10,6 @@ public class WorldRotation : MonoBehaviour
     public float rotationSpeed = 40f;
     private Quaternion targetRotation;
 
-    public GameObject deathUIPanel;
-
     //New CenterRotation
     public Transform cupidBehavior; // 目标对象
     private Vector3 rotationCenter;
@@ -33,13 +31,13 @@ public class WorldRotation : MonoBehaviour
 
     // void Rotation() 
     // {
-    //      if (Input.GetKeyDown(KeyCode.N) && !isRotating)
+    //      if (Input.GetKeyDown(KeyCode.Q) && !isRotating)
     //     {
     //         isRotating = true;
     //         targetRotation = Quaternion.Euler(0, 0, 90) * transform.rotation;
     //     }
 
-    //     if (Input.GetKeyDown(KeyCode.M) && !isRotating)
+    //     if (Input.GetKeyDown(KeyCode.E) && !isRotating)
     //     {
     //         isRotating = true;
     //         targetRotation = Quaternion.Euler(0, 0, -90) * transform.rotation;
@@ -58,45 +56,7 @@ public class WorldRotation : MonoBehaviour
     //     }
     // }
 
-    // void Rotation()
-    // {
-    //     if (Input.GetKeyDown(KeyCode.Q) && !isRotating)
-    //     {
-    //         isRotating = true;
-    //         rotationCenter = cupidBehavior.transform.position;
-    //         currentAngle = 0f;
-    //         targetAngle = 90f; // 目标旋转角度为90度
-    //         isClockwise = true;
-    //     }
 
-    //     if (Input.GetKeyDown(KeyCode.E) && !isRotating)
-    //     {
-    //         isRotating = true;
-    //         rotationCenter = cupidBehavior.transform.position;
-    //         currentAngle = 0f;
-    //         targetAngle = -90f; // 目标旋转角度为-90度（逆时针）
-    //         isClockwise = false;
-    //     }
-
-    //     if (isRotating)
-    //     {
-    //         // 每帧旋转一定角度
-    //         float angleToRotate = rotationSpeed * Time.deltaTime;
-    //         currentAngle += Mathf.Abs(angleToRotate);
-
-    //         if (currentAngle >= Mathf.Abs(targetAngle))
-    //         {
-    //             angleToRotate = targetAngle - (currentAngle - Mathf.Abs(angleToRotate));
-    //             isRotating = false; // 达到目标角度后停止旋转
-    //         }
-
-    //         // 以rotationCenter为中心旋转
-    //         if (isClockwise)
-    //             transform.RotateAround(rotationCenter, Vector3.forward, angleToRotate);
-    //         else
-    //             transform.RotateAround(rotationCenter, -Vector3.forward, angleToRotate);
-    //     }
-    // }
 
     void Rotation()
     {
@@ -145,7 +105,6 @@ public class WorldRotation : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            deathUIPanel.SetActive(false);
             string sceneName = SceneManager.GetActiveScene().name;
             // 閲嶆柊鍔犺浇褰撳墠鍦烘櫙
             SceneManager.LoadScene(sceneName);

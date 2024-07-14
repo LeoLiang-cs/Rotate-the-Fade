@@ -18,6 +18,7 @@ public class FrozenVase : MonoBehaviour
 
     public void DestroyVase()
     {
+        Debug.Log("Destroy Vase");
         Destroy(gameObject);
     }
 }
