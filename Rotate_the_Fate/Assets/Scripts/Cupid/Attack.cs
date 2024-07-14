@@ -83,6 +83,7 @@ public class Attack : MonoBehaviour
         {
             chooseMagic++;
             chooseMagic = chooseMagic % currentMagic.Count;
+            AbilityStats.instance.chooseMagic = chooseMagic;
             health_bar.Set_Cost(magicDamge);
         }
        
