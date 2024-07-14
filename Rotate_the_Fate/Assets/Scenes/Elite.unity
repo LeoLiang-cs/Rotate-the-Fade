@@ -22321,7 +22321,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 0.75478756, g: 0.40566027, b: 1, a: 1}
-  m_Intensity: 0.5
+  m_Intensity: 0.9
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: c336c3a000000000c7eed30e2b5b464b751f6fb4
@@ -30340,6 +30340,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5466942574988853651, guid: 92ac54e7930731e4eb234426d2d91525, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7928294229524471880, guid: 92ac54e7930731e4eb234426d2d91525, type: 3}
       propertyPath: m_Name
       value: Cupid
@@ -30373,7 +30377,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 311442829295903821, guid: ca29b26a0f07e854ca843e42250f97ca, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -11.7
+      value: -10.33
       objectReference: {fileID: 0}
     - target: {fileID: 311442829295903821, guid: ca29b26a0f07e854ca843e42250f97ca, type: 3}
       propertyPath: m_LocalPosition.z
@@ -30407,9 +30411,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1497163792377658761, guid: ca29b26a0f07e854ca843e42250f97ca, type: 3}
+      propertyPath: normalSpeed
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 2481804816300333722, guid: ca29b26a0f07e854ca843e42250f97ca, type: 3}
       propertyPath: m_SortingOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3226810444561932208, guid: ca29b26a0f07e854ca843e42250f97ca, type: 3}
+      propertyPath: sprintSpeed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4322954718653043467, guid: ca29b26a0f07e854ca843e42250f97ca, type: 3}
       propertyPath: m_Name
@@ -30417,7 +30429,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4322954718653043467, guid: ca29b26a0f07e854ca843e42250f97ca, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
