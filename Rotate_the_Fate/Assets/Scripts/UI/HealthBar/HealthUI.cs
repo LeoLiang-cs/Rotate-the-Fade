@@ -40,13 +40,13 @@ public class HealthUI : MonoBehaviour
     void Update()
     {
         health = Mathf.Clamp(health, 0f, MAX_HEALTH);
-        if(Input.GetKeyDown(KeyCode.X)){
-            TakeDamage(Random.Range(5,20));
-            Debug.Log("input x");
-        }
-        if(Input.GetKeyDown(KeyCode.C)){
-            GetHealed(Random.Range(5,20));
-        }
+        // if(Input.GetKeyDown(KeyCode.X)){
+        //     TakeDamage(Random.Range(5,20));
+        //     Debug.Log("input x");
+        // }
+        // if(Input.GetKeyDown(KeyCode.C)){
+        //     GetHealed(Random.Range(5,20));
+        // }
         UpdateHealth();
         twinkle_elapse += Time.deltaTime;
         if(twinkle_elapse >= twinkle_period){

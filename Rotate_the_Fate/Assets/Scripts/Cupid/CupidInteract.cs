@@ -45,7 +45,7 @@ public class CupidInteract : MonoBehaviour
     void GetFrozen()
     {
 
-        if (canGet && Input.GetKeyDown(KeyCode.U) && thing.gameObject.tag == "Vase")
+        if (canGet && Input.GetKeyDown(KeyCode.U) && thing.gameObject.tag == "FrozenVase")
 
         {
             Destroy(thing.gameObject);

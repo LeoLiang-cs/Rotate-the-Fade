@@ -25,9 +25,9 @@ public class Attack : MonoBehaviour
     }
     void Start()
     {
-        currentMagic.Add(MagicType.Frozen);
-        currentMagic.Add(MagicType.LightingChain);
-        currentMagic.Add(MagicType.Flame);
+        // currentMagic.Add(MagicType.Frozen);
+        // currentMagic.Add(MagicType.LightingChain);
+        // currentMagic.Add(MagicType.Flame);
         coll = GetComponent<Collision>();
         health_bar.Set_Cost(magicDamge);
         //Add_Magic(MagicType.Time);

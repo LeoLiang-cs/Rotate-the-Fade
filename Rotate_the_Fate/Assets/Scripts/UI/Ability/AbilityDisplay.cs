@@ -26,19 +26,19 @@ public class AbilityDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Y)){
-            Add_Ability("frost");
-            Switch_Ability();
-            ability_icon.color = Color.white;
-        }else if(Input.GetKeyDown(KeyCode.I)){
-            Add_Ability("lightening");
-            // Debug.Log("flame");
-        }else if(Input.GetKeyDown(KeyCode.O)){
-            Add_Ability("flame");
-        }
-        else if(Input.GetKeyDown(KeyCode.P)){
-            Add_Ability("time");
-        }
+        // if(Input.GetKeyDown(KeyCode.Y)){
+        //     Add_Ability("frost");
+        //     Switch_Ability();
+        //     ability_icon.color = Color.white;
+        // }else if(Input.GetKeyDown(KeyCode.I)){
+        //     Add_Ability("lightening");
+        //     // Debug.Log("flame");
+        // }else if(Input.GetKeyDown(KeyCode.O)){
+        //     Add_Ability("flame");
+        // }
+        // else if(Input.GetKeyDown(KeyCode.P)){
+        //     Add_Ability("time");
+        // }
         if(Input.GetKeyDown(KeyCode.H)){
             Switch_Ability();
         }
@@ -48,7 +48,10 @@ public class AbilityDisplay : MonoBehaviour
         if(ability_name == "frost"){
             // Debug.Log("add frost");
             ability_sprites.Add(Resources.Load<Sprite>(FROST_PATH));
+            ability_icon.color = Color.white;
+            index += 1;
             max_abilities += 1;
+            Switch_Ability();
         }else if(ability_name == "flame"){
             ability_sprites.Add(Resources.Load<Sprite>(FLAME_PATH));
             max_abilities += 1;
