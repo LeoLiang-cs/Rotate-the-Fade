@@ -48,7 +48,7 @@ public class TimeManager
         FreezeTimers(timer);
         GameObject enemy = GameObject.Find("MushPlus");
         EnemyManger script = enemy.GetComponent<EnemyManger>();
-        script.Stop();
+        script?.Stop();
         isTimePaused = true;
     }
 
@@ -57,7 +57,7 @@ public class TimeManager
         isTimePaused = false;
         GameObject enemy = GameObject.Find("MushPlus");
         EnemyManger script = enemy.GetComponent<EnemyManger>();
-        script.Backto();
+        script?.Backto();
         foreach (var timerObj in timers)
         {
             timerObj.Resume();
