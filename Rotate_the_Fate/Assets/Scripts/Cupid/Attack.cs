@@ -24,6 +24,7 @@ public class Attack : MonoBehaviour
         cupidHealth = GetComponent<CupidHealth>();
         health_bar = GameObject.Find("StateBar").GetComponent<HealthUI>();
         abilityDisplay = GameObject.Find("Ability").GetComponent<AbilityDisplay>();
+        chooseMagic = AbilityStats.instance.chooseMagic;
     }
     void Start()
     {

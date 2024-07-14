@@ -11,6 +11,7 @@ public class AbilityStats{
     public List<MagicType> gianed_magics = new List<MagicType>();
     public int index = -1;
     public int max_abilities = 0;
+    public int chooseMagic = 0;
 
     // public static void Store_Abilities(List<Sprite> sprites, List<MagicType> magics){
     //     instance.ability_sprites = sprites;
