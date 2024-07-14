@@ -5,11 +5,11 @@ using UnityEngine;
 public class CupidInteract : MonoBehaviour
 {
     Collider2D thing;
-    private bool canGet = false;
+    public bool canGet = false;
     // Start is called before the first frame update
     void Start()
     {
-      
+
     }
 
     // Update is called once per frame
@@ -20,17 +20,26 @@ public class CupidInteract : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        canGet = true;
-        thing = other;
+        if (other.CompareTag("FrozenVase"))
+        {
+            canGet = true;
+            thing = other;
+        }
+
     }
     void OnTriggerExit2D(Collider2D other)
     {
-        canGet = false;
-        thing = null;
+        if(other.CompareTag("FrozenVase"))
+        {
+            canGet = false;
+            thing = null;
+        }
+
     }
 
     void GetVase()
     {
+
         if (canGet && Input.GetKeyDown(KeyCode.U))
         {
             Destroy(thing.gameObject);

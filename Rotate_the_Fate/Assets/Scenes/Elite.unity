@@ -526,7 +526,6 @@ GameObject:
   m_Component:
   - component: {fileID: 160023171}
   - component: {fileID: 160023170}
-  - component: {fileID: 160023172}
   m_Layer: 0
   m_Name: Spike
   m_TagString: Untagged
@@ -567,18 +566,6 @@ Transform:
   - {fileID: 1616314755}
   m_Father: {fileID: 380489099}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &160023172
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 160023169}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12c7940f52cfbdd49b7e502c962b2e31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &232734731
 GameObject:
   m_ObjectHideFlags: 0
@@ -2749,7 +2736,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 40
-  deathUIPanel: {fileID: 0}
+  cupidBehavior: {fileID: 7133901014912308104}
 --- !u!1 &415319375
 GameObject:
   m_ObjectHideFlags: 0
@@ -3451,6 +3438,7 @@ GameObject:
   - component: {fileID: 764468825}
   - component: {fileID: 764468824}
   - component: {fileID: 764468827}
+  - component: {fileID: 764468828}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3551,6 +3539,50 @@ MonoBehaviour:
   Background3: {fileID: 0}
   Background4: {fileID: 0}
   Background5: {fileID: 0}
+--- !u!114 &764468828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 764468823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+  m_TaaSettings:
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
 --- !u!1 &797178124
 GameObject:
   m_ObjectHideFlags: 0
@@ -21460,7 +21492,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1305508487}
   - component: {fileID: 1305508486}
-  - component: {fileID: 1305508488}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -21504,18 +21535,6 @@ Transform:
   - {fileID: 1448906286}
   m_Father: {fileID: 380489099}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1305508488
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1305508485}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12c7940f52cfbdd49b7e502c962b2e31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1340283157
 GameObject:
   m_ObjectHideFlags: 0
@@ -29371,11 +29390,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4293260899457838334, guid: 92ac54e7930731e4eb234426d2d91525, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.64
+      value: 3.2
       objectReference: {fileID: 0}
     - target: {fileID: 4293260899457838334, guid: 92ac54e7930731e4eb234426d2d91525, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -9.6
+      value: -4.7
       objectReference: {fileID: 0}
     - target: {fileID: 4293260899457838334, guid: 92ac54e7930731e4eb234426d2d91525, type: 3}
       propertyPath: m_LocalPosition.z
@@ -29480,6 +29499,10 @@ PrefabInstance:
     - target: {fileID: 4322954718653043467, guid: ca29b26a0f07e854ca843e42250f97ca, type: 3}
       propertyPath: m_Name
       value: Twinsnap
+      objectReference: {fileID: 0}
+    - target: {fileID: 4322954718653043467, guid: ca29b26a0f07e854ca843e42250f97ca, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
