@@ -15,11 +15,20 @@ public class HealthUI : MonoBehaviour
     public Image front_health_bar;
     public Image middle_health_bar;
     public Image back_health_bar;
-    private float twinkle_period = 5f;
+    private float twinkle_period = 2f;
+    private float twinkle_elapse = 0f;
+    private bool twinkle_mode = true;
 
     private const float color_ratio = 0.6f;
     private float last_health;
-
+    private List<Sprite> bar_colors;
+    private void Awake() {
+        bar_colors = new List<Sprite>();
+        bar_colors.Add(Resources.Load<Sprite>(ResourcesPath.HEALTH_BAR_FRAME_PATH));
+        bar_colors.Add(Resources.Load<Sprite>(ResourcesPath.BACKGROUND_HEALTH_BAR_PATH));
+        bar_colors.Add(Resources.Load<Sprite>(ResourcesPath.BLANK_HEALTH_BAR_PATH));
+        bar_colors.Add(Resources.Load<Sprite>(ResourcesPath.SLIME_HEALTH_BAR_PATH));
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +47,18 @@ public class HealthUI : MonoBehaviour
             GetHealed(Random.Range(5,20));
         }
         UpdateHealth();
+        twinkle_elapse += Time.deltaTime;
+        if(twinkle_elapse >= twinkle_period){
+            twinkle_mode = !twinkle_mode;
+            twinkle_elapse = 0f;
+        }
+        if(twinkle_mode){
+            middle_health_bar.sprite = bar_colors[(int)HealthBarEnum.HealthSlime];
+            middle_health_bar.color = Color.white;
+        }else{
+            middle_health_bar.color = new Color(0.65f, 0.65f, 0.65f, 0.84f); // gray
+            middle_health_bar.sprite = bar_colors[(int)HealthBarEnum.HealthBlank];
+        }
     }
 
     public void UpdateHealth(){
