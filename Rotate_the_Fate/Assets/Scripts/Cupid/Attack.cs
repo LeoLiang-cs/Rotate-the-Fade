@@ -24,6 +24,7 @@ public class Attack : MonoBehaviour
         cupidHealth = GetComponent<CupidHealth>();
         health_bar = GameObject.Find("StateBar").GetComponent<HealthUI>();
         abilityDisplay = GameObject.Find("Ability").GetComponent<AbilityDisplay>();
+        chooseMagic = AbilityStats.instance.chooseMagic;
     }
     void Start()
     {
@@ -45,7 +46,7 @@ public class Attack : MonoBehaviour
     }
 
     public void MagicAttack() {
-        if(Input.GetKeyDown(KeyCode.J) && !isAttacking && coll.onGround && currentMagic.Count > 0)
+        if(Input.GetKeyDown(KeyCode.J) && !isAttacking && coll.onGround && currentMagic.Count > 0 && cupidHealth.currentHealth > magicDamge)
         {
             isAttacking = true;
             rb.velocity = new Vector2(0, 0);
@@ -82,6 +83,7 @@ public class Attack : MonoBehaviour
         {
             chooseMagic++;
             chooseMagic = chooseMagic % currentMagic.Count;
+            AbilityStats.instance.chooseMagic = chooseMagic;
             health_bar.Set_Cost(magicDamge);
         }
        
