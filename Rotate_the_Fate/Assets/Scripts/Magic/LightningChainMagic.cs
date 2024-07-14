@@ -29,6 +29,9 @@ public class LightningChainMagic : MonoBehaviour
                 enemy.GetComponent<MushroomHealth>().TakeLighteningChainDamage();
             }else if(enemy.gameObject.CompareTag("Bush")) {
                 enemy.GetComponent<BushHealth>().TakeLighteningChainDamage();
+            }else if (enemy.gameObject.CompareTag("Bat"))
+            {
+                enemy.GetComponent<MushroomHealth>().TakeLighteningChainDamage();
             }
         }
         Attack.isAttacking = false;
