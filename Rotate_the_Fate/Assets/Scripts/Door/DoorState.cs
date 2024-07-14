@@ -54,7 +54,7 @@ public class StateSwitcher : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Emeny OnTriggerEnter");
+        //Debug.Log("Emeny OnTriggerEnter");
 
         TriggerCheck(collision.gameObject);
         
@@ -62,7 +62,7 @@ public class StateSwitcher : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log("Emeny OnTriggerEnter");
+        //Debug.Log("Emeny OnTriggerEnter");
 
         TriggerCheck(collision.gameObject);
 

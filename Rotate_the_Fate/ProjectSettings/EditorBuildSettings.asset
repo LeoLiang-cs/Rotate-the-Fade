@@ -17,10 +17,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level_1.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/RoughGame.unity
     guid: 3507949feaafd3e4abe1d909ceaee361
   - enabled: 0
     path: Assets/Scenes/ttttext-fin.unity
     guid: cc4808e98bb6edf4dae5b5573ced6129
+  - enabled: 1
+    path: Assets/Scenes/Level_2.unity
+    guid: f2bdc06bb3d4bf14682c571ab19460fd
+  - enabled: 1
+    path: Assets/Scenes/Level_3.unity
+    guid: 45301c4f1e694a84d8f05ab72f3e7a47
+  - enabled: 1
+    path: Assets/Scenes/Elite.unity
+    guid: c443539e87440ae41857b7b437a78439
   m_configObjects: {}
