@@ -56,7 +56,7 @@ public class CaveState : MonoBehaviour
 
     private void TriggerCheck(GameObject g)
     {
-        if (g.tag == "Hero" || g.tag == "Player")
+        if (g.tag == "Player")
         {
             SwitchState();
 

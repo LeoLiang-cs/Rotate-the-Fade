@@ -67,10 +67,10 @@ public class Attack : MonoBehaviour
         TimeManager.Instance.AddTimer(timers);
     }
     public void SwitchMagic() {
-        if(Input.GetKeyDown(KeyCode.H))
+        if(Input.GetKeyDown(KeyCode.H) && currentMagic.Count > 0)
         {
             chooseMagic++;
-            chooseMagic = chooseMagic%currentMagic.Count;
+            chooseMagic = chooseMagic % currentMagic.Count;
         }
        
     }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,14 +6,22 @@ using UnityEngine.SceneManagement;
 
 public class WorldRotation : MonoBehaviour
 {
-    public static bool isRotating = false;    
-    public float rotationSpeed = 40f; 
-    private Quaternion targetRotation; // 鐩爣鏃嬭浆瑙掑害
+    public static bool isRotating = false;
+    public float rotationSpeed = 40f;
+    private Quaternion targetRotation;
+
     public GameObject deathUIPanel;
+
+    //New CenterRotation
+    public Transform cupidBehavior; // 目标对象
+    private Vector3 rotationCenter;
+    private float targetAngle;
+    private float currentAngle;
+    private bool isClockwise;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -22,32 +31,115 @@ public class WorldRotation : MonoBehaviour
         SceneReset();
     }
 
-    void Rotation() 
+    // void Rotation() 
+    // {
+    //      if (Input.GetKeyDown(KeyCode.N) && !isRotating)
+    //     {
+    //         isRotating = true;
+    //         targetRotation = Quaternion.Euler(0, 0, 90) * transform.rotation;
+    //     }
+
+    //     if (Input.GetKeyDown(KeyCode.M) && !isRotating)
+    //     {
+    //         isRotating = true;
+    //         targetRotation = Quaternion.Euler(0, 0, -90) * transform.rotation;
+    //     }
+
+    //     if (isRotating)
+    //     {
+    //         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+
+    //         if (Quaternion.Angle(transform.rotation, targetRotation) < 0.1f)
+    //         {
+    //             transform.rotation = targetRotation;
+    //             isRotating = false;
+    //         }
+
+    //     }
+    // }
+
+    // void Rotation()
+    // {
+    //     if (Input.GetKeyDown(KeyCode.Q) && !isRotating)
+    //     {
+    //         isRotating = true;
+    //         rotationCenter = cupidBehavior.transform.position;
+    //         currentAngle = 0f;
+    //         targetAngle = 90f; // 目标旋转角度为90度
+    //         isClockwise = true;
+    //     }
+
+    //     if (Input.GetKeyDown(KeyCode.E) && !isRotating)
+    //     {
+    //         isRotating = true;
+    //         rotationCenter = cupidBehavior.transform.position;
+    //         currentAngle = 0f;
+    //         targetAngle = -90f; // 目标旋转角度为-90度（逆时针）
+    //         isClockwise = false;
+    //     }
+
+    //     if (isRotating)
+    //     {
+    //         // 每帧旋转一定角度
+    //         float angleToRotate = rotationSpeed * Time.deltaTime;
+    //         currentAngle += Mathf.Abs(angleToRotate);
+
+    //         if (currentAngle >= Mathf.Abs(targetAngle))
+    //         {
+    //             angleToRotate = targetAngle - (currentAngle - Mathf.Abs(angleToRotate));
+    //             isRotating = false; // 达到目标角度后停止旋转
+    //         }
+
+    //         // 以rotationCenter为中心旋转
+    //         if (isClockwise)
+    //             transform.RotateAround(rotationCenter, Vector3.forward, angleToRotate);
+    //         else
+    //             transform.RotateAround(rotationCenter, -Vector3.forward, angleToRotate);
+    //     }
+    // }
+
+    void Rotation()
     {
-         if (Input.GetKeyDown(KeyCode.N) && !isRotating)
+        if (Input.GetKeyDown(KeyCode.Q) && !isRotating)
         {
             isRotating = true;
-            targetRotation = Quaternion.Euler(0, 0, 90) * transform.rotation;
+            rotationCenter = cupidBehavior.transform.position;
+            currentAngle = 0f;
+            targetAngle = 90f; // 目标旋转角度为90度
+            isClockwise = true;
         }
-            
-        if (Input.GetKeyDown(KeyCode.M) && !isRotating)
+
+        if (Input.GetKeyDown(KeyCode.E) && !isRotating)
         {
             isRotating = true;
-            targetRotation = Quaternion.Euler(0, 0, -90) * transform.rotation;
+            rotationCenter = cupidBehavior.transform.position;
+            currentAngle = 0f;
+            targetAngle = -90f; // 目标旋转角度为-90度（逆时针）
+            isClockwise = false;
         }
 
         if (isRotating)
         {
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            // 每帧旋转一定角度
+            float angleToRotate = rotationSpeed * Time.deltaTime;
+            if (!isClockwise)
+                angleToRotate = -angleToRotate;
 
-            if (Quaternion.Angle(transform.rotation, targetRotation) < 0.1f)
+            currentAngle += angleToRotate;
+
+            if (Mathf.Abs(currentAngle) >= Mathf.Abs(targetAngle))
             {
-                transform.rotation = targetRotation;
-                isRotating = false;
+                angleToRotate = targetAngle - (currentAngle - angleToRotate);
+                isRotating = false; // 达到目标角度后停止旋转
             }
-            
+
+            // 以rotationCenter为中心旋转
+            transform.RotateAround(rotationCenter, Vector3.forward, angleToRotate);
+
         }
     }
+
+
 
     void SceneReset()
     {
