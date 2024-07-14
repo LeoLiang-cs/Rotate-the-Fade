@@ -35,6 +35,7 @@ public class BatManger : MonoBehaviour
     public Vector2 lastPostaton;
     public   bool isattack;
     public float AttDistant;
+    //public BatpythCheck pytCheck;
 
 
     private void Awake()
@@ -49,6 +50,7 @@ public class BatManger : MonoBehaviour
         chasetimeCon = chasewaitTime;
         anim = GetComponent<Animator>();
         chasetimeCon = chasewaitTime;
+        //pytCheck=GetComponent<BatpythCheck>();
     }
     private void OnEnable()
     {
@@ -59,6 +61,7 @@ public class BatManger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //pytCheck.check();
         currstate.Logicupdate();
     }
     private void FixedUpdate()
@@ -75,12 +78,22 @@ public class BatManger : MonoBehaviour
 
     public bool BackToPor()
     {
-        return (Vector2)transform.position == priLocation;
+        return (Vector2)transform.localPosition == priLocation;
     }
 
     public void Move()
     {
-        transform.position = Vector2.MoveTowards(transform.position, currfaceDir, currspeed * Time.deltaTime);
+        transform.localPosition = Vector2.MoveTowards(transform.localPosition, currfaceDir, currspeed * Time.deltaTime);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        // 检查其他物体是否在 'Player' 图层
+        if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            Debug.Log("检测到图层");
+            Swithstate(BatStateEnum.back);
+        }
     }
 
     public bool findplayer()
@@ -88,7 +101,7 @@ public class BatManger : MonoBehaviour
         Debug.Log("����findplayer");
         if(CuipdPlay != null)
         {
-            float distance=(transform.position - CuipdPlay.transform.position).sqrMagnitude;
+            float distance=(transform.localPosition - CuipdPlay.transform.position).sqrMagnitude;
             if(distance < radis)
             {
                 
@@ -108,12 +121,12 @@ public class BatManger : MonoBehaviour
     {
         if(CuipdPlay != null)
         {
-            float distance = (transform.position - CuipdPlay.transform.position).sqrMagnitude;
+            float distance = (transform.localPosition - CuipdPlay.transform.position).sqrMagnitude;
             if(distance<attackradis+AttDistant)
             {
                 if (!isattack)
                 {
-                    lastPostaton = transform.position;
+                    lastPostaton = transform.localPosition;
                     Debug.Log("�ҵ����ˣ���ʼ����" + lastPostaton);
                     isattack = true;
                     anim.SetBool("Fly", true);
@@ -186,7 +199,7 @@ public class BatManger : MonoBehaviour
     public void TurnBack()
     {
         Debug.Log("���빥��λ��");
-        transform.position = lastPostaton;
+        transform.localPosition = lastPostaton;
         Invoke("CoolDown", 1f);
 
     }

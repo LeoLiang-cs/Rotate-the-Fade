@@ -2929,7 +2929,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -6.986293, y: -11.827806}
@@ -30792,6 +30792,10 @@ PrefabInstance:
     - target: {fileID: 3226810444561932208, guid: ca29b26a0f07e854ca843e42250f97ca, type: 3}
       propertyPath: sprintSpeed
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3226810444561932208, guid: ca29b26a0f07e854ca843e42250f97ca, type: 3}
+      propertyPath: sprintSpeed
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 4322954718653043467, guid: ca29b26a0f07e854ca843e42250f97ca, type: 3}
       propertyPath: m_Name

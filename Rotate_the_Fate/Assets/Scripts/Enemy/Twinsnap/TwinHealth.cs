@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 public class TwinHealth : MonoBehaviour
@@ -51,7 +52,11 @@ public class TwinHealth : MonoBehaviour
     {
         MeltFrozen();
         Die();
-        StabHit();
+    }
+
+    void FixedUpdate()
+    {
+        //StabCoolDown(); 
     }
 
     public void TakeFrozenDamage(Vector2 attP)
@@ -134,16 +139,26 @@ public class TwinHealth : MonoBehaviour
         isHitting = false;
     }
 
-    
+
     void StabHit()
     {
-        if( attackDetect.onStab && !isHitting)
+
+        anim.SetTrigger("Hit");
+        health -= stabDamage;
+        health_bar.TakeDamage(stabDamage);
+        isHitting = true;
+
+    }
+
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Stab"))
         {
-            anim.SetTrigger("Hit");
-            health -= stabDamage;
-            health_bar.TakeDamage(stabDamage);
-            isHitting = true;
+
+            StabHit();
+
         }
-       
+
     }
 }

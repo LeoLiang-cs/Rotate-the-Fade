@@ -9,18 +9,19 @@ public class BatChaseState : BatBaseState
         Debug.Log("����׷");
         currbat = tmpbat;
         currbat.currspeed=currbat.chasespeed;
-        currbat.currfaceDir=currbat.CuipdPlay.transform.position;
+        //currbat.currfaceDir=currbat.CuipdPlay.transform.localPosition;
         currbat.chasetimeCon = currbat.chasewaitTime;
         //GetComponent<Animator>().SetBool("Fly", true);
         currbat.GetComponent<Animator>().SetBool("Fly", true);
     }
     public override void Logicupdate()
     {
-        currbat.TimeConToner();
-        if(currbat.chasetimeCon<=0)
-        {
-            currbat.Swithstate(BatStateEnum.back);
-        }
+        currbat.currfaceDir = currbat.CuipdPlay.transform.position;
+        //currbat.TimeConToner();
+        //if(currbat.chasetimeCon<=0)
+        //{
+        //    currbat.Swithstate(BatStateEnum.back);
+        //}
         if (currbat.findAttack())
         {
             currbat.Swithstate(BatStateEnum.attack);

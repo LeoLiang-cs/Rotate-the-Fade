@@ -60,7 +60,7 @@ public class TwinAttack : MonoBehaviour
         skillCounter -= Time.deltaTime;
         if (skillCounter <= 0 && lastSkill == "Sprint" && !isSprinting)
         {
-            Debug.Log("Shot");
+            
             lastSkill = "Shot";
             skillCounter = skillCoolDown;
             anim.SetTrigger("Shot");
@@ -77,7 +77,7 @@ public class TwinAttack : MonoBehaviour
         skillCounter -= Time.deltaTime;
         if (skillCounter <= 0 && lastSkill == "Shot")
         {
-            Debug.Log("Sprint");
+          
             lastSkill = "Sprint";
             anim.SetTrigger("Sprint");
             isSprinting = true;
