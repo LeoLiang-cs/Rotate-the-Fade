@@ -15,7 +15,7 @@ public class HealthUI : MonoBehaviour
     public Image front_health_bar;
     public Image middle_health_bar;
     public Image back_health_bar;
-    private float twinkle_period = 1f;
+    private float twinkle_period = 0.5f;
     private float twinkle_elapse = 0f;
     private bool twinkle_mode = true;
 
