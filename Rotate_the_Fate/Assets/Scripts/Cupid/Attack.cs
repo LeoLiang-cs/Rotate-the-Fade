@@ -12,18 +12,27 @@ public class Attack : MonoBehaviour
     private Collision coll;
 
     private Rigidbody2D rb;
+    private CupidHealth cupidHealth;
+    public int magicDamge = 1;
+    private HealthUI health_bar;
+    private AbilityDisplay abilityDisplay;
     // Start is called before the first frame update
     void Awake()
     {
         mMagicSystem = new MagicSystem();
         rb = GetComponent<Rigidbody2D>();
+        cupidHealth = GetComponent<CupidHealth>();
+        health_bar = GameObject.Find("StateBar").GetComponent<HealthUI>();
+        abilityDisplay = GameObject.Find("Ability").GetComponent<AbilityDisplay>();
     }
     void Start()
     {
-        currentMagic.Add(MagicType.Frozen);
-        currentMagic.Add(MagicType.LightingChain);
-        currentMagic.Add(MagicType.Flame);
+        currentMagic = abilityDisplay.gianed_magics;
+        // currentMagic.Add(MagicType.Frozen);
+        // currentMagic.Add(MagicType.LightingChain);
+        // currentMagic.Add(MagicType.Flame);
         coll = GetComponent<Collision>();
+        
         //Add_Magic(MagicType.Time);
         
     }
@@ -40,6 +49,8 @@ public class Attack : MonoBehaviour
         {
             isAttacking = true;
             rb.velocity = new Vector2(0, 0);
+            cupidHealth.currentHealth -= magicDamge;
+            health_bar.TakeDamage(magicDamge);
             switch(currentMagic[chooseMagic])
             {
                 case MagicType.Frozen:
@@ -71,6 +82,7 @@ public class Attack : MonoBehaviour
         {
             chooseMagic++;
             chooseMagic = chooseMagic % currentMagic.Count;
+            health_bar.Set_Cost(magicDamge);
         }
        
     }

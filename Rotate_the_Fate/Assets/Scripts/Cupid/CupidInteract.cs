@@ -6,6 +6,10 @@ public class CupidInteract : MonoBehaviour
 {
     Collider2D thing;
     public bool canGet = false;
+    private AbilityDisplay abilityDisplay;
+    private void Awake() {
+        abilityDisplay = GameObject.Find("Ability").GetComponent<AbilityDisplay>();
+    }
     private GameObject effect;
 
     private GameObject mushPlusSample;
@@ -52,6 +56,7 @@ public class CupidInteract : MonoBehaviour
             effect.transform.position = thing.transform.position;
             Destroy(thing.gameObject);
             GetComponent<Attack>().currentMagic.Add(MagicType.Frozen);
+            abilityDisplay.Add_Ability("frost");
 
             MushSpawner();
         }

@@ -4,8 +4,8 @@ using UnityEngine.UI;
 
 public class TriggerPopup : MonoBehaviour
 {
-    public GameObject popupObject; // ÐèÒª¸¡ÏÖµÄUIÔªËØ
-    public float fadeDuration = 1f; // ¸¡ÏÖÊ±¼ä
+    public GameObject popupObject; // ï¿½ï¿½Òªï¿½ï¿½ï¿½Öµï¿½UIÔªï¿½ï¿½
+    private float fadeDuration = 0.01f; // ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
 
     private CanvasGroup canvasGroup;
     private bool isFading = false;
@@ -19,8 +19,8 @@ public class TriggerPopup : MonoBehaviour
             {
                 canvasGroup = popupObject.AddComponent<CanvasGroup>();
             }
-            canvasGroup.alpha = 0; // ³õÊ¼×´Ì¬²»¿É¼û
-            popupObject.SetActive(false); // È·±£³õÊ¼×´Ì¬ÏÂUIÔªËØ²»¿É¼û
+            canvasGroup.alpha = 0; // ï¿½ï¿½Ê¼×´Ì¬ï¿½ï¿½ï¿½É¼ï¿½
+            popupObject.SetActive(false); // È·ï¿½ï¿½ï¿½ï¿½Ê¼×´Ì¬ï¿½ï¿½UIÔªï¿½Ø²ï¿½ï¿½É¼ï¿½
         }
     }
 
@@ -35,10 +35,13 @@ public class TriggerPopup : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other)
     {
-        //Debug.Log("OnTriggerExit called with: " + other.name); // µ÷ÊÔÈÕÖ¾
+        //Debug.Log("OnTriggerExit called with: " + other.name); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾
         if (other.CompareTag("Player") && !isFading)
         {
-            StartCoroutine(FadeOut());
+            // StartCoroutine(FadeOut());
+            if(canvasGroup != null){
+                canvasGroup.alpha = 0;
+            }
         }
     }
 
