@@ -10,9 +10,11 @@ public class BatChaseState : BatBaseState
         currbat = tmpbat;
         currbat.currspeed=currbat.chasespeed;
         currbat.currfaceDir=currbat.CuipdPlay.transform.position;
+        currbat.chasetimeCon = currbat.chasewaitTime;
     }
     public override void Logicupdate()
     {
+        currbat.TimeConToner();
         if(currbat.chasetimeCon<=0)
         {
             currbat.Swithstate(BatStateEnum.back);
@@ -32,6 +34,6 @@ public class BatChaseState : BatBaseState
 
     public override void OnExit()
     {
-
+        Debug.Log("�뿪׷");
     }
 }

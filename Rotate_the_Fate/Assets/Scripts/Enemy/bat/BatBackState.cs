@@ -6,6 +6,7 @@ public class BatBackState : BatBaseState
 {
     public override void OnEnter(BatManger tmpbat)
     {
+        Debug.Log("½øÈëback");
         currbat = tmpbat;
         currbat.currspeed = currbat.backspeed;
         currbat.currfaceDir=currbat.priLocation;
@@ -35,6 +36,6 @@ public class BatBackState : BatBaseState
 
     public override void OnExit()
     {
-
+        Debug.Log("Àë¿ªbanck");
     }
 }

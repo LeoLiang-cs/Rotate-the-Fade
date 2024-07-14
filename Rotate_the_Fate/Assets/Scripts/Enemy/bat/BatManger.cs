@@ -45,6 +45,7 @@ public class BatManger : MonoBehaviour
         staicstate = new BatStaicState();
         CuipdPlay = GameObject.Find("Cupid");
         isattack = false;
+        chasetimeCon = chasewaitTime;
     }
     private void OnEnable()
     {
@@ -81,6 +82,7 @@ public class BatManger : MonoBehaviour
 
     public bool findplayer()
     {
+        Debug.Log("µ÷ÓÃfindplayer");
         if(CuipdPlay != null)
         {
             float distance=(transform.position - CuipdPlay.transform.position).sqrMagnitude;
