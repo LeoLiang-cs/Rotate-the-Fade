@@ -8,33 +8,38 @@ public class CupidHealth : MonoBehaviour
     public bool isHitting = false;
     private Animator anim;
     public GameObject deathUIPanel;
-    
+    public UnityEvent OnTakeDame;
+
 
     [Space]
     [Header("Status")]
     public int maxHealth = 10;
-    public int currentHealth;   
-    
+    public int currentHealth;
+
     public int MushroomDamage = 3;
-    public float knockbackForce = 10f; // 击退力的大小
-    public float invulnerableTime = 0.5f;
+    public int SeedDamage = 1;
+    public float knockBackForce = 10f;
+    public bool invulnerable = false;
     public bool isDead = false;
+    public GameObject handStoneSample;
 
     private void Start()
     {
         currentHealth = maxHealth;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        handStoneSample = Resources.Load<GameObject>("Prefabs/HandStone") as GameObject;
     }
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (isHitting)
+        if (invulnerable)
             return;
 
-        if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Enemy") || other.gameObject.layer == LayerMask.NameToLayer("Stab"))
         {
+            Debug.Log("enter");
             currentHealth -= MushroomDamage;
-            if (currentHealth <= 0 )
+            if (currentHealth <= 0)
             {
                 isDead = true;
                 Debug.Log("death");
@@ -42,18 +47,40 @@ public class CupidHealth : MonoBehaviour
                 deathUIPanel.SetActive(true);
             }
             isHitting = true;
-            
-            Vector3 knockbackDirection = transform.position - other.transform.position;
-            knockbackDirection.Normalize();
-            
-            GetComponent<Rigidbody2D>().AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
-            GetComponent<Animator>().SetTrigger("Hit");
-           
+            invulnerable = true;
+            Vector3 knockBackDirection = transform.position - other.transform.position;
+            knockBackDirection.Normalize();
+
+            rb.AddForce(knockBackDirection * knockBackForce, ForceMode2D.Impulse);
+            anim.SetTrigger("Hit");
+
         }
+    }
+
+    public void TakeSeedDamage(Transform other)
+    {
+
+        currentHealth -= SeedDamage;
+        if (currentHealth <= 0)
+        {
+            isDead = true;
+            Debug.Log("death");
+            anim.SetTrigger("Death");
+            deathUIPanel.SetActive(true);
+        }
+        isHitting = true;
+        invulnerable = true;
+        Vector3 knockBackDirection = transform.position - other.position;
+        knockBackDirection.Normalize();
+
+        rb.AddForce(knockBackDirection * knockBackForce, ForceMode2D.Impulse);
+        anim.SetTrigger("Hit");
     }
 
     public void DestroyAfterAnimation()
     {
+        GameObject handStone = GameObject.Instantiate(handStoneSample) as GameObject;
+        handStone.transform.position = transform.position + Vector3.up * 0.5f;
         Destroy(this.gameObject);
     }
 }

@@ -9,6 +9,8 @@ TagManager:
   - Hero
   - Bush
   - Mushroom
+  - Twinsnap
+  - Bat
   layers:
   - Default
   - TransparentFX
@@ -19,7 +21,7 @@ TagManager:
   - Ground
   - Enemy
   - Player
-  - 
+  - Stab
   - 
   - 
   - 

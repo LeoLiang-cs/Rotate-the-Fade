@@ -27,8 +27,8 @@ public class PopupObject : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("OnTriggerEnter called with: " + other.name);
-        if (other.CompareTag("Hero") && !isFading)
+        //Debug.Log("OnTriggerEnter called with: " + other.name);
+        if (other.CompareTag("Player") && !isFading)
         {
             StartCoroutine(FadeIn());
         }
@@ -36,8 +36,8 @@ public class PopupObject : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other)
     {
-        Debug.Log("OnTriggerExit called with: " + other.name); // 调试日志
-        if (other.CompareTag("Hero") && !isFading)
+        //Debug.Log("OnTriggerExit called with: " + other.name); // 调试日志
+        if (other.CompareTag("Player") && !isFading)
         {
             StartCoroutine(FadeOut());
         }
@@ -45,7 +45,6 @@ public class PopupObject : MonoBehaviour
 
     private IEnumerator FadeIn()
     {
-        Debug.Log("FadeIn started");
         isFading = true;
         popupObject.SetActive(true);
         float elapsedTime = 0f;
@@ -62,12 +61,12 @@ public class PopupObject : MonoBehaviour
         color.a = 1;
         spriteRenderer.color = color;
         isFading = false;
-        Debug.Log("FadeIn finished");
+    
     }
 
     private IEnumerator FadeOut()
     {
-        Debug.Log("FadeOut started");
+     
         isFading = true;
         float elapsedTime = 0f;
         Color color = spriteRenderer.color;
@@ -84,6 +83,6 @@ public class PopupObject : MonoBehaviour
         spriteRenderer.color = color;
         popupObject.SetActive(false);
         isFading = false;
-        Debug.Log("FadeOut finished");
+       // Debug.Log("FadeOut finished");
     }
 }

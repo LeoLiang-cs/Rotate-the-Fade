@@ -6,7 +6,7 @@ public class MagicSystem
 {
     public static float kYDistance = 1.5f;
     public static float kXDistance = 1f;
-    public LayerMask enemyLayer;  // 敌人的图层
+    public LayerMask enemyLayer;  // 敌人的图�?
     private GameObject mFrozenSample = null;
     private GameObject mFlameSample = null;
     private GameObject mLightningChainSample = null;
@@ -16,7 +16,7 @@ public class MagicSystem
         FrozenMagic.InitializedMagicSystem(this);
         mFrozenSample = Resources.Load<GameObject>("Prefabs/Frozen") as GameObject;
         mFlameSample = Resources.Load<GameObject>("Prefabs/Flame") as GameObject;
-        mLightningChainSample = Resources.Load<GameObject>("Prefabs/LightningChain") as GameObject;
+        mLightningChainSample = Resources.Load<GameObject>("Prefabs/Line") as GameObject;
         mTimeFreezeEffect = Resources.Load<GameObject>("Prefabs/TimeFreezeEffect") as GameObject;
     }
 

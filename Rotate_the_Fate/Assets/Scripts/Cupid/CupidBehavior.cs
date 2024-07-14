@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class CupidBehavior : MonoBehaviour
 {
-    private CupidCollision coll;
+    private Collision coll;
     private Rigidbody2D rb;
     private Animator anim;
     private CupidHealth health;
@@ -18,14 +18,14 @@ public class CupidBehavior : MonoBehaviour
     public float jumpForce = 10f;
     public bool mTowardRight = true;
 
-    
+
     // Start is called before the first frame update
     void Start()
     {
         mTowardRight = true;
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        coll = GetComponent<CupidCollision>();
+        coll = GetComponent<Collision>();
         health = GetComponent<CupidHealth>();
         //rb.constraints = RigidbodyConstraints2D.FreezeRotation;//所有活物都要锁定！
     }
@@ -38,7 +38,7 @@ public class CupidBehavior : MonoBehaviour
         {
             return;
         }
-        
+
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
         Vector2 dir = new Vector2(x, y);
@@ -50,25 +50,29 @@ public class CupidBehavior : MonoBehaviour
 
     private void Walk(Vector2 dir)
     {
-       if(!WorldRotation.isRotating && !Attack.isAttacking) {
+        if (!WorldRotation.isRotating && !Attack.isAttacking)
+        {
             rb.velocity = new Vector2(dir.x * speed, rb.velocity.y);
             bool slimeHasXAxisSpeed = Mathf.Abs(rb.velocity.x) > Mathf.Epsilon;
             anim.SetBool("Walk", slimeHasXAxisSpeed);
 
-            if(dir.x > 0f) {
-                 transform.localRotation = Quaternion.Euler(0, 0, 0);
-                 mTowardRight = true;
+            if (dir.x > 0f)
+            {
+                transform.localRotation = Quaternion.Euler(0, 0, 0);
+                mTowardRight = true;
             }
-            if(dir.x < 0f) {
-                transform.localRotation = Quaternion.Euler(0, 180, 0);  
+            if (dir.x < 0f)
+            {
+                transform.localRotation = Quaternion.Euler(0, 180, 0);
                 mTowardRight = false;
             }
         }
     }
 
-    private void Jump(Vector2 dir) 
+    private void Jump(Vector2 dir)
     {
-        if (Input.GetKeyDown(KeyCode.Space) && coll.onGround) {
+        if (Input.GetKeyDown(KeyCode.Space) && coll.onGround)
+        {
             anim.SetBool("Jump", true);
             rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.velocity += dir * jumpForce;
@@ -76,8 +80,10 @@ public class CupidBehavior : MonoBehaviour
         }
     }
 
-    private void Fall() {
-        if (rb.velocity.y < 0.1f) {
+    private void Fall()
+    {
+        if (rb.velocity.y < 0.1f)
+        {
             anim.SetBool("Jump", false);
         }
     }

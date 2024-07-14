@@ -6,26 +6,26 @@ using UnityEngine;
 
 
 
-public class MushroomdeathState : Basestate
+public class MushroomdeathState : BaseState
 {
     
     public override void OnEnter(Enemy enmy)
     {
-        currenemy = enmy;
+        currentEnemy = enmy;
     }
-    public override void Logicupdate()
+    public override void LogicUpdate()
     {
-        if (currenemy.health.isDead == true)
+        if (currentEnemy.health.isDead == true)
         {
             //GetComponent<Animator>().SetTrigger("Death");
-            Destroy(currenemy.gameObject);
+            //Destroy(currenemy.gameObject);
             
         }
     }
 
 
 
-    public override void pythicupdate()
+    public override void PhysicsUpdate()
     {
     
     }
