@@ -38,18 +38,19 @@ public class LightningChainMagic : MonoBehaviour
         }
         Attack.isAttacking = false;
 
-        Destroy(transform.gameObject, 0.5f);
+        Destroy(transform.gameObject, 0.2f);
     }
 
-    void DrawLightning(Vector2 start, Vector2 end)
-    {
-        
-        LineRenderer lr = GetComponent<LineRenderer>();
-        lr.SetPosition(0, start);
-        lr.SetPosition(1, end);
+void DrawLightning(Vector2 start, Vector2 end)
+{
+    // ÉÏÒÆ y Öá 0.5f
+    start.y += 1f;
+    end.y += 1f;
 
-        // é”€æ¯é—ªç”µå¯¹è±¡åœ¨0.5ç§’å
-        //Destroy(transform.gameObject, 0.5f);
-        //Attack.isAttacking = false;
-    }
+    Debug.Log("DrawLightning: " + start + " " + end);
+    LineRenderer lr = GetComponent<LineRenderer>();
+    lr.SetPosition(0, start);
+    lr.SetPosition(1, end);
+}
+
 }
