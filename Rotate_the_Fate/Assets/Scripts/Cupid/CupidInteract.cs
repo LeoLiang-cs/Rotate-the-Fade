@@ -6,9 +6,9 @@ public class CupidInteract : MonoBehaviour
 {
     Collider2D thing;
     public bool canGet = false;
-    private AbilityDisplay ability_icon;
+    private AbilityDisplay abilityDisplay;
     private void Awake() {
-        ability_icon = GameObject.Find("Ability").GetComponent<AbilityDisplay>();
+        abilityDisplay = GameObject.Find("Ability").GetComponent<AbilityDisplay>();
     }
     // Start is called before the first frame update
     void Start()
@@ -50,7 +50,7 @@ public class CupidInteract : MonoBehaviour
         {
             Destroy(thing.gameObject);
             GetComponent<Attack>().currentMagic.Add(MagicType.Frozen);
-            ability_icon.Add_Ability("frost");
+            abilityDisplay.Add_Ability("frost");
         }
     }
 

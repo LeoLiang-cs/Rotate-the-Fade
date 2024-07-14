@@ -15,6 +15,7 @@ public class Attack : MonoBehaviour
     private CupidHealth cupidHealth;
     public int magicDamge = 1;
     private HealthUI health_bar;
+    private AbilityDisplay abilityDisplay;
     // Start is called before the first frame update
     void Awake()
     {
@@ -22,14 +23,16 @@ public class Attack : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         cupidHealth = GetComponent<CupidHealth>();
         health_bar = GameObject.Find("StateBar").GetComponent<HealthUI>();
+        abilityDisplay = GameObject.Find("Ability").GetComponent<AbilityDisplay>();
     }
     void Start()
     {
+        currentMagic = abilityDisplay.gianed_magics;
         // currentMagic.Add(MagicType.Frozen);
         // currentMagic.Add(MagicType.LightingChain);
         // currentMagic.Add(MagicType.Flame);
         coll = GetComponent<Collision>();
-        health_bar.Set_Cost(magicDamge);
+        
         //Add_Magic(MagicType.Time);
         
     }
@@ -79,6 +82,7 @@ public class Attack : MonoBehaviour
         {
             chooseMagic++;
             chooseMagic = chooseMagic % currentMagic.Count;
+            health_bar.Set_Cost(magicDamge);
         }
        
     }
