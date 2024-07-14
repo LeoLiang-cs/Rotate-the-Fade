@@ -611,6 +611,7 @@ MonoBehaviour:
   normalspeed: 100
   chasespeed: 200
   faceDire: {x: 0, y: 0, z: 0}
+  slowcl: 0
   currwaittime: 0
   waitcontor: 0
   chasewaitime: 1.5
