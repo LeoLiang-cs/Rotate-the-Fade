@@ -234,7 +234,7 @@ GameObject:
   - component: {fileID: 9202920}
   - component: {fileID: 9202922}
   - component: {fileID: 9202921}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Rider2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1796,7 +1796,7 @@ GameObject:
   - component: {fileID: 359954655}
   - component: {fileID: 359954657}
   - component: {fileID: 359954656}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Rider1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4066,6 +4066,11 @@ Transform:
   - {fileID: 536546071}
   m_Father: {fileID: 380489099}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!224 &808702639 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 26305867368283270, guid: c1ab30a5e398c4d4289cc5c8fb790d7c, type: 3}
+  m_PrefabInstance: {fileID: 538145204}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &931662225
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21887,7 +21892,7 @@ GameObject:
   - component: {fileID: 1245697489}
   - component: {fileID: 1245697487}
   - component: {fileID: 1245697490}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: jar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23959,9 +23964,9 @@ RectTransform:
   m_Children:
   - {fileID: 1756575790}
   - {fileID: 356618348}
-  - {fileID: 1469946962}
   - {fileID: 1895092815}
   - {fileID: 1193600327}
+  - {fileID: 808702639}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -24283,7 +24288,7 @@ GameObject:
   - component: {fileID: 1773686771}
   - component: {fileID: 1773686774}
   - component: {fileID: 1773686775}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: bucket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30708,6 +30713,10 @@ PrefabInstance:
     - target: {fileID: 7928294229524471880, guid: 92ac54e7930731e4eb234426d2d91525, type: 3}
       propertyPath: m_Name
       value: Cupid
+      objectReference: {fileID: 0}
+    - target: {fileID: 8399223358333725267, guid: 92ac54e7930731e4eb234426d2d91525, type: 3}
+      propertyPath: maxHealth
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8399223358333725267, guid: 92ac54e7930731e4eb234426d2d91525, type: 3}
       propertyPath: deathUIPanel

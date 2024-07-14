@@ -102,4 +102,8 @@ public class HealthUI : MonoBehaviour
         health += recovery;
         lerp_timer = 0f;
     }
+
+    public void Set_Cost(float cost){
+        magic_cost = cost;
+    }
 }
