@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8601015850769303298}
   - component: {fileID: 7526811617204044208}
   - component: {fileID: 4977792183246259262}
+  - component: {fileID: 3195623487429386150}
   m_Layer: 7
   m_Name: Bat
   m_TagString: Untagged
@@ -176,7 +177,7 @@ MonoBehaviour:
   currfaceDir: {x: 0, y: 0}
   CuipdPlay: {fileID: 0}
   priLocation: {x: 0, y: 0}
-  radis: 98.3
+  radis: 98.9
   chasewaitTime: 5.79
   chasetimeCon: 0
   attackradis: 10.24
@@ -248,3 +249,24 @@ MonoBehaviour:
   lightningDamage: 3
   FlameForce: 5
   frozenForce: 5
+--- !u!95 &3195623487429386150
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6962272679406898452}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5175c0ba5e98dcc4c9eb1fa17c1c9912, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
