@@ -29,7 +29,7 @@ public class trigger : MonoBehaviour
 
     private void TriggerCheck(GameObject g)
     {
-        if (g.tag == "Hero")
+        if (g.tag == "Player")
         {
             Camera.main.transform.position = new Vector3(target.position.x, target.position.y + 7, -10f);
         }

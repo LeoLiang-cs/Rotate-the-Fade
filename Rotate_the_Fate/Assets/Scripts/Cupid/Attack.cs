@@ -20,11 +20,11 @@ public class Attack : MonoBehaviour
     }
     void Start()
     {
-        currentMagic.Add(MagicType.Frozen);
-        currentMagic.Add(MagicType.LightingChain);
-        currentMagic.Add(MagicType.Flame);
+        // currentMagic.Add(MagicType.Frozen);
+        // currentMagic.Add(MagicType.LightingChain);
+        // currentMagic.Add(MagicType.Flame);
         coll = GetComponent<Collision>();
-        Add_Magic(MagicType.Time);
+        //Add_Magic(MagicType.Time);
         
     }
 
@@ -36,7 +36,7 @@ public class Attack : MonoBehaviour
     }
 
     public void MagicAttack() {
-        if(Input.GetKeyDown(KeyCode.J) && !isAttacking && coll.onGround)
+        if(Input.GetKeyDown(KeyCode.J) && !isAttacking && coll.onGround && currentMagic.Count > 0)
         {
             isAttacking = true;
             rb.velocity = new Vector2(0, 0);

@@ -26,8 +26,8 @@ public class TriggerPopup : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("OnTriggerEnter called with: " + other.name); 
-        if (other.CompareTag("Hero") && !isFading)
+        //Debug.Log("OnTriggerEnter called with: " + other.name); 
+        if (other.CompareTag("Player") && !isFading)
         {
             StartCoroutine(FadeIn());
         }
@@ -35,8 +35,8 @@ public class TriggerPopup : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other)
     {
-        Debug.Log("OnTriggerExit called with: " + other.name); // 调试日志
-        if (other.CompareTag("Hero") && !isFading)
+        //Debug.Log("OnTriggerExit called with: " + other.name); // 调试日志
+        if (other.CompareTag("Player") && !isFading)
         {
             StartCoroutine(FadeOut());
         }
@@ -44,7 +44,7 @@ public class TriggerPopup : MonoBehaviour
 
     private IEnumerator FadeIn()
     {
-        Debug.Log("FadeIn started");
+      
         isFading = true;
         popupObject.SetActive(true);
         float elapsedTime = 0f;
@@ -58,12 +58,12 @@ public class TriggerPopup : MonoBehaviour
 
         canvasGroup.alpha = 1;
         isFading = false;
-        Debug.Log("FadeIn finished");
+       
     }
 
     private IEnumerator FadeOut()
     {
-        Debug.Log("FadeOut started");
+      
         isFading = true;
         float elapsedTime = 0f;
 
@@ -77,7 +77,7 @@ public class TriggerPopup : MonoBehaviour
         canvasGroup.alpha = 0;
         popupObject.SetActive(false);
         isFading = false;
-        Debug.Log("FadeOut finished");
+       // Debug.Log("FadeOut finished");
     }
 }
 
