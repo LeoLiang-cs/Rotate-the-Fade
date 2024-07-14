@@ -15,7 +15,7 @@ public class HealthUI : MonoBehaviour
     public Image front_health_bar;
     public Image middle_health_bar;
     public Image back_health_bar;
-    private float twinkle_period = 2f;
+    private float twinkle_period = 1f;
     private float twinkle_elapse = 0f;
     private bool twinkle_mode = true;
 
@@ -42,6 +42,7 @@ public class HealthUI : MonoBehaviour
         health = Mathf.Clamp(health, 0f, MAX_HEALTH);
         if(Input.GetKeyDown(KeyCode.X)){
             TakeDamage(Random.Range(5,20));
+            Debug.Log("input x");
         }
         if(Input.GetKeyDown(KeyCode.C)){
             GetHealed(Random.Range(5,20));
