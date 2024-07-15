@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 public class TwinHealth : MonoBehaviour
@@ -19,6 +20,9 @@ public class TwinHealth : MonoBehaviour
     public float mFrozenTimeCount = 0.0f;
     public bool isSlowDown = false;
 
+    // Health UI
+    private BossHealthDisplay health_bar;
+
     [Space]
     [Header("Status")]
     public bool isDead = false;
@@ -29,7 +33,9 @@ public class TwinHealth : MonoBehaviour
     public int lightningDamage = 3;
     public int stabDamage = 1;
 
-
+    private void Awake() {
+        health_bar = GameObject.Find("BossBar").GetComponent<BossHealthDisplay>();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -46,7 +52,11 @@ public class TwinHealth : MonoBehaviour
     {
         MeltFrozen();
         Die();
-        StabHit();
+    }
+
+    void FixedUpdate()
+    {
+        //StabCoolDown(); 
     }
 
     public void TakeFrozenDamage(Vector2 attP)
@@ -54,6 +64,7 @@ public class TwinHealth : MonoBehaviour
         if (isHitting)
             return;
         health -= frozenDamage;
+        health_bar.TakeDamage(frozenDamage);
         isHitting = true;
         OnTakeFrozenDamage?.Invoke(attP);
 
@@ -75,6 +86,7 @@ public class TwinHealth : MonoBehaviour
         if (isHitting)
             return;
         health -= flameDamage;
+        health_bar.TakeDamage(flameDamage);
         OnTakeFlameDamage?.Invoke(attP);
         Debug.Log("Flame");
         spriteRenderer.color = Color.red;
@@ -88,6 +100,7 @@ public class TwinHealth : MonoBehaviour
             return;
         OnTakeLighteningChainDamage?.Invoke(attP);
         health -= lightningDamage;
+        health_bar.TakeDamage(lightningDamage);
         spriteRenderer.color = Color.yellow;
     }
 
@@ -126,15 +139,26 @@ public class TwinHealth : MonoBehaviour
         isHitting = false;
     }
 
-    
+
     void StabHit()
     {
-        if( attackDetect.onStab && !isHitting)
+
+        anim.SetTrigger("Hit");
+        health -= stabDamage;
+        health_bar.TakeDamage(stabDamage);
+        isHitting = true;
+
+    }
+
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Stab"))
         {
-            anim.SetTrigger("Hit");
-            health -= stabDamage;
-            isHitting = true;
+
+            StabHit();
+
         }
-       
+
     }
 }

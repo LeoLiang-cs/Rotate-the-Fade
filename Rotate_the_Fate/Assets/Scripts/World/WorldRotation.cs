@@ -60,7 +60,7 @@ public class WorldRotation : MonoBehaviour
 
     void Rotation()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && !isRotating)
+        if (Input.GetKeyDown(KeyCode.Q) && !isRotating && cupidBehavior.GetComponent<Collision>().onGround)
         {
             isRotating = true;
             rotationCenter = cupidBehavior.transform.position;
@@ -69,7 +69,7 @@ public class WorldRotation : MonoBehaviour
             isClockwise = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.E) && !isRotating)
+        if (Input.GetKeyDown(KeyCode.E) && !isRotating && cupidBehavior.GetComponent<Collision>().onGround)
         {
             isRotating = true;
             rotationCenter = cupidBehavior.transform.position;

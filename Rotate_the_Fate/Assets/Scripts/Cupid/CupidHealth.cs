@@ -9,6 +9,7 @@ public class CupidHealth : MonoBehaviour
     private Animator anim;
     public GameObject deathUIPanel;
     public UnityEvent OnTakeDame;
+    private HealthUI health_bar;
 
 
     [Space]
@@ -23,6 +24,9 @@ public class CupidHealth : MonoBehaviour
     public bool isDead = false;
     public GameObject handStoneSample;
 
+    private void Awake() {
+        health_bar = GameObject.Find("StateBar").GetComponent<HealthUI>();
+    }
     private void Start()
     {
         currentHealth = maxHealth;
@@ -39,6 +43,7 @@ public class CupidHealth : MonoBehaviour
         {
             Debug.Log("enter");
             currentHealth -= MushroomDamage;
+            health_bar.TakeDamage(MushroomDamage);
             if (currentHealth <= 0)
             {
                 isDead = true;
@@ -61,6 +66,7 @@ public class CupidHealth : MonoBehaviour
     {
 
         currentHealth -= SeedDamage;
+        health_bar.TakeDamage(SeedDamage);
         if (currentHealth <= 0)
         {
             isDead = true;

@@ -24,7 +24,7 @@ public class BackgroundFollow : MonoBehaviour
         if (transform.position.x <= 19.8f )
         {
 
-            transform.position = new Vector3(target.position.x, target.position.y + 7, transform.position.z);
+            transform.position = new Vector3(target.position.x, target.position.y + 4, transform.position.z);
 
             Vector2 amountToMove = new Vector2(transform.position.x - lastPos.x, transform.position.y - lastPos.y);
 

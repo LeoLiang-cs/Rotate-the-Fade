@@ -3,8 +3,8 @@ using System.Collections;
 
 public class PopupObject : MonoBehaviour
 {
-    public GameObject popupObject; // ÐèÒª¸¡ÏÖµÄUIÔªËØ
-    public float fadeDuration = 1f; // ¸¡ÏÖÊ±¼ä
+    public GameObject popupObject; // ï¿½ï¿½Òªï¿½ï¿½ï¿½Öµï¿½UIÔªï¿½ï¿½
+    public float fadeDuration = 1f; // ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
 
     private SpriteRenderer spriteRenderer;
     private bool isFading = false;
@@ -19,9 +19,9 @@ public class PopupObject : MonoBehaviour
                 spriteRenderer = popupObject.AddComponent<SpriteRenderer>();
             }
             Color color = spriteRenderer.color;
-            color.a = 0; // ³õÊ¼×´Ì¬²»¿É¼û
+            color.a = 0; // ï¿½ï¿½Ê¼×´Ì¬ï¿½ï¿½ï¿½É¼ï¿½
             spriteRenderer.color = color;
-            popupObject.SetActive(false); // È·±£³õÊ¼×´Ì¬ÏÂUIÔªËØ²»¿É¼û
+            popupObject.SetActive(false); // È·ï¿½ï¿½ï¿½ï¿½Ê¼×´Ì¬ï¿½ï¿½UIÔªï¿½Ø²ï¿½ï¿½É¼ï¿½
         }
     }
 
@@ -36,10 +36,14 @@ public class PopupObject : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other)
     {
-        //Debug.Log("OnTriggerExit called with: " + other.name); // µ÷ÊÔÈÕÖ¾
+        //Debug.Log("OnTriggerExit called with: " + other.name); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾
         if (other.CompareTag("Player") && !isFading)
         {
-            StartCoroutine(FadeOut());
+            // StartCoroutine(FadeOut());
+            if(spriteRenderer != null){
+                spriteRenderer.color = new Color(0f, 0f, 0f, 0f);
+            }
+            
         }
     }
 
