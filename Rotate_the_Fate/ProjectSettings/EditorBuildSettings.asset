@@ -43,11 +43,14 @@ EditorBuildSettings:
     guid: 15eaabdac4de00f4aa2fc7129c555aa8
   - enabled: 1
     path: Assets/Scenes/Alpha/A_3.unity
-    guid: 77e66571c203ee44bbd1efdf04c62c3a
+    guid: ae88d9c6ec47e174a86bc6d3cfaa0df2
   - enabled: 1
     path: Assets/Scenes/Alpha/A_4.unity
-    guid: bce2f0c9f107eb64dba28378637cc5cd
+    guid: 77e66571c203ee44bbd1efdf04c62c3a
   - enabled: 1
+    path: Assets/Scenes/Alpha/A_5.unity
+    guid: bce2f0c9f107eb64dba28378637cc5cd
+  - enabled: 0
     path: Assets/Scenes/Alpha/A_Anime.unity
     guid: 75c9d25a27790594c9da6d560fd56471
   m_configObjects: {}

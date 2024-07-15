@@ -13,6 +13,7 @@ TagManager:
   - Bat
   - FrozenVase
   - Brazier
+  - FlashBottle
   layers:
   - Default
   - TransparentFX
@@ -27,7 +28,6 @@ TagManager:
   - Interact
   - minmap
   - Instruction
-  - 
   - 
   - 
   - 
