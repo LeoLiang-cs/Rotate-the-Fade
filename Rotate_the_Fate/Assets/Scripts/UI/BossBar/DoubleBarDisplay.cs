@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BossHealthDisplay : MonoBehaviour
+public class DoubleBarDisplay : MonoBehaviour
 {
     private float health;
     private float lerp_timer;

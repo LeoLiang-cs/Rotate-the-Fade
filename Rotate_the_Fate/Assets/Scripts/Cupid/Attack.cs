@@ -19,7 +19,7 @@ public class Attack : MonoBehaviour
     public int flameCost = 2;
     public int lightingCost = 1;
     public int timeCost = 5;
-    private HealthUI health_bar;
+    private TripleBarDisplay health_bar;
     private AbilityDisplay abilityDisplay;
     // Start is called before the first frame update
     void Awake()
