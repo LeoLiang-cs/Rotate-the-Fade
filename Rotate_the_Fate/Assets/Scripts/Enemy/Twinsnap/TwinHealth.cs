@@ -22,7 +22,7 @@ public class TwinHealth : MonoBehaviour
     public GameObject thankUI;
 
     // Health UI
-    private BossHealthDisplay health_bar;
+    private DoubleBarDisplay health_bar;
 
     [Space]
     [Header("Status")]
@@ -35,7 +35,7 @@ public class TwinHealth : MonoBehaviour
     public int stabDamage = 1;
 
     private void Awake() {
-        health_bar = GameObject.Find("BossBar").GetComponent<BossHealthDisplay>();
+        health_bar = GameObject.Find("BossBar").GetComponent<DoubleBarDisplay>();
     }
     // Start is called before the first frame update
     void Start()

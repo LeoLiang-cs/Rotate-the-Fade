@@ -14,7 +14,7 @@ public class Attack : MonoBehaviour
     private Rigidbody2D rb;
     private CupidHealth cupidHealth;
     public int magicDamge = 1;
-    private HealthUI health_bar;
+    private TripleBarDisplay health_bar;
     private AbilityDisplay abilityDisplay;
     // Start is called before the first frame update
     void Awake()
@@ -22,7 +22,7 @@ public class Attack : MonoBehaviour
         mMagicSystem = new MagicSystem();
         rb = GetComponent<Rigidbody2D>();
         cupidHealth = GetComponent<CupidHealth>();
-        health_bar = GameObject.Find("StateBar").GetComponent<HealthUI>();
+        health_bar = GameObject.Find("StateBar").GetComponent<TripleBarDisplay>();
         abilityDisplay = GameObject.Find("Ability").GetComponent<AbilityDisplay>();
         chooseMagic = AbilityStats.instance.chooseMagic;
     }
@@ -51,7 +51,7 @@ public class Attack : MonoBehaviour
             isAttacking = true;
             rb.velocity = new Vector2(0, 0);
             cupidHealth.currentHealth -= magicDamge;
-            health_bar.TakeDamage(magicDamge);
+            health_bar.ValueDecrease(magicDamge);
             switch(currentMagic[chooseMagic])
             {
                 case MagicType.Frozen:
