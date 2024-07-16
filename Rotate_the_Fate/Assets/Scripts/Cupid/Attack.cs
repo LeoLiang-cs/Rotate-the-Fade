@@ -31,7 +31,7 @@ public class Attack : MonoBehaviour
         currentMagic = abilityDisplay.gianed_magics;
         // currentMagic.Add(MagicType.Frozen);
         // currentMagic.Add(MagicType.LightingChain);
-        currentMagic.Add(MagicType.Flame);
+        //currentMagic.Add(MagicType.Flame);
         coll = GetComponent<Collision>();
         
         //Add_Magic(MagicType.Time);
@@ -56,12 +56,15 @@ public class Attack : MonoBehaviour
             {
                 case MagicType.Frozen:
                     mMagicSystem.FrozenSpawner(transform.position, GetComponent<CupidBehavior>().mTowardRight);
+                    FindObjectOfType<AudioManager>().Play("Freeze");
                     break;
                 case MagicType.LightingChain:
                     mMagicSystem.LightningChainSpawner(transform.position);
+                    FindObjectOfType<AudioManager>().Play("Lightening");
                     break;
                 case MagicType.Flame:
                     mMagicSystem.FlameSpawner(transform.position, GetComponent<CupidBehavior>().mTowardRight);
+                    FindObjectOfType<AudioManager>().Play("Fire");
                     break;
                 case MagicType.Time:
                     timers.Trigger();

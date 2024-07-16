@@ -50,6 +50,7 @@ public class TwinAttack : MonoBehaviour
     {
         if (attackDetect.detectCupid && coll.onGround && !isShotting && !isSprinting)
         {
+            FindObjectOfType<AudioManager>().Play("Bite");
             anim.SetTrigger("Bite");
             isAttacking = true;
         }
@@ -60,6 +61,7 @@ public class TwinAttack : MonoBehaviour
         skillCounter -= Time.deltaTime;
         if (skillCounter <= 0 && lastSkill == "Sprint" && !isSprinting)
         {
+            FindObjectOfType<AudioManager>().Play("Spit");
             Debug.Log("Shot");
             lastSkill = "Shot";
             skillCounter = skillCoolDown;

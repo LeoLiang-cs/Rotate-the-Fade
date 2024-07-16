@@ -41,6 +41,7 @@ public class KeyBehavior : MonoBehaviour
             Destroy(transform.parent.gameObject);
         }
         Destroy(gameObject);
+        FindObjectOfType<AudioManager>().Play("Unlock");
     }
 
     void SwitchState()

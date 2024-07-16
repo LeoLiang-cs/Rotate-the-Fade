@@ -28,6 +28,7 @@ public class BushAttack : MonoBehaviour
         if( Physics2D.OverlapCircle((Vector2)transform.position, collisionRadius, player) && !isAttacking)
         {
             isAttacking = true;
+            FindObjectOfType<AudioManager>().Play("bushAttack");
             anim.SetTrigger("Attack");
             
         }
