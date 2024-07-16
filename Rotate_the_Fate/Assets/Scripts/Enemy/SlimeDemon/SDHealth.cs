@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,9 +25,11 @@ public class SDHealth : MonoBehaviour
     public bool isTransforming = false;
 
     private DoubleBarDisplay health_bar;
+    private CinemachineImpulseSource impulseSource;
 
     void Awake()
     {
+        impulseSource = GetComponent<CinemachineImpulseSource>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         sdAttack = GetComponent<SDAttack>();
@@ -77,6 +80,15 @@ public class SDHealth : MonoBehaviour
         else
         {
             health -= frozenDamage;
+            if (impulseSource == null)
+            {
+
+                Debug.Log("impulseSource == null");
+            }
+            else
+            {
+                CameraShakeManager.instance.CameraShake(impulseSource);
+            }
             health_bar.TakeDamage(frozenDamage);
 
             if (!sdAttack.isAttacking)
@@ -141,6 +153,17 @@ public class SDHealth : MonoBehaviour
     {
         Destroy(gameObject);
     }
+    public void JumpShake()
+    {
+        if (impulseSource == null)
+        {
 
+            Debug.Log("impulseSource == null");
+        }
+        else
+        {
+            CameraShakeManager.instance.CameraShake(impulseSource);
+        }
+    }
 
 }
