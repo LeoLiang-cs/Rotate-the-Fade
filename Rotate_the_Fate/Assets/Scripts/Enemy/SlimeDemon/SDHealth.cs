@@ -59,7 +59,7 @@ public class SDHealth : MonoBehaviour
             return;
         if (!isDemon)
         {
-            
+
             health -= frozenDamage;
             health_bar.TakeDamage(frozenDamage);
             isHitting = true;
@@ -88,7 +88,49 @@ public class SDHealth : MonoBehaviour
             }
 
         }
+    }
 
+    public void TakeFlameDamage(Vector2 att)
+    {
+        if (isHitting)
+            return;
+        if (!isDemon)
+        {
+            health += flameDamage;
+            health_bar.GetHealed(flameDamage);
+        }
+        else
+        {
+            health += flameDamage;
+            health_bar.GetHealed(flameDamage);
+
+        }
+    }
+
+    public void TakeLighteningChainDamage(Vector2 att)
+    {
+        if (isHitting)
+            return;
+        if (!isDemon)
+        {
+            health -= lightningDamage;
+            health_bar.TakeDamage(lightningDamage);
+            isHitting = true;
+            //OnTakeLighteningChainDamage?.Invoke(att);
+            anim.SetTrigger("Hit");
+        }
+        else
+        {
+            FindObjectOfType<AudioManager>().Play("DemonHit");
+            health -= lightningDamage;
+            health_bar.TakeDamage(lightningDamage);
+
+            if (!sdAttack.isAttacking)
+            {
+                isHitting = true;
+                anim.SetTrigger("Hit");
+            }
+        }
     }
 
     private void Die()

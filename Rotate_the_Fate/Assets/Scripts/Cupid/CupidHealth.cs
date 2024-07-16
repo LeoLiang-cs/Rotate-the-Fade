@@ -34,6 +34,7 @@ public class CupidHealth : MonoBehaviour
     {
         impulseSource = GetComponent<CinemachineImpulseSource>();
         currentHealth = maxHealth;
+        health_bar.Refill(currentHealth);
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         handStoneSample = Resources.Load<GameObject>("Prefabs/HandStone") as GameObject;

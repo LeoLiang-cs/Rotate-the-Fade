@@ -43,6 +43,10 @@ public class LightningChainMagic : MonoBehaviour
             {
                 enemy.GetComponent<TwinHealth>().TakeLighteningChainDamage(p);
             }
+             else if (enemy.gameObject.CompareTag("SlimeDemon"))
+            {
+                enemy.GetComponentInParent<SDHealth>().TakeLighteningChainDamage(p);
+            }
         }
 
         foreach (Collider2D stab in hitStab)

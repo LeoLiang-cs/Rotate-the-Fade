@@ -225,6 +225,7 @@ MonoBehaviour:
   deceleration: 1000
   jumpForce: 8
   mTowardRight: 1
+  footprint_interval: 0.3
 --- !u!114 &5002400970051900736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,7 +348,7 @@ MonoBehaviour:
         m_CallState: 2
   maxHealth: 10
   currentHealth: 0
-  MushroomDamage: 3
+  MushroomDamage: 2
   SeedDamage: 1
   knockBackForce: 10
   invulnerable: 0

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class SDAttack : MonoBehaviour
 {
@@ -15,8 +16,10 @@ public class SDAttack : MonoBehaviour
     public float skillCoolDown = 5f;
     public float skillCounter;
     public string lastSkill;
+    private CinemachineImpulseSource impulseSource;
     void Awake()
     {
+        impulseSource = GetComponent<CinemachineImpulseSource>();
         chopTimer = gameObject.AddComponent<Timer>();
         punchTimer = gameObject.AddComponent<Timer>();
 
@@ -97,5 +100,18 @@ public class SDAttack : MonoBehaviour
     public void ChopGroundMusic()
     {
         FindObjectOfType<AudioManager>().Play("Sword");
+    }
+
+    public void PunchGroundShack()
+    {
+         if (impulseSource == null)
+            {
+
+                Debug.Log("impulseSource == null");
+            }
+            else
+            {
+                CameraShakeManager.instance.CameraShake(impulseSource);
+            }
     }
 }

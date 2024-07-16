@@ -311,7 +311,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7877454411437867706
 Transform:
   m_ObjectHideFlags: 0
@@ -374,8 +374,10 @@ PolygonCollider2D:
     - - {x: -6.766812, y: 0.7418785}
       - {x: -6.417132, y: -0.04347536}
       - {x: -4.9378676, y: -0.06806934}
-      - {x: -4.036246, y: 0.73804283}
-      - {x: -3.0762146, y: 1.5673733}
+      - {x: -3.7105007, y: 0.015738487}
+      - {x: -2.8254385, y: 0.4212904}
+      - {x: -2.3415775, y: 1.5475416}
+      - {x: -2.8920977, y: 1.963933}
       - {x: -3.4890945, y: 1.8159218}
       - {x: -4.5373745, y: 1.6800613}
       - {x: -5.8297806, y: 1.1150582}
@@ -593,13 +595,13 @@ MonoBehaviour:
   isDemon: 0
   isDead: 0
   isHitting: 0
-  demonHealth: 50
-  slimeHealth: 5
+  demonHealth: 60
+  slimeHealth: 20
   health: 0
   flameDamage: 1
   frozenDamage: 4
   lightningDamage: 3
-  frozenForce: 2
+  frozenForce: 5
   isTransforming: 0
 --- !u!114 &7183178461956877800
 MonoBehaviour:
