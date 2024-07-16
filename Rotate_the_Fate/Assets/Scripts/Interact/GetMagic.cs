@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+//using System.Diagnostics;
 using UnityEngine;
 
 public class GetMagic : MonoBehaviour
@@ -18,7 +19,18 @@ public class GetMagic : MonoBehaviour
 
     public void DestroyVase()
     {
+        
+        DestroyParentAndSelf();
+    }
+
+    void DestroyParentAndSelf()
+    {
         Debug.Log("Destroy Vase");
+        if (transform.parent != null)
+        {
+            Debug.Log("Destroy Wall");
+            Destroy(transform.parent.gameObject);
+        }
         Destroy(gameObject);
     }
 }

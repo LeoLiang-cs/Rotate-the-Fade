@@ -5,13 +5,21 @@ using UnityEngine;
 public class NewBatAttackState : EnemyBaseState
 {
 
+    public NewBatAttackState(Animator anim)
+    {
+        this.anim = anim;
+    }
     public override void OnEnter(EnemyManger enemy)
     {
-        throw new System.NotImplementedException();
+        Debug.Log("EnterAttack");
+        currentEnemy = enemy;
+        currentEnemy.CurrSpeed = 0f;
     }
     public override void LogicUpdate()
     {
-        throw new System.NotImplementedException();
+        currentEnemy.transform.position=currentEnemy.CupidTransform.position;
+        currentEnemy.WaitForTwo();
+        currentEnemy.SwithState(EnemyMushroomEnums.Chase);
     }
 
     
@@ -20,12 +28,12 @@ public class NewBatAttackState : EnemyBaseState
 
     public override void PhysicsUpdate()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public override void OnExit()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("ExitAttack");
     }
 
 

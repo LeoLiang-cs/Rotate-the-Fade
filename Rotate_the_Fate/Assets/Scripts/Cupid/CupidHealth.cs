@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
@@ -24,11 +25,14 @@ public class CupidHealth : MonoBehaviour
     public bool isDead = false;
     public GameObject handStoneSample;
 
+    private CinemachineImpulseSource impulseSource;
+
     private void Awake() {
         health_bar = GameObject.Find("StateBar").GetComponent<DoubleBarDisplay>();
     }
     private void Start()
     {
+        impulseSource = GetComponent<CinemachineImpulseSource>();
         currentHealth = maxHealth;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
@@ -41,6 +45,18 @@ public class CupidHealth : MonoBehaviour
 
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy") || other.gameObject.layer == LayerMask.NameToLayer("Stab"))
         {
+            FindObjectOfType<AudioManager>().Play("getHurt");
+            if (impulseSource == null)
+            {
+
+                Debug.Log("impulseSource == null");
+            }
+            else
+            {
+//                CameraShakeManager.instance.CameraShake(impulseSource);
+            }
+            
+            Debug.Log("enter");
             currentHealth -= MushroomDamage;
             health_bar.TakeDamage(MushroomDamage);
             if (currentHealth <= 0 && !isDead)

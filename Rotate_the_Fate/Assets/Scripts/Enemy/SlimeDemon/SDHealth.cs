@@ -23,6 +23,8 @@ public class SDHealth : MonoBehaviour
     public float frozenForce = 10f;
     public bool isTransforming = false;
 
+    private DoubleBarDisplay health_bar;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -30,11 +32,13 @@ public class SDHealth : MonoBehaviour
         sdAttack = GetComponent<SDAttack>();
         slimeCollision = transform.Find("SlimeCollision");
         demonCollision = transform.Find("DemonCollision");
+        health_bar = GameObject.Find("BossBar").GetComponent<DoubleBarDisplay>();
     }
     // Start is called before the first frame update
     void Start()
     {
         health = slimeHealth;
+        health_bar.Refill(health);
         isDemon = false;
 
     }
@@ -56,7 +60,7 @@ public class SDHealth : MonoBehaviour
         if (!isDemon)
         {
             health -= frozenDamage;
-            //health_bar.TakeDamage(frozenDamage);
+            health_bar.TakeDamage(frozenDamage);
             isHitting = true;
             //OnTakeFrozenDamage?.Invoke(attP);
 
@@ -72,6 +76,14 @@ public class SDHealth : MonoBehaviour
         }
         else
         {
+            health -= frozenDamage;
+            health_bar.TakeDamage(frozenDamage);
+
+            if (!sdAttack.isAttacking)
+            {
+                isHitting = true;
+                anim.SetTrigger("Hit");
+            }
 
         }
 
@@ -116,12 +128,18 @@ public class SDHealth : MonoBehaviour
         isDemon = true;
         anim.SetBool("IsDemon", true);
         health = demonHealth;
+        health_bar.Refill(health);
         GetComponent<SDBehavior>().currentSpeed = 400f;
 
         slimeCollision.gameObject.SetActive(false);
         demonCollision.gameObject.SetActive(true);
-         //sdAttack.SetActive(true); // 激活 sdAttack 对象
+        //sdAttack.SetActive(true); // 激活 sdAttack 对象
 
+    }
+
+    public void DestroyAfterAnim()
+    {
+        Destroy(gameObject);
     }
 
 

@@ -55,9 +55,11 @@ public class CupidInteract : MonoBehaviour
         if (canGet && Input.GetKeyDown(KeyCode.U) && thing.gameObject.tag == "FrozenVase")
 
         {
+            FindObjectOfType<AudioManager>().Play("getMagic");
             GameObject getEffect = GameObject.Instantiate(effect) as GameObject;
             effect.transform.position = thing.transform.position;
-            Destroy(thing.gameObject);
+            thing.gameObject.GetComponent<GetMagic>().DestroyVase();
+            //Destroy(thing.gameObject);
             GetComponent<Attack>().currentMagic.Add(MagicType.Frozen);
             abilityDisplay.Add_Ability("frost");
 
@@ -69,6 +71,7 @@ public class CupidInteract : MonoBehaviour
     {
         if (canGet && Input.GetKeyDown(KeyCode.U) && thing.gameObject.tag == "Brazier")
         {
+            FindObjectOfType<AudioManager>().Play("getMagic");
             GameObject getEffect = GameObject.Instantiate(effect) as GameObject;
             effect.transform.position = thing.transform.position;
             Destroy(thing.gameObject);
@@ -81,6 +84,7 @@ public class CupidInteract : MonoBehaviour
     {
         if (canGet && Input.GetKeyDown(KeyCode.U) && thing.gameObject.tag == "FlashBottle")
         {
+            FindObjectOfType<AudioManager>().Play("getMagic");
             Debug.Log("get lightning");
             GameObject getEffect = GameObject.Instantiate(effect) as GameObject;
             effect.transform.position = thing.transform.position;

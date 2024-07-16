@@ -54,8 +54,10 @@ public class CupidBehavior : MonoBehaviour
 
     private void Walk(Vector2 dir)
     {
+        
         if (!WorldRotation.isRotating && !Attack.isAttacking)
         {
+            
             rb.velocity = new Vector2(dir.x * speed, rb.velocity.y);
             bool slimeHasXAxisSpeed = Mathf.Abs(rb.velocity.x) > Mathf.Epsilon;
             anim.SetBool("Walk", slimeHasXAxisSpeed);
@@ -82,6 +84,7 @@ public class CupidBehavior : MonoBehaviour
     {
         if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)) && coll.onGround)
         {
+            FindObjectOfType<AudioManager>().Play("Jump");
             anim.SetBool("Jump", true);
             rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.velocity += dir * jumpForce;

@@ -5,9 +5,16 @@ using UnityEngine;
 public class MushroomPatrolState : EnemyBaseState
 {
 
+    public MushroomPatrolState(Animator anim)
+    {
+        this.anim = anim;
+    }
+
     public override void OnEnter(EnemyManger enemy)
     {
+        // base.OnEnter(enemy);
         currentEnemy = enemy;
+        
         currentEnemy.CurrSpeed = currentEnemy.PatrolSpeed;
         currentEnemy.CurrWaitTime = currentEnemy.PotalWaitTime;
         currentEnemy.WaitTimeContor=currentEnemy.CurrWaitTime;
@@ -20,6 +27,7 @@ public class MushroomPatrolState : EnemyBaseState
             currentEnemy.WaitTimer.Set_Timer(currentEnemy.CurrWaitTime, currentEnemy.CurrWaitTime + 1f);
         }
     }
+
     public override void LogicUpdate()
     {
         if (currentEnemy.health.isDead)
@@ -29,6 +37,7 @@ public class MushroomPatrolState : EnemyBaseState
         if (currentEnemy.Findplayer())
         {
             //Debug.Log("findplayer");
+
             currentEnemy.SwithState(EnemyMushroomEnums.Chase);
         }
         if (currentEnemy.TouchWallCheck())
@@ -36,6 +45,7 @@ public class MushroomPatrolState : EnemyBaseState
             //Debug.Log("findthedoll"+currenemy.pytcheck.isOngroud);
             if (!currentEnemy.IsWait)
             {
+                anim.SetBool("Run", false);
                 currentEnemy.WaitTimer.Reset();
                 currentEnemy.IsWait = true;
             }

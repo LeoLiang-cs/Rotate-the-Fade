@@ -105,6 +105,7 @@ GameObject:
   - component: {fileID: 5466942574988853651}
   - component: {fileID: 2967490864292044440}
   - component: {fileID: 2069263315988017621}
+  - component: {fileID: 1561177304953907807}
   m_Layer: 8
   m_Name: Cupid
   m_TagString: Player
@@ -309,7 +310,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentMagic: 
   chooseMagic: 0
-  magicDamge: 1
+  magicEnergy: 10
+  currentMagicCost: 0
+  frozenCost: 1
+  flameCost: 3
+  lightingCost: 2
+  timeCost: 5
 --- !u!114 &8399223358333725267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,7 +332,19 @@ MonoBehaviour:
   deathUIPanel: {fileID: 0}
   OnTakeDame:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: bb62411af90e0bd4f904186c9137816f, type: 2}
+        m_TargetAssemblyTypeName: VoidEventSO, Assembly-CSharp
+        m_MethodName: RaiseEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   maxHealth: 10
   currentHealth: 0
   MushroomDamage: 3
@@ -503,3 +521,63 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.0803404, y: 0.90440273}
   m_EdgeRadius: 0
+--- !u!114 &1561177304953907807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7928294229524471880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd438dd108a0f284aa931a2da434f1d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ImpulseDefinition:
+    m_ImpulseChannel: 1
+    m_ImpulseShape: 3
+    m_CustomImpulseShape:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ImpulseDuration: 0.3
+    m_ImpulseType: 0
+    m_DissipationRate: 0.25
+    m_RawSignal: {fileID: 0}
+    m_AmplitudeGain: 1
+    m_FrequencyGain: 1
+    m_RepeatMode: 0
+    m_Randomize: 1
+    m_TimeEnvelope:
+      m_AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_AttackTime: 0
+      m_SustainTime: 0.2
+      m_DecayTime: 0.7
+      m_ScaleWithImpact: 1
+      m_HoldForever: 0
+    m_ImpactRadius: 100
+    m_DirectionMode: 0
+    m_DissipationMode: 2
+    m_DissipationDistance: 100
+    m_PropagationSpeed: 343
+  m_DefaultVelocity: {x: 0.5, y: 0.5, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_IgnoreTag: 
+  m_UseImpactDirection: 0
+  m_ScaleImpactWithMass: 0
+  m_ScaleImpactWithSpeed: 0

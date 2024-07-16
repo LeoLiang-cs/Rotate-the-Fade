@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,9 +22,13 @@ public class BushHealth : MonoBehaviour
     public int lightningDamage = 3;
 
 
+    private CinemachineImpulseSource impulseSource;
+
     // Start is called before the first frame update
     void Start()
     {
+
+        impulseSource = GetComponent<CinemachineImpulseSource>();
         mIceBlockSample = Resources.Load<GameObject>("Prefabs/BushFrozen") as GameObject;
         spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
@@ -39,6 +44,15 @@ public class BushHealth : MonoBehaviour
     public void TakeFrozenDamage(Vector2 attP)
     {
         Debug.Log("Bush frozen");
+        if (impulseSource == null)
+        {
+
+            Debug.Log("impulseSource == null");
+        }
+        else
+        {
+            CameraShakeManager.instance.CameraShake(impulseSource);
+        }
         if (isHitting)
             return;
         health -= frozenDamage;
@@ -55,6 +69,15 @@ public class BushHealth : MonoBehaviour
 
     public void TakeFlameDamage(Vector2 attP)
     {
+        if (impulseSource == null)
+        {
+
+            Debug.Log("impulseSource == null");
+        }
+        else
+        {
+            CameraShakeManager.instance.CameraShake(impulseSource);
+        }
         if (isHitting)
             return;
         health -= flameDamage;
@@ -66,6 +89,15 @@ public class BushHealth : MonoBehaviour
 
     public void TakeLighteningChainDamage()
     {
+        if (impulseSource == null)
+        {
+
+            Debug.Log("impulseSource == null");
+        }
+        else
+        {
+            CameraShakeManager.instance.CameraShake(impulseSource);
+        }
         health -= lightningDamage;
         spriteRenderer.color = Color.yellow;
     }

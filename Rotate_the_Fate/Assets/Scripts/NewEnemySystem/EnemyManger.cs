@@ -61,22 +61,28 @@ public class EnemyManger : MonoBehaviour
     public NewMushroomHealth health;
 
     [Header("Fly")]
+    public Transform StaticPostionInRotationWorld;
     public Vector3 StaticPostion;
     public Vector3 Target;
     public Vector3 MoveDir;
     public float CheckFindPlayerRadios;
     public float CheckFindAttackRadios;
     public float AttackAddRadios;
+    public Vector3 LastPostionBeforeAttack;
+    public bool IsAttack;
+    public Vector3 MoveDirBrforeAttack;
+    public float X, Y, Z;
 
     protected virtual void Awake()
     {
-        rb=GetComponent<Rigidbody2D>();
-        CheckOfTouch=GetComponent<PychicsCheck>();
-        WaitTimer=GetComponent<Timer>();
-        health=GetComponent<NewMushroomHealth>();
+        rb = GetComponent<Rigidbody2D>();
+        CheckOfTouch = GetComponent<PychicsCheck>();
+        WaitTimer = GetComponent<Timer>();
+        health = GetComponent<NewMushroomHealth>();
         SlowContor = 1f;
         EnemyMaster.Instance.AddEnemy(this);
         Debug.Log("EnemyMangerAwake");
+        IsAttack = false;
     }
 
     protected virtual void OnEnable()
@@ -94,7 +100,7 @@ public class EnemyManger : MonoBehaviour
         CurrState.LogicUpdate();
     }
 
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
 
         CurrState.PhysicsUpdate();
@@ -111,12 +117,13 @@ public class EnemyManger : MonoBehaviour
         rb.velocity = new Vector2(FaceDire.x * CurrSpeed * Time.deltaTime * SlowContor, rb.velocity.y);
     }
 
-    public void TurnFacedir()
+    public virtual void TurnFacedir()
     {
         transform.localScale = new Vector3(FaceDire.x, 1, 1);
         //float timef = 1f;
         //timef-= Time.deltaTime; 
         IsWait = false;
+
     }
 
 
@@ -129,9 +136,9 @@ public class EnemyManger : MonoBehaviour
 
     public void TimeContor()
     {
-        if(!Findplayer())
+        if (!Findplayer())
         {
-            ChaseTimeContor-=Time.deltaTime;
+            ChaseTimeContor -= Time.deltaTime;
         }
         else
         {
@@ -155,7 +162,7 @@ public class EnemyManger : MonoBehaviour
 
     public virtual bool TouchWallCheck()
     {
-        if ((CheckOfTouch.onRightWall && FaceDire.x > 0) || (CheckOfTouch.onLeftWall && FaceDire.x < 0) || (!CheckOfTouch.onLeftGround&&FaceDire.x<0)||(!CheckOfTouch.onRightGround&&FaceDire.x>0))
+        if ((CheckOfTouch.onRightWall && FaceDire.x > 0) || (CheckOfTouch.onLeftWall && FaceDire.x < 0) || (!CheckOfTouch.onLeftGround && FaceDire.x < 0) || (!CheckOfTouch.onRightGround && FaceDire.x > 0))
         {
             return true;
         }
@@ -172,7 +179,7 @@ public class EnemyManger : MonoBehaviour
             EnemyMushroomEnums.Chase => ChaseState,
             EnemyMushroomEnums.Death => DeathState,
             EnemyMushroomEnums.Static => StaticState,
-            EnemyMushroomEnums.Attack=> AttackState,
+            EnemyMushroomEnums.Attack => AttackState,
             EnemyMushroomEnums.Back => BackState,
             _ => null
         };
@@ -185,9 +192,9 @@ public class EnemyManger : MonoBehaviour
 
     public bool SameLevelCheck()
     {
-        float TmpDifferInHeight=transform.position.y-CupidTransform.position.y;
+        float TmpDifferInHeight = transform.position.y - CupidTransform.position.y;
         float v = Mathf.Abs(TmpDifferInHeight);
-        float DifferInHeight= v;
+        float DifferInHeight = v;
         if (DifferInHeight < 1f)
         {
             return true;
@@ -211,7 +218,7 @@ public class EnemyManger : MonoBehaviour
     {
         SlowContor = 1f;
     }
-    private void OnDrawGizmosSelected()  
+    private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere((Vector2)transform.position + CenterOffist + new Vector2(CheckDisent * -transform.localScale.x, 0), 0.2f);
     }
@@ -220,8 +227,36 @@ public class EnemyManger : MonoBehaviour
     {
         return true;
     }
+    public bool BackToPor()
+    {
+        if ((transform.position - StaticPostionInRotationWorld.position).sqrMagnitude < 0.01f)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
+    public void WaitForTwo()
+    {
+        Invoke("TurnBack", 0.1f);
+    }
 
+    public void TurnBack()
+    {
+        transform.position = LastPostionBeforeAttack + new Vector3(X * AttackAddRadios, AttackAddRadios * Y, 0);
+        Invoke("CoolDown", 1f);
 
+    }
+    public void CoolDown()
+    {
 
+        IsAttack = false;
+
+    }
 }
+
+
+

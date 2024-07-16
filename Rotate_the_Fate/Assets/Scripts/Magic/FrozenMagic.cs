@@ -27,7 +27,7 @@ public class FrozenMagic : MonoBehaviour
 
     void OnTriggerEnter2D (Collider2D other)
     {
-        Debug.Log("FrozenSpawner trigger");
+        //Debug.Log("FrozenSpawner trigger");
         if (other.gameObject.CompareTag("Mushroom"))
         {
             other.GetComponent<NewMushroomHealth>().TakeFrozenDamage(transform.position);
@@ -39,8 +39,11 @@ public class FrozenMagic : MonoBehaviour
             other.GetComponent<TwinHealth>().TakeFrozenDamage(transform.position);
         }else if(other.gameObject.CompareTag("SlimeDemon"))
         {
-            Debug.Log("FrozenSlimeDemon");
+            Debug.Log("SlimeDemon frozen");
             other.transform.GetComponentInParent<SDHealth>().TakeFrozenDamage(transform.position);
+        }else if(other.gameObject.CompareTag("Bat"))
+        {
+            other.transform.GetComponent<BatHealth>().TakeFrozenDamage(transform.position);
         }
     }
 }

@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class MushroomDeathState : EnemyBaseState
 {
+    public MushroomDeathState(Animator anim)
+    {
+        this.anim = anim;
+    }
     public override void OnEnter(EnemyManger enemy)
     {
+        base.OnEnter(enemy);
         currentEnemy= enemy;
     }
 
