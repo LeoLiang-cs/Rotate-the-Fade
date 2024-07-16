@@ -75,6 +75,7 @@ public class EnemyManger : MonoBehaviour
         WaitTimer=GetComponent<Timer>();
         health=GetComponent<NewMushroomHealth>();
         SlowContor = 1f;
+        EnemyMaster.Instance.AddEnemy(this);
         Debug.Log("EnemyMangerAwake");
     }
 
@@ -85,7 +86,6 @@ public class EnemyManger : MonoBehaviour
         WaitTimer.Set_Timer(CurrWaitTime, CurrWaitTime + 1f);
         WaitTimer.onComplete += TurnFacedir;
         TimeManager.Instance.AddTimer(WaitTimer);
-
     }
 
     private void Update()
@@ -103,6 +103,7 @@ public class EnemyManger : MonoBehaviour
     private void OnDisable()
     {
         CurrState.OnExit();
+        EnemyMaster.Instance.RemoveEnemy(this);
     }
 
     public virtual void Move()

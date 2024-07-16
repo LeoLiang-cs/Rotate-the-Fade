@@ -60,6 +60,14 @@ public class TwinHealth : MonoBehaviour
         //StabCoolDown(); 
     }
 
+    private void OnDestroy() {
+        GameObject sand_clock = Resources.Load<GameObject>("Prefabs/MagicProtos/sandClock");
+        sand_clock.transform.position = transform.position;
+        GameObject exit_lock = GameObject.Find("Lock");
+        Debug.Log(sand_clock);
+        Destroy(exit_lock);
+    }
+
     public void TakeFrozenDamage(Vector2 attP)
     {
         if (isHitting)
