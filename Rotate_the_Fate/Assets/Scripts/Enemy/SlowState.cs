@@ -7,7 +7,7 @@ public class SlowState : EnmybeahiorBasestate
     public override void OnEnter(EnemyManger tmpEnmy)
     {
         Enmy=tmpEnmy;
-        Enmy.enmystype.slowcl = 0.5f;
+        //Enmy.enmystype.slowcl = 0.5f;
     }
     public override void Logicupdate()
     {

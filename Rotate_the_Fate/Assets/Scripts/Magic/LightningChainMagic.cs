@@ -26,12 +26,12 @@ public class LightningChainMagic : MonoBehaviour
         {
             DrawLightning(p, enemy.transform.position);
             if (enemy.gameObject.CompareTag("Mushroom")) {
-                enemy.GetComponent<MushroomHealth>().TakeLighteningChainDamage(p);
+                enemy.GetComponent<NewMushroomHealth>().TakeLighteningChainDamage(p);
             }else if(enemy.gameObject.CompareTag("Bush")) {
                 enemy.GetComponent<BushHealth>().TakeLighteningChainDamage();
             }else if (enemy.gameObject.CompareTag("Bat"))
             {
-                enemy.GetComponent<MushroomHealth>().TakeLighteningChainDamage(p);
+                enemy.GetComponent<NewMushroomHealth>().TakeLighteningChainDamage(p);
             }else if(enemy.gameObject.CompareTag("Twinsnap")) {
                 enemy.GetComponent<TwinHealth>().TakeLighteningChainDamage(p);
             }

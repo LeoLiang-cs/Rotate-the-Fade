@@ -17,13 +17,13 @@ public class BatpythCheck : MonoBehaviour
     public bool onRightWall;
     public bool onGround;
     public bool onTop;
-    public Enemy Mushroom;
+   // public Enemy Mushroom;
 
 
     private void Update()
     {
         check();
-        Mushroom = GetComponent<Enemy>();
+        //Mushroom = GetComponent<Enemy>();   记得修改
     }
 
     public void check()
