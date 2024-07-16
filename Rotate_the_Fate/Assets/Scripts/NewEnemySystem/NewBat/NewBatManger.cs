@@ -5,12 +5,14 @@ using UnityEngine;
 public class NewBatManger : EnemyManger
 {
     Animator anim;
+    BatHealth Health;
     // Start is called before the first frame update
     protected override void Awake()
     {
         base.Awake();
+        Health = GetComponent<BatHealth>();
         anim = GetComponent<Animator>();    
-        ChaseState=new NewBatChaseState(anim);
+        ChaseState=new NewBatChaseState(anim,Health);
         AttackState=new NewBatAttackState(anim);
         BackState=new NewBatBackState(anim);
         StaticState=new NewBatStaticState(anim);
@@ -28,7 +30,6 @@ public class NewBatManger : EnemyManger
     {
         CurrState = StaticState;
         CurrState.OnEnter(this);
-
     }
 
     public override void Move()

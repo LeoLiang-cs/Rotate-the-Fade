@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Http.Headers;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -37,5 +38,14 @@ public class AudioManager : MonoBehaviour
             return;
         }
         sound_clip.source.Play();
+    }
+
+    public void PlayOneShot(string clip_name){
+        Sound sound_clip = Array.Find(sounds, s => s.name == clip_name);
+        if(sound_clip == null){
+            Debug.LogError("sound clip: " + clip_name + " not found");
+            return;
+        }
+        sound_clip.source.PlayOneShot(sound_clip.source.clip);
     }
 }

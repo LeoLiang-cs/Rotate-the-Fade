@@ -28,7 +28,6 @@ public class MagicSystem
     {
         GameObject frozen = GameObject.Instantiate(mFrozenSample) as GameObject;
         GameObject effect = GameObject.Instantiate(frozenEffect) as GameObject;
-        Debug.Log("FrozenSpawner");
         if(torwardRight)
         {
             frozen.transform.position = p ;

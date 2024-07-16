@@ -27,6 +27,7 @@ public class CupidInteract : MonoBehaviour
         GetFrozen();
         GetFlame();
         GetLightning();
+        GetTimeFreeze();
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -88,8 +89,23 @@ public class CupidInteract : MonoBehaviour
             GameObject getEffect = GameObject.Instantiate(effect) as GameObject;
             effect.transform.position = thing.transform.position;
             Destroy(thing.gameObject);
-            GetComponent<Attack>().currentMagic.Add(MagicType.LightingChain);
+            GetComponent<Attack>().currentMagic.Add(MagicType.Time);
             abilityDisplay.Add_Ability("lightening");
+        }
+    }
+
+    void GetTimeFreeze()
+    {
+        if (canGet && Input.GetKeyDown(KeyCode.U) && thing.gameObject.tag == "sandClock")
+        {
+            Debug.Log("get Time Magic");
+            GameObject getEffect = GameObject.Instantiate(effect) as GameObject;
+            effect.transform.position = thing.transform.position;
+            Destroy(thing.gameObject);
+            GetComponent<Attack>().currentMagic.Add(MagicType.Time);
+            abilityDisplay.Add_Ability("time");
+            Attack script = gameObject.GetComponent<Attack>();
+            script.Add_Magic(MagicType.Time);
         }
     }
 

@@ -19,6 +19,7 @@ public class TimeManager
     }
 
     private List<Timer> timers = new List<Timer>();
+    private List<IStoppable> stoppables = new List<IStoppable>();
     private bool isTimePaused = false;
 
     public void AddTimer(Timer timer)
@@ -29,6 +30,16 @@ public class TimeManager
     public void RemoveTimer(Timer timer)
     {
         timers.Remove(timer);
+    }
+
+    public void AddStoppable(IStoppable stoppable)
+    {
+        stoppables.Add(stoppable);
+    }
+
+    public void RemoveStoppable(IStoppable stoppable)
+    {
+        stoppables.Remove(stoppable);
     }
 
     public void FreezeTimers(Timer timer)
@@ -43,21 +54,33 @@ public class TimeManager
         }
     }
 
+    private void FreezeStoppable(){
+        foreach (var stoppable in stoppables)
+        {
+            stoppable.Stop();
+        }
+    }
+
+    private void ResumeStoppable(){
+        foreach (var stoppable in stoppables)
+        {
+            stoppable.BackTo();
+        }
+    }
+
     public void PauseTime(Timer timer)
     {
         FreezeTimers(timer);
-        GameObject enemy = GameObject.Find("MushPlus");
-        EnemyManger script = enemy.GetComponent<EnemyManger>();
-        script?.Stop();
+        FreezeStoppable();
+        EnemyMaster.Instance.Freeze();
         isTimePaused = true;
     }
 
     public void ResumeTime()
     {
         isTimePaused = false;
-        GameObject enemy = GameObject.Find("MushPlus");
-        EnemyManger script = enemy.GetComponent<EnemyManger>();
-        script?.BackTo();
+        EnemyMaster.Instance.Resume();
+        ResumeStoppable();
         foreach (var timerObj in timers)
         {
             timerObj.Resume();

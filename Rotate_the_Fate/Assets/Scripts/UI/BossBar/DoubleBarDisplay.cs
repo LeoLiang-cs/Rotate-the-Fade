@@ -8,7 +8,7 @@ public class DoubleBarDisplay : MonoBehaviour
 {
     private float health;
     private float lerp_timer;
-    private const float MAX_HEALTH = 20f;
+    private float max_health = 20f;
     private const float CHASE_TIME = 2f;
     public Image front_health_bar;
     public Image back_health_bar;
@@ -16,14 +16,14 @@ public class DoubleBarDisplay : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        health = MAX_HEALTH;
+        health = max_health;
         last_health = 1f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        health = Mathf.Clamp(health, 0f, MAX_HEALTH);
+        health = Mathf.Clamp(health, 0f, max_health);
         // if(Input.GetKeyDown(KeyCode.X)){
         //     TakeDamage(Random.Range(5,20));
         //     // Debug.Log("input x");
@@ -37,7 +37,7 @@ public class DoubleBarDisplay : MonoBehaviour
     public void UpdateHealth(){
         float fill_front = front_health_bar.fillAmount;
         float fill_back = back_health_bar.fillAmount;
-        float current_fraction = health / MAX_HEALTH;
+        float current_fraction = health / max_health;
 
         if(fill_back > current_fraction || (fill_front < current_fraction && current_fraction > last_health)){ 
             // health decrease or recovery less than decrease
@@ -67,6 +67,12 @@ public class DoubleBarDisplay : MonoBehaviour
 
     public void GetHealed(float recovery){
         health += recovery;
+        lerp_timer = 0f;
+    }
+
+    public void Refill(float new_health){
+        max_health = new_health;
+        health = max_health;
         lerp_timer = 0f;
     }
 }
