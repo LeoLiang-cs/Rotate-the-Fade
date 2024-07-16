@@ -3521,7 +3521,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 580097453}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 3510d443569e08740bfcc66be04cd9cd, type: 3}
@@ -40343,7 +40343,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8399223358333725267, guid: 92ac54e7930731e4eb234426d2d91525, type: 3}
       propertyPath: maxHealth
-      value: 10
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8399223358333725267, guid: 92ac54e7930731e4eb234426d2d91525, type: 3}
       propertyPath: deathUIPanel
@@ -40431,7 +40431,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5225451957136510638, guid: ca29b26a0f07e854ca843e42250f97ca, type: 3}
       propertyPath: frozenDamage
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5225451957136510638, guid: ca29b26a0f07e854ca843e42250f97ca, type: 3}
       propertyPath: lightningDamage

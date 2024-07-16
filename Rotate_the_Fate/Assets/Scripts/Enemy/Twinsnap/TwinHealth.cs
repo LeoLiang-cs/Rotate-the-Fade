@@ -134,6 +134,7 @@ public class TwinHealth : MonoBehaviour
             thankUI.SetActive(true);
             gameObject.layer = 2;
             isDead = true;
+            anim.SetBool("Walk", false);
             anim.SetTrigger("Die");
             GetComponent<RotationBehavior>().enabled = false;
         }

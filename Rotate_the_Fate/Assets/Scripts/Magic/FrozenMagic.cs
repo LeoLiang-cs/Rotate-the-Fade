@@ -37,6 +37,10 @@ public class FrozenMagic : MonoBehaviour
         }else if(other.gameObject.CompareTag("Twinsnap"))
         {
             other.GetComponent<TwinHealth>().TakeFrozenDamage(transform.position);
+        }else if(other.gameObject.CompareTag("SlimeDemon"))
+        {
+            Debug.Log("FrozenSlimeDemon");
+            other.GetComponent<SDHealth>().TakeFrozenDamage(transform.position);
         }
     }
 }

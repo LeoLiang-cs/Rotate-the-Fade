@@ -5,12 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class StateSwitcher : MonoBehaviour
 {
-    public Sprite image1; 
-    public Sprite image2; 
+    public Sprite image1;
+    public Sprite image2;
 
     private SpriteRenderer spriteRenderer;
-    private bool isStateOne = true; 
-    public string nextSceneName; 
+    private bool isStateOne = true;
+    public string nextSceneName;
 
     public float kVeryClose = 10f;
     private float GetDistanceToBlackHoleCenter(Collider2D collider)
@@ -20,10 +20,8 @@ public class StateSwitcher : MonoBehaviour
 
     void Start()
     {
-       
-        spriteRenderer = GetComponent<SpriteRenderer>();
 
-        
+        spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = image1;
     }
 
@@ -31,7 +29,7 @@ public class StateSwitcher : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.S) && !isStateOne && !Attack.isAttacking)
         {
-            SceneManager.LoadScene(nextSceneName);  
+            SceneManager.LoadScene(nextSceneName);
         }
     }
 
@@ -43,7 +41,7 @@ public class StateSwitcher : MonoBehaviour
         }
         else
         {
-            spriteRenderer.sprite = image1; 
+            spriteRenderer.sprite = image1;
         }
 
         isStateOne = !isStateOne;
@@ -55,7 +53,7 @@ public class StateSwitcher : MonoBehaviour
         //Debug.Log("Emeny OnTriggerEnter");
 
         TriggerCheck(collision.gameObject);
-        
+
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -69,7 +67,7 @@ public class StateSwitcher : MonoBehaviour
 
     private void TriggerCheck(GameObject g)
     {
-        if ( g.tag == "Player")
+        if (g.tag == "Player")
         {
             SwitchState();
 
