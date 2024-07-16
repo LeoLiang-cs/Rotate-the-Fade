@@ -40,7 +40,7 @@ public class CupidBehavior : MonoBehaviour
     {
 
         // Debug.Log(Attack.isAttacking);
-        if (health.isHitting || health.isDead)
+        if (health.isHitting || health.isDead || timeStop.isStopped)
         {
             return;
         }
