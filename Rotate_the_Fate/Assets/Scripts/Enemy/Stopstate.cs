@@ -8,7 +8,7 @@ public class Stopstate : EnmybeahiorBasestate
     public override void OnEnter(EnemyManger tmpEnmy)
     {
         Enmy=tmpEnmy;
-        Enmy.enmystype.slowcl = 0f;
+        //Enmy.enmystype.slowcl = 0f;
     }
     public override void Logicupdate()
     {

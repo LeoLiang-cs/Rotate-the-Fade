@@ -180,7 +180,7 @@ public class BatHealth : MonoBehaviour
     {
         spriteRenderer.color = Color.white;
         mFrozenCount = 0;
-        enemyManger.Backto();
+        enemyManger.BackTo();
     }
 
     public void UnFreeze()

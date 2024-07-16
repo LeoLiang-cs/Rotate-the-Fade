@@ -7,7 +7,7 @@ public class BackNormalState : EnmybeahiorBasestate
     public override void OnEnter(EnemyManger tmpEnmy)
     {
         Enmy = tmpEnmy;
-        Enmy.enmystype.slowcl = 1f;
+        //Enmy.enmystype.slowcl = 1f;
     }
     public override void Logicupdate()
     {
