@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class TwinBehavior : MonoBehaviour
 {
-    public Rigidbody2D rb;
-    public Collision coll;
-    public TwinAttack twinAttack;
-    public Animator anim;
+    private Rigidbody2D rb;
+    private Collision coll;
+    private TwinAttack twinAttack;
+    private Animator anim;
     private GameObject Cupid;
     private TwinAttackDetect attackDetect;
     private TwinHealth twinHealth;
