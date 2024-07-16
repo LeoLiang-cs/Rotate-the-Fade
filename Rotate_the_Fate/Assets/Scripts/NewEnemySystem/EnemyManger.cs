@@ -75,13 +75,13 @@ public class EnemyManger : MonoBehaviour
 
     protected virtual void Awake()
     {
-        rb=GetComponent<Rigidbody2D>();
-        CheckOfTouch=GetComponent<PychicsCheck>();
-        WaitTimer=GetComponent<Timer>();
-        health=GetComponent<NewMushroomHealth>();
+        rb = GetComponent<Rigidbody2D>();
+        CheckOfTouch = GetComponent<PychicsCheck>();
+        WaitTimer = GetComponent<Timer>();
+        health = GetComponent<NewMushroomHealth>();
         SlowContor = 1f;
         Debug.Log("EnemyMangerAwake");
-        IsAttack=false;
+        IsAttack = false;
     }
 
     protected virtual void OnEnable()
@@ -100,7 +100,7 @@ public class EnemyManger : MonoBehaviour
         CurrState.LogicUpdate();
     }
 
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
 
         CurrState.PhysicsUpdate();
@@ -116,12 +116,13 @@ public class EnemyManger : MonoBehaviour
         rb.velocity = new Vector2(FaceDire.x * CurrSpeed * Time.deltaTime * SlowContor, rb.velocity.y);
     }
 
-    public void TurnFacedir()
+    public virtual void TurnFacedir()
     {
         transform.localScale = new Vector3(FaceDire.x, 1, 1);
         //float timef = 1f;
         //timef-= Time.deltaTime; 
         IsWait = false;
+
     }
 
 
@@ -134,15 +135,12 @@ public class EnemyManger : MonoBehaviour
 
     public void TimeContor()
     {
-        Debug.Log("useTimcontor");
-        if(!Findplayer())
+        if (!Findplayer())
         {
-            ChaseTimeContor-=Time.deltaTime;
-            Debug.Log("chaseTime" + ChaseTimeContor);
+            ChaseTimeContor -= Time.deltaTime;
         }
         else
         {
-            Debug.Log("FindPLayerINTimContor");
             ChaseTimeContor = ChaseTime;
         }
     }
@@ -163,7 +161,7 @@ public class EnemyManger : MonoBehaviour
 
     public virtual bool TouchWallCheck()
     {
-        if ((CheckOfTouch.onRightWall && FaceDire.x > 0) || (CheckOfTouch.onLeftWall && FaceDire.x < 0) || (!CheckOfTouch.onLeftGround&&FaceDire.x<0)||(!CheckOfTouch.onRightGround&&FaceDire.x>0))
+        if ((CheckOfTouch.onRightWall && FaceDire.x > 0) || (CheckOfTouch.onLeftWall && FaceDire.x < 0) || (!CheckOfTouch.onLeftGround && FaceDire.x < 0) || (!CheckOfTouch.onRightGround && FaceDire.x > 0))
         {
             return true;
         }
@@ -180,7 +178,7 @@ public class EnemyManger : MonoBehaviour
             EnemyMushroomEnums.Chase => ChaseState,
             EnemyMushroomEnums.Death => DeathState,
             EnemyMushroomEnums.Static => StaticState,
-            EnemyMushroomEnums.Attack=> AttackState,
+            EnemyMushroomEnums.Attack => AttackState,
             EnemyMushroomEnums.Back => BackState,
             _ => null
         };
@@ -193,9 +191,9 @@ public class EnemyManger : MonoBehaviour
 
     public bool SameLevelCheck()
     {
-        float TmpDifferInHeight=transform.position.y-CupidTransform.position.y;
+        float TmpDifferInHeight = transform.position.y - CupidTransform.position.y;
         float v = Mathf.Abs(TmpDifferInHeight);
-        float DifferInHeight= v;
+        float DifferInHeight = v;
         if (DifferInHeight < 1f)
         {
             return true;
@@ -219,7 +217,7 @@ public class EnemyManger : MonoBehaviour
     {
         SlowContor = 1f;
     }
-    private void OnDrawGizmosSelected()  
+    private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere((Vector2)transform.position + CenterOffist + new Vector2(CheckDisent * -transform.localScale.x, 0), 0.2f);
     }
@@ -247,9 +245,7 @@ public class EnemyManger : MonoBehaviour
 
     public void TurnBack()
     {
-        Debug.Log("Movedirbeforeattack" + MoveDirBrforeAttack);
-
-        transform.position = LastPostionBeforeAttack+new Vector3(X*AttackAddRadios,AttackAddRadios*Y,0);
+        transform.position = LastPostionBeforeAttack + new Vector3(X * AttackAddRadios, AttackAddRadios * Y, 0);
         Invoke("CoolDown", 1f);
 
     }
@@ -257,7 +253,7 @@ public class EnemyManger : MonoBehaviour
     {
 
         IsAttack = false;
-        
+
     }
 }
 

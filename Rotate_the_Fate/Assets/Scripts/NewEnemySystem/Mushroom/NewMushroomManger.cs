@@ -4,14 +4,27 @@ using UnityEngine;
 
 public class NewMushroomManger : EnemyManger
 {
+    protected Animator anim;
     // Start is called before the first frame update
     protected override void Awake()
     {
         base.Awake();
-        PatrolState= new MushroomPatrolState();
-        ChaseState = new MushroomChaseState();
-        DeathState=new MushroomDeathState();
+        anim = GetComponent<Animator>();
+        PatrolState= new MushroomPatrolState(anim);
+        ChaseState = new MushroomChaseState(anim);
+        DeathState=new MushroomDeathState(anim);
         
+    }
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+    }
+
+    public override void TurnFacedir()
+    {
+        base.TurnFacedir();
+        anim.SetBool("Run", true);
     }
 
 

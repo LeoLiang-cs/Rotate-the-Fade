@@ -4,11 +4,12 @@ using UnityEngine;
 
 public abstract class EnemyBaseState : MonoBehaviour
 {
+     protected Animator anim;
     // Start is called before the first frame update
     protected EnemyManger currentEnemy;
     public virtual void OnEnter(EnemyManger enemy)
     {
-
+        
     }
 
     public abstract void LogicUpdate();

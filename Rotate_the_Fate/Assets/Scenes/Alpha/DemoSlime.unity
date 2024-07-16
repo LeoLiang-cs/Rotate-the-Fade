@@ -621,6 +621,7 @@ GameObject:
   - component: {fileID: 917755696}
   - component: {fileID: 917755697}
   - component: {fileID: 917755699}
+  - component: {fileID: 917755698}
   m_Layer: 7
   m_Name: SlimeDemon
   m_TagString: SlimeDemon
@@ -867,7 +868,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.6404524, y: 2.0421066}
   m_EdgeRadius: 0
---- !u!114 &917755699
+--- !u!114 &917755698
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -882,6 +883,25 @@ MonoBehaviour:
   isAttacking: 0
   skillCoolDown: 5
   skillCounter: 0
+  lastSkill: 
+--- !u!114 &917755699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 917755687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 318f1b61dbd562e45960b09d49381091, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  detectCupid: 0
+  boxSize: {x: 23.3, y: 1.02}
+  offset: {x: 0, y: 0.23}
 --- !u!1 &947334714
 GameObject:
   m_ObjectHideFlags: 0
@@ -27122,7 +27142,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1608301609}
   - component: {fileID: 1608301610}
-  - component: {fileID: 1608301611}
   m_Layer: 7
   m_Name: DemonCollision
   m_TagString: Untagged
@@ -27207,24 +27226,6 @@ PolygonCollider2D:
       - {x: 2.1260033, y: 0.02677846}
       - {x: 2.2847717, y: 0.5046291}
   m_UseDelaunayMesh: 0
---- !u!114 &1608301611
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1608301608}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 318f1b61dbd562e45960b09d49381091, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  detectCupid: 0
-  boxSize: {x: 20.1, y: 0.88}
-  offset: {x: 0.04, y: 0.39}
 --- !u!1 &1958788507 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7928294229524471880, guid: 92ac54e7930731e4eb234426d2d91525, type: 3}

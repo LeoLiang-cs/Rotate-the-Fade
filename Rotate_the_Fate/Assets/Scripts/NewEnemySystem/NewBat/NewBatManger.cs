@@ -4,16 +4,24 @@ using UnityEngine;
 
 public class NewBatManger : EnemyManger
 {
+    Animator anim;
     // Start is called before the first frame update
     protected override void Awake()
     {
         base.Awake();
-        ChaseState=new NewBatChaseState();
-        AttackState=new NewBatAttackState();
-        BackState=new NewBatBackState();
-        StaticState=new NewBatStaticState();
+        anim = GetComponent<Animator>();    
+        ChaseState=new NewBatChaseState(anim);
+        AttackState=new NewBatAttackState(anim);
+        BackState=new NewBatBackState(anim);
+        StaticState=new NewBatStaticState(anim);
         ChaseTimeContor = ChaseTime;
         StaticPostion = StaticPostionInRotationWorld.position;
+    }
+
+    protected override void FixedUpdate()
+    {
+        base.FixedUpdate();
+        Flip();
     }
 
     protected override void OnEnable()
@@ -30,7 +38,6 @@ public class NewBatManger : EnemyManger
 
     public override bool Findplayer()
     {
-        Debug.Log("UseFindplayerOfBat");
         float Distent=(transform.position-CupidTransform.position).sqrMagnitude;
         if (Distent < CheckFindPlayerRadios)
         {
@@ -44,7 +51,6 @@ public class NewBatManger : EnemyManger
 
     public override bool FindAttack()
     {
-        Debug.Log("UseFindAttAckOfBat");
         float Distent = (transform.position - CupidTransform.position).sqrMagnitude;
         //if (Distent < CheckFindAttackRadios+AttackAddRadios)
         //{
@@ -66,7 +72,17 @@ public class NewBatManger : EnemyManger
         }
 
     }
-
+        void Flip()
+    {
+        if (CupidTransform.position.x > transform.position.x)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+        else
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+    }
 
 
 

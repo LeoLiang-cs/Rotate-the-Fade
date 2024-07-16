@@ -52,7 +52,7 @@ public class CupidHealth : MonoBehaviour
             }
             else
             {
-                CameraShakeManager.instance.CameraShake(impulseSource);
+//                CameraShakeManager.instance.CameraShake(impulseSource);
             }
             
             Debug.Log("enter");

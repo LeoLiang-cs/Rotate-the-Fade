@@ -50,6 +50,7 @@ public class BatHealth : MonoBehaviour
 
     public void TakeFrozenDamage(Vector2 attP)
     {
+        Debug.Log("Bat TakeFrozenDamage");
         if (isHitting)
             return;
         health -= frozenDamage;

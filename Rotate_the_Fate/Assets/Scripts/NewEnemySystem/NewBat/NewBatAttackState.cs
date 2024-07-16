@@ -5,6 +5,10 @@ using UnityEngine;
 public class NewBatAttackState : EnemyBaseState
 {
 
+    public NewBatAttackState(Animator anim)
+    {
+        this.anim = anim;
+    }
     public override void OnEnter(EnemyManger enemy)
     {
         Debug.Log("EnterAttack");

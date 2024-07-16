@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class MushroomChaseState : EnemyBaseState
 {
+    public MushroomChaseState(Animator anim)
+    {
+        this.anim = anim;
+    }
 
     public override void OnEnter(EnemyManger enemy)
     {
+        base.OnEnter(enemy);
         currentEnemy = enemy;
         currentEnemy.CurrSpeed = currentEnemy.ChaseSpeed;
         currentEnemy.CurrWaitTime = currentEnemy.ChaseWaitTime;
@@ -14,6 +19,7 @@ public class MushroomChaseState : EnemyBaseState
     }
     public override void LogicUpdate()
     {
+        Debug.Log("enterpatrol2+ ", currentEnemy.gameObject);
         if (currentEnemy.health.isDead)
         {
             currentEnemy.SwithState(EnemyMushroomEnums.Death);

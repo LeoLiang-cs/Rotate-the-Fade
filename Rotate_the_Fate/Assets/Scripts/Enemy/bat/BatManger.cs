@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -25,7 +26,7 @@ public class BatManger : MonoBehaviour
     public GameObject CuipdPlay;
     public Vector2 priLocation;
 
-    [Header("ï¿½ï¿½ï¿½")]
+    [Header("ï¿½ï¿½ï¿?")]
     public float radis;
     public float chasewaitTime;
     public float chasetimeCon;
@@ -33,7 +34,7 @@ public class BatManger : MonoBehaviour
 
     [Header("ï¿½ï¿½ï¿½ï¿½")]
     public Vector2 lastPostaton;
-    public   bool isattack;
+    public bool isattack;
     public float AttDistant;
     //public BatpythCheck pytCheck;
 
@@ -41,7 +42,7 @@ public class BatManger : MonoBehaviour
     private void Awake()
     {
         chasestate = new BatChaseState();
-        attackstate= new BatAttackState();
+        attackstate = new BatAttackState();
         backstate = new BatBackState();
         priLocation = transform.position;
         staicstate = new BatStaicState();
@@ -62,11 +63,14 @@ public class BatManger : MonoBehaviour
     void Update()
     {
         //pytCheck.check();
+        
+Flip();
         currstate.Logicupdate();
     }
-    private void FixedUpdate()
+    void FixedUpdate()
     {
         currstate.pythicupdate();
+        
     }
 
 
@@ -84,6 +88,7 @@ public class BatManger : MonoBehaviour
     public void Move()
     {
         transform.localPosition = Vector2.MoveTowards(transform.localPosition, currfaceDir, currspeed * Time.deltaTime);
+        // transform.localScale=new Vector3(Mathf.Abs(currfaceDir.x)/currfaceDir.x,1,1);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -99,12 +104,12 @@ public class BatManger : MonoBehaviour
     public bool findplayer()
     {
         Debug.Log("ï¿½ï¿½ï¿½ï¿½findplayer");
-        if(CuipdPlay != null)
+        if (CuipdPlay != null)
         {
-            float distance=(transform.localPosition - CuipdPlay.transform.position).sqrMagnitude;
-            if(distance < radis)
+            float distance = (transform.localPosition - CuipdPlay.transform.position).sqrMagnitude;
+            if (distance < radis)
             {
-                
+
                 return true;
             }
             else
@@ -119,10 +124,10 @@ public class BatManger : MonoBehaviour
     }
     public bool findAttack()
     {
-        if(CuipdPlay != null)
+        if (CuipdPlay != null)
         {
             float distance = (transform.localPosition - CuipdPlay.transform.position).sqrMagnitude;
-            if(distance<attackradis+AttDistant)
+            if (distance < attackradis + AttDistant)
             {
                 if (!isattack)
                 {
@@ -135,7 +140,7 @@ public class BatManger : MonoBehaviour
             }
             if (distance < attackradis)
             {
-                
+
 
                 return true;
             }
@@ -147,13 +152,13 @@ public class BatManger : MonoBehaviour
         else
         { return false; }
     }
-    
+
 
     public void TimeConToner()
     {
-        if(!findplayer())
+        if (!findplayer())
         {
-            chasetimeCon-=Time.deltaTime;
+            chasetimeCon -= Time.deltaTime;
         }
         else
         {
@@ -171,7 +176,7 @@ public class BatManger : MonoBehaviour
     //    }
     //}
 
-    
+
 
 
 
@@ -179,10 +184,10 @@ public class BatManger : MonoBehaviour
     {
         var newstate = state switch
         {
-            BatStateEnum.staic=>staicstate,
-            BatStateEnum.chase=>chasestate,
-            BatStateEnum.attack=>attackstate,
-            BatStateEnum.back=>backstate,
+            BatStateEnum.staic => staicstate,
+            BatStateEnum.chase => chasestate,
+            BatStateEnum.attack => attackstate,
+            BatStateEnum.back => backstate,
             _ => null
         };
         currstate.OnExit();
@@ -195,10 +200,10 @@ public class BatManger : MonoBehaviour
     {
         Invoke("TurnBack", 0.1f);
     }
-    
+
     public void TurnBack()
     {
-        
+
         transform.localPosition = lastPostaton;
         Invoke("CoolDown", 1f);
 
@@ -208,5 +213,18 @@ public class BatManger : MonoBehaviour
 
         isattack = false;
         Debug.Log("isattack" + isattack);
+    }
+
+    void Flip()
+    {
+        Debug.Log("bat position" + transform.position + "  CuipdPlay position" + CuipdPlay.transform.position);
+        if (CuipdPlay.transform.position.x > transform.position.x)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+        else
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+        }
     }
 }

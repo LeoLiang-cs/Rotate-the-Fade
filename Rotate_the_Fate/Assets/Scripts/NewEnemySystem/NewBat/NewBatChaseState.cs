@@ -5,12 +5,18 @@ using UnityEngine.EventSystems;
 
 public class NewBatChaseState : EnemyBaseState
 {
+    public NewBatChaseState(Animator anim)
+    {
+        this.anim = anim;
+    }
     public override void OnEnter(EnemyManger enemy)
     {
+
         Debug.Log("enterChase");
         currentEnemy = enemy;
         currentEnemy.CurrSpeed = currentEnemy.ChaseSpeed;
         currentEnemy.ChaseTimeContor = currentEnemy.ChaseWaitTime;
+        anim.SetBool("Fly", true);
 
     }
     
@@ -40,11 +46,11 @@ public override void LogicUpdate()
         currentEnemy.TimeContor();
         if (currentEnemy.ChaseTimeContor <= 0)
         {
-            Debug.Log("switch to Back");
+          
             currentEnemy.SwithState(EnemyMushroomEnums.Back);
         }
         
-        Debug.Log("timeContor: "+ currentEnemy.ChaseTimeContor);
+      
         currentEnemy.Target = currentEnemy.CupidTransform.position;
         currentEnemy.MoveDir = (currentEnemy.Target - currentEnemy.transform.position).normalized;
        

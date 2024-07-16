@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class NewBatBackState : EnemyBaseState
 {
+    public NewBatBackState(Animator anim)
+    {
+        this.anim = anim;
+    }
     public override void OnEnter(EnemyManger enemy)
     {
         Debug.Log("enterBack");
