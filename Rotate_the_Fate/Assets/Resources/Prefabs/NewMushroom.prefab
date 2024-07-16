@@ -135,7 +135,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 384
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -214,6 +214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CupidTransform: {fileID: 0}
   LastJump: 0
+  Cupidd: {fileID: 0}
   rb: {fileID: 0}
   CheckOfTouch: {fileID: 0}
   CurrSpeed: 0
