@@ -18,7 +18,7 @@ public class CupidHealth : MonoBehaviour
     public int maxHealth = 10;
     public int currentHealth;
 
-    public int MushroomDamage = 3;
+    public int MushroomDamage = 2;
     public int SeedDamage = 1;
     public float knockBackForce = 10f;
     public bool invulnerable = false;
@@ -53,10 +53,10 @@ public class CupidHealth : MonoBehaviour
             }
             else
             {
-//                CameraShakeManager.instance.CameraShake(impulseSource);
+                CameraShakeManager.instance.CameraShake(impulseSource);
             }
             
-            Debug.Log("enter");
+
             currentHealth -= MushroomDamage;
             health_bar.TakeDamage(MushroomDamage);
             if (currentHealth <= 0 && !isDead)
@@ -73,7 +73,7 @@ public class CupidHealth : MonoBehaviour
 
             rb.AddForce(knockBackDirection * knockBackForce, ForceMode2D.Impulse);
             anim.SetTrigger("Hit");
-
+            Debug.Log("currentHealth: " + currentHealth);
         }
     }
 

@@ -93,4 +93,9 @@ public class SDAttack : MonoBehaviour
     {
         FindObjectOfType<AudioManager>().Play("SDAttack");
     }
+
+    public void ChopGroundMusic()
+    {
+        FindObjectOfType<AudioManager>().Play("Sword");
+    }
 }

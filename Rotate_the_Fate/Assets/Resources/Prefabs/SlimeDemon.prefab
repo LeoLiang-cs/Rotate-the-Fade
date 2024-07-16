@@ -94,7 +94,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5818826965518433401
 Transform:
   m_ObjectHideFlags: 0
@@ -575,9 +575,9 @@ MonoBehaviour:
   onLeftWall: 0
   wallSide: 0
   collisionRadius: 1
-  bottomOffset: {x: -0.14, y: -1.14}
-  rightOffset: {x: 0.55, y: 0.81}
-  leftOffset: {x: -0.69, y: 0.71}
+  bottomOffset: {x: -0.09, y: -0.34}
+  rightOffset: {x: 1.76, y: 2.16}
+  leftOffset: {x: -1.36, y: 1.91}
 --- !u!114 &1718007894062549312
 MonoBehaviour:
   m_ObjectHideFlags: 0

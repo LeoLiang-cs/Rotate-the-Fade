@@ -59,6 +59,7 @@ public class SDHealth : MonoBehaviour
             return;
         if (!isDemon)
         {
+            
             health -= frozenDamage;
             health_bar.TakeDamage(frozenDamage);
             isHitting = true;
@@ -76,6 +77,7 @@ public class SDHealth : MonoBehaviour
         }
         else
         {
+            FindObjectOfType<AudioManager>().Play("DemonHit");
             health -= frozenDamage;
             health_bar.TakeDamage(frozenDamage);
 
@@ -106,6 +108,7 @@ public class SDHealth : MonoBehaviour
 
         if (health <= 0 && !isDead && isDemon)
         {
+            FindObjectOfType<AudioManager>().Play("DemonDeath");
             gameObject.layer = 2;
             isDead = true;
             anim.SetBool("Walk", false);
@@ -121,6 +124,7 @@ public class SDHealth : MonoBehaviour
 
     public void Transform2Demon()
     {
+        FindObjectOfType<AudioManager>().Play("DemonTransform");
         isTransforming = true;
         Debug.Log("Transforming");
         anim.SetTrigger("Transform");
