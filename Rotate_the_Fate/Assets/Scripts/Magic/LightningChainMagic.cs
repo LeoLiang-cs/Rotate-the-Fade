@@ -11,13 +11,13 @@ public class LightningChainMagic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void TriggerLightningChain(Vector3 p)
@@ -27,14 +27,20 @@ public class LightningChainMagic : MonoBehaviour
         foreach (Collider2D enemy in hitEnemies)
         {
             DrawLightning(p, enemy.transform.position);
-            if (enemy.gameObject.CompareTag("Mushroom")) {
-                enemy.GetComponent<NewMushroomHealth>().TakeLighteningChainDamage(p);
-            }else if(enemy.gameObject.CompareTag("Bush")) {
-                enemy.GetComponent<BushHealth>().TakeLighteningChainDamage();
-            }else if (enemy.gameObject.CompareTag("Bat"))
+            if (enemy.gameObject.CompareTag("Mushroom"))
             {
                 enemy.GetComponent<NewMushroomHealth>().TakeLighteningChainDamage(p);
-            }else if(enemy.gameObject.CompareTag("Twinsnap")) {
+            }
+            else if (enemy.gameObject.CompareTag("Bush"))
+            {
+                enemy.GetComponent<BushHealth>().TakeLighteningChainDamage();
+            }
+            else if (enemy.gameObject.CompareTag("Bat"))
+            {
+                enemy.GetComponent<BatHealth>().TakeLighteningChainDamage(p);
+            }
+            else if (enemy.gameObject.CompareTag("Twinsnap"))
+            {
                 enemy.GetComponent<TwinHealth>().TakeLighteningChainDamage(p);
             }
         }
@@ -42,23 +48,23 @@ public class LightningChainMagic : MonoBehaviour
         foreach (Collider2D stab in hitStab)
         {
             DrawLightning(p, stab.transform.position);
-        
+
         }
         Attack.isAttacking = false;
 
-        Destroy(transform.gameObject, 0.2f);
+        Destroy(transform.gameObject, 0.1f);
     }
 
-void DrawLightning(Vector2 start, Vector2 end)
-{
-    // …œ“∆ y ÷· 0.5f
-    start.y += 1f;
-    end.y += 1f;
+    void DrawLightning(Vector2 start, Vector2 end)
+    {
+        // …œ“∆ y ÷· 0.5f
+        start.y += 1f;
+        end.y += 1f;
 
-    Debug.Log("DrawLightning: " + start + " " + end);
-    LineRenderer lr = GetComponent<LineRenderer>();
-    lr.SetPosition(0, start);
-    lr.SetPosition(1, end);
-}
+        Debug.Log("DrawLightning: " + start + " " + end);
+        LineRenderer lr = GetComponent<LineRenderer>();
+        lr.SetPosition(0, start);
+        lr.SetPosition(1, end);
+    }
 
 }
