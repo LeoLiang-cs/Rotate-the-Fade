@@ -29,7 +29,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Level_3.unity
     guid: 45301c4f1e694a84d8f05ab72f3e7a47
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Elite.unity
     guid: c443539e87440ae41857b7b437a78439
   - enabled: 1
@@ -53,4 +53,5 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Alpha/A_Anime.unity
     guid: 75c9d25a27790594c9da6d560fd56471
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: 5d7ba0c739f663d438fd57c0d3fbcafa, type: 2}
