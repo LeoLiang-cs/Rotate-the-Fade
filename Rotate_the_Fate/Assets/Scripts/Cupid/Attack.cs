@@ -13,13 +13,13 @@ public class Attack : MonoBehaviour
 
     private Rigidbody2D rb;
     private CupidHealth cupidHealth;
-    public int magicEnergy = 10;
-    public int currentMagicCost;
-    public int frozenCost = 1;
-    public int flameCost = 2;
-    public int lightingCost = 1;
-    public int timeCost = 5;
-    private TripleBarDisplay health_bar;
+    public float magicEnergy = 10;
+    public float currentMagicCost;
+    public float frozenCost = 1;
+    public float flameCost = 3;
+    public float lightingCost = 2;
+    public float timeCost = 5;
+    private TripleBarDisplay energy_bar;
     private AbilityDisplay abilityDisplay;
     // Start is called before the first frame update
     void Awake()
@@ -27,6 +27,7 @@ public class Attack : MonoBehaviour
         mMagicSystem = new MagicSystem();
         rb = GetComponent<Rigidbody2D>();
         cupidHealth = GetComponent<CupidHealth>();
+        energy_bar = GameObject.Find("StateBar").GetComponent<TripleBarDisplay>();
         //health_bar = GameObject.Find("StateBar").GetComponent<HealthUI>();
         //abilityDisplay = GameObject.Find("Ability").GetComponent<AbilityDisplay>();
         chooseMagic = AbilityStats.instance.chooseMagic;
@@ -50,9 +51,13 @@ public class Attack : MonoBehaviour
         SwitchMagic();
     }
 
+    void FixedUpdate()
+    {
+        EnergyRecover();
+    }
     public void MagicAttack()
     {
-        if (Input.GetKeyDown(KeyCode.J) && !isAttacking && coll.onGround && currentMagic.Count > 0 )
+        if (Input.GetKeyDown(KeyCode.J) && !isAttacking && coll.onGround && currentMagic.Count > 0 && magicEnergy >= currentMagicCost)
         {
             isAttacking = true;
             rb.velocity = new Vector2(0, 0);
@@ -60,18 +65,22 @@ public class Attack : MonoBehaviour
             {
                 case MagicType.Frozen:
                     magicEnergy -= frozenCost;
+                    energy_bar.ValueDecrease(frozenCost);
                     mMagicSystem.FrozenSpawner(transform.position, GetComponent<CupidBehavior>().mTowardRight);
                     break;
                 case MagicType.LightingChain:
                     magicEnergy -= lightingCost;
+                    energy_bar.ValueDecrease(lightingCost);
                     mMagicSystem.LightningChainSpawner(transform.position);
                     break;
                 case MagicType.Flame:
                     magicEnergy -= flameCost;
+                    energy_bar.ValueDecrease(flameCost);
                     mMagicSystem.FlameSpawner(transform.position, GetComponent<CupidBehavior>().mTowardRight);
                     break;
                 case MagicType.Time:
                     magicEnergy -= timeCost;
+                    energy_bar.ValueDecrease(timeCost);
                     timers.Trigger();
                     isAttacking = false;
                     break;
@@ -94,9 +103,34 @@ public class Attack : MonoBehaviour
             chooseMagic++;
             chooseMagic = chooseMagic % currentMagic.Count;
             AbilityStats.instance.chooseMagic = chooseMagic;
+            switch (currentMagic[chooseMagic])
+            {
+                case MagicType.Frozen:
+                    currentMagicCost = frozenCost;
+                    break;
+                case MagicType.LightingChain:
+                    currentMagicCost = lightingCost;
+                    break;
+                case MagicType.Flame:
+                    currentMagicCost = flameCost;
+                    break;
+                case MagicType.Time:
+                    currentMagicCost = timeCost;
+                    timers.Trigger();
+                    isAttacking = false;
+                    break;
             // health_bar.Set_Cost(magicDamge);
+            }
+            energy_bar.Set_Cost(currentMagicCost);
         }
 
+    }
+
+    private void EnergyRecover(){
+        if(magicEnergy < 10){
+            magicEnergy += 0.01f;
+            energy_bar.ValueIncrease(0.01f);
+        }
     }
 
 }

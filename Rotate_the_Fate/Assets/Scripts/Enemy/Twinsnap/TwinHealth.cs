@@ -11,8 +11,7 @@ public class TwinHealth : MonoBehaviour
     private GameObject mIceBlockSample = null;
     private Animator anim;
     private Timer slow_down_timer;
-    private TwinAttackDetect attackDetect;
-    private Rigidbody2D rb;
+
     public UnityEvent<Vector2> OnTakeFlameDamage;
     public UnityEvent<Vector2> OnTakeFrozenDamage;
     public UnityEvent<Vector2> OnTakeLighteningChainDamage;
@@ -40,11 +39,9 @@ public class TwinHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        mIceBlockSample = Resources.Load<GameObject>("Prefabs/MushFrozen") as GameObject;
+       
         anim = GetComponent<Animator>();
-        attackDetect = GetComponent<TwinAttackDetect>();
 
     }
 
