@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 6456946133667964138}
   m_Layer: 7
   m_Name: Bat
-  m_TagString: Untagged
+  m_TagString: Bat
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -176,7 +176,7 @@ MonoBehaviour:
   health: 10
   flameDamage: 5
   frozenDamage: 2
-  lightningDamage: 3
+  lightningDamage: 5
   FlameForce: 5
   frozenForce: 5
 --- !u!95 &3195623487429386150

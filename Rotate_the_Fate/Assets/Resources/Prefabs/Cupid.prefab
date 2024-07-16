@@ -309,6 +309,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentMagic: 
   chooseMagic: 0
+  magicDamge: 1
 --- !u!114 &8399223358333725267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,7 +327,7 @@ MonoBehaviour:
   OnTakeDame:
     m_PersistentCalls:
       m_Calls: []
-  maxHealth: 1000
+  maxHealth: 10
   currentHealth: 0
   MushroomDamage: 3
   SeedDamage: 1

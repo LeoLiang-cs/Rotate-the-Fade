@@ -13,6 +13,7 @@ TagManager:
   - Bat
   - FrozenVase
   - Brazier
+  - FlashBottle
   layers:
   - Default
   - TransparentFX
@@ -27,7 +28,6 @@ TagManager:
   - Interact
   - minmap
   - Instruction
-  - 
   - 
   - 
   - 
@@ -62,4 +62,7 @@ TagManager:
     locked: 0
   - name: Character
     uniqueID: 3027181429
+    locked: 0
+  - name: minimap
+    uniqueID: 3980234733
     locked: 0

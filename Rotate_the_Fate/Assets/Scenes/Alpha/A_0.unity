@@ -794,7 +794,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalSprite: {fileID: 21300000, guid: d133030ad55f7db4083426a76bd826bc, type: 3}
   hoverSprite: {fileID: 21300000, guid: 16de7ab4a40de224bab94886c1966a18, type: 3}
-  nextSceneName: A_Anime
+  nextSceneName: A_1
 --- !u!114 &682668385
 MonoBehaviour:
   m_ObjectHideFlags: 0

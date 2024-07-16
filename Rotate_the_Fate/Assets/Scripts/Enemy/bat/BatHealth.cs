@@ -208,7 +208,7 @@ public class BatHealth : MonoBehaviour
 
     public void DestroyAfterAnimation()
     {
-        //Destroy(gameObject);
+        Destroy(gameObject);
     }
 
     public void isHittingFalse()
