@@ -121,6 +121,7 @@ public class SDHealth : MonoBehaviour
 
     public void Transform2Demon()
     {
+        FindObjectOfType<AudioManager>().Play("DemonGrowl");
         isTransforming = true;
         Debug.Log("Transforming");
         anim.SetTrigger("Transform");

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SDAttack : MonoBehaviour
 {
-    Collision coll;
     SDDetect attackDetect;
     Animator anim;
     SDHealth sdHealth;
@@ -25,12 +24,9 @@ public class SDAttack : MonoBehaviour
 
         chopTimer.action += Chop;
         punchTimer.action += Punch;
-
-        sd = GameObject.Find("SlimeDemon");
-        coll = sd.GetComponent<Collision>();
-        anim = sd.GetComponent<Animator>();
+        anim = GetComponent<Animator>();
         attackDetect = GetComponent<SDDetect>();
-        sdHealth = sd.GetComponent<SDHealth>();
+        sdHealth = GetComponent<SDHealth>();
     }
     // Start is called before the first frame update
     void Start()
@@ -57,12 +53,12 @@ public class SDAttack : MonoBehaviour
         isAttacking = true;
 
     }
-    
+
     void Punch()
     {
         Debug.Log("Attacking");
         anim.SetTrigger("Att2");
-        
+
         isAttacking = true;
     }
 
