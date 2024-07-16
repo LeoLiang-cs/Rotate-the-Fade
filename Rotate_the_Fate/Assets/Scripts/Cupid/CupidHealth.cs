@@ -9,7 +9,7 @@ public class CupidHealth : MonoBehaviour
     private Animator anim;
     public GameObject deathUIPanel;
     public UnityEvent OnTakeDame;
-    private TripleBarDisplay health_bar;
+    private DoubleBarDisplay health_bar;
 
 
     [Space]
@@ -25,7 +25,7 @@ public class CupidHealth : MonoBehaviour
     public GameObject handStoneSample;
 
     private void Awake() {
-        health_bar = GameObject.Find("StateBar").GetComponent<TripleBarDisplay>();
+        health_bar = GameObject.Find("StateBar").GetComponent<DoubleBarDisplay>();
     }
     private void Start()
     {
@@ -42,7 +42,7 @@ public class CupidHealth : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy") || other.gameObject.layer == LayerMask.NameToLayer("Stab"))
         {
             currentHealth -= MushroomDamage;
-            health_bar.ValueDecrease(MushroomDamage);
+            health_bar.TakeDamage(MushroomDamage);
             if (currentHealth <= 0 && !isDead)
             {
                 isDead = true;
@@ -65,7 +65,7 @@ public class CupidHealth : MonoBehaviour
     {
 
         currentHealth -= SeedDamage;
-        health_bar.ValueDecrease(SeedDamage);
+        health_bar.TakeDamage(SeedDamage);
         if (currentHealth <= 0)
         {
             isDead = true;

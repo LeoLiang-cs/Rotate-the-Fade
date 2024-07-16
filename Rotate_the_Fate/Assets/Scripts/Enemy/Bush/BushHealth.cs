@@ -43,13 +43,13 @@ public class BushHealth : MonoBehaviour
             return;
         health -= frozenDamage;
         isHitting = true;
-        
+
         GameObject iceBlock = GameObject.Instantiate(mIceBlockSample) as GameObject;
         iceBlock.transform.localPosition = transform.position;
         iceBlock.transform.parent = transform;
 
         anim.speed = 0;
-        mFrozenCount++;     
+        mFrozenCount++;
         mFrozenTimeCount = mFrozenTime;
     }
 
@@ -58,7 +58,7 @@ public class BushHealth : MonoBehaviour
         if (isHitting)
             return;
         health -= flameDamage;
-        
+
         spriteRenderer.color = Color.red;
         anim.SetTrigger("Hit");
         isHitting = true;
@@ -72,7 +72,7 @@ public class BushHealth : MonoBehaviour
 
     private void MeltFrozen()
     {
-        
+
         if (mFrozenCount == 1 && mFrozenTimeCount <= 0)
         {
             isHitting = false;
@@ -82,7 +82,11 @@ public class BushHealth : MonoBehaviour
             //°ÑiceBlock¸øÏú»Ù
             foreach (Transform child in transform)
             {
-                GameObject.Destroy(child.gameObject);
+                if (child.gameObject.name == "BushFrozen(Clone)")
+                {
+                    GameObject.Destroy(child.gameObject);
+                }
+
             }
         }
         mFrozenTimeCount -= Time.deltaTime;

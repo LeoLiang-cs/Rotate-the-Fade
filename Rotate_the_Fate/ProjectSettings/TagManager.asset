@@ -15,6 +15,7 @@ TagManager:
   - Brazier
   - FlashBottle
   - sandClock
+  - SlimeDemon
   layers:
   - Default
   - TransparentFX

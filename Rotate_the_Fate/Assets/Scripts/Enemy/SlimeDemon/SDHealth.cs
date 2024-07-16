@@ -6,6 +6,9 @@ public class SDHealth : MonoBehaviour
 {
     private Animator anim;
     private Rigidbody2D rb;
+    private SDAttack sdAttack;
+    Transform slimeCollision;
+    Transform demonCollision;
     [Space]
     [Header("Status")]
     public bool isDemon = false;
@@ -18,11 +21,15 @@ public class SDHealth : MonoBehaviour
     public int frozenDamage = 4;
     public int lightningDamage = 3;
     public float frozenForce = 10f;
+    public bool isTransforming = false;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        sdAttack = GetComponent<SDAttack>();
+        slimeCollision = transform.Find("SlimeCollision");
+        demonCollision = transform.Find("DemonCollision");
     }
     // Start is called before the first frame update
     void Start()
@@ -35,7 +42,11 @@ public class SDHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (isTransforming)
+        {
+            return;
+        }
+        Die();
     }
 
     public void TakeFrozenDamage(Vector2 attP)
@@ -51,7 +62,6 @@ public class SDHealth : MonoBehaviour
 
             Vector2 dir = new Vector2(transform.position.x - attP.x, transform.position.y - attP.y).normalized;
             dir.y += 1;
-            Debug.Log("dir: " + dir);
             rb.AddForce(dir * frozenForce, ForceMode2D.Impulse);
             //spriteRenderer.color = new Color(0.078f, 0.761f, 1.0f); // RGB values for #14C2FF
             anim.SetTrigger("Hit");
@@ -59,7 +69,9 @@ public class SDHealth : MonoBehaviour
             // {
             //     GetComponent<TwinBehavior>().slowFactor = 0.5f;
             // }
-        }else{
+        }
+        else
+        {
 
         }
 
@@ -69,12 +81,14 @@ public class SDHealth : MonoBehaviour
     {
         if (health <= 0 && !isDead && !isDemon)
         {
+            Transform2Demon();
 
-            anim.SetTrigger("Die");
-            isDemon = true;
-            health = demonHealth;
+            // isHitting = false;
+            // anim.SetTrigger("Die");
+            // isDemon = true;
+            // health = demonHealth;
 
-            anim.SetBool("IsDemon", true);
+            // anim.SetBool("IsDemon", true);
 
         }
 
@@ -92,5 +106,23 @@ public class SDHealth : MonoBehaviour
     {
         isHitting = false;
     }
+
+    public void Transform2Demon()
+    {
+        isTransforming = true;
+        Debug.Log("Transforming");
+        anim.SetTrigger("Transform");
+
+        isDemon = true;
+        anim.SetBool("IsDemon", true);
+        health = demonHealth;
+        GetComponent<SDBehavior>().currentSpeed = 400f;
+
+        slimeCollision.gameObject.SetActive(false);
+        demonCollision.gameObject.SetActive(true);
+         //sdAttack.SetActive(true); // º§ªÓ sdAttack ∂‘œÛ
+
+    }
+
 
 }

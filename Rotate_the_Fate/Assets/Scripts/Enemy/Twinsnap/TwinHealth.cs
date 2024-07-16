@@ -11,8 +11,7 @@ public class TwinHealth : MonoBehaviour
     private GameObject mIceBlockSample = null;
     private Animator anim;
     private Timer slow_down_timer;
-    private TwinAttackDetect attackDetect;
-    private Rigidbody2D rb;
+
     public UnityEvent<Vector2> OnTakeFlameDamage;
     public UnityEvent<Vector2> OnTakeFrozenDamage;
     public UnityEvent<Vector2> OnTakeLighteningChainDamage;
@@ -40,11 +39,9 @@ public class TwinHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        mIceBlockSample = Resources.Load<GameObject>("Prefabs/MushFrozen") as GameObject;
+       
         anim = GetComponent<Animator>();
-        attackDetect = GetComponent<TwinAttackDetect>();
 
     }
 
@@ -61,11 +58,14 @@ public class TwinHealth : MonoBehaviour
     }
 
     private void OnDestroy() {
-        GameObject sand_clock = Resources.Load<GameObject>("Prefabs/MagicProtos/sandClock");
-        sand_clock.transform.position = transform.position;
-        GameObject exit_lock = GameObject.Find("Lock");
-        Debug.Log(sand_clock);
-        Destroy(exit_lock);
+        // GameObject exit_lock = GameObject.Find("Lock");
+        // GameObject sand_clock = Resources.Load<GameObject>("Prefabs/MagicProtos/sandClock");
+        // GameObject sand_clock_obj = GameObject.Instantiate(sand_clock) as GameObject;
+        // GameObject door = GameObject.Find("door2");
+        // sand_clock_obj.transform.position = door.transform.position +  Vector3.up * 0.5f;
+        // sand_clock_obj.transform.parent = door.transform;
+        // Debug.Log("1233454534534534532452453245234523452345345");
+        // Destroy(exit_lock);
     }
 
     public void TakeFrozenDamage(Vector2 attP)
@@ -142,7 +142,8 @@ public class TwinHealth : MonoBehaviour
 
     public void DestroyAfterAnimation()
     {
-        Destroy(gameObject);
+        // Destroy(gameObject);
+        StartCoroutine(ExecuteAfterTime());
     }
 
     public void isHittingFalse()
@@ -171,5 +172,13 @@ public class TwinHealth : MonoBehaviour
 
         }
 
+    }
+
+     IEnumerator ExecuteAfterTime()
+    {
+
+        // 等待指定的时间（以秒为单位）
+        yield return new WaitForSeconds(3f);
+        Destroy(gameObject);
     }
 }
