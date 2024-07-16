@@ -10,6 +10,7 @@ public class EnemyManger : MonoBehaviour
     [Header("InformationOfCupid")]
     public Transform CupidTransform;
     public bool LastJump;
+    public GameObject Cupidd;
 
 
     [Header("EnemyBaseInformation")]
@@ -75,6 +76,8 @@ public class EnemyManger : MonoBehaviour
 
     protected virtual void Awake()
     {
+        Cupidd = GameObject.Find("Cupid");
+        CupidTransform=Cupidd.transform;
         rb = GetComponent<Rigidbody2D>();
         CheckOfTouch = GetComponent<PychicsCheck>();
         WaitTimer = GetComponent<Timer>();

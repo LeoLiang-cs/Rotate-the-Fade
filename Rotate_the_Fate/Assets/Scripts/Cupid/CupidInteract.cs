@@ -18,7 +18,7 @@ public class CupidInteract : MonoBehaviour
     void Start()
     {
         effect = Resources.Load<GameObject>("Prefabs/GetMagicEffect") as GameObject;
-        mushPlusSample = Resources.Load<GameObject>("Prefabs/MushPlus") as GameObject;
+        mushPlusSample = Resources.Load<GameObject>("Prefabs/NewMushroom") as GameObject;
     }
 
     // Update is called once per frame
