@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.VersionControl;
+
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,7 +8,7 @@ public class BossHealthDisplay : MonoBehaviour
 {
     private float health;
     private float lerp_timer;
-    private const float MAX_HEALTH = 10f;
+    private const float MAX_HEALTH = 20f;
     private const float CHASE_TIME = 2f;
     public Image front_health_bar;
     public Image back_health_bar;

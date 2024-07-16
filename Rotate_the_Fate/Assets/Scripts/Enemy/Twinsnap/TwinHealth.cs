@@ -19,6 +19,7 @@ public class TwinHealth : MonoBehaviour
     private float mFrozenTime = 5.0f;
     public float mFrozenTimeCount = 0.0f;
     public bool isSlowDown = false;
+    public GameObject thankUI;
 
     // Health UI
     private BossHealthDisplay health_bar;
@@ -122,6 +123,7 @@ public class TwinHealth : MonoBehaviour
     {
         if (health <= 0 && !isDead)
         {
+            thankUI.SetActive(true);
             gameObject.layer = 2;
             isDead = true;
             anim.SetTrigger("Die");

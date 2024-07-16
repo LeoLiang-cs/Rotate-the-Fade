@@ -73,8 +73,8 @@ public class ButtonQuit : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     public void OnExitGame()
     {
-        //Debug.Log("Quit");
-        UnityEditor.EditorApplication.isPlaying = false;
+        // //Debug.Log("Quit");
+        // UnityEditor.EditorApplication.isPlaying = false;
         Application.Quit();
             
     }

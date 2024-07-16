@@ -44,7 +44,7 @@ public class CupidHealth : MonoBehaviour
             Debug.Log("enter");
             currentHealth -= MushroomDamage;
             health_bar.TakeDamage(MushroomDamage);
-            if (currentHealth <= 0)
+            if (currentHealth <= 0 && !isDead)
             {
                 isDead = true;
                 Debug.Log("death");
@@ -72,6 +72,7 @@ public class CupidHealth : MonoBehaviour
             isDead = true;
             Debug.Log("death");
             anim.SetTrigger("Death");
+            //anim.SetBool("Die",true);
             deathUIPanel.SetActive(true);
         }
         isHitting = true;

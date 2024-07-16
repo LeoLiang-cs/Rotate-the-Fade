@@ -7,7 +7,8 @@ public class CupidInteract : MonoBehaviour
     Collider2D thing;
     public bool canGet = false;
     private AbilityDisplay abilityDisplay;
-    private void Awake() {
+    private void Awake()
+    {
         abilityDisplay = GameObject.Find("Ability").GetComponent<AbilityDisplay>();
     }
     private GameObject effect;
@@ -25,6 +26,7 @@ public class CupidInteract : MonoBehaviour
     {
         GetFrozen();
         GetFlame();
+        GetLightning();
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -74,12 +76,28 @@ public class CupidInteract : MonoBehaviour
         }
     }
 
+    void GetLightning()
+    {
+        if (canGet && Input.GetKeyDown(KeyCode.U) && thing.gameObject.tag == "FlashBottle")
+        {
+            Debug.Log("get lightning");
+            GameObject getEffect = GameObject.Instantiate(effect) as GameObject;
+            effect.transform.position = thing.transform.position;
+            Destroy(thing.gameObject);
+            GetComponent<Attack>().currentMagic.Add(MagicType.LightingChain);
+            abilityDisplay.Add_Ability("lightening");
+        }
+    }
+
     void MushSpawner()
     {
         GameObject mushPlus1 = GameObject.Instantiate(mushPlusSample) as GameObject;
         GameObject mushPlus2 = GameObject.Instantiate(mushPlusSample) as GameObject;
-        mushPlus1.transform.position = transform.position + Vector3.right * 15f;
+        GameObject mushPlus3 = GameObject.Instantiate(mushPlusSample) as GameObject;
+        mushPlus1.transform.position = transform.position + Vector3.left * 15f;
         mushPlus2.transform.position = transform.position + Vector3.left * 13f;
+        mushPlus3.transform.position = transform.position + Vector3.left * 8f;
+        
 
     }
 }

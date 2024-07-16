@@ -6,6 +6,7 @@ public class LightningChainMagic : MonoBehaviour
 {
     public float radius = 5.0f;  // 检测半�?
     public LayerMask enemyLayer;  // 敌人的图�?
+    public LayerMask stabLayer;  // 敌人的图�?
     public int damage = 10;  // 造成的伤�?
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,7 @@ public class LightningChainMagic : MonoBehaviour
     public void TriggerLightningChain(Vector3 p)
     {
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(p, radius, enemyLayer);
+        Collider2D[] hitStab = Physics2D.OverlapCircleAll(p, radius, stabLayer);
         foreach (Collider2D enemy in hitEnemies)
         {
             DrawLightning(p, enemy.transform.position);
@@ -31,10 +33,16 @@ public class LightningChainMagic : MonoBehaviour
                 enemy.GetComponent<BushHealth>().TakeLighteningChainDamage();
             }else if (enemy.gameObject.CompareTag("Bat"))
             {
-                enemy.GetComponent<MushroomHealth>().TakeLighteningChainDamage(p);
+                enemy.GetComponent<BatHealth>().TakeLighteningChainDamage(p);
             }else if(enemy.gameObject.CompareTag("Twinsnap")) {
                 enemy.GetComponent<TwinHealth>().TakeLighteningChainDamage(p);
             }
+        }
+
+        foreach (Collider2D stab in hitStab)
+        {
+            DrawLightning(p, stab.transform.position);
+        
         }
         Attack.isAttacking = false;
 

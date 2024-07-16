@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class CupidBehavior : MonoBehaviour
@@ -33,6 +34,7 @@ public class CupidBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        SceneReset();
         // Debug.Log(Attack.isAttacking);
         if (health.isHitting || health.isDead)
         {
@@ -71,7 +73,7 @@ public class CupidBehavior : MonoBehaviour
 
     private void Jump(Vector2 dir)
     {
-        if (Input.GetKeyDown(KeyCode.Space) && coll.onGround)
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W))&& coll.onGround)
         {
             anim.SetBool("Jump", true);
             rb.velocity = new Vector2(rb.velocity.x, 0);
@@ -85,6 +87,16 @@ public class CupidBehavior : MonoBehaviour
         if (rb.velocity.y < 0.1f)
         {
             anim.SetBool("Jump", false);
+        }
+    }
+
+     void SceneReset()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            string sceneName = SceneManager.GetActiveScene().name;
+            // 重新加载当前场景
+            SceneManager.LoadScene(sceneName);
         }
     }
 
