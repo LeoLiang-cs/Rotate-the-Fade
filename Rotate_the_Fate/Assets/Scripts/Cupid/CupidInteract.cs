@@ -56,7 +56,8 @@ public class CupidInteract : MonoBehaviour
         {
             GameObject getEffect = GameObject.Instantiate(effect) as GameObject;
             effect.transform.position = thing.transform.position;
-            Destroy(thing.gameObject);
+            thing.gameObject.GetComponent<GetMagic>().DestroyVase();
+            //Destroy(thing.gameObject);
             GetComponent<Attack>().currentMagic.Add(MagicType.Frozen);
             abilityDisplay.Add_Ability("frost");
 
