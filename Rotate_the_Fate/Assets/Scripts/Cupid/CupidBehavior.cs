@@ -18,6 +18,8 @@ public class CupidBehavior : MonoBehaviour
     public float deceleration = 1000f;//intertance stop
     public float jumpForce = 10f;
     public bool mTowardRight = true;
+    public float footprint_interval = 0.3f;
+    private float footprint_elapse = 0f;
 
 
     // Start is called before the first frame update
@@ -44,7 +46,7 @@ public class CupidBehavior : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
         Vector2 dir = new Vector2(x, y);
-
+        footprint_elapse += Time.deltaTime;
         Walk(dir);
         Jump(Vector2.up);
         Fall();
@@ -57,6 +59,10 @@ public class CupidBehavior : MonoBehaviour
             rb.velocity = new Vector2(dir.x * speed, rb.velocity.y);
             bool slimeHasXAxisSpeed = Mathf.Abs(rb.velocity.x) > Mathf.Epsilon;
             anim.SetBool("Walk", slimeHasXAxisSpeed);
+            if(slimeHasXAxisSpeed && footprint_elapse >= footprint_interval && coll.onGround){
+                FindObjectOfType<AudioManager>().Play("Walk");
+                footprint_elapse = 0f;
+            }
 
             if (dir.x > 0f)
             {
