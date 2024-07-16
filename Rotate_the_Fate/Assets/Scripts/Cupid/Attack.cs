@@ -29,12 +29,12 @@ public class Attack : MonoBehaviour
         cupidHealth = GetComponent<CupidHealth>();
         energy_bar = GameObject.Find("StateBar").GetComponent<TripleBarDisplay>();
         //health_bar = GameObject.Find("StateBar").GetComponent<HealthUI>();
-        //abilityDisplay = GameObject.Find("Ability").GetComponent<AbilityDisplay>();
+        abilityDisplay = GameObject.Find("Ability").GetComponent<AbilityDisplay>();
         chooseMagic = AbilityStats.instance.chooseMagic;
     }
     void Start()
     {
-        //currentMagic = abilityDisplay.gianed_magics;
+        currentMagic = abilityDisplay.gianed_magics;
         //currentMagic.Add(MagicType.Frozen);
         //currentMagic.Add(MagicType.LightingChain);
         //currentMagic.Add(MagicType.Flame);

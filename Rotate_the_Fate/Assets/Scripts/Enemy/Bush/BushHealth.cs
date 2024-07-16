@@ -53,7 +53,7 @@ public class BushHealth : MonoBehaviour
         {
             CameraShakeManager.instance.CameraShake(impulseSource);
         }
-        if (isHitting)
+        if (isHitting || isDead)
             return;
         health -= frozenDamage;
         isHitting = true;
@@ -131,6 +131,7 @@ public class BushHealth : MonoBehaviour
             gameObject.layer = 2;
             isDead = true;
             anim.SetTrigger("Die");
+            Destroy(gameObject);
         }
     }
 

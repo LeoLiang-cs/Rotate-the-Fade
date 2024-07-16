@@ -802,6 +802,17 @@ Transform:
   - {fileID: 1616314755}
   m_Father: {fileID: 380489099}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &177373663 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1413812455385521067, guid: c1ab30a5e398c4d4289cc5c8fb790d7c, type: 3}
+  m_PrefabInstance: {fileID: 1940186049}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &232734731
 GameObject:
   m_ObjectHideFlags: 0
@@ -1704,6 +1715,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   twinHealthObject: {fileID: 25191437}
+--- !u!114 &347477889 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6722069992207077856, guid: c1ab30a5e398c4d4289cc5c8fb790d7c, type: 3}
+  m_PrefabInstance: {fileID: 1940186049}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &356618347
 GameObject:
   m_ObjectHideFlags: 0
@@ -32309,7 +32331,7 @@ Transform:
   m_GameObject: {fileID: 1404713482}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0.47, y: -0.96, z: 0}
+  m_LocalPosition: {x: 0.11, y: -0.96, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -34366,6 +34388,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BossBar
       objectReference: {fileID: 0}
+    - target: {fileID: 8548435622743187200, guid: c1ab30a5e398c4d4289cc5c8fb790d7c, type: 3}
+      propertyPath: back_health_bar
+      value: 
+      objectReference: {fileID: 177373663}
+    - target: {fileID: 8548435622743187200, guid: c1ab30a5e398c4d4289cc5c8fb790d7c, type: 3}
+      propertyPath: front_health_bar
+      value: 
+      objectReference: {fileID: 347477889}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -40488,7 +40518,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5225451957136510638, guid: ca29b26a0f07e854ca843e42250f97ca, type: 3}
       propertyPath: health
-      value: 1
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 5225451957136510638, guid: ca29b26a0f07e854ca843e42250f97ca, type: 3}
       propertyPath: thankUI
@@ -40496,11 +40526,11 @@ PrefabInstance:
       objectReference: {fileID: 356618347}
     - target: {fileID: 5225451957136510638, guid: ca29b26a0f07e854ca843e42250f97ca, type: 3}
       propertyPath: flameDamage
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5225451957136510638, guid: ca29b26a0f07e854ca843e42250f97ca, type: 3}
       propertyPath: frozenDamage
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5225451957136510638, guid: ca29b26a0f07e854ca843e42250f97ca, type: 3}
       propertyPath: lightningDamage

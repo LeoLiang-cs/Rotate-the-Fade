@@ -20,6 +20,7 @@ public class CupidHealth : MonoBehaviour
 
     public int MushroomDamage = 2;
     public int SeedDamage = 1;
+    public int StabDamage = 5;
     public float knockBackForce = 10f;
     public bool invulnerable = false;
     public bool isDead = false;
@@ -27,7 +28,8 @@ public class CupidHealth : MonoBehaviour
 
     private CinemachineImpulseSource impulseSource;
 
-    private void Awake() {
+    private void Awake()
+    {
         health_bar = GameObject.Find("StateBar").GetComponent<DoubleBarDisplay>();
     }
     private void Start()
@@ -56,10 +58,17 @@ public class CupidHealth : MonoBehaviour
             {
                 CameraShakeManager.instance.CameraShake(impulseSource);
             }
-            
 
-            currentHealth -= MushroomDamage;
-            health_bar.TakeDamage(MushroomDamage);
+            if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+            {
+                currentHealth -= MushroomDamage;
+                health_bar.TakeDamage(MushroomDamage);
+            }else if (other.gameObject.layer == LayerMask.NameToLayer("Stab"))
+            {
+                currentHealth -= StabDamage;
+                health_bar.TakeDamage(StabDamage);
+            }
+
             if (currentHealth <= 0 && !isDead)
             {
                 isDead = true;
