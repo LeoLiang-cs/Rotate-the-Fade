@@ -62,6 +62,7 @@ public class SDAttack : MonoBehaviour
     {
         Debug.Log("Attacking");
         anim.SetTrigger("Att2");
+        
         isAttacking = true;
     }
 
@@ -86,5 +87,10 @@ public class SDAttack : MonoBehaviour
         {
             punchTimer.Trigger();
         }
+    }
+
+    public void punchGroundMusic()
+    {
+        FindObjectOfType<AudioManager>().Play("SDAttack");
     }
 }

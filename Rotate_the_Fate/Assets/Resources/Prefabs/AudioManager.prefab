@@ -59,7 +59,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: getHurt
     clip: {fileID: 8300000, guid: 0c4849d492dc85c4cbd23981fd0c96a2, type: 3}
-    volume: 1
+    volume: 0.3
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -71,7 +71,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Jump
     clip: {fileID: 8300000, guid: 954353473d270c449867659b52ca0e4e, type: 3}
-    volume: 1
+    volume: 0.1
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -125,6 +125,12 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Lightening
     clip: {fileID: 8300000, guid: 27b2a3b3ac40e764c9dd85cb795f94eb, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: SDAttack
+    clip: {fileID: 8300000, guid: 9930d5b4be15bb04c9d0a6fa0d7e6b2e, type: 3}
     volume: 1
     pitch: 1
     loop: 0
