@@ -1,13 +1,16 @@
 using UnityEngine;
 
-public class FloatingPlatform : MonoBehaviour
+public class FloatingPlatform : MonoBehaviour, IStoppable
 {
-    public float speed = 2f; // Æ½ÒÆËÙ¶È
-    public float distance = 5f; // Æ½ÒÆ¾àÀë
+    public float speed = 2f; // Æ½ï¿½ï¿½ï¿½Ù¶ï¿½
+    public float distance = 5f; // Æ½ï¿½Æ¾ï¿½ï¿½ï¿½
 
     private Vector3 startPos;
     private bool movingRight = true;
 
+    private void OnEnable() {
+        TimeManager.Instance.AddStoppable(this);
+    }
     void Start()
     {
         startPos = transform.localPosition;
@@ -15,7 +18,7 @@ public class FloatingPlatform : MonoBehaviour
 
     void Update()
     {
-        // Æ½ÒÆÆ½Ì¨
+        // Æ½ï¿½ï¿½Æ½Ì¨
         if (movingRight)
         {
             transform.localPosition += Vector3.right * speed * Time.deltaTime;
@@ -32,6 +35,17 @@ public class FloatingPlatform : MonoBehaviour
                 movingRight = true;
             }
         }
+    }
+
+    private void OnDisable() {
+        TimeManager.Instance.RemoveStoppable(this);
+    }
+
+    public void Stop(){
+        speed = 0f;
+    }
+    public void BackTo(){
+        speed = 2f;
     }
 }
 

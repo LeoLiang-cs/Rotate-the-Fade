@@ -57,6 +57,17 @@ public class TwinHealth : MonoBehaviour
         //StabCoolDown(); 
     }
 
+    private void OnDestroy() {
+        // GameObject exit_lock = GameObject.Find("Lock");
+        // GameObject sand_clock = Resources.Load<GameObject>("Prefabs/MagicProtos/sandClock");
+        // GameObject sand_clock_obj = GameObject.Instantiate(sand_clock) as GameObject;
+        // GameObject door = GameObject.Find("door2");
+        // sand_clock_obj.transform.position = door.transform.position +  Vector3.up * 0.5f;
+        // sand_clock_obj.transform.parent = door.transform;
+        // Debug.Log("1233454534534534532452453245234523452345345");
+        // Destroy(exit_lock);
+    }
+
     public void TakeFrozenDamage(Vector2 attP)
     {
         if (isHitting)
@@ -131,7 +142,8 @@ public class TwinHealth : MonoBehaviour
 
     public void DestroyAfterAnimation()
     {
-        Destroy(gameObject);
+        // Destroy(gameObject);
+        StartCoroutine(ExecuteAfterTime());
     }
 
     public void isHittingFalse()
@@ -160,5 +172,13 @@ public class TwinHealth : MonoBehaviour
 
         }
 
+    }
+
+     IEnumerator ExecuteAfterTime()
+    {
+
+        // 等待指定的时间（以秒为单位）
+        yield return new WaitForSeconds(3f);
+        Destroy(gameObject);
     }
 }

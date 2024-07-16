@@ -92,6 +92,7 @@ public class Attack : MonoBehaviour
     }
     public void Add_Magic(MagicType type)
     {
+        Debug.Log("add Timer");
         currentMagic.Add(MagicType.Time);
         Timer script = gameObject.AddComponent<Timer>();
         timers = script;
@@ -119,7 +120,7 @@ public class Attack : MonoBehaviour
                     break;
                 case MagicType.Time:
                     currentMagicCost = timeCost;
-                    timers.Trigger();
+                    // timers.Trigger();
                     isAttacking = false;
                     break;
             // health_bar.Set_Cost(magicDamge);

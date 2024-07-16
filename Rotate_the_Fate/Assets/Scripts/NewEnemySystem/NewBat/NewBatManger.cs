@@ -30,7 +30,6 @@ public class NewBatManger : EnemyManger
     {
         CurrState = StaticState;
         CurrState.OnEnter(this);
-
     }
 
     public override void Move()
