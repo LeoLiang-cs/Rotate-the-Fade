@@ -94,7 +94,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5818826965518433401
 Transform:
   m_ObjectHideFlags: 0
@@ -551,7 +551,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ecff1d40eb092640ba6f4f305402106, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentSpeed: 200
+  currentSpeed: 400
   faceDire: {x: 0, y: 0, z: 0}
   slowFactor: 0
 --- !u!114 &5214508293580271884
@@ -574,8 +574,8 @@ MonoBehaviour:
   onRightWall: 0
   onLeftWall: 0
   wallSide: 0
-  collisionRadius: 0.4
-  bottomOffset: {x: -0.06, y: 0}
+  collisionRadius: 1
+  bottomOffset: {x: -0.14, y: -1.14}
   rightOffset: {x: 0.55, y: 0.81}
   leftOffset: {x: -0.69, y: 0.71}
 --- !u!114 &1718007894062549312

@@ -11,6 +11,7 @@ public class CupidBehavior : MonoBehaviour
     private Rigidbody2D rb;
     private Animator anim;
     private CupidHealth health;
+    private SDTimeStop timeStop;
     [Space]
     [Header("Stats")]
     public float speed = 10.0f;
@@ -30,6 +31,7 @@ public class CupidBehavior : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<Collision>();
         health = GetComponent<CupidHealth>();
+        timeStop = GetComponent<SDTimeStop>();
         //rb.constraints = RigidbodyConstraints2D.FreezeRotation;//所有活物都要锁定！
     }
 
@@ -38,7 +40,7 @@ public class CupidBehavior : MonoBehaviour
     {
 
         // Debug.Log(Attack.isAttacking);
-        if (health.isHitting || health.isDead)
+        if (health.isHitting || health.isDead || timeStop.isStopped)
         {
             return;
         }
