@@ -44,4 +44,88 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b05302b66db9a244b9a3c1788373c8cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds: []
+  sounds:
+  - name: bushAttack
+    clip: {fileID: 8300000, guid: 2816fd5310fe4a84f9d6fcf7a9c22387, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Freeze
+    clip: {fileID: 8300000, guid: 54520a8c00050734995b9621b078a628, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: getHurt
+    clip: {fileID: 8300000, guid: 0c4849d492dc85c4cbd23981fd0c96a2, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Walk
+    clip: {fileID: 8300000, guid: 63b589dabf66dd94fa53f5680b2a6ab7, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Jump
+    clip: {fileID: 8300000, guid: 954353473d270c449867659b52ca0e4e, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Bat
+    clip: {fileID: 8300000, guid: 4043750a73f90734cb9175048d4837ba, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Rotate
+    clip: {fileID: 8300000, guid: 7e45cf4ee87e1d54280c3180b42ba8b0, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: getMagic
+    clip: {fileID: 8300000, guid: 6867f755660a8924ab5b4bbf0f2240a8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: MushroomRun
+    clip: {fileID: 8300000, guid: ffcd6f938b7d82e499fbd60431a0f5d7, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Unlock
+    clip: {fileID: 8300000, guid: 642dea0d993834942acc2d9234d26b57, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Spit
+    clip: {fileID: 8300000, guid: 3a08f4c8deba57649b7e4d00b0fcc8ba, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Bite
+    clip: {fileID: 8300000, guid: 08e24fbf8e86dfd4fac79cffe625e485, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Fire
+    clip: {fileID: 8300000, guid: 449e1281db2b2374598861a995d6667c, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Lightening
+    clip: {fileID: 8300000, guid: 27b2a3b3ac40e764c9dd85cb795f94eb, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
