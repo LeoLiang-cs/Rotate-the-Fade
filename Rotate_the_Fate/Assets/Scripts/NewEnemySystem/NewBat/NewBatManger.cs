@@ -12,6 +12,8 @@ public class NewBatManger : EnemyManger
         AttackState=new NewBatAttackState();
         BackState=new NewBatBackState();
         StaticState=new NewBatStaticState();
+        ChaseTimeContor = ChaseTime;
+        StaticPostion = StaticPostionInRotationWorld.position;
     }
 
     protected override void OnEnable()
@@ -28,6 +30,7 @@ public class NewBatManger : EnemyManger
 
     public override bool Findplayer()
     {
+        Debug.Log("UseFindplayerOfBat");
         float Distent=(transform.position-CupidTransform.position).sqrMagnitude;
         if (Distent < CheckFindPlayerRadios)
         {
@@ -41,9 +44,20 @@ public class NewBatManger : EnemyManger
 
     public override bool FindAttack()
     {
+        Debug.Log("UseFindAttAckOfBat");
         float Distent = (transform.position - CupidTransform.position).sqrMagnitude;
-        if (Distent < CheckFindAttackRadios+AttackAddRadios)
+        //if (Distent < CheckFindAttackRadios+AttackAddRadios)
+        //{
+        //    if (!IsAttack)
+        //    {
+        //        LastPostionBeforeAttack = transform.position;
+        //        IsAttack = true;
+        //    }
+            
+        //}
+        if (Distent < CheckFindAttackRadios)
         {
+            LastPostionBeforeAttack = transform.position;
             return true;
         }
         else

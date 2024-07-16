@@ -11,6 +11,7 @@ public class NewMushroomManger : EnemyManger
         PatrolState= new MushroomPatrolState();
         ChaseState = new MushroomChaseState();
         DeathState=new MushroomDeathState();
+        
     }
 
 

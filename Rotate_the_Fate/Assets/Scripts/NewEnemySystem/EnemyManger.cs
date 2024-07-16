@@ -61,12 +61,17 @@ public class EnemyManger : MonoBehaviour
     public NewMushroomHealth health;
 
     [Header("Fly")]
+    public Transform StaticPostionInRotationWorld;
     public Vector3 StaticPostion;
     public Vector3 Target;
     public Vector3 MoveDir;
     public float CheckFindPlayerRadios;
     public float CheckFindAttackRadios;
     public float AttackAddRadios;
+    public Vector3 LastPostionBeforeAttack;
+    public bool IsAttack;
+    public Vector3 MoveDirBrforeAttack;
+    public float X, Y, Z;
 
     protected virtual void Awake()
     {
@@ -76,6 +81,7 @@ public class EnemyManger : MonoBehaviour
         health=GetComponent<NewMushroomHealth>();
         SlowContor = 1f;
         Debug.Log("EnemyMangerAwake");
+        IsAttack=false;
     }
 
     protected virtual void OnEnable()
@@ -128,12 +134,15 @@ public class EnemyManger : MonoBehaviour
 
     public void TimeContor()
     {
+        Debug.Log("useTimcontor");
         if(!Findplayer())
         {
             ChaseTimeContor-=Time.deltaTime;
+            Debug.Log("chaseTime" + ChaseTimeContor);
         }
         else
         {
+            Debug.Log("FindPLayerINTimContor");
             ChaseTimeContor = ChaseTime;
         }
     }
@@ -219,8 +228,38 @@ public class EnemyManger : MonoBehaviour
     {
         return true;
     }
+    public bool BackToPor()
+    {
+        if ((transform.position - StaticPostionInRotationWorld.position).sqrMagnitude < 0.01f)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
+    public void WaitForTwo()
+    {
+        Invoke("TurnBack", 0.1f);
+    }
 
+    public void TurnBack()
+    {
+        Debug.Log("Movedirbeforeattack" + MoveDirBrforeAttack);
 
+        transform.position = LastPostionBeforeAttack+new Vector3(X*AttackAddRadios,AttackAddRadios*Y,0);
+        Invoke("CoolDown", 1f);
 
+    }
+    public void CoolDown()
+    {
+
+        IsAttack = false;
+        
+    }
 }
+
+
+

@@ -1,16 +1,54 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class NewBatChaseState : EnemyBaseState
 {
     public override void OnEnter(EnemyManger enemy)
     {
-        throw new System.NotImplementedException();
+        Debug.Log("enterChase");
+        currentEnemy = enemy;
+        currentEnemy.CurrSpeed = currentEnemy.ChaseSpeed;
+        currentEnemy.ChaseTimeContor = currentEnemy.ChaseWaitTime;
+
     }
-    public override void LogicUpdate()
+    
+public override void LogicUpdate()
     {
-        throw new System.NotImplementedException();
+        currentEnemy.MoveDirBrforeAttack = (currentEnemy.transform.position - currentEnemy.CupidTransform.position).normalized;
+        if (currentEnemy.MoveDirBrforeAttack.x > 0)
+        {
+            currentEnemy.X = 1;
+        }
+        else if(currentEnemy.MoveDirBrforeAttack.x<0)
+        {
+            currentEnemy.X = -1;
+        }
+        if (currentEnemy.MoveDirBrforeAttack.y < 0)
+        {
+            currentEnemy.Y = -1;
+        }
+        else if (currentEnemy.MoveDirBrforeAttack.y > 0)
+        {
+            currentEnemy.Y = 1;
+        }
+        if (currentEnemy.FindAttack())
+        {
+            currentEnemy.SwithState(EnemyMushroomEnums.Attack);
+        }
+        currentEnemy.TimeContor();
+        if (currentEnemy.ChaseTimeContor <= 0)
+        {
+            Debug.Log("switch to Back");
+            currentEnemy.SwithState(EnemyMushroomEnums.Back);
+        }
+        
+        Debug.Log("timeContor: "+ currentEnemy.ChaseTimeContor);
+        currentEnemy.Target = currentEnemy.CupidTransform.position;
+        currentEnemy.MoveDir = (currentEnemy.Target - currentEnemy.transform.position).normalized;
+       
+
     }
 
     
@@ -19,12 +57,12 @@ public class NewBatChaseState : EnemyBaseState
 
     public override void PhysicsUpdate()
     {
-        throw new System.NotImplementedException();
+        currentEnemy.Move();
     }
 
     public override void OnExit()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("exitChase"); 
     }
 
 
