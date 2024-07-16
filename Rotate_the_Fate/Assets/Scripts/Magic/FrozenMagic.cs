@@ -30,7 +30,7 @@ public class FrozenMagic : MonoBehaviour
         Debug.Log("FrozenSpawner trigger");
         if (other.gameObject.CompareTag("Mushroom"))
         {
-            other.GetComponent<MushroomHealth>().TakeFrozenDamage(transform.position);
+            other.GetComponent<NewMushroomHealth>().TakeFrozenDamage(transform.position);
         }else if(other.gameObject.CompareTag("Bush"))
         {
             other.GetComponent<BushHealth>().TakeFrozenDamage(transform.position);

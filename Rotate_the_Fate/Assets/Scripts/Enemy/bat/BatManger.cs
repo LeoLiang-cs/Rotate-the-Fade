@@ -198,7 +198,7 @@ public class BatManger : MonoBehaviour
     
     public void TurnBack()
     {
-        Debug.Log("���빥��λ��");
+        
         transform.localPosition = lastPostaton;
         Invoke("CoolDown", 1f);
 
