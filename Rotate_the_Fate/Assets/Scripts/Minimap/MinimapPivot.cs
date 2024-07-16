@@ -17,6 +17,11 @@ public class MinimapPivot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = pivot.transform.position;
+        if(pivot != null){
+            transform.position = pivot.transform.position;
+        }else{
+            Destroy(gameObject);
+        }
+        
     }
 }
