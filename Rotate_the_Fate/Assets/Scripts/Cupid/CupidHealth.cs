@@ -45,6 +45,7 @@ public class CupidHealth : MonoBehaviour
 
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy") || other.gameObject.layer == LayerMask.NameToLayer("Stab"))
         {
+            FindObjectOfType<AudioManager>().Play("getHurt");
             if (impulseSource == null)
             {
 
