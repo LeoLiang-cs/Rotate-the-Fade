@@ -41,7 +41,6 @@ public class CupidHealth : MonoBehaviour
 
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy") || other.gameObject.layer == LayerMask.NameToLayer("Stab"))
         {
-            Debug.Log("enter");
             currentHealth -= MushroomDamage;
             health_bar.TakeDamage(MushroomDamage);
             if (currentHealth <= 0 && !isDead)
