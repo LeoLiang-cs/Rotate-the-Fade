@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 public class BatHealth : MonoBehaviour
 {
-      public int mFrozenCount = 0;
+    public int mFrozenCount = 0;
     private SpriteRenderer spriteRenderer;
     private GameObject mIceBlockSample = null;
     private float mFrozenTime = 5.0f;
@@ -35,7 +35,7 @@ public class BatHealth : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        mIceBlockSample = Resources.Load<GameObject>("Prefabs/MushFrozen") as GameObject;
+        mIceBlockSample = Resources.Load<GameObject>("Prefabs/BatFrozen") as GameObject;
         anim = GetComponent<Animator>();
         // need to fix later
         enemyManger = GetComponent<EnemyManger>();
@@ -83,7 +83,7 @@ public class BatHealth : MonoBehaviour
             return;
         health -= flameDamage;
         OnTakeFlameDamage?.Invoke(attP);
-        
+
         if (attP.x < transform.position.x)
         {
             GetComponent<Rigidbody2D>().AddForce(new Vector2(1, 0.1f) * FlameForce, ForceMode2D.Impulse);
@@ -102,6 +102,9 @@ public class BatHealth : MonoBehaviour
         if (isHitting)
             return;
         OnTakeLighteningChainDamage?.Invoke(attP);
+        SetGravityOne();
+        anim.SetTrigger("Hit");
+        isHitting = true;
         health -= lightningDamage;
         spriteRenderer.color = Color.yellow;
     }
@@ -156,7 +159,7 @@ public class BatHealth : MonoBehaviour
     private void Start_Frozen()
     {
         GameObject iceBlock = GameObject.Instantiate(mIceBlockSample) as GameObject;
-        iceBlock.transform.localPosition = transform.position;
+        iceBlock.transform.localPosition = transform.position - Vector3.up * 0.5f;
         iceBlock.transform.parent = transform;
         anim.speed = 0;
         mFrozenCount++;
@@ -215,5 +218,15 @@ public class BatHealth : MonoBehaviour
     public void isHittingFalse()
     {
         isHitting = false;
+    }
+
+    public void SetGravityZero()
+    {
+        rb.gravityScale = 0;
+    }
+
+    public void SetGravityOne()
+    {
+        rb.gravityScale = 10;
     }
 }

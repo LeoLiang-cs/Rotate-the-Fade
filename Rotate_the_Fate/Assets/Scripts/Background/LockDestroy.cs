@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class LockDestroy : MonoBehaviour
 {
-    public GameObject twinHealthObject; // ÍÏ·Å TwinHealth ËùÔÚµÄ GameObject
+    public GameObject twinHealthObject; // ï¿½Ï·ï¿½ TwinHealth ï¿½ï¿½ï¿½Úµï¿½ GameObject
 
     private TwinHealth twinHealthScript;
 
     void Start()
     {
-        // »ñÈ¡ TwinHealth ×é¼þ
+        // ï¿½ï¿½È¡ TwinHealth ï¿½ï¿½ï¿½
         twinHealthScript = twinHealthObject.GetComponent<TwinHealth>();
     }
 
@@ -18,8 +18,13 @@ public class LockDestroy : MonoBehaviour
         {
             if (twinHealthScript.isDead)
             {
-                //Debug.Log("Twin is dead");
-                // Äã¿ÉÒÔÔÚÕâÀïÖ´ÐÐÆäËûÂß¼­
+                Debug.Log("Twin is dead");
+                GameObject sand_clock = Resources.Load<GameObject>("Prefabs/MagicProtos/sandClock");
+                GameObject sand_clock_obj = GameObject.Instantiate(sand_clock) as GameObject;
+                GameObject door = GameObject.Find("door1");
+                sand_clock_obj.transform.position = door.transform.position + door.transform.right * 2;
+                sand_clock_obj.transform.parent = door.transform;
+                // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß¼ï¿½
                 Destroy(gameObject);
             }
         }

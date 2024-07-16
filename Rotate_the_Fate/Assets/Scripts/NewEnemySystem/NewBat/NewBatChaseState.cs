@@ -5,9 +5,10 @@ using UnityEngine.EventSystems;
 
 public class NewBatChaseState : EnemyBaseState
 {
-    public NewBatChaseState(Animator anim)
+    public NewBatChaseState(Animator anim,BatHealth health)
     {
         this.anim = anim;
+        Health = health;
     }
     public override void OnEnter(EnemyManger enemy)
     {
@@ -63,6 +64,14 @@ public override void LogicUpdate()
 
     public override void PhysicsUpdate()
     {
+        if(Health.isHitting)
+        {
+            currentEnemy.CurrSpeed=0;
+        }
+        else
+        {
+            currentEnemy.CurrSpeed = currentEnemy.ChaseSpeed;
+        }
         currentEnemy.Move();
     }
 
