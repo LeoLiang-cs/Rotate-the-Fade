@@ -8,6 +8,8 @@ public class SDTimeStop : MonoBehaviour, IStoppable
     private SDAttack sdAttack;
     private SDHealth sdHealth;
     private SDBehavior sdBehavior;
+    private Animator anim;
+    private Rigidbody2D rb;
     public bool isStopped;
 
     void Awake()
@@ -15,6 +17,8 @@ public class SDTimeStop : MonoBehaviour, IStoppable
         sdAttack = GetComponent<SDAttack>();
         sdHealth = GetComponent<SDHealth>();
         sdBehavior = GetComponent<SDBehavior>();
+        anim = GetComponent<Animator>();    
+        rb = GetComponent<Rigidbody2D>();
     }
     void OnEnable()
     {
@@ -27,11 +31,14 @@ public class SDTimeStop : MonoBehaviour, IStoppable
     }
     public void BackTo()
     {
-        throw new System.NotImplementedException();
+        isStopped = false;
+        anim.speed = 1;
     }
 
     public void Stop()
     {
-        
+        isStopped = true;
+        anim.speed = 0;
+        rb.velocity = Vector2.zero;
     }
 }

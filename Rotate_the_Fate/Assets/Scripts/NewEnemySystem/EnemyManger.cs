@@ -1,9 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
-using static UnityEditor.Rendering.InspectorCurveEditor;
 
 public class EnemyManger : MonoBehaviour
 {
@@ -84,7 +82,7 @@ public class EnemyManger : MonoBehaviour
         health = GetComponent<NewMushroomHealth>();
         SlowContor = 1f;
         EnemyMaster.Instance.AddEnemy(this);
-        Debug.Log("EnemyMangerAwake");
+        // Debug.Log("EnemyMangerAwake");
         IsAttack = false;
     }
 

@@ -17,17 +17,22 @@ public class SDAttack : MonoBehaviour
     public float skillCounter;
     public string lastSkill;
     private CinemachineImpulseSource impulseSource;
+    private SDTimeStop timeStop;
     void Awake()
     {
         impulseSource = GetComponent<CinemachineImpulseSource>();
         chopTimer = gameObject.AddComponent<Timer>();
         punchTimer = gameObject.AddComponent<Timer>();
+        timeStop = GetComponent<SDTimeStop>();
 
         chopTimer.Set_Timer(3.0f, 4f);
         punchTimer.Set_Timer(7.0f, 0f);
 
         chopTimer.action += Chop;
         punchTimer.action += Punch;
+
+        TimeManager.Instance.AddTimer(chopTimer);
+        TimeManager.Instance.AddTimer(punchTimer);
 
         sd = GameObject.Find("SlimeDemon");
         coll = sd.GetComponent<Collision>();
@@ -44,7 +49,7 @@ public class SDAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (sdHealth.isHitting || sdHealth.isDead || sdHealth.isTransforming || !sdHealth.isDemon)
+        if (sdHealth.isHitting || sdHealth.isDead || sdHealth.isTransforming || !sdHealth.isDemon || timeStop.isStopped)
         {
             return;
         }

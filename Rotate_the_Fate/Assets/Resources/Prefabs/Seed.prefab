@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4349173640570980812}
   - component: {fileID: 8501667878539078302}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,9 +95,9 @@ GameObject:
   - component: {fileID: 3790825701719645544}
   - component: {fileID: 7835087768135417228}
   - component: {fileID: 5365346850129170035}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Seed
-  m_TagString: Untagged
+  m_TagString: Seed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

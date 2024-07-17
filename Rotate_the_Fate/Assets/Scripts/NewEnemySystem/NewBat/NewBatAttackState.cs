@@ -11,7 +11,7 @@ public class NewBatAttackState : EnemyBaseState
     }
     public override void OnEnter(EnemyManger enemy)
     {
-        Debug.Log("EnterAttack");
+        // Debug.Log("EnterAttack");
         currentEnemy = enemy;
         currentEnemy.CurrSpeed = 0f;
     }
@@ -33,7 +33,7 @@ public class NewBatAttackState : EnemyBaseState
 
     public override void OnExit()
     {
-        Debug.Log("ExitAttack");
+        // Debug.Log("ExitAttack");
     }
 
 

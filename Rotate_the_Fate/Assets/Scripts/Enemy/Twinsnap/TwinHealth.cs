@@ -28,10 +28,11 @@ public class TwinHealth : MonoBehaviour
     public bool isDead = false;
     public bool isHitting = false;
     public int health = 10;
+    public int maxHealth = 40;
     public int flameDamage = 5;
     public int frozenDamage = 2;
     public int lightningDamage = 3;
-    public int stabDamage = 1;
+    public int stabDamage = 2;
 
     private void Awake() {
         health_bar = GameObject.Find("BossBar").GetComponent<DoubleBarDisplay>();
@@ -42,7 +43,8 @@ public class TwinHealth : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
        
         anim = GetComponent<Animator>();
-
+        health = maxHealth;
+        health_bar.Refill(maxHealth);
     }
 
     // Update is called once per frame
@@ -131,7 +133,10 @@ public class TwinHealth : MonoBehaviour
     {
         if (health <= 0 && !isDead)
         {
-            thankUI.SetActive(true);
+            //thankUI.SetActive(true);
+            GetComponent<TwinBehavior>().Cupid.GetComponent<CupidHealth>().currentHealth = 1000;
+            GetComponent<TwinBehavior>().Cupid.GetComponent<CupidHealth>().health_bar.Refill(1000f);
+            
             gameObject.layer = 2;
             isDead = true;
             anim.SetBool("Walk", false);
@@ -142,7 +147,7 @@ public class TwinHealth : MonoBehaviour
 
     public void DestroyAfterAnimation()
     {
-        // Destroy(gameObject);
+        Destroy(gameObject);
         StartCoroutine(ExecuteAfterTime());
     }
 

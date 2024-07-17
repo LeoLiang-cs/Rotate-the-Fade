@@ -70,6 +70,7 @@ public class TimeManager
 
     public void PauseTime(Timer timer)
     {
+        GameObject.FindObjectOfType<AudioManager>().Play("TimeStop");
         FreezeTimers(timer);
         FreezeStoppable();
         EnemyMaster.Instance.Freeze();
@@ -78,6 +79,7 @@ public class TimeManager
 
     public void ResumeTime()
     {
+        GameObject.FindObjectOfType<AudioManager>().Play("TimeResume");
         isTimePaused = false;
         EnemyMaster.Instance.Resume();
         ResumeStoppable();

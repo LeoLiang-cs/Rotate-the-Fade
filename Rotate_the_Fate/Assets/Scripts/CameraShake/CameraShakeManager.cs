@@ -20,7 +20,7 @@ public class CameraShakeManager : MonoBehaviour
 
     public void CameraShake(CinemachineImpulseSource impulseSource)
     {
-        Debug.Log("CameraShake called");
+        // Debug.Log("CameraShake called");
         impulseSource.GenerateImpulseWithForce(GlobalShakeForce);
     }
 }
