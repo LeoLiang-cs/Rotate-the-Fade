@@ -20,47 +20,32 @@ public class LightningChainMagic : MonoBehaviour
 
     }
 
-    public void TriggerLightningChain(Vector3 p)
+    public void TriggerLightningChain(Collider2D enemy, Vector2 p)
     {
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(p, radius, enemyLayer);
-        Collider2D[] hitStab = Physics2D.OverlapCircleAll(p, radius, stabLayer);
-        Debug.Log("enemy num: "+hitEnemies.Length);
-        foreach (Collider2D enemy in hitEnemies)
+        if (enemy.gameObject.CompareTag("Mushroom"))
         {
-            DrawLightning(p, enemy.transform.position);
-            if (enemy.gameObject.CompareTag("Mushroom"))
-            {
-                enemy.GetComponent<NewMushroomHealth>().TakeLighteningChainDamage(p);
-            }
-            else if (enemy.gameObject.CompareTag("Bush"))
-            {
-                enemy.GetComponent<BushHealth>().TakeLighteningChainDamage();
-            }
-            else if (enemy.gameObject.CompareTag("Bat"))
-            {
-                enemy.GetComponent<BatHealth>().TakeLighteningChainDamage(p);
-            }
-            else if (enemy.gameObject.CompareTag("Twinsnap"))
-            {
-                enemy.GetComponent<TwinHealth>().TakeLighteningChainDamage(p);
-            }
-             else if (enemy.gameObject.CompareTag("SlimeDemon"))
-            {
-                enemy.GetComponentInParent<SDHealth>().TakeLighteningChainDamage(p);
-            }
+            enemy.GetComponent<NewMushroomHealth>().TakeLighteningChainDamage(p);
+        }
+        else if (enemy.gameObject.CompareTag("Bush"))
+        {
+            enemy.GetComponent<BushHealth>().TakeLighteningChainDamage();
+        }
+        else if (enemy.gameObject.CompareTag("Bat"))
+        {
+            enemy.GetComponent<BatHealth>().TakeLighteningChainDamage(p);
+        }
+        else if (enemy.gameObject.CompareTag("Twinsnap"))
+        {
+            enemy.GetComponent<TwinHealth>().TakeLighteningChainDamage(p);
+        }
+        else if (enemy.gameObject.CompareTag("SlimeDemon"))
+        {
+            enemy.GetComponentInParent<SDHealth>().TakeLighteningChainDamage(p);
         }
 
-        foreach (Collider2D stab in hitStab)
-        {
-            DrawLightning(p, stab.transform.position);
-
-        }
-        Attack.isAttacking = false;
-
-        Destroy(transform.gameObject, 0.1f);
     }
 
-    void DrawLightning(Vector2 start, Vector2 end)
+    public void DrawLightning(Vector2 start, Vector2 end)
     {
         // …œ“∆ y ÷· 0.5f
         start.y += 1f;
@@ -70,6 +55,12 @@ public class LightningChainMagic : MonoBehaviour
         LineRenderer lr = GetComponent<LineRenderer>();
         lr.SetPosition(0, start);
         lr.SetPosition(1, end);
+    }
+
+    public void DestroyThisMagic()
+    {
+        Destroy(transform.gameObject, 0.2f);  // kills self
+        Attack.isAttacking = false;
     }
 
 }

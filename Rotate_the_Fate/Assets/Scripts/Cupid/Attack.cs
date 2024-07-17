@@ -10,6 +10,7 @@ public class Attack : MonoBehaviour
     private MagicSystem mMagicSystem = null;
     public static bool isAttacking = false;
     private Collision coll;
+    public LayerMask enemyLayer;
 
     private Rigidbody2D rb;
     private CupidHealth cupidHealth;
@@ -19,6 +20,7 @@ public class Attack : MonoBehaviour
     public float flameCost = 3;
     public float lightingCost = 2;
     public float timeCost = 5;
+    public float LightningRadius = 5;
     private TripleBarDisplay energy_bar;
     private AbilityDisplay abilityDisplay;
     // Start is called before the first frame update
@@ -38,7 +40,7 @@ public class Attack : MonoBehaviour
         // currentMagic.Add(MagicType.Frozen);
         currentMagic.Add(MagicType.LightingChain);
         // currentMagic.Add(MagicType.Flame);
-        // Add_Magic(MagicType.Time);
+        //  Add_Magic(MagicType.Time);
         coll = GetComponent<Collision>();
         GameObject a = GameObject.Find("FrozenVase");
         GameObject a2 = GameObject.Find("AirWall1");
@@ -69,6 +71,7 @@ public class Attack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log("isAttacking: " + isAttacking);
         MagicAttack();
         SwitchMagic();
     }
@@ -81,12 +84,13 @@ public class Attack : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.J) && !isAttacking && coll.onGround && currentMagic.Count > 0 && magicEnergy >= currentMagicCost)
         {
-            isAttacking = true;
+
 
             rb.velocity = new Vector2(0, 0);
             switch (currentMagic[chooseMagic])
             {
                 case MagicType.Frozen:
+                    isAttacking = true;
                     magicEnergy -= frozenCost;
                     energy_bar.ValueDecrease(frozenCost);
                     mMagicSystem.FrozenSpawner(transform.position, GetComponent<CupidBehavior>().mTowardRight);
@@ -95,10 +99,16 @@ public class Attack : MonoBehaviour
                 case MagicType.LightingChain:
                     magicEnergy -= lightingCost;
                     energy_bar.ValueDecrease(lightingCost);
-                    mMagicSystem.LightningChainSpawner(transform.position);
-                    FindObjectOfType<AudioManager>().Play("Lightening");
+                    Collider2D[] hitEnemies = LightningDetectEnemy();
+                    mMagicSystem.LightningChainSpawner(transform.position, hitEnemies);
+                    if (hitEnemies.Length > 0)
+                    {
+                        FindObjectOfType<AudioManager>().Play("Lightening");
+                    }
+                    //FindObjectOfType<AudioManager>().Play("Lightening");
                     break;
                 case MagicType.Flame:
+                    isAttacking = true;
                     magicEnergy -= flameCost;
                     energy_bar.ValueDecrease(flameCost);
                     mMagicSystem.FlameSpawner(transform.position, GetComponent<CupidBehavior>().mTowardRight);
@@ -160,6 +170,19 @@ public class Attack : MonoBehaviour
             magicEnergy += 0.01f;
             energy_bar.ValueIncrease(0.01f);
         }
+    }
+
+    private Collider2D[] LightningDetectEnemy()
+    {
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, LightningRadius, enemyLayer);
+        //Debug.Log("enemies num: " + hitEnemies.Length);
+        return hitEnemies;
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, LightningRadius);
     }
 
 }
