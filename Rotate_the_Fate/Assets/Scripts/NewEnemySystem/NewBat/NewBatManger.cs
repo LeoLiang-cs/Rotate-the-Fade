@@ -34,7 +34,7 @@ public class NewBatManger : EnemyManger
 
     public override void Move()
     {
-        rb.velocity=MoveDir*CurrSpeed*Time.deltaTime;
+        rb.velocity=MoveDir*CurrSpeed*Time.deltaTime*SlowContor;
     }
 
     public override bool Findplayer()
