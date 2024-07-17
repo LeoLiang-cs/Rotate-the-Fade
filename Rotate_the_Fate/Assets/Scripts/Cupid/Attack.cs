@@ -38,7 +38,7 @@ public class Attack : MonoBehaviour
     {
         currentMagic = abilityDisplay.gianed_magics;
         // currentMagic.Add(MagicType.Frozen);
-        currentMagic.Add(MagicType.LightingChain);
+        //currentMagic.Add(MagicType.LightingChain);
         // currentMagic.Add(MagicType.Flame);
         //  Add_Magic(MagicType.Time);
         coll = GetComponent<Collision>();
