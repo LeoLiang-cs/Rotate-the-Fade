@@ -24,6 +24,7 @@ public class LightningChainMagic : MonoBehaviour
     {
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(p, radius, enemyLayer);
         Collider2D[] hitStab = Physics2D.OverlapCircleAll(p, radius, stabLayer);
+        Debug.Log("enemy num: "+hitEnemies.Length);
         foreach (Collider2D enemy in hitEnemies)
         {
             DrawLightning(p, enemy.transform.position);
@@ -65,7 +66,7 @@ public class LightningChainMagic : MonoBehaviour
         start.y += 1f;
         end.y += 1f;
 
-        Debug.Log("DrawLightning: " + start + " " + end);
+        // Debug.Log("DrawLightning: " + start + " " + end);
         LineRenderer lr = GetComponent<LineRenderer>();
         lr.SetPosition(0, start);
         lr.SetPosition(1, end);

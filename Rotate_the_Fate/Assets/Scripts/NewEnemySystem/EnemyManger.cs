@@ -82,7 +82,7 @@ public class EnemyManger : MonoBehaviour
         health = GetComponent<NewMushroomHealth>();
         SlowContor = 1f;
         EnemyMaster.Instance.AddEnemy(this);
-        Debug.Log("EnemyMangerAwake");
+        // Debug.Log("EnemyMangerAwake");
         IsAttack = false;
     }
 

@@ -88,7 +88,7 @@ public class CupidHealth : MonoBehaviour
 
             rb.AddForce(knockBackDirection * knockBackForce, ForceMode2D.Impulse);
             anim.SetTrigger("Hit");
-            Debug.Log("currentHealth: " + currentHealth);
+            // Debug.Log("currentHealth: " + currentHealth);
         }
     }
 

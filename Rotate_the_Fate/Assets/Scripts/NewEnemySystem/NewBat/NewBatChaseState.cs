@@ -13,7 +13,7 @@ public class NewBatChaseState : EnemyBaseState
     public override void OnEnter(EnemyManger enemy)
     {
 
-        Debug.Log("enterChase");
+        // Debug.Log("enterChase");
         currentEnemy = enemy;
         currentEnemy.CurrSpeed = currentEnemy.ChaseSpeed;
         currentEnemy.ChaseTimeContor = currentEnemy.ChaseWaitTime;
@@ -77,7 +77,7 @@ public override void LogicUpdate()
 
     public override void OnExit()
     {
-        Debug.Log("exitChase"); 
+        // Debug.Log("exitChase"); 
     }
 
 
