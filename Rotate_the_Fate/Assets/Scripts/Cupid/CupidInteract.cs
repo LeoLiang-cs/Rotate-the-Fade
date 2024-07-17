@@ -104,8 +104,6 @@ public class CupidInteract : MonoBehaviour
             Destroy(thing.gameObject);
             GetComponent<Attack>().currentMagic.Add(MagicType.Time);
             abilityDisplay.Add_Ability("time");
-            Attack script = gameObject.GetComponent<Attack>();
-            script.Add_Magic(MagicType.Time);
         }
     }
 

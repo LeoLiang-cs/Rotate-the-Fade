@@ -35,12 +35,34 @@ public class Attack : MonoBehaviour
     void Start()
     {
         currentMagic = abilityDisplay.gianed_magics;
-        //currentMagic.Add(MagicType.Frozen);
-        currentMagic.Add(MagicType.LightingChain);
+        // currentMagic.Add(MagicType.Frozen);
+        // currentMagic.Add(MagicType.LightingChain);
         // currentMagic.Add(MagicType.Flame);
+        // Add_Magic(MagicType.Time);
         coll = GetComponent<Collision>();
+        GameObject a = GameObject.Find("FrozenVase");
+        GameObject a2 = GameObject.Find("AirWall1");
+        GameObject b = GameObject.Find("fire");
+        GameObject c = GameObject.Find("FlashBottle");
+        GameObject d = GameObject.Find("SandClock");
+        if (a != null && currentMagic.Count >= 1)
+        {
+            Destroy(a);
+            Destroy(a2);
+        }
+        if (b != null && currentMagic.Count >= 2)
+        {
+            Destroy(b);
+        }
+        if (c != null && currentMagic.Count >= 3)
+        {
+            Destroy(c);
+        }
+        if (d != null && currentMagic.Count >= 4)
+        {
+            Destroy(d);
+        }
 
-        //Add_Magic(MagicType.Time);
 
     }
 
@@ -60,6 +82,7 @@ public class Attack : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.J) && !isAttacking && coll.onGround && currentMagic.Count > 0 && magicEnergy >= currentMagicCost)
         {
             isAttacking = true;
+
             rb.velocity = new Vector2(0, 0);
             switch (currentMagic[chooseMagic])
             {
@@ -123,15 +146,17 @@ public class Attack : MonoBehaviour
                     // timers.Trigger();
                     isAttacking = false;
                     break;
-            // health_bar.Set_Cost(magicDamge);
+                    // health_bar.Set_Cost(magicDamge);
             }
             energy_bar.Set_Cost(currentMagicCost);
         }
 
     }
 
-    private void EnergyRecover(){
-        if(magicEnergy < 10){
+    private void EnergyRecover()
+    {
+        if (magicEnergy < 10)
+        {
             magicEnergy += 0.01f;
             energy_bar.ValueIncrease(0.01f);
         }

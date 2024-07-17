@@ -49,7 +49,7 @@ public class SDAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (sdHealth.isHitting || sdHealth.isDead || sdHealth.isTransforming || !sdHealth.isDemon || !timeStop.isStopped)
+        if (sdHealth.isHitting || sdHealth.isDead || sdHealth.isTransforming || !sdHealth.isDemon || timeStop.isStopped)
         {
             return;
         }
