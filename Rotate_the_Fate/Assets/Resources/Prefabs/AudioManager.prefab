@@ -135,3 +135,39 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: DemonTransform
+    clip: {fileID: 8300000, guid: a112dfb21d7d93c4b9fd7103842acdb7, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Sword
+    clip: {fileID: 8300000, guid: bbdab477850aee749bdc771eafa9d051, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: DemonHit
+    clip: {fileID: 8300000, guid: 7e0e099bf27aab149bd9bfdc71090b05, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: DemonDeath
+    clip: {fileID: 8300000, guid: 355980539df9b4241a2e9c78a2beec78, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: TimeStop
+    clip: {fileID: 8300000, guid: 4144aa5b764e42e48899e0de1e268ba1, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: TimeResume
+    clip: {fileID: 8300000, guid: 8a058bec69056774c957dea5d577c5c1, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}

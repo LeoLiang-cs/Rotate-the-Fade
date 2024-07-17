@@ -22,7 +22,7 @@ public class CaveState : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.S) && !isStateOne)
+        if (Input.GetKeyDown(KeyCode.S) && !isStateOne && !Attack.isAttacking)
         {
             SceneManager.LoadScene(nextSceneName);  // 加载下一个场景
         }

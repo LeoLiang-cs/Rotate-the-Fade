@@ -22,7 +22,7 @@ public class SDHealth : MonoBehaviour
     public int lightningDamage = 3;
     public float frozenForce = 10f;
     public bool isTransforming = false;
-
+    public GameObject thankUI;
     private DoubleBarDisplay health_bar;
 
     void Awake()
@@ -150,6 +150,7 @@ public class SDHealth : MonoBehaviour
 
         if (health <= 0 && !isDead && isDemon)
         {
+            thankUI.SetActive(true);
             FindObjectOfType<AudioManager>().Play("DemonDeath");
             gameObject.layer = 2;
             isDead = true;

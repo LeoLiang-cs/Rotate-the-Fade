@@ -10,7 +10,7 @@ public class CupidHealth : MonoBehaviour
     private Animator anim;
     public GameObject deathUIPanel;
     public UnityEvent OnTakeDame;
-    private DoubleBarDisplay health_bar;
+    public DoubleBarDisplay health_bar;
 
 
     [Space]
@@ -48,6 +48,11 @@ public class CupidHealth : MonoBehaviour
 
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy") || other.gameObject.layer == LayerMask.NameToLayer("Stab"))
         {
+            if(other.gameObject.CompareTag("Seed")) 
+            {
+                return;
+            }
+
             FindObjectOfType<AudioManager>().Play("getHurt");
             if (impulseSource == null)
             {

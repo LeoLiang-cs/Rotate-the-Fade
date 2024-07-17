@@ -1,9 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
-using static UnityEditor.Rendering.InspectorCurveEditor;
 
 public class EnemyManger : MonoBehaviour
 {

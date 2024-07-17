@@ -10,7 +10,7 @@ public class CupidBehavior : MonoBehaviour
     private Collision coll;
     private Rigidbody2D rb;
     private Animator anim;
-    private CupidHealth health;
+    public CupidHealth health;
     private SDTimeStop timeStop;
     [Space]
     [Header("Stats")]

@@ -89,7 +89,7 @@ public class CupidInteract : MonoBehaviour
             GameObject getEffect = GameObject.Instantiate(effect) as GameObject;
             effect.transform.position = thing.transform.position;
             Destroy(thing.gameObject);
-            GetComponent<Attack>().currentMagic.Add(MagicType.Time);
+            GetComponent<Attack>().currentMagic.Add(MagicType.LightingChain);
             abilityDisplay.Add_Ability("lightening");
         }
     }
