@@ -211,11 +211,12 @@ public class EnemyManger : MonoBehaviour
         SlowContor = 0.5f;
     }
 
-    public void Stop()
+    public virtual void Stop()
     {
         SlowContor = 0f;
+
     }
-    public void BackTo()
+    public virtual void BackTo()
     {
         SlowContor = 1f;
     }

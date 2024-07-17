@@ -40,7 +40,7 @@ public class Attack : MonoBehaviour
         // currentMagic.Add(MagicType.Frozen);
         currentMagic.Add(MagicType.LightingChain);
         // currentMagic.Add(MagicType.Flame);
-        //  Add_Magic(MagicType.Time);
+          Add_Magic(MagicType.Time);
         coll = GetComponent<Collision>();
         GameObject a = GameObject.Find("FrozenVase");
         GameObject a2 = GameObject.Find("AirWall1");
