@@ -10,7 +10,7 @@ public class CupidHealth : MonoBehaviour
     private Animator anim;
     public GameObject deathUIPanel;
     public UnityEvent OnTakeDame;
-    private DoubleBarDisplay health_bar;
+    public DoubleBarDisplay health_bar;
 
 
     [Space]
@@ -18,8 +18,9 @@ public class CupidHealth : MonoBehaviour
     public int maxHealth = 10;
     public int currentHealth;
 
-    public int MushroomDamage = 3;
+    public int MushroomDamage = 2;
     public int SeedDamage = 1;
+    public int StabDamage = 5;
     public float knockBackForce = 10f;
     public bool invulnerable = false;
     public bool isDead = false;
@@ -27,13 +28,15 @@ public class CupidHealth : MonoBehaviour
 
     private CinemachineImpulseSource impulseSource;
 
-    private void Awake() {
+    private void Awake()
+    {
         health_bar = GameObject.Find("StateBar").GetComponent<DoubleBarDisplay>();
     }
     private void Start()
     {
         impulseSource = GetComponent<CinemachineImpulseSource>();
         currentHealth = maxHealth;
+        health_bar.Refill(currentHealth);
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         handStoneSample = Resources.Load<GameObject>("Prefabs/HandStone") as GameObject;
@@ -45,6 +48,11 @@ public class CupidHealth : MonoBehaviour
 
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy") || other.gameObject.layer == LayerMask.NameToLayer("Stab"))
         {
+            if(other.gameObject.CompareTag("Seed")) 
+            {
+                return;
+            }
+
             FindObjectOfType<AudioManager>().Play("getHurt");
             if (impulseSource == null)
             {
@@ -53,12 +61,19 @@ public class CupidHealth : MonoBehaviour
             }
             else
             {
-//                CameraShakeManager.instance.CameraShake(impulseSource);
+                CameraShakeManager.instance.CameraShake(impulseSource);
             }
-            
-            Debug.Log("enter");
-            currentHealth -= MushroomDamage;
-            health_bar.TakeDamage(MushroomDamage);
+
+            if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+            {
+                currentHealth -= MushroomDamage;
+                health_bar.TakeDamage(MushroomDamage);
+            }else if (other.gameObject.layer == LayerMask.NameToLayer("Stab"))
+            {
+                currentHealth -= StabDamage;
+                health_bar.TakeDamage(StabDamage);
+            }
+
             if (currentHealth <= 0 && !isDead)
             {
                 isDead = true;
@@ -73,7 +88,7 @@ public class CupidHealth : MonoBehaviour
 
             rb.AddForce(knockBackDirection * knockBackForce, ForceMode2D.Impulse);
             anim.SetTrigger("Hit");
-
+            // Debug.Log("currentHealth: " + currentHealth);
         }
     }
 

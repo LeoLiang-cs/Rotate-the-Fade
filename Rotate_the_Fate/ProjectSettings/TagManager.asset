@@ -16,6 +16,7 @@ TagManager:
   - FlashBottle
   - sandClock
   - SlimeDemon
+  - Seed
   layers:
   - Default
   - TransparentFX

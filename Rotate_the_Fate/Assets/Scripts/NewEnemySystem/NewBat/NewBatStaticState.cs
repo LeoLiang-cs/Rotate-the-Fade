@@ -11,7 +11,7 @@ public class NewBatStaticState : EnemyBaseState
     }
     public override void OnEnter(EnemyManger enemy)
     {
-        Debug.Log("enterStatic");
+        // Debug.Log("enterStatic");
         currentEnemy = enemy;
         currentEnemy.CurrSpeed = 0f;
         currentEnemy.Target = currentEnemy.StaticPostion;
@@ -59,7 +59,7 @@ public class NewBatStaticState : EnemyBaseState
 
     public override void OnExit()
     {
-        Debug.Log("exitStatic");
+        // Debug.Log("exitStatic");
     }
 
     // Start is called before the first frame update

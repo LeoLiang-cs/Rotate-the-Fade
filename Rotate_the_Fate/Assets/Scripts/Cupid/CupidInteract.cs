@@ -18,7 +18,7 @@ public class CupidInteract : MonoBehaviour
     void Start()
     {
         effect = Resources.Load<GameObject>("Prefabs/GetMagicEffect") as GameObject;
-        mushPlusSample = Resources.Load<GameObject>("Prefabs/MushPlus") as GameObject;
+        mushPlusSample = Resources.Load<GameObject>("Prefabs/NewMushroom") as GameObject;
     }
 
     // Update is called once per frame
@@ -89,7 +89,7 @@ public class CupidInteract : MonoBehaviour
             GameObject getEffect = GameObject.Instantiate(effect) as GameObject;
             effect.transform.position = thing.transform.position;
             Destroy(thing.gameObject);
-            GetComponent<Attack>().currentMagic.Add(MagicType.Time);
+            GetComponent<Attack>().currentMagic.Add(MagicType.LightingChain);
             abilityDisplay.Add_Ability("lightening");
         }
     }
@@ -104,8 +104,6 @@ public class CupidInteract : MonoBehaviour
             Destroy(thing.gameObject);
             GetComponent<Attack>().currentMagic.Add(MagicType.Time);
             abilityDisplay.Add_Ability("time");
-            Attack script = gameObject.GetComponent<Attack>();
-            script.Add_Magic(MagicType.Time);
         }
     }
 

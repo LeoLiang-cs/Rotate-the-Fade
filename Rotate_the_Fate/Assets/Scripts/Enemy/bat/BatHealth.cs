@@ -206,7 +206,6 @@ public class BatHealth : MonoBehaviour
             gameObject.layer = 2;
             isDead = true;
             anim.SetTrigger("Die");
-            GetComponent<RotationBehavior>().enabled = false;
         }
     }
 

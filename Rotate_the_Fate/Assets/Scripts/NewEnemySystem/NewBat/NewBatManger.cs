@@ -11,11 +11,11 @@ public class NewBatManger : EnemyManger
     {
         base.Awake();
         Health = GetComponent<BatHealth>();
-        anim = GetComponent<Animator>();    
-        ChaseState=new NewBatChaseState(anim,Health);
-        AttackState=new NewBatAttackState(anim);
-        BackState=new NewBatBackState(anim);
-        StaticState=new NewBatStaticState(anim);
+        anim = GetComponent<Animator>();
+        ChaseState = new NewBatChaseState(anim, Health);
+        AttackState = new NewBatAttackState(anim);
+        BackState = new NewBatBackState(anim);
+        StaticState = new NewBatStaticState(anim);
         ChaseTimeContor = ChaseTime;
         StaticPostion = StaticPostionInRotationWorld.position;
     }
@@ -34,12 +34,12 @@ public class NewBatManger : EnemyManger
 
     public override void Move()
     {
-        rb.velocity=MoveDir*CurrSpeed*Time.deltaTime;
+        rb.velocity=MoveDir*CurrSpeed*Time.deltaTime*SlowContor;
     }
 
     public override bool Findplayer()
     {
-        float Distent=(transform.position-CupidTransform.position).sqrMagnitude;
+        float Distent = (transform.position - CupidTransform.position).sqrMagnitude;
         if (Distent < CheckFindPlayerRadios)
         {
             return true;
@@ -60,7 +60,7 @@ public class NewBatManger : EnemyManger
         //        LastPostionBeforeAttack = transform.position;
         //        IsAttack = true;
         //    }
-            
+
         //}
         if (Distent < CheckFindAttackRadios)
         {
@@ -73,7 +73,7 @@ public class NewBatManger : EnemyManger
         }
 
     }
-        void Flip()
+    void Flip()
     {
         if (CupidTransform.position.x > transform.position.x)
         {

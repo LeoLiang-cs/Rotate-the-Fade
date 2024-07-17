@@ -6,13 +6,13 @@ public class MagicSystem
 {
     public static float kYDistance = 1.5f;
     public static float kXDistance = 1f;
-    public LayerMask enemyLayer;  // 敌人的图�?
     private GameObject mFrozenSample = null;
     private GameObject mFlameSample = null;
     private GameObject mLightningChainSample = null;
     private GameObject mTimeFreezeEffect = null;
     private GameObject flameEffect = null;
     private GameObject frozenEffect = null;
+    private GameObject lightningEffect = null;
     public MagicSystem()
     {
         FrozenMagic.InitializedMagicSystem(this);
@@ -22,29 +22,38 @@ public class MagicSystem
         mTimeFreezeEffect = Resources.Load<GameObject>("Prefabs/TimeFreezeEffect") as GameObject;
         flameEffect = Resources.Load<GameObject>("Prefabs/CupidFlameEffect") as GameObject;
         frozenEffect = Resources.Load<GameObject>("Prefabs/CupidFrozenEffect") as GameObject;
+        lightningEffect = Resources.Load<GameObject>("Prefabs/CupidLightningEffect") as GameObject;
     }
 
     public void FrozenSpawner(Vector3 p, bool torwardRight)
     {
         GameObject frozen = GameObject.Instantiate(mFrozenSample) as GameObject;
         GameObject effect = GameObject.Instantiate(frozenEffect) as GameObject;
-        if(torwardRight)
+        if (torwardRight)
         {
-            frozen.transform.position = p ;
+            frozen.transform.position = p;
             frozen.transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
         else
         {
-            frozen.transform.position = p ;
+            frozen.transform.position = p;
             frozen.transform.localRotation = Quaternion.Euler(0, 180, 0);
         }
         effect.transform.position = p + Vector3.up * 0.4f;
     }
 
-    public void LightningChainSpawner(Vector3 p)
+    public void LightningChainSpawner(Vector3 p, Collider2D[] enemies)
     {
-        GameObject lightning = GameObject.Instantiate(mLightningChainSample) as GameObject;
-        lightning.GetComponent<LightningChainMagic>().TriggerLightningChain(p);  
+        GameObject effect = GameObject.Instantiate(lightningEffect) as GameObject;
+        foreach (Collider2D enemy in enemies)
+        {
+            GameObject lightning = GameObject.Instantiate(mLightningChainSample) as GameObject;
+
+            lightning.GetComponent<LightningChainMagic>().DrawLightning(p, enemy.transform.position);
+            lightning.GetComponent<LightningChainMagic>().TriggerLightningChain(enemy, p);
+            lightning.GetComponent<LightningChainMagic>().DestroyThisMagic();
+        }
+        effect.transform.position = p + Vector3.up * 0.4f;
     }
 
 
@@ -52,20 +61,21 @@ public class MagicSystem
     {
         GameObject flame = GameObject.Instantiate(mFlameSample) as GameObject;
         GameObject effect = GameObject.Instantiate(flameEffect) as GameObject;
-        if(torwardRight)
+        if (torwardRight)
         {
             flame.transform.position = p + Vector3.right * 0.5f + Vector3.up * 0.4f;
             flame.transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
         else
         {
-            flame.transform.position = p + Vector3.left * 0.5f+ Vector3.up * 0.4f;
+            flame.transform.position = p + Vector3.left * 0.5f + Vector3.up * 0.4f;
             flame.transform.localRotation = Quaternion.Euler(0, 180, 0);
         }
         effect.transform.position = p + Vector3.up * 0.4f;
     }
 
-    public void TimeFreezeSpawner(Timer timer, GameObject parent){
+    public void TimeFreezeSpawner(Timer timer, GameObject parent)
+    {
         GameObject time_freeze = GameObject.Instantiate(mTimeFreezeEffect) as GameObject;
         TimeEffect script = time_freeze.GetComponent<TimeEffect>();
         script.Set_up(timer, parent);

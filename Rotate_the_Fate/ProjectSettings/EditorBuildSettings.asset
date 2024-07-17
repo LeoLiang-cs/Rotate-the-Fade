@@ -29,7 +29,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Level_3.unity
     guid: 45301c4f1e694a84d8f05ab72f3e7a47
-  - enabled: 1
+  - enabled: 0
+    path: Assets/Scenes/Elite.unity
+    guid: c443539e87440ae41857b7b437a78439
+  - enabled: 0
     path: Assets/Scenes/Elite.unity
     guid: c443539e87440ae41857b7b437a78439
   - enabled: 0
@@ -53,5 +56,29 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Alpha/A_Anime.unity
     guid: 75c9d25a27790594c9da6d560fd56471
+  - enabled: 1
+    path: Assets/Scenes/Beta/B0.unity
+    guid: fa93d2b4680aa13429615c050e1374b8
+  - enabled: 1
+    path: Assets/Scenes/Beta/B1.unity
+    guid: d6c29e528207d194cbaa81e3996c4e43
+  - enabled: 1
+    path: Assets/Scenes/Beta/B2.unity
+    guid: 6d9344138ad209f4eb3a13f58e6f6e73
+  - enabled: 1
+    path: Assets/Scenes/Beta/B3.unity
+    guid: 3bc0154004ddee94a927ac6270165a42
+  - enabled: 1
+    path: Assets/Scenes/Beta/B4.unity
+    guid: 93b47e06e2a918749855a6c8291e2888
+  - enabled: 1
+    path: Assets/Scenes/Beta/B5.unity
+    guid: c908de4b4d6974443b1379eaa756a69f
+  - enabled: 1
+    path: Assets/Scenes/Beta/B6.unity
+    guid: ab6b73ae8312f064e9ec563dcf0035bb
+  - enabled: 0
+    path: Assets/Scenes/Beta/A_x.unity
+    guid: 82c46f59bbbd1724c8b0511c5887c691
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 5d7ba0c739f663d438fd57c0d3fbcafa, type: 2}

@@ -43,5 +43,10 @@ public class FlameMagic : MonoBehaviour
         {
             other.GetComponent<BatHealth>().TakeFlameDamage(transform.position);
         }
+        else if (other.gameObject.CompareTag("SlimeDemon"))
+        {
+            other.GetComponentInParent<SDHealth>().TakeFlameDamage(transform.position);
+        }
+
     }
 }

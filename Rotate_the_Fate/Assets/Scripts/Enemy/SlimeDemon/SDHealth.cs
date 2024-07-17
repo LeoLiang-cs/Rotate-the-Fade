@@ -22,7 +22,7 @@ public class SDHealth : MonoBehaviour
     public int lightningDamage = 3;
     public float frozenForce = 10f;
     public bool isTransforming = false;
-
+    public GameObject thankUI;
     private DoubleBarDisplay health_bar;
 
     void Awake()
@@ -59,6 +59,7 @@ public class SDHealth : MonoBehaviour
             return;
         if (!isDemon)
         {
+
             health -= frozenDamage;
             health_bar.TakeDamage(frozenDamage);
             isHitting = true;
@@ -76,6 +77,7 @@ public class SDHealth : MonoBehaviour
         }
         else
         {
+            FindObjectOfType<AudioManager>().Play("DemonHit");
             health -= frozenDamage;
             health_bar.TakeDamage(frozenDamage);
 
@@ -86,7 +88,49 @@ public class SDHealth : MonoBehaviour
             }
 
         }
+    }
 
+    public void TakeFlameDamage(Vector2 att)
+    {
+        if (isHitting)
+            return;
+        if (!isDemon)
+        {
+            health += flameDamage;
+            health_bar.GetHealed(flameDamage);
+        }
+        else
+        {
+            health += flameDamage;
+            health_bar.GetHealed(flameDamage);
+
+        }
+    }
+
+    public void TakeLighteningChainDamage(Vector2 att)
+    {
+        if (isHitting)
+            return;
+        if (!isDemon)
+        {
+            health -= lightningDamage;
+            health_bar.TakeDamage(lightningDamage);
+            isHitting = true;
+            //OnTakeLighteningChainDamage?.Invoke(att);
+            anim.SetTrigger("Hit");
+        }
+        else
+        {
+            FindObjectOfType<AudioManager>().Play("DemonHit");
+            health -= lightningDamage;
+            health_bar.TakeDamage(lightningDamage);
+
+            if (!sdAttack.isAttacking)
+            {
+                isHitting = true;
+                anim.SetTrigger("Hit");
+            }
+        }
     }
 
     private void Die()
@@ -106,6 +150,8 @@ public class SDHealth : MonoBehaviour
 
         if (health <= 0 && !isDead && isDemon)
         {
+            thankUI.SetActive(true);
+            FindObjectOfType<AudioManager>().Play("DemonDeath");
             gameObject.layer = 2;
             isDead = true;
             anim.SetBool("Walk", false);
@@ -121,6 +167,7 @@ public class SDHealth : MonoBehaviour
 
     public void Transform2Demon()
     {
+        FindObjectOfType<AudioManager>().Play("DemonTransform");
         isTransforming = true;
         Debug.Log("Transforming");
         anim.SetTrigger("Transform");

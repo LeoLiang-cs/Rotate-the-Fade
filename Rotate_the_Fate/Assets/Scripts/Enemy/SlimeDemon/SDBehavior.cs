@@ -10,6 +10,7 @@ public class SDBehavior : MonoBehaviour
     private GameObject Cupid;
     private SDHealth sdHealth;
     private SDAttack sdAttack;
+    private SDTimeStop timeStop;
 
     [Header("基本参数")]
     public float currentSpeed = 200f;
@@ -24,6 +25,7 @@ public class SDBehavior : MonoBehaviour
         anim = GetComponent<Animator>();
         coll = GetComponent<Collision>();
         sdHealth = GetComponent<SDHealth>();
+        timeStop = GetComponent<SDTimeStop>();
         Cupid = GameObject.Find("Cupid");
         currentSpeed = 200f;
         slowFactor = 1f;
@@ -37,10 +39,11 @@ public class SDBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (sdHealth.isHitting || sdHealth.isDead || sdHealth.isTransforming || sdAttack.isAttacking)
+        if (sdHealth.isHitting || sdHealth.isDead || sdHealth.isTransforming || sdAttack.isAttacking || timeStop.isStopped)
         {
             return;
         }
+
 
         faceDire = new Vector3(-transform.localScale.x, 0, 0).normalized;
         Flip();

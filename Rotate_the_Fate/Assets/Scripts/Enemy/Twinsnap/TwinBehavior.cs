@@ -8,7 +8,7 @@ public class TwinBehavior : MonoBehaviour
     private Collision coll;
     private TwinAttack twinAttack;
     private Animator anim;
-    private GameObject Cupid;
+    public GameObject Cupid;
     private TwinAttackDetect attackDetect;
     private TwinHealth twinHealth;
 

@@ -1,15 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
-using static UnityEditor.Rendering.InspectorCurveEditor;
 
 public class EnemyManger : MonoBehaviour
 {
     [Header("InformationOfCupid")]
     public Transform CupidTransform;
     public bool LastJump;
+    public GameObject Cupidd;
 
 
     [Header("EnemyBaseInformation")]
@@ -75,13 +74,15 @@ public class EnemyManger : MonoBehaviour
 
     protected virtual void Awake()
     {
+        Cupidd = GameObject.Find("Cupid");
+        CupidTransform=Cupidd.transform;
         rb = GetComponent<Rigidbody2D>();
         CheckOfTouch = GetComponent<PychicsCheck>();
         WaitTimer = GetComponent<Timer>();
         health = GetComponent<NewMushroomHealth>();
         SlowContor = 1f;
         EnemyMaster.Instance.AddEnemy(this);
-        Debug.Log("EnemyMangerAwake");
+        // Debug.Log("EnemyMangerAwake");
         IsAttack = false;
     }
 
