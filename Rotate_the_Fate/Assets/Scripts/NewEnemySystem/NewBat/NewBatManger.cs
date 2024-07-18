@@ -34,7 +34,7 @@ public class NewBatManger : EnemyManger
 
     public override void Move()
     {
-        rb.velocity = MoveDir * CurrSpeed * Time.deltaTime;
+        rb.velocity=MoveDir*CurrSpeed*Time.deltaTime*SlowContor;
     }
 
     public override bool Findplayer()
@@ -48,6 +48,17 @@ public class NewBatManger : EnemyManger
         {
             return false;
         }
+    }
+    public override void Stop()
+    {
+        base.Stop();
+        anim.speed=0.0f;
+    }
+
+    public override void BackTo()
+    {
+        base.BackTo();
+        anim.speed = 1f;
     }
 
     public override bool FindAttack()
