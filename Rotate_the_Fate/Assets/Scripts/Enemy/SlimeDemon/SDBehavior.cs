@@ -13,7 +13,7 @@ public class SDBehavior : MonoBehaviour
     private SDTimeStop timeStop;
 
     [Header("基本参数")]
-    public float currentSpeed = 200f;
+    public float currentSpeed = 400f;
     public Vector3 faceDire;
     public float slowFactor;//减慢因子
 
@@ -27,7 +27,7 @@ public class SDBehavior : MonoBehaviour
         sdHealth = GetComponent<SDHealth>();
         timeStop = GetComponent<SDTimeStop>();
         Cupid = GameObject.Find("Cupid");
-        currentSpeed = 200f;
+        currentSpeed = 400f;
         slowFactor = 1f;
     }
     // Start is called before the first frame update

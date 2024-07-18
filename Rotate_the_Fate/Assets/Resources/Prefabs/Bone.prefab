@@ -10,12 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 9194039277227648447}
   - component: {fileID: 2754197979487406384}
-  - component: {fileID: 1293692968408598586}
   - component: {fileID: 7471546203512765920}
   - component: {fileID: 1655570674498303420}
   - component: {fileID: 2832477643500332700}
   - component: {fileID: 510505945853300920}
   - component: {fileID: 2777208741847028905}
+  - component: {fileID: 7665089973435863400}
+  - component: {fileID: 5072562387603021824}
   m_Layer: 7
   m_Name: Bone
   m_TagString: Bat
@@ -90,66 +91,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1293692968408598586
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 311341392355271006}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 806196a22b1ec4e4b8eaa9825bf7230d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CupidTransform: {fileID: 0}
-  LastJump: 0
-  Cupidd: {fileID: 0}
-  rb: {fileID: 0}
-  CheckOfTouch: {fileID: 0}
-  CurrSpeed: 0
-  PatrolSpeed: 400
-  ChaseSpeed: 300
-  FaceDire: {x: 0, y: 0, z: 0}
-  SlowContor: 0
-  ChaseFaceDire: 0
-  CurrWaitTime: 0
-  WaitTimeContor: 0
-  ChaseWaitTime: 0
-  PotalWaitTime: 0
-  IsWait: 0
-  WaitTimer: {fileID: 0}
-  CurrState: {fileID: 0}
-  PatrolState: {fileID: 0}
-  ChaseState: {fileID: 0}
-  AttackState: {fileID: 0}
-  DeathState: {fileID: 0}
-  BackState: {fileID: 0}
-  StaticState: {fileID: 0}
-  CenterOffist: {x: 0, y: 0}
-  CheckSize: {x: 0, y: 0}
-  CheckDisent: 0
-  Player:
-    serializedVersion: 2
-    m_Bits: 256
-  ChaseTime: 10
-  ChaseTimeContor: 0
-  JumpFouse: 0
-  IsColl: 0
-  health: {fileID: 0}
-  StaticPostionInRotationWorld: {fileID: 0}
-  StaticPostion: {x: 0, y: 0, z: 0}
-  Target: {x: 0, y: 0, z: 0}
-  MoveDir: {x: 0, y: 0, z: 0}
-  CheckFindPlayerRadios: 100
-  CheckFindAttackRadios: 0.78
-  AttackAddRadios: 0.94
-  LastPostionBeforeAttack: {x: 0, y: 0, z: 0}
-  IsAttack: 0
-  MoveDirBrforeAttack: {x: 0, y: 0, z: 0}
-  X: 0
-  Y: 0
-  Z: 0
 --- !u!50 &7471546203512765920
 Rigidbody2D:
   serializedVersion: 4
@@ -260,7 +201,7 @@ MonoBehaviour:
   health: 10
   flameDamage: 5
   frozenDamage: 2
-  lightningDamage: 3
+  lightningDamage: 4
   FlameForce: 5
   frozenForce: 100
   knockBackForce: 10
@@ -299,3 +240,94 @@ CircleCollider2D:
   m_Offset: {x: 0.021557808, y: 0}
   serializedVersion: 2
   m_Radius: 0.85106564
+--- !u!114 &7665089973435863400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 311341392355271006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 235f1272938e0b74b944805b4fb6acbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CupidTransform: {fileID: 0}
+  LastJump: 0
+  Cupidd: {fileID: 0}
+  rb: {fileID: 0}
+  CheckOfTouch: {fileID: 0}
+  CurrSpeed: 0
+  PatrolSpeed: 400
+  ChaseSpeed: 300
+  FaceDire: {x: 0, y: 0, z: 0}
+  SlowContor: 0
+  ChaseFaceDire: 0
+  CurrWaitTime: 0
+  WaitTimeContor: 0
+  ChaseWaitTime: 0
+  PotalWaitTime: 0
+  IsWait: 0
+  WaitTimer: {fileID: 0}
+  CurrState: {fileID: 0}
+  PatrolState: {fileID: 0}
+  ChaseState: {fileID: 0}
+  AttackState: {fileID: 0}
+  DeathState: {fileID: 0}
+  BackState: {fileID: 0}
+  StaticState: {fileID: 0}
+  CenterOffist: {x: 0, y: 0}
+  CheckSize: {x: 0, y: 0}
+  CheckDisent: 0
+  Player:
+    serializedVersion: 2
+    m_Bits: 0
+  ChaseTime: 1000
+  ChaseTimeContor: 0
+  JumpFouse: 0
+  IsColl: 0
+  health: {fileID: 0}
+  StaticPostionInRotationWorld: {fileID: 0}
+  StaticPostion: {x: 0, y: 0, z: 0}
+  Target: {x: 0, y: 0, z: 0}
+  MoveDir: {x: 0, y: 0, z: 0}
+  CheckFindPlayerRadios: 100
+  CheckFindAttackRadios: 0.93
+  AttackAddRadios: 0.99
+  LastPostionBeforeAttack: {x: 0, y: 0, z: 0}
+  IsAttack: 0
+  MoveDirBrforeAttack: {x: 0, y: 0, z: 0}
+  X: 0
+  Y: 0
+  Z: 0
+--- !u!114 &5072562387603021824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 311341392355271006}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dd18cca42b3b5243ac287daa505a51b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mFrozenCount: 0
+  OnTakeFlameDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTakeFrozenDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTakeLighteningChainDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  isDead: 0
+  isHitting: 0
+  health: 10
+  flameDamage: 5
+  frozenDamage: 2
+  lightningDamage: 3
+  FlameForce: 5
+  frozenForce: 5
+  knockBackForce: 10

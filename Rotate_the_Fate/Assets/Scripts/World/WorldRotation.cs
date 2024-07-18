@@ -16,6 +16,10 @@ public class WorldRotation : MonoBehaviour
     private float targetAngle;
     private float currentAngle;
     public static bool isClockwise;
+    void Awake()
+    {
+        isRotating = false;
+    }
     // Start is called before the first frame update
     void Start()
     {

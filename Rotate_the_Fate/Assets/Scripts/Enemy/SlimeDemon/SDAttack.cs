@@ -65,6 +65,7 @@ public class SDAttack : MonoBehaviour
 
         TriggerChop();
         TriggerPunch();
+        TriggerSummon();
     }
 
     void Chop()
@@ -120,7 +121,7 @@ public class SDAttack : MonoBehaviour
         }
     }
 
-    public void punchGroundMusic()
+    public void PunchGroundMusic()
     {
         FindObjectOfType<AudioManager>().Play("SDAttack");
     }
@@ -145,7 +146,7 @@ public class SDAttack : MonoBehaviour
 
     public void BoneSpawn()
     {
-        GameObject bone = Instantiate(boneSample, transform.position, Quaternion.identity);
+        GameObject bone = GameObject.Instantiate(boneSample) as GameObject;
         bone.transform.position = transform.position + sdBehavior.faceDire * 0.5f + Vector3.up * 1.5f;
 
     }

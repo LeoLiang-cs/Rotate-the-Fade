@@ -32,10 +32,16 @@ public class EnemyRotationBehavior : MonoBehaviour
     {
         if (WorldRotation.isClockwise)
         {
+            Vector3 newPosition = transform.position;
+            newPosition.y += 1;
+            transform.position = newPosition;
             transform.Rotate(0, 0, -90);
         }
         else
         {
+            Vector3 newPosition = transform.position;
+            newPosition.y += 1;
+            transform.position = newPosition;
             transform.Rotate(0, 0, 90);
         }
     }

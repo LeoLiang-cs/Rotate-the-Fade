@@ -9,6 +9,7 @@ public class EnemyManger : MonoBehaviour
     public Transform CupidTransform;
     public bool LastJump;
     public GameObject Cupidd;
+   // public GameObject Cupid;
 
 
     [Header("EnemyBaseInformation")]

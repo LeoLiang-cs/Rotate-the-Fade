@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class SDHealth : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class SDHealth : MonoBehaviour
     public bool isTransforming = false;
     public GameObject thankUI;
     private DoubleBarDisplay health_bar;
+    private CinemachineImpulseSource impulseSource;
 
     void Awake()
     {
@@ -40,7 +42,7 @@ public class SDHealth : MonoBehaviour
         health = slimeHealth;
         health_bar.Refill(health);
         isDemon = false;
-
+        impulseSource = GetComponent<CinemachineImpulseSource>();
     }
 
     // Update is called once per frame
@@ -57,6 +59,16 @@ public class SDHealth : MonoBehaviour
     {
         if (isHitting)
             return;
+        
+        if (impulseSource == null)
+        {
+            Debug.Log("impulseSource == null");
+        }
+        else
+        {
+            CameraShakeManager.instance.CameraShake(impulseSource);
+        }
+
         if (!isDemon)
         {
 
@@ -111,6 +123,17 @@ public class SDHealth : MonoBehaviour
     {
         if (isHitting)
             return;
+
+        if (impulseSource == null)
+        {
+            Debug.Log("impulseSource == null");
+        }
+        else
+        {
+            CameraShakeManager.instance.CameraShake(impulseSource);
+        }
+
+
         if (!isDemon)
         {
             health -= lightningDamage;
@@ -176,7 +199,7 @@ public class SDHealth : MonoBehaviour
         anim.SetBool("IsDemon", true);
         health = demonHealth;
         health_bar.Refill(health);
-        GetComponent<SDBehavior>().currentSpeed = 400f;
+        GetComponent<SDBehavior>().currentSpeed = 800f;
 
         slimeCollision.gameObject.SetActive(false);
         demonCollision.gameObject.SetActive(true);

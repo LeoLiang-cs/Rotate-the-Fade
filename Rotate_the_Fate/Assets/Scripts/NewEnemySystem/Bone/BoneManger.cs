@@ -10,6 +10,7 @@ public class BoneManger : EnemyManger
     protected override void Awake()
     {
         base.Awake();
+       // Cupid = GameObject.Find("Cupid");
         Health = GetComponent<BatHealth>();
         anim = GetComponent<Animator>();
         ChaseState = new NewBatChaseState(anim, Health);
