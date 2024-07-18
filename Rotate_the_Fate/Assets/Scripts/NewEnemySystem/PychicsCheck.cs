@@ -27,7 +27,7 @@ public class PychicsCheck : MonoBehaviour
     private void Update()
     {
         LeftCheckPoint=(Vector2)transform.position+leftOffset;
-        Debug.Log("PythTrans"+transform.position);
+        // Debug.Log("PythTrans"+transform.position);
         RightCheckPoint=(Vector2)transform.position+rightOffset;
         LeftGroundCheckPoint=(Vector2)transform.position+LeftgroundOffset;
         RightGroundCheckPoint=(Vector2)transform.position +RightgroundOffset;

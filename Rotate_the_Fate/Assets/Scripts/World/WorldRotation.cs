@@ -15,7 +15,7 @@ public class WorldRotation : MonoBehaviour
     private Vector3 rotationCenter;
     private float targetAngle;
     private float currentAngle;
-    private bool isClockwise;
+    public static bool isClockwise;
     // Start is called before the first frame update
     void Start()
     {

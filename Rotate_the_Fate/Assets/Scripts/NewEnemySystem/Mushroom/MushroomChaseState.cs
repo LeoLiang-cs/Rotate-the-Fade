@@ -19,7 +19,7 @@ public class MushroomChaseState : EnemyBaseState
     }
     public override void LogicUpdate()
     {
-        Debug.Log("enterpatrol2+ ", currentEnemy.gameObject);
+        // Debug.Log("enterpatrol2+ ", currentEnemy.gameObject);
         if (currentEnemy.health.isDead)
         {
             currentEnemy.SwithState(EnemyMushroomEnums.Death);
