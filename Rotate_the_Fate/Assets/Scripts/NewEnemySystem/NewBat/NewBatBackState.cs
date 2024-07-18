@@ -17,9 +17,9 @@ public class NewBatBackState : EnemyBaseState
     public override void LogicUpdate()
     {
         currentEnemy.Target = currentEnemy.StaticPostion;
-        Debug.Log("StaticPostion" + currentEnemy.StaticPostion);
+        // Debug.Log("StaticPostion" + currentEnemy.StaticPostion);
         currentEnemy.MoveDir = (currentEnemy.StaticPostionInRotationWorld.position - currentEnemy.transform.position).normalized;
-        Debug.Log("movedir"+currentEnemy.MoveDir);
+        // Debug.Log("movedir"+currentEnemy.MoveDir);
         currentEnemy.MoveDirBrforeAttack = (currentEnemy.transform.position - currentEnemy.CupidTransform.position).normalized;
         if (currentEnemy.MoveDirBrforeAttack.x > 0)
         {
@@ -62,7 +62,7 @@ public class NewBatBackState : EnemyBaseState
     public override void OnExit()
     {
 
-        Debug.Log("ExitBack");
+        // Debug.Log("ExitBack");
     }
 
     // Start is called before the first frame update

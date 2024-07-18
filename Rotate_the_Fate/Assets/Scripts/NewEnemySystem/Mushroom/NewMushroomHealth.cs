@@ -219,7 +219,7 @@ public class NewMushroomHealth : MonoBehaviour
 
     public void DestroyAfterAnimation()
     {
-        //Destroy(gameObject);
+        Destroy(gameObject);
     }
 
     public void isHittingFalse()

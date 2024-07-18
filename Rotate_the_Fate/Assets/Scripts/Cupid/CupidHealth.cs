@@ -8,7 +8,6 @@ public class CupidHealth : MonoBehaviour
     private Rigidbody2D rb;
     public bool isHitting = false;
     private Animator anim;
-    public GameObject deathUIPanel;
     public UnityEvent OnTakeDame;
     public DoubleBarDisplay health_bar;
 
@@ -48,27 +47,14 @@ public class CupidHealth : MonoBehaviour
 
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy") || other.gameObject.layer == LayerMask.NameToLayer("Stab"))
         {
-            if(other.gameObject.CompareTag("Seed")) 
-            {
-                return;
-            }
-
-            FindObjectOfType<AudioManager>().Play("getHurt");
-            if (impulseSource == null)
-            {
-
-                Debug.Log("impulseSource == null");
-            }
-            else
-            {
-                CameraShakeManager.instance.CameraShake(impulseSource);
-            }
+            HitEffect();
 
             if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
             {
                 currentHealth -= MushroomDamage;
                 health_bar.TakeDamage(MushroomDamage);
-            }else if (other.gameObject.layer == LayerMask.NameToLayer("Stab"))
+            }
+            else if (other.gameObject.layer == LayerMask.NameToLayer("Stab"))
             {
                 currentHealth -= StabDamage;
                 health_bar.TakeDamage(StabDamage);
@@ -79,14 +65,13 @@ public class CupidHealth : MonoBehaviour
                 isDead = true;
                 Debug.Log("death");
                 anim.SetTrigger("Death");
-                deathUIPanel.SetActive(true);
             }
             isHitting = true;
             invulnerable = true;
             Vector3 knockBackDirection = transform.position - other.transform.position;
             knockBackDirection.Normalize();
-
             rb.AddForce(knockBackDirection * knockBackForce, ForceMode2D.Impulse);
+
             anim.SetTrigger("Hit");
             // Debug.Log("currentHealth: " + currentHealth);
         }
@@ -103,7 +88,6 @@ public class CupidHealth : MonoBehaviour
             Debug.Log("death");
             anim.SetTrigger("Death");
             //anim.SetBool("Die",true);
-            deathUIPanel.SetActive(true);
         }
         isHitting = true;
         invulnerable = true;
@@ -112,6 +96,19 @@ public class CupidHealth : MonoBehaviour
 
         rb.AddForce(knockBackDirection * knockBackForce, ForceMode2D.Impulse);
         anim.SetTrigger("Hit");
+    }
+
+    private void HitEffect()
+    {
+        FindObjectOfType<AudioManager>().Play("getHurt");
+        if (impulseSource == null)
+        {
+            Debug.Log("impulseSource == null");
+        }
+        else
+        {
+            CameraShakeManager.instance.CameraShake(impulseSource);
+        }
     }
 
     public void DestroyAfterAnimation()

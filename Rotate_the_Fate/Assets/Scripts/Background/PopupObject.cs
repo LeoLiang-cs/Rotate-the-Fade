@@ -3,8 +3,8 @@ using System.Collections;
 
 public class PopupObject : MonoBehaviour
 {
-    public GameObject popupObject; // ��Ҫ���ֵ�UIԪ��
-    public float fadeDuration = 1f; // ����ʱ��
+    public GameObject popupObject;
+    public float fadeDuration = 1f; 
 
     private SpriteRenderer spriteRenderer;
     private bool isFading = false;
@@ -19,9 +19,9 @@ public class PopupObject : MonoBehaviour
                 spriteRenderer = popupObject.AddComponent<SpriteRenderer>();
             }
             Color color = spriteRenderer.color;
-            color.a = 0; // ��ʼ״̬���ɼ�
+            color.a = 0; 
             spriteRenderer.color = color;
-            popupObject.SetActive(false); // ȷ����ʼ״̬��UIԪ�ز��ɼ�
+            // popupObject.SetActive(false);
         }
     }
 
@@ -36,12 +36,14 @@ public class PopupObject : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other)
     {
-        //Debug.Log("OnTriggerExit called with: " + other.name); // ������־
+        //Debug.Log("OnTriggerExit called with: " + other.name);
         if (other.CompareTag("Player") && !isFading)
         {
             // StartCoroutine(FadeOut());
             if(spriteRenderer != null){
-                spriteRenderer.color = new Color(0f, 0f, 0f, 0f);
+                Color color = spriteRenderer.color;
+                color.a = 0;
+                spriteRenderer.color = color;
             }
             
         }
@@ -50,7 +52,7 @@ public class PopupObject : MonoBehaviour
     private IEnumerator FadeIn()
     {
         isFading = true;
-        popupObject.SetActive(true);
+        // popupObject.SetActive(true);
         float elapsedTime = 0f;
         Color color = spriteRenderer.color;
 
@@ -85,7 +87,7 @@ public class PopupObject : MonoBehaviour
 
         color.a = 0;
         spriteRenderer.color = color;
-        popupObject.SetActive(false);
+        // popupObject.SetActive(false);
         isFading = false;
        // Debug.Log("FadeOut finished");
     }
