@@ -17,6 +17,7 @@ TagManager:
   - sandClock
   - SlimeDemon
   - Seed
+  - Revive
   layers:
   - Default
   - TransparentFX
