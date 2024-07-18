@@ -77,6 +77,7 @@ public class CupidInteract : MonoBehaviour
             Destroy(thing.gameObject);
             GetComponent<Attack>().currentMagic.Add(MagicType.Flame);
             abilityDisplay.Add_Ability("flame");
+            CameraManager.Instance.SwitchToCamera((int)CameraIndex.PlayerFollow);
         }
     }
 
