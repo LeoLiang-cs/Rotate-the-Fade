@@ -107,7 +107,7 @@ public class WorldRotation : MonoBehaviour
 
         void Rotation()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && !isRotating)
+        if (Input.GetKeyDown(KeyCode.Q) && !isRotating && cupidBehavior.GetComponent<Collision>().onGround)
         {
             FindObjectOfType<AudioManager>().Play("Rotate");
             isRotating = true;
@@ -117,7 +117,7 @@ public class WorldRotation : MonoBehaviour
             isClockwise = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.E) && !isRotating)
+        if (Input.GetKeyDown(KeyCode.E) && !isRotating && cupidBehavior.GetComponent<Collision>().onGround)
         {
             FindObjectOfType<AudioManager>().Play("Rotate");
             isRotating = true;
