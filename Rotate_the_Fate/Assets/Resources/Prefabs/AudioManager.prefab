@@ -67,7 +67,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 63b589dabf66dd94fa53f5680b2a6ab7, type: 3}
     volume: 1
     pitch: 1
-    loop: 1
+    loop: 0
     source: {fileID: 0}
   - name: Jump
     clip: {fileID: 8300000, guid: 954353473d270c449867659b52ca0e4e, type: 3}
@@ -89,7 +89,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: getMagic
     clip: {fileID: 8300000, guid: 6867f755660a8924ab5b4bbf0f2240a8, type: 3}
-    volume: 1
+    volume: 0.35
     pitch: 1
     loop: 0
     source: {fileID: 0}

@@ -169683,6 +169683,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CollectableMask
       objectReference: {fileID: 0}
+    - target: {fileID: 4147790139257906506, guid: b309266031ba965429ecc794af771992, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7119976388211503485, guid: b309266031ba965429ecc794af771992, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.05
@@ -180301,6 +180305,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NewMushroom (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3296889501442364467, guid: 5140d55e8bd0fdf458fb3e6db3891590, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4969198684090348026, guid: 5140d55e8bd0fdf458fb3e6db3891590, type: 3}
       propertyPath: m_LocalPosition.z
       value: -30
@@ -180344,6 +180352,10 @@ PrefabInstance:
     - target: {fileID: 6487531741129518584, guid: 5140d55e8bd0fdf458fb3e6db3891590, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7400874331774653512, guid: 5140d55e8bd0fdf458fb3e6db3891590, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -183171,6 +183183,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NewMushroom
       objectReference: {fileID: 0}
+    - target: {fileID: 3296889501442364467, guid: 5140d55e8bd0fdf458fb3e6db3891590, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4969198684090348026, guid: 5140d55e8bd0fdf458fb3e6db3891590, type: 3}
       propertyPath: m_LocalPosition.z
       value: -30
@@ -184374,7 +184390,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image1: {fileID: -516937482, guid: ec6dc1f6355733d4d94cb8ccf000c3b0, type: 3}
   image2: {fileID: -1017581832, guid: ec6dc1f6355733d4d94cb8ccf000c3b0, type: 3}
-  nextSceneName: DemoSlime
+  nextSceneName: F8
   kVeryClose: 10
 --- !u!212 &1521945195
 SpriteRenderer:

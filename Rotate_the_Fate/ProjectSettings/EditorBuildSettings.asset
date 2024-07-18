@@ -90,6 +90,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Final/F2.unity
     guid: beb1aa4c925ec384b83f9d9b30ed64ab
   - enabled: 1
+    path: Assets/Scenes/Final/F3.unity
+    guid: 6305505f05add1441b9cb1f35c033502
+  - enabled: 1
     path: Assets/Scenes/Final/F4.unity
     guid: a7806fa78420f1b4784d2e6387b458e1
   - enabled: 1

@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class CollectableSwitch : MonoBehaviour
 {
-    public CameraIndex lockViewCamera;
-    public GameObject leftLock;
-    public GameObject rightLock;
+    public CinemachineVirtualCamera lockViewCamera;
+    public BoxCollider2D leftLock;
+    public BoxCollider2D rightLock;
     private void Awake() {
         Debug.Assert(leftLock != null && rightLock != null);
     }
@@ -25,9 +26,9 @@ public class CollectableSwitch : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.tag == "Player"){
-            CameraManager.Instance.SwitchToCamera((int)lockViewCamera);
-            leftLock.SetActive(true);
-            rightLock.SetActive(false);
+            lockViewCamera.Priority = 20;
+            leftLock.isTrigger = false;
+            rightLock.isTrigger = false;
             // WorldRotation script = GameObject.Find("World").GetComponent<WorldRotation>();
             // script.SetMagnified(true);
         }

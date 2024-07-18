@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Attack : MonoBehaviour
@@ -60,9 +61,17 @@ public class Attack : MonoBehaviour
         {
             Destroy(c);
         }
-        if (d != null && currentMagic.Count >= 4)
+        if (currentMagic.Count >= 4)
         {
-            Destroy(d);
+            if(d != null){
+                Destroy(d);
+            }
+            
+            Timer script = gameObject.AddComponent<Timer>();
+            timers = script;
+            script.Set_Timer(CoolDownTime.TimeMagic, CoolDownTime.TimeMagic + 1f);
+            script.action += () => mMagicSystem.TimeFreezeSpawner(script, gameObject);
+            TimeManager.Instance.AddTimer(timers);
         }
 
 
@@ -79,6 +88,11 @@ public class Attack : MonoBehaviour
     void FixedUpdate()
     {
         EnergyRecover();
+    }
+    void OnDisable(){
+        if(timers != null){
+            TimeManager.Instance.RemoveTimer(timers);
+        }
     }
     public void MagicAttack()
     {

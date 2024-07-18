@@ -10065,7 +10065,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b02a110643a6be34794d0d8913a10552, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSceneName: B3
+  nextSceneName: F3
   kVeryClose: 20
 --- !u!61 &597482994
 BoxCollider2D:

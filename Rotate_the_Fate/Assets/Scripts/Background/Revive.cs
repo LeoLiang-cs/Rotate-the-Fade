@@ -24,7 +24,7 @@ public class Revive : MonoBehaviour
         if (other.CompareTag("Revive"))
         {
             // 传送玩家到目标位置
-            other.transform.position = targetLocation.position;
+            transform.position = targetLocation.position;
 
         }
     }

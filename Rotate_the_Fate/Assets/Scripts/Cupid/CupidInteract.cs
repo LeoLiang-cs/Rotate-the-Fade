@@ -14,8 +14,9 @@ public class CupidInteract : MonoBehaviour
     private GameObject effect;
 
     private GameObject mushPlusSample;
-    public GameObject FlameLeftWall;
-    public GameObject FlameRightWall;
+    public unlock unlockScript;
+    // public GameObject FlameLeftWall;
+    // public GameObject FlameRightWall;
     // Start is called before the first frame update
     void Start()
     {
@@ -64,6 +65,7 @@ public class CupidInteract : MonoBehaviour
             //Destroy(thing.gameObject);
             GetComponent<Attack>().currentMagic.Add(MagicType.Frozen);
             abilityDisplay.Add_Ability("frost");
+            unlockScript.UnlockCam();
 
             MushSpawner();
         }
@@ -79,9 +81,9 @@ public class CupidInteract : MonoBehaviour
             Destroy(thing.gameObject);
             GetComponent<Attack>().currentMagic.Add(MagicType.Flame);
             abilityDisplay.Add_Ability("flame");
-            CameraManager.Instance.SwitchToCamera((int)CameraIndex.PlayerFollow);
-            Destroy(FlameLeftWall);
-            Destroy(FlameRightWall);
+            // CameraManager.Instance.SwitchToCamera((int)CameraIndex.PlayerFollow);
+            // Destroy(FlameLeftWall);
+            // Destroy(FlameRightWall);
             // WorldRotation script = GameObject.Find("World").GetComponent<WorldRotation>();
             // script.SetMagnified(false);
         }
@@ -109,7 +111,7 @@ public class CupidInteract : MonoBehaviour
             GameObject getEffect = GameObject.Instantiate(effect) as GameObject;
             effect.transform.position = thing.transform.position;
             Destroy(thing.gameObject);
-            GetComponent<Attack>().currentMagic.Add(MagicType.Time);
+            GetComponent<Attack>().Add_Magic(MagicType.Time);
             abilityDisplay.Add_Ability("time");
         }
     }

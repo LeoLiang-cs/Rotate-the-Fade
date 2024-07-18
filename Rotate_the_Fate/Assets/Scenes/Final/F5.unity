@@ -2123,7 +2123,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -13.473097, y: 5.074846}
+  m_Offset: {x: -13.473096, y: 4.8711762}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2134,7 +2134,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.0216637, y: 2.2494726}
+  m_Size: {x: 2.4075603, y: 2.6568117}
   m_EdgeRadius: 0
 --- !u!483693784 &342681540
 TilemapRenderer:
@@ -2367,6 +2367,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   twinHealthObject: {fileID: 25191437}
+  attack: {fileID: 7133901014912308113}
 --- !u!114 &347477889 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6722069992207077856, guid: c1ab30a5e398c4d4289cc5c8fb790d7c, type: 3}
@@ -5676,7 +5677,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image1: {fileID: -516937482, guid: ec6dc1f6355733d4d94cb8ccf000c3b0, type: 3}
   image2: {fileID: -1017581832, guid: ec6dc1f6355733d4d94cb8ccf000c3b0, type: 3}
-  nextSceneName: B6
+  nextSceneName: F6
   kVeryClose: 10
 --- !u!61 &667747424
 BoxCollider2D:
@@ -45160,7 +45161,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1497163792377658761, guid: ca29b26a0f07e854ca843e42250f97ca, type: 3}
       propertyPath: normalSpeed
-      value: 500
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 1881154490822858005, guid: ca29b26a0f07e854ca843e42250f97ca, type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
@@ -45168,7 +45169,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3226810444561932208, guid: ca29b26a0f07e854ca843e42250f97ca, type: 3}
       propertyPath: sprintSpeed
-      value: 1000
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 4322954718653043467, guid: ca29b26a0f07e854ca843e42250f97ca, type: 3}
       propertyPath: m_Name
@@ -45256,6 +45257,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4293260899457838334, guid: 92ac54e7930731e4eb234426d2d91525, type: 3}
   m_PrefabInstance: {fileID: 1114562327402181730}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7133901014912308113 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7286328463822886386, guid: 92ac54e7930731e4eb234426d2d91525, type: 3}
+  m_PrefabInstance: {fileID: 1114562327402181730}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2c975d6ccd8df441b55ba0fa36bb242, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
