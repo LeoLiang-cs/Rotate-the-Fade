@@ -27,6 +27,7 @@ public class BatHealth : MonoBehaviour
     public int lightningDamage = 3;
     public int FlameForce = 5;
     public int frozenForce = 5;
+    public int knockBackForce = 10;
 
     // quick fix of time magic on movement
     EnemyManger enemyManger;
@@ -107,6 +108,10 @@ public class BatHealth : MonoBehaviour
         isHitting = true;
         health -= lightningDamage;
         spriteRenderer.color = Color.yellow;
+
+        Vector3 knockBackDirection = transform.position - (Vector3)attP;
+        knockBackDirection.Normalize();
+        rb.AddForce(knockBackDirection * knockBackForce, ForceMode2D.Impulse);
     }
 
     private void MeltFrozen()
@@ -228,4 +233,5 @@ public class BatHealth : MonoBehaviour
     {
         rb.gravityScale = 10;
     }
+
 }

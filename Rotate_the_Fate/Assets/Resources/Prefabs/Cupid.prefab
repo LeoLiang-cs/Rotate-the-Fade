@@ -324,7 +324,7 @@ MonoBehaviour:
   flameCost: 3
   lightingCost: 2
   timeCost: 5
-  LightningRadius: 5
+  LightningRadius: 8
 --- !u!114 &8399223358333725267
 MonoBehaviour:
   m_ObjectHideFlags: 0
