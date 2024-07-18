@@ -8,7 +8,7 @@ public class Attack : MonoBehaviour
     private Timer timers;
     public int chooseMagic = 0;
     private MagicSystem mMagicSystem = null;
-    public  bool isAttacking = false;
+    public bool isAttacking = false;
     private Collision coll;
     public LayerMask enemyLayer;
 
@@ -40,7 +40,7 @@ public class Attack : MonoBehaviour
         // currentMagic.Add(MagicType.Frozen);
         currentMagic.Add(MagicType.LightingChain);
         currentMagic.Add(MagicType.Flame);
-         Add_Magic(MagicType.Time);
+        Add_Magic(MagicType.Time);
         coll = GetComponent<Collision>();
         GameObject a = GameObject.Find("FrozenVase");
         GameObject a2 = GameObject.Find("AirWall1");
@@ -191,7 +191,7 @@ public class Attack : MonoBehaviour
 
     // private IEnumerator FadeIn()
     // {
-      
+
     //     popupObject.SetActive(true);
     //     float elapsedTime = 0f;
 
@@ -204,6 +204,6 @@ public class Attack : MonoBehaviour
 
     //     canvasGroup.alpha = 1;
     //     isFading = false;
-       
+
     // }
 }
