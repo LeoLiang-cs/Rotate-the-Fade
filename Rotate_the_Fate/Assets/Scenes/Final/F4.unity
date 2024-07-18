@@ -49104,17 +49104,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7286328463822886386, guid: 92ac54e7930731e4eb234426d2d91525, type: 3}
-      propertyPath: LightningRadius
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 7928294229524471880, guid: 92ac54e7930731e4eb234426d2d91525, type: 3}
       propertyPath: m_Name
       value: Cupid
-      objectReference: {fileID: 0}
-    - target: {fileID: 8399223358333725267, guid: 92ac54e7930731e4eb234426d2d91525, type: 3}
-      propertyPath: deathUIPanel
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
