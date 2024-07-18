@@ -34,8 +34,10 @@ public class CupidHealth : MonoBehaviour
     private void Start()
     {
         impulseSource = GetComponent<CinemachineImpulseSource>();
+
         currentHealth = maxHealth;
         health_bar.Refill(currentHealth);
+        
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         handStoneSample = Resources.Load<GameObject>("Prefabs/HandStone") as GameObject;
@@ -117,4 +119,5 @@ public class CupidHealth : MonoBehaviour
         handStone.transform.position = transform.position + Vector3.up * 0.5f;
         Destroy(this.gameObject);
     }
+
 }

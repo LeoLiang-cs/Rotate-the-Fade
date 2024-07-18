@@ -49,7 +49,7 @@ public class LightningChainMagic : MonoBehaviour
     {
         // …œ“∆ y ÷· 0.5f
         start.y += 1f;
-        //end.y += 1f;
+        end.y += 1f;
 
         // Debug.Log("DrawLightning: " + start + " " + end);
         LineRenderer lr = GetComponent<LineRenderer>();

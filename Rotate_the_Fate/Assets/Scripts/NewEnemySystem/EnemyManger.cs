@@ -229,7 +229,7 @@ public class EnemyManger : MonoBehaviour
     {
         return true;
     }
-    public bool BackToPor()
+    public virtual bool BackToPor()
     {
         if ((transform.position - StaticPostionInRotationWorld.position).sqrMagnitude < 0.01f)
         {

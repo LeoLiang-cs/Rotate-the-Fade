@@ -7,38 +7,47 @@ public class SDAttack : MonoBehaviour
 {
     Collision coll;
     SDDetect attackDetect;
+    SDBehavior sdBehavior;
     Animator anim;
     SDHealth sdHealth;
     GameObject sd;
     Timer chopTimer;
     Timer punchTimer;
+    Timer summonTimer;
     public bool isAttacking;
     public float skillCoolDown = 5f;
     public float skillCounter;
     public string lastSkill;
     private CinemachineImpulseSource impulseSource;
     private SDTimeStop timeStop;
+    private GameObject boneSample;
     void Awake()
     {
         impulseSource = GetComponent<CinemachineImpulseSource>();
         chopTimer = gameObject.AddComponent<Timer>();
         punchTimer = gameObject.AddComponent<Timer>();
+        summonTimer = gameObject.AddComponent<Timer>();
         timeStop = GetComponent<SDTimeStop>();
+        sdBehavior = GetComponent<SDBehavior>();
 
         chopTimer.Set_Timer(3.0f, 4f);
         punchTimer.Set_Timer(7.0f, 0f);
+        summonTimer.Set_Timer(13.0f, 0f);
 
         chopTimer.action += Chop;
         punchTimer.action += Punch;
+        summonTimer.action += Summon;
 
         TimeManager.Instance.AddTimer(chopTimer);
         TimeManager.Instance.AddTimer(punchTimer);
+        TimeManager.Instance.AddTimer(summonTimer);
 
         sd = GameObject.Find("SlimeDemon");
         coll = sd.GetComponent<Collision>();
         anim = sd.GetComponent<Animator>();
         attackDetect = GetComponent<SDDetect>();
         sdHealth = sd.GetComponent<SDHealth>();
+        boneSample = Resources.Load<GameObject>("Prefabs/Bone") as GameObject;
     }
     // Start is called before the first frame update
     void Start()
@@ -74,6 +83,12 @@ public class SDAttack : MonoBehaviour
         isAttacking = true;
     }
 
+    void Summon()
+    {
+        anim.SetTrigger("Att4");
+        isAttacking = true;
+    }
+
 
 
     public void EndAttack()
@@ -94,6 +109,14 @@ public class SDAttack : MonoBehaviour
         if (attackDetect.detectCupid && !isAttacking)
         {
             punchTimer.Trigger();
+        }
+    }
+
+    public void  TriggerSummon()
+    {
+        if (attackDetect.detectCupid && !isAttacking)
+        {
+           summonTimer.Trigger();
         }
     }
 
@@ -118,5 +141,12 @@ public class SDAttack : MonoBehaviour
             {
                 CameraShakeManager.instance.CameraShake(impulseSource);
             }
+    }
+
+    public void BoneSpawn()
+    {
+        GameObject bone = Instantiate(boneSample, transform.position, Quaternion.identity);
+        bone.transform.position = transform.position + sdBehavior.faceDire * 0.5f + Vector3.up * 1.5f;
+
     }
 }
