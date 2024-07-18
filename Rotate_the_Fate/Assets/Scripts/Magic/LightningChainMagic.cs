@@ -60,7 +60,8 @@ public class LightningChainMagic : MonoBehaviour
     public void DestroyThisMagic()
     {
         Destroy(transform.gameObject, 0.2f);  // kills self
-        Attack.isAttacking = false;
+        FindObjectOfType<Attack>().isAttacking = false;
+        //Attack.isAttacking = false;
     }
 
 }

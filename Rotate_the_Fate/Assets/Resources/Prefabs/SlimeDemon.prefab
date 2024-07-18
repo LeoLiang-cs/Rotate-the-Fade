@@ -41,7 +41,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 3968803324649673697}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 8a6f16ef8f7d8de439af33b3687ebe67, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -64,7 +64,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.10400891, y: 0.99635315}
+  m_Offset: {x: -0.11940169, y: 0.93863106}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -75,7 +75,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5349035, y: 1.8898296}
+  m_Size: {x: 1.2270541, y: 1.7743855}
   m_EdgeRadius: 0
 --- !u!1 &4095372687026725497
 GameObject:
@@ -119,7 +119,7 @@ PolygonCollider2D:
   m_GameObject: {fileID: 4095372687026725497}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 8a6f16ef8f7d8de439af33b3687ebe67, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -182,7 +182,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 4095372687026725497}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 8a6f16ef8f7d8de439af33b3687ebe67, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -311,7 +311,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7877454411437867706
 Transform:
   m_ObjectHideFlags: 0
@@ -401,6 +401,7 @@ GameObject:
   - component: {fileID: 1718007894062549312}
   - component: {fileID: 7183178461956877800}
   - component: {fileID: 7847897361347883397}
+  - component: {fileID: 4491177732924067548}
   m_Layer: 7
   m_Name: SlimeDemon
   m_TagString: SlimeDemon
@@ -603,6 +604,7 @@ MonoBehaviour:
   lightningDamage: 3
   frozenForce: 5
   isTransforming: 0
+  thankUI: {fileID: 0}
 --- !u!114 &7183178461956877800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -637,3 +639,16 @@ MonoBehaviour:
   skillCoolDown: 5
   skillCounter: 0
   lastSkill: 
+--- !u!114 &4491177732924067548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8401519780676574496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3bf66f9d21738a49a08b1b5bbc0838b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isStopped: 0
