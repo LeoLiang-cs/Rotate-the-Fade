@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4835376287267673266}
   - component: {fileID: 8653737146459495460}
   - component: {fileID: 4933386827739950934}
+  - component: {fileID: 6832673846963311134}
   m_Layer: 7
   m_Name: Bat
   m_TagString: Bat
@@ -30,7 +31,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6287029895183200019}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.33, y: 2.88, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -103,11 +104,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CupidTransform: {fileID: 0}
   LastJump: 0
+  Cupidd: {fileID: 0}
   rb: {fileID: 0}
   CheckOfTouch: {fileID: 0}
   CurrSpeed: 0
   PatrolSpeed: 400
-  ChaseSpeed: 100
+  ChaseSpeed: 300
   FaceDire: {x: 0, y: 0, z: 0}
   SlowContor: 0
   ChaseFaceDire: 0
@@ -130,7 +132,7 @@ MonoBehaviour:
   Player:
     serializedVersion: 2
     m_Bits: 256
-  ChaseTime: 5
+  ChaseTime: 10
   ChaseTimeContor: 0
   JumpFouse: 0
   IsColl: 0
@@ -139,7 +141,7 @@ MonoBehaviour:
   StaticPostion: {x: 0, y: 0, z: 0}
   Target: {x: 0, y: 0, z: 0}
   MoveDir: {x: 0, y: 0, z: 0}
-  CheckFindPlayerRadios: 50
+  CheckFindPlayerRadios: 100
   CheckFindAttackRadios: 0.78
   AttackAddRadios: 0.94
   LastPostionBeforeAttack: {x: 0, y: 0, z: 0}
@@ -174,7 +176,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!70 &4835376287267673266
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -261,3 +263,38 @@ MonoBehaviour:
   lightningDamage: 3
   FlameForce: 5
   frozenForce: 100
+--- !u!58 &6832673846963311134
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6287029895183200019}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 320
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.021557808, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.85106564
