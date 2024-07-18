@@ -8,7 +8,7 @@ public class Attack : MonoBehaviour
     private Timer timers;
     public int chooseMagic = 0;
     private MagicSystem mMagicSystem = null;
-    public static bool isAttacking = false;
+    public  bool isAttacking = false;
     private Collision coll;
     public LayerMask enemyLayer;
 
@@ -39,8 +39,8 @@ public class Attack : MonoBehaviour
         currentMagic = abilityDisplay.gianed_magics;
         // currentMagic.Add(MagicType.Frozen);
         currentMagic.Add(MagicType.LightingChain);
-        // currentMagic.Add(MagicType.Flame);
-        //  Add_Magic(MagicType.Time);
+        currentMagic.Add(MagicType.Flame);
+         Add_Magic(MagicType.Time);
         coll = GetComponent<Collision>();
         GameObject a = GameObject.Find("FrozenVase");
         GameObject a2 = GameObject.Find("AirWall1");
@@ -82,6 +82,10 @@ public class Attack : MonoBehaviour
     }
     public void MagicAttack()
     {
+        // if(Input.GetKeyDown(KeyCode.J) && magicEnergy < currentMagicCost)
+        // {
+        //     FadeIn();
+        // }
         if (Input.GetKeyDown(KeyCode.J) && !isAttacking && coll.onGround && currentMagic.Count > 0 && magicEnergy >= currentMagicCost)
         {
 
@@ -185,4 +189,21 @@ public class Attack : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, LightningRadius);
     }
 
+    // private IEnumerator FadeIn()
+    // {
+      
+    //     popupObject.SetActive(true);
+    //     float elapsedTime = 0f;
+
+    //     while (elapsedTime < fadeDuration)
+    //     {
+    //         canvasGroup.alpha = Mathf.Lerp(0, 1, elapsedTime / fadeDuration);
+    //         elapsedTime += Time.deltaTime;
+    //         yield return null;
+    //     }
+
+    //     canvasGroup.alpha = 1;
+    //     isFading = false;
+       
+    // }
 }

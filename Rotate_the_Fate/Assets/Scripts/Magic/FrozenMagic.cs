@@ -10,38 +10,43 @@ public class FrozenMagic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-      
+
     }
 
     private void DestroyThisMagic()
     {
         Destroy(transform.gameObject);  // kills self
-        Attack.isAttacking = false;
+        FindObjectOfType<Attack>().isAttacking = false;
+        //Attack.isAttacking = false;
     }
 
-    void OnTriggerEnter2D (Collider2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         //Debug.Log("FrozenSpawner trigger");
         if (other.gameObject.CompareTag("Mushroom"))
         {
             other.GetComponent<NewMushroomHealth>().TakeFrozenDamage(transform.position);
-        }else if(other.gameObject.CompareTag("Bush"))
+        }
+        else if (other.gameObject.CompareTag("Bush"))
         {
             other.GetComponent<BushHealth>().TakeFrozenDamage(transform.position);
-        }else if(other.gameObject.CompareTag("Twinsnap"))
+        }
+        else if (other.gameObject.CompareTag("Twinsnap"))
         {
             other.GetComponent<TwinHealth>().TakeFrozenDamage(transform.position);
-        }else if(other.gameObject.CompareTag("SlimeDemon"))
+        }
+        else if (other.gameObject.CompareTag("SlimeDemon"))
         {
             Debug.Log("SlimeDemon frozen");
             other.transform.GetComponentInParent<SDHealth>().TakeFrozenDamage(transform.position);
-        }else if(other.gameObject.CompareTag("Bat"))
+        }
+        else if (other.gameObject.CompareTag("Bat"))
         {
             other.transform.GetComponent<BatHealth>().TakeFrozenDamage(transform.position);
         }

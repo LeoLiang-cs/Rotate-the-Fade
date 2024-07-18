@@ -11,6 +11,7 @@ public class CupidBehavior : MonoBehaviour
     private Rigidbody2D rb;
     private Animator anim;
     public CupidHealth health;
+    private Attack attack;
     private SDTimeStop timeStop;
     [Space]
     [Header("Stats")]
@@ -22,16 +23,20 @@ public class CupidBehavior : MonoBehaviour
     public float footprint_interval = 0.3f;
     private float footprint_elapse = 0f;
 
-
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        mTowardRight = true;
+        attack = GetComponent<Attack>();
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<Collision>();
         health = GetComponent<CupidHealth>();
         timeStop = GetComponent<SDTimeStop>();
+    }
+    // Start is called before the first frame update
+    void Start()
+    {
+        mTowardRight = true;
+        
         //rb.constraints = RigidbodyConstraints2D.FreezeRotation;//所有活物都要锁定！
     }
 
@@ -57,7 +62,7 @@ public class CupidBehavior : MonoBehaviour
     private void Walk(Vector2 dir)
     {
         
-        if (!WorldRotation.isRotating && !Attack.isAttacking)
+        if (!WorldRotation.isRotating && !attack.isAttacking)
         {
             
             rb.velocity = new Vector2(dir.x * speed, rb.velocity.y);

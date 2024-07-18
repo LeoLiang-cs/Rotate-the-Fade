@@ -27,7 +27,7 @@ public class StateSwitcher : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.S) && !isStateOne && !Attack.isAttacking)
+        if (Input.GetKeyDown(KeyCode.S) && !isStateOne && ! FindObjectOfType<Attack>().isAttacking)
         {
             SceneManager.LoadScene(nextSceneName);
         }

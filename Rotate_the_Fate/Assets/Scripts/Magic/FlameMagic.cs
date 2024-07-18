@@ -21,7 +21,8 @@ public class FlameMagic : MonoBehaviour
 
     private void DestroyThisMagic()
     {
-        Attack.isAttacking = false;
+        FindObjectOfType<Attack>().isAttacking = false;
+        //Attack.isAttacking = false;
         Destroy(transform.gameObject);
     }
 

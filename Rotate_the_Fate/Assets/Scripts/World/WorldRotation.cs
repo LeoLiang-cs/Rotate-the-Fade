@@ -58,9 +58,52 @@ public class WorldRotation : MonoBehaviour
 
 
 
-    void Rotation()
+    // void Rotation()
+    // {
+    //     if (Input.GetKeyDown(KeyCode.Q) && !isRotating && cupidBehavior.GetComponent<Collision>().onGround)
+    //     {
+    //         FindObjectOfType<AudioManager>().Play("Rotate");
+    //         isRotating = true;
+    //         rotationCenter = cupidBehavior.transform.position;
+    //         currentAngle = 0f;
+    //         targetAngle = 90f; // 目标旋转角度为90度
+    //         isClockwise = true;
+    //     }
+
+    //     if (Input.GetKeyDown(KeyCode.E) && !isRotating && cupidBehavior.GetComponent<Collision>().onGround)
+    //     {
+    //         FindObjectOfType<AudioManager>().Play("Rotate");
+    //         isRotating = true;
+    //         rotationCenter = cupidBehavior.transform.position;
+    //         currentAngle = 0f;
+    //         targetAngle = -90f; // 目标旋转角度为-90度（逆时针）
+    //         isClockwise = false;
+    //     }
+
+    //     if (isRotating)
+    //     {
+    //         // 每帧旋转一定角度
+    //         float angleToRotate = rotationSpeed * Time.deltaTime;
+    //         if (!isClockwise)
+    //             angleToRotate = -angleToRotate;
+
+    //         currentAngle += angleToRotate;
+
+    //         if (Mathf.Abs(currentAngle) >= Mathf.Abs(targetAngle))
+    //         {
+    //             angleToRotate = targetAngle - (currentAngle - angleToRotate);
+    //             isRotating = false; // 达到目标角度后停止旋转
+    //         }
+
+    //         // 以rotationCenter为中心旋转
+    //         transform.RotateAround(rotationCenter, Vector3.forward, angleToRotate);
+
+    //     }
+    // }
+
+        void Rotation()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && !isRotating && cupidBehavior.GetComponent<Collision>().onGround)
+        if (Input.GetKeyDown(KeyCode.Q) && !isRotating)
         {
             FindObjectOfType<AudioManager>().Play("Rotate");
             isRotating = true;
@@ -70,7 +113,7 @@ public class WorldRotation : MonoBehaviour
             isClockwise = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.E) && !isRotating && cupidBehavior.GetComponent<Collision>().onGround)
+        if (Input.GetKeyDown(KeyCode.E) && !isRotating)
         {
             FindObjectOfType<AudioManager>().Play("Rotate");
             isRotating = true;

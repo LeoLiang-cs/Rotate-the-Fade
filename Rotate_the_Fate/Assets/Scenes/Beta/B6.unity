@@ -1525,6 +1525,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5085973636219810479, guid: 92ac54e7930731e4eb234426d2d91525, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7928294229524471880, guid: 92ac54e7930731e4eb234426d2d91525, type: 3}
       propertyPath: m_Name
       value: Cupid
@@ -1584,7 +1588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8c81c40c44a3c743bcdfb42334dd3c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 150
+  rotationSpeed: 100
   cupidBehavior: {fileID: 1616483178}
 --- !u!4 &1616483178 stripped
 Transform:
@@ -1912,8 +1916,8 @@ Rigidbody2D:
     serializedVersion: 2
     m_Bits: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!19719996 &1719359765
 TilemapCollider2D:
