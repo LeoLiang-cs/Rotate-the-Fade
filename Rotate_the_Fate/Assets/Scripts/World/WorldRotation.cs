@@ -11,7 +11,7 @@ public class WorldRotation : MonoBehaviour
     private Quaternion targetRotation;
 
     //New CenterRotation
-    public Transform cupidBehavior; // Ä¿±ê¶ÔÏó
+    public Transform cupidBehavior; // Ä¿ï¿½ï¿½ï¿½ï¿½ï¿?
     private Vector3 rotationCenter;
     private float targetAngle;
     private float currentAngle;
@@ -23,14 +23,17 @@ public class WorldRotation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        isMagnifing = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Rotation();
         SceneReset();
+        if(isMagnifing)
+            return;
+        Rotation();
+        
     }
 
     // void Rotation() 
@@ -70,7 +73,7 @@ public class WorldRotation : MonoBehaviour
     //         isRotating = true;
     //         rotationCenter = cupidBehavior.transform.position;
     //         currentAngle = 0f;
-    //         targetAngle = 90f; // Ä¿±êÐý×ª½Ç¶ÈÎª90¶È
+    //         targetAngle = 90f; // Ä¿ï¿½ï¿½ï¿½ï¿½×ªï¿½Ç¶ï¿½Îª90ï¿½ï¿½
     //         isClockwise = true;
     //     }
 
@@ -80,13 +83,13 @@ public class WorldRotation : MonoBehaviour
     //         isRotating = true;
     //         rotationCenter = cupidBehavior.transform.position;
     //         currentAngle = 0f;
-    //         targetAngle = -90f; // Ä¿±êÐý×ª½Ç¶ÈÎª-90¶È£¨ÄæÊ±Õë£©
+    //         targetAngle = -90f; // Ä¿ï¿½ï¿½ï¿½ï¿½×ªï¿½Ç¶ï¿½Îª-90ï¿½È£ï¿½ï¿½ï¿½Ê±ï¿½ë£©
     //         isClockwise = false;
     //     }
 
     //     if (isRotating)
     //     {
-    //         // Ã¿Ö¡Ðý×ªÒ»¶¨½Ç¶È
+    //         // Ã¿Ö¡ï¿½ï¿½×ªÒ»ï¿½ï¿½ï¿½Ç¶ï¿½
     //         float angleToRotate = rotationSpeed * Time.deltaTime;
     //         if (!isClockwise)
     //             angleToRotate = -angleToRotate;
@@ -96,10 +99,10 @@ public class WorldRotation : MonoBehaviour
     //         if (Mathf.Abs(currentAngle) >= Mathf.Abs(targetAngle))
     //         {
     //             angleToRotate = targetAngle - (currentAngle - angleToRotate);
-    //             isRotating = false; // ´ïµ½Ä¿±ê½Ç¶ÈºóÍ£Ö¹Ðý×ª
+    //             isRotating = false; // ï¿½ïµ½Ä¿ï¿½ï¿½Ç¶Èºï¿½Í£Ö¹ï¿½ï¿½×?
     //         }
 
-    //         // ÒÔrotationCenterÎªÖÐÐÄÐý×ª
+    //         // ï¿½ï¿½rotationCenterÎªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ª
     //         transform.RotateAround(rotationCenter, Vector3.forward, angleToRotate);
 
     //     }
@@ -113,7 +116,7 @@ public class WorldRotation : MonoBehaviour
             isRotating = true;
             rotationCenter = cupidBehavior.transform.position;
             currentAngle = 0f;
-            targetAngle = 90f; // Ä¿±êÐý×ª½Ç¶ÈÎª90¶È
+            targetAngle = 90f; // Ä¿ï¿½ï¿½ï¿½ï¿½×ªï¿½Ç¶ï¿½Îª90ï¿½ï¿½
             isClockwise = true;
         }
 
@@ -123,13 +126,13 @@ public class WorldRotation : MonoBehaviour
             isRotating = true;
             rotationCenter = cupidBehavior.transform.position;
             currentAngle = 0f;
-            targetAngle = -90f; // Ä¿±êÐý×ª½Ç¶ÈÎª-90¶È£¨ÄæÊ±Õë£©
+            targetAngle = -90f; // Ä¿ï¿½ï¿½ï¿½ï¿½×ªï¿½Ç¶ï¿½Îª-90ï¿½È£ï¿½ï¿½ï¿½Ê±ï¿½ë£©
             isClockwise = false;
         }
 
         if (isRotating)
         {
-            // Ã¿Ö¡Ðý×ªÒ»¶¨½Ç¶È
+            // Ã¿Ö¡ï¿½ï¿½×ªÒ»ï¿½ï¿½ï¿½Ç¶ï¿½
             float angleToRotate = rotationSpeed * Time.deltaTime;
             if (!isClockwise)
                 angleToRotate = -angleToRotate;
@@ -139,10 +142,10 @@ public class WorldRotation : MonoBehaviour
             if (Mathf.Abs(currentAngle) >= Mathf.Abs(targetAngle))
             {
                 angleToRotate = targetAngle - (currentAngle - angleToRotate);
-                isRotating = false; // ´ïµ½Ä¿±ê½Ç¶ÈºóÍ£Ö¹Ðý×ª
+                isRotating = false; // ï¿½ïµ½Ä¿ï¿½ï¿½Ç¶Èºï¿½Í£Ö¹ï¿½ï¿½×?
             }
 
-            // ÒÔrotationCenterÎªÖÐÐÄÐý×ª
+            // ï¿½ï¿½rotationCenterÎªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ª
             transform.RotateAround(rotationCenter, Vector3.forward, angleToRotate);
 
         }
@@ -159,4 +162,10 @@ public class WorldRotation : MonoBehaviour
             SceneManager.LoadScene(sceneName);
         }
     }
+
+    public void SetMagnified(bool magnify)
+    {
+        isMagnifing = magnify;
+    }
+
 }

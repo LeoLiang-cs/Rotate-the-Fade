@@ -6,7 +6,7 @@ public class MinimapPivot : MonoBehaviour
 {
     public GameObject pivot;
     private void Awake() {
-        pivot = GameObject.Find("MinimapPivot");
+        //pivot = GameObject.Find("MinimapPivot");
     }
     // Start is called before the first frame update
     void Start()
@@ -20,7 +20,8 @@ public class MinimapPivot : MonoBehaviour
         if(pivot != null){
             transform.position = pivot.transform.position;
         }else{
-            Destroy(gameObject);
+            // Destroy(gameObject);
+            
         }
         
     }
