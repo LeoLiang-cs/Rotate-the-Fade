@@ -38425,6 +38425,8 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: f01326d041280c8408eae8cea287dcd3, type: 2}
   - m_RefCount: 3160
     m_Data: {fileID: 11400000, guid: 9b8b27427c1dc2041b5ab97025e34f75, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileSpriteArray:
   - m_RefCount: 108
     m_Data: {fileID: -1184326605, guid: 37ee2d1538b49034683a385e36c6f0f4, type: 3}
@@ -38436,6 +38438,8 @@ Tilemap:
     m_Data: {fileID: -1763362860, guid: 37ee2d1538b49034683a385e36c6f0f4, type: 3}
   - m_RefCount: 3160
     m_Data: {fileID: -120573992, guid: 37ee2d1538b49034683a385e36c6f0f4, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileMatrixArray:
   - m_RefCount: 3640
     m_Data:
@@ -38719,8 +38723,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2005541033}
   - {fileID: 1616483178}
+  - {fileID: 2005541033}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2035789488 stripped
