@@ -14,6 +14,8 @@ public class CupidInteract : MonoBehaviour
     private GameObject effect;
 
     private GameObject mushPlusSample;
+    public GameObject FlameLeftWall;
+    public GameObject FlameRightWall;
     // Start is called before the first frame update
     void Start()
     {
@@ -78,6 +80,10 @@ public class CupidInteract : MonoBehaviour
             GetComponent<Attack>().currentMagic.Add(MagicType.Flame);
             abilityDisplay.Add_Ability("flame");
             CameraManager.Instance.SwitchToCamera((int)CameraIndex.PlayerFollow);
+            Destroy(FlameLeftWall);
+            Destroy(FlameRightWall);
+            // WorldRotation script = GameObject.Find("World").GetComponent<WorldRotation>();
+            // script.SetMagnified(false);
         }
     }
 
