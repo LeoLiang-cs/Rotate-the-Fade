@@ -8286,8 +8286,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Press H to change your magic
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 87bb7d5b13f3cf341975615564e34ca7, type: 2}
-  m_sharedMaterial: {fileID: -269433708707251652, guid: 87bb7d5b13f3cf341975615564e34ca7, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -10735,8 +10735,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: <-- No Energy Now!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 87bb7d5b13f3cf341975615564e34ca7, type: 2}
-  m_sharedMaterial: {fileID: -269433708707251652, guid: 87bb7d5b13f3cf341975615564e34ca7, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -10835,13 +10835,13 @@ Transform:
   m_GameObject: {fileID: 837204592}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -43.42, y: 6.7832613, z: -0.078217104}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2094740090}
   - {fileID: 626735944}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1614290079}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &862651804
 GameObject:
@@ -10920,13 +10920,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 862651804}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -43.03, y: 10.84, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.3899994, y: 4.056739, z: 0.078217104}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1887464452}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1614290079}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &881405544
 GameObject:
@@ -11491,6 +11491,11 @@ Transform:
   - {fileID: 1653940303}
   m_Father: {fileID: 427157195}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1088934566 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3367923835869133489, guid: 0ccbb9a9b6f40354abd73bfc7a1eaa43, type: 3}
+  m_PrefabInstance: {fileID: 5107038001994904708}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1100560215
 GameObject:
   m_ObjectHideFlags: 0
@@ -37962,7 +37967,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb721fd84dd9ed84d911ff213835f05c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pivot: {fileID: 0}
+  pivot: {fileID: 1088934566}
 --- !u!1 &1376595627
 GameObject:
   m_ObjectHideFlags: 0
@@ -38621,8 +38626,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Press Q or E to rotate your world
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 87bb7d5b13f3cf341975615564e34ca7, type: 2}
-  m_sharedMaterial: {fileID: -269433708707251652, guid: 87bb7d5b13f3cf341975615564e34ca7, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -38854,7 +38859,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -648812019, guid: 91f17444d7af2c5418ad174192da4407, type: 3}
+  m_Sprite: {fileID: 1180388011, guid: 91f17444d7af2c5418ad174192da4407, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -38999,6 +39004,8 @@ Transform:
   - {fileID: 532092796}
   - {fileID: 1922802488}
   - {fileID: 427157195}
+  - {fileID: 862651806}
+  - {fileID: 837204593}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1653940302
@@ -41144,7 +41151,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 903142958, guid: a0923e766ab7bfe4681d59625fd3127f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -42693,12 +42700,10 @@ SceneRoots:
   - {fileID: 1000534104}
   - {fileID: 1614290079}
   - {fileID: 1156411887}
-  - {fileID: 837204593}
   - {fileID: 1376595631}
   - {fileID: 322976804}
   - {fileID: 1742976325}
   - {fileID: 327208283}
   - {fileID: 662388283}
   - {fileID: 954070646}
-  - {fileID: 862651806}
   - {fileID: 943257068}

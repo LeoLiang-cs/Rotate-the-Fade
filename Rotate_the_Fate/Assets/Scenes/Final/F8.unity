@@ -9989,7 +9989,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8c81c40c44a3c743bcdfb42334dd3c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 500
+  rotationSpeed: 200
   cupidBehavior: {fileID: 1299223351}
 --- !u!4 &197949787
 Transform:
@@ -40496,7 +40496,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1473708306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40519,8 +40519,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: <-- No Energy Now!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 87bb7d5b13f3cf341975615564e34ca7, type: 2}
-  m_sharedMaterial: {fileID: -269433708707251652, guid: 87bb7d5b13f3cf341975615564e34ca7, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -42156,8 +42156,6 @@ GameObject:
   - component: {fileID: 1914037199}
   - component: {fileID: 1914037198}
   - component: {fileID: 1914037197}
-  - component: {fileID: 1914037196}
-  - component: {fileID: 1914037195}
   m_Layer: 0
   m_Name: LockWall
   m_TagString: Untagged
@@ -42181,99 +42179,6 @@ Transform:
   - {fileID: 1497416163}
   m_Father: {fileID: 1564318990}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!66 &1914037195
-CompositeCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1914037193}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
-  m_GenerationType: 0
-  m_EdgeRadius: 0
-  m_ColliderPaths:
-  - m_Collider: {fileID: 1914037196}
-    m_ColliderPaths:
-    - - X: 153000000
-        Y: 153000000
-      - X: 102000000
-        Y: 153000000
-      - X: 102000000
-        Y: 144500000
-      - X: 153000000
-        Y: 144500000
-  m_CompositePaths:
-    m_Paths:
-    - - {x: 15.299972, y: 14.45}
-      - {x: 15.299972, y: 15.3}
-      - {x: 10.2, y: 15.299972}
-      - {x: 10.200029, y: 14.45}
-  m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.00005
-  m_UseDelaunayMesh: 0
-  m_CompositeGameObject: {fileID: 1914037193}
---- !u!19719996 &1914037196
-TilemapCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1914037193}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 1
-  m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0
-  m_UseDelaunayMesh: 0
 --- !u!61 &1914037197
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -42603,7 +42508,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1983575040
 RectTransform:
   m_ObjectHideFlags: 0
@@ -43189,6 +43094,10 @@ PrefabInstance:
     - target: {fileID: 3956781855412171076, guid: 12a57b96b334cda419bd3cdfb6d7217b, type: 3}
       propertyPath: m_Name
       value: Ghost
+      objectReference: {fileID: 0}
+    - target: {fileID: 3956781855412171076, guid: 12a57b96b334cda419bd3cdfb6d7217b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8070384086207787145, guid: 12a57b96b334cda419bd3cdfb6d7217b, type: 3}
       propertyPath: CupidTransform
