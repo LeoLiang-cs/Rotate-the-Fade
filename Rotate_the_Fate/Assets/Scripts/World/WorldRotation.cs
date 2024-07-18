@@ -23,15 +23,13 @@ public class WorldRotation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        isMagnifing = false;
+      
     }
 
     // Update is called once per frame
     void Update()
     {
         SceneReset();
-        if(isMagnifing)
-            return;
         Rotation();
         
     }
@@ -162,10 +160,4 @@ public class WorldRotation : MonoBehaviour
             SceneManager.LoadScene(sceneName);
         }
     }
-
-    public void SetMagnified(bool magnify)
-    {
-        isMagnifing = magnify;
-    }
-
 }
