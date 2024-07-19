@@ -8,25 +8,22 @@ public class CupitPrompt : MonoBehaviour
     private Attack attack;
     private CupidHealth cupidHealth;
 
-    public GameObject deathUIPrefab; // ËÀÍöUIÔ¤ÖÆ¼þ
-    private GameObject deathUIInstance;
-    private CanvasGroup deathUICanvasGroup;
-
+    public TextMeshProUGUI deathUI;
     public TextMeshProUGUI noEnergyUI;
     private bool isFading;
     public float fadeDuration = 1f;
-
     void Awake()
     {
         attack = GetComponent<Attack>();
         cupidHealth = GetComponent<CupidHealth>();
     }
-
+    // Start is called before the first frame update
     void Start()
     {
         isFading = false;
     }
 
+    // Update is called once per frame
     void Update()
     {
         DeathPrompt();
@@ -37,20 +34,12 @@ public class CupitPrompt : MonoBehaviour
     {
         if (cupidHealth.currentHealth <= 0)
         {
-            if (deathUIInstance == null)
-            {
-                deathUIInstance = Instantiate(deathUIPrefab, transform);
-                deathUICanvasGroup = deathUIInstance.GetComponent<CanvasGroup>();
-                if (deathUICanvasGroup == null)
-                {
-                    deathUICanvasGroup = deathUIInstance.AddComponent<CanvasGroup>();
-                }
-                StartCoroutine(FadeIn(deathUIInstance, deathUICanvasGroup));
-            }
+            //    TurnOn(deathUI);
+           StartCoroutine(FadeIn(deathUI));
         }
-        else if (deathUIInstance != null)
+        if (cupidHealth.currentHealth > 0)
         {
-            Destroy(deathUIInstance);
+            TurnOff(deathUI);
         }
     }
 
@@ -58,7 +47,9 @@ public class CupitPrompt : MonoBehaviour
     {
         if (attack.magicEnergy <= attack.currentMagicCost && Input.GetKeyDown(KeyCode.J))
         {
+            // TurnOn(noEnergyUI);
             StartCoroutine(FadeIn(noEnergyUI));
+            //FadeIn(noEnergyUI);
         }
         if (attack.magicEnergy > attack.currentMagicCost)
         {
@@ -68,6 +59,7 @@ public class CupitPrompt : MonoBehaviour
 
     private IEnumerator FadeIn(GameObject popupObject, CanvasGroup canvasGroup)
     {
+
         isFading = true;
         popupObject.SetActive(true);
         float elapsedTime = 0f;
@@ -81,10 +73,18 @@ public class CupitPrompt : MonoBehaviour
 
         canvasGroup.alpha = 1;
         isFading = false;
+
     }
 
+    // private void TurnOn(TextMeshProUGUI ui)
+    // {
+    //     Color color = ui.color;
+    //     color.a = 1f;
+    //     ui.color = color;
+    // }
     private IEnumerator FadeIn(TextMeshProUGUI ui)
     {
+
         isFading = true;
         float elapsedTime = 0f;
 
@@ -97,6 +97,7 @@ public class CupitPrompt : MonoBehaviour
 
         ui.alpha = 1;
         isFading = false;
+
     }
 
     private void TurnOff(TextMeshProUGUI ui)

@@ -148,7 +148,7 @@ public class TwinHealth : MonoBehaviour
     public void DestroyAfterAnimation()
     {
         Destroy(gameObject);
-        StartCoroutine(ExecuteAfterTime());
+        //StartCoroutine(ExecuteAfterTime());
     }
 
     public void isHittingFalse()
@@ -179,11 +179,11 @@ public class TwinHealth : MonoBehaviour
 
     }
 
-     IEnumerator ExecuteAfterTime()
-    {
+    //  IEnumerator ExecuteAfterTime()
+    // {
 
-        // 等待指定的时间（以秒为单位）
-        yield return new WaitForSeconds(3f);
-        Destroy(gameObject);
-    }
+    //     // 等待指定的时间（以秒为单位）
+    //     yield return new WaitForSeconds(3f);
+    //     Destroy(gameObject);
+    // }
 }
