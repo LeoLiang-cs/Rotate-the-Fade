@@ -83,9 +83,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Final/B0.unity
     guid: a926e86da7c43924bb4fbc5fd5615999
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Final/F0.unity
-    guid: 94b7d4b19c48b0d4da37fdecae659693
+    guid: 8bd092de800eda94db5ea53fdcda23a4
   - enabled: 1
     path: Assets/Scenes/Final/F1.unity
     guid: f4cf05f2bbae4b04fa10cdfe079e6bd4
