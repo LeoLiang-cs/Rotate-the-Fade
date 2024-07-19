@@ -31,7 +31,7 @@ public class TwinHealth : MonoBehaviour
     public int maxHealth = 40;
     public int flameDamage = 5;
     public int frozenDamage = 2;
-    public int lightningDamage = 3;
+    public int lightningDamage = 1;
     public int stabDamage = 2;
 
     private void Awake() {
