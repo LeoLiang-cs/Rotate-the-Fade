@@ -38,10 +38,15 @@ public class Attack : MonoBehaviour
     void Start()
     {
         currentMagic = abilityDisplay.gianed_magics;
-        // currentMagic.Add(MagicType.Frozen);
-        // currentMagic.Add(MagicType.LightingChain);
-        // currentMagic.Add(MagicType.Flame);
-        // Add_Magic(MagicType.Time);
+        currentMagic.Add(MagicType.Frozen);
+         currentMagic.Add(MagicType.Flame);
+        currentMagic.Add(MagicType.LightingChain);
+        //GetComponent<Attack>().Add_Magic(MagicType.Time);
+        abilityDisplay.Add_Ability("frost");
+        abilityDisplay.Add_Ability("flame");
+        abilityDisplay.Add_Ability("lightening");
+        abilityDisplay.Add_Ability("time");
+        Add_Magic(MagicType.Time);
         coll = GetComponent<Collision>();
         GameObject a = GameObject.Find("FrozenVase");
         GameObject a2 = GameObject.Find("AirWall1");
@@ -63,10 +68,11 @@ public class Attack : MonoBehaviour
         }
         if (currentMagic.Count >= 4)
         {
-            if(d != null){
+            if (d != null)
+            {
                 Destroy(d);
             }
-            
+
             Timer script = gameObject.AddComponent<Timer>();
             timers = script;
             script.Set_Timer(CoolDownTime.TimeMagic, CoolDownTime.TimeMagic + 1f);
@@ -89,8 +95,10 @@ public class Attack : MonoBehaviour
     {
         EnergyRecover();
     }
-    void OnDisable(){
-        if(timers != null){
+    void OnDisable()
+    {
+        if (timers != null)
+        {
             TimeManager.Instance.RemoveTimer(timers);
         }
     }

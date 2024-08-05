@@ -15,7 +15,7 @@ public class TwinBehavior : MonoBehaviour
 
     [Header("基本参数")]
     public float currentSpeed;
-    public float normalSpeed = 200f;
+    public float normalSpeed = 400f;
     public float chaseSpeed;
     public Vector3 faceDire;
     public float slowFactor;//减慢因子

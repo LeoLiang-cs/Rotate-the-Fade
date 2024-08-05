@@ -32,7 +32,7 @@ public class SDAttack : MonoBehaviour
 
         chopTimer.Set_Timer(3.0f, 4f);
         punchTimer.Set_Timer(7.0f, 0f);
-        summonTimer.Set_Timer(13.0f, 0f);
+        summonTimer.Set_Timer(23.0f, 24.0f);
 
         chopTimer.action += Chop;
         punchTimer.action += Punch;
